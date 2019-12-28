@@ -1,0 +1,223 @@
+﻿  Player.cpp
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,43): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,43): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,43): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,43): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,43): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,28): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,28): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,28): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(98,28): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,40): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,40): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,40): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,40): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,40): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,25): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,25): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,25): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,25): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(99,25): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,65): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,65): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,65): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,65): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,65): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,28): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,28): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,28): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(100,28): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,43): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,43): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,43): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,43): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,43): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,28): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,28): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,28): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,28): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,117): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,117): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,117): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,117): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,117): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,102): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,102): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,102): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,102): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(105,102): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(107,47): warning C4305:  '+=' : troncation de 'double' à 'T'
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(107,47): warning C4305:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(107,47): warning C4305:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(107,47): warning C4305:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(107,47): warning C4305:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,48): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,48): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,48): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,48): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,48): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,33): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,33): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,33): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,33): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,33): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,122): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,122): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,122): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,122): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,122): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,107): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,107): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,107): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,107): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(110,107): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,44): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,44): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,44): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,44): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,44): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,29): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,29): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,29): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,29): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(118,29): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,43): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,43): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,43): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,43): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,43): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,28): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,28): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,28): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(128,28): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,69): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,69): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,69): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,69): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,69): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,32): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,32): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,32): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,32): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,143): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,143): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,143): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,143): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,143): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,106): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,106): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,106): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,106): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(141,106): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,73): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,73): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,73): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,73): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,73): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,33): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,33): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,33): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,33): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(145,33): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,70): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,70): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,70): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,70): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,70): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,30): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,30): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,30): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,30): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(146,30): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,69): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,69): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,69): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,69): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,69): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,32): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,32): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,32): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(158,32): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,49): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,49): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,49): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,49): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,49): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,34): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,34): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,34): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,34): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(162,34): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,72): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,72): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,72): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,72): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,72): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,32): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,32): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,32): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(174,32): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,72): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,72): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,72): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,72): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,72): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,32): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,32): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,32): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(180,32): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,72): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,72): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,72): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,72): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,72): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,32): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,32): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,32): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(190,32): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,44): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,44): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,44): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,44): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,44): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,29): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,29): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,29): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,29): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(196,29): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(83,40): warning C4390:  ';' : une instruction contrôlée a été trouvée vide ; est-ce ce que vous souhaitiez ?
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,68): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,68): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,68): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,68): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,68): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,31): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,31): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,31): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,31): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(232,31): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,65): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,65): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,65): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,65): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,65): warning C4244:         ]
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,28): warning C4244:         with
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,28): warning C4244:         [
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,28): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\SFML\Player.cpp(234,28): warning C4244:         ]
+  Génération de code en cours
+  1 of 669 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Fin de la génération du code
+  SFML.vcxproj -> D:\Users\a.faure\Desktop\Prog\Runner\Prog\Main-Project\Projet runner\Release\SFML.exe

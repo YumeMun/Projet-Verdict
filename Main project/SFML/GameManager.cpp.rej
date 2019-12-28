@@ -1,0 +1,9 @@
+diff a/Prog/Main-Project/Projet runner/SFML/GameManager.cpp b/Prog/Main-Project/Projet runner/SFML/GameManager.cpp	(rejected hunks)
+@@ -7,6 +7,7 @@
+ //Cr�ation de la fen�tre et chargement de sc�ne
+ void GameManager::Start()
+ {
++<<<<<<< HEAD
+ 	m_Window.create(sf::VideoMode(1920, 1080), "Projet Runner");// sf::Style::Fullscreen
+ 	LoadScene(e_Enum::CHARGEMENT);
+ }

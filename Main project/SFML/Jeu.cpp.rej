@@ -1,0 +1,9 @@
+diff a/Prog/Main-Project/Projet runner/SFML/Jeu.cpp b/Prog/Main-Project/Projet runner/SFML/Jeu.cpp	(rejected hunks)
+@@ -34,6 +34,7 @@
+ <<<<<<< HEAD
+ 		Player1->Update(ElapsedTime, map, cam�ra);
+ 		Player2->Update(ElapsedTime, map, cam�ra);
++=======
+ 		Player1->Update(ElapsedTime, map);
+ 		Player2->Update(ElapsedTime, map);
+ 
