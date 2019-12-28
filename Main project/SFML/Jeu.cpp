@@ -18,6 +18,8 @@ Jeu::Jeu()
 	Player1 = new Player(1, sf::Vector2f(400, 800));
 	Player2 = new Player(2, sf::Vector2f(400, 800));
 
+	timerStart = new TimerStart();
+
 	for (int i = 0; i < 6; i++)
 	{
 		MenuIGText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
@@ -60,7 +62,7 @@ void Jeu::Update()
 			}
 		}
 
-		if (caméra->GetStart() == true)
+		if (/*caméra->GetStart() == true*/ timerStart->GetIsTimerEnd())
 		{
 			Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
 			Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
@@ -90,6 +92,8 @@ void Jeu::Update()
 
 			map->Update(ElapsedTime, caméra);
 		}
+		else
+			timerStart->UpdateRect();
 
 		caméra->Update(ElapsedTime);
 
@@ -123,6 +127,11 @@ void Jeu::Display()
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	hud->Display(Player1->HasCollectible, Player2->HasCollectible);
+
+	if (!caméra->GetStart() == true)
+	{
+		timerStart->DrawRect();
+	}
 
 	if (MenuIG_Activated == true)
 	{
