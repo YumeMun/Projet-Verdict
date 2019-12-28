@@ -22,7 +22,7 @@ public:
 	Caméra();
 	~Caméra();
 
-	void Update(float _dTime);
+	void Update(float _dTime, class TimerStart* _timer);
 	void Display();
 
 	sf::View* GetCamera();

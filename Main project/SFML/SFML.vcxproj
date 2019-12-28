@@ -187,6 +187,8 @@
     <ClCompile Include="SaveEditor.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SizeEditor.cpp" />
+    <ClCompile Include="TimerStart.cpp" />
+    <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Caméra.h" />
@@ -213,6 +215,8 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SizeEditor.h" />
+    <ClInclude Include="TimerStart.h" />
+    <ClInclude Include="Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

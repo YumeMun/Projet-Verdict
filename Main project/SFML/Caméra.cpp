@@ -25,7 +25,7 @@ Caméra::~Caméra()
 {
 }
 
-void Caméra::Update(float _dTime)
+void Caméra::Update(float _dTime, TimerStart* _timer)
 {
 	if (clock.getElapsedTime().asSeconds() >= 3)
 	{
@@ -33,7 +33,7 @@ void Caméra::Update(float _dTime)
 		clock.restart();
 	}
 
-	if (isGameStart)
+	if (/*isGameStart*/ _timer->GetIsTimerEnd())
 	{
 		cameraCenter.x += CAMERA_SPEED * _dTime;
 		camera.setCenter(cameraCenter);

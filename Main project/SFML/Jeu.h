@@ -3,6 +3,7 @@
 #include "Collects.h"
 #include "Player.h"
 #include "Level_Finished.h"
+#include "TimerStart.h"
 
 class Jeu :public Scene
 {
@@ -13,6 +14,8 @@ private:
 	Caméra* caméra;
 	HUD* hud;
 	Player* Player1, * Player2;
+	class Transition* transition;
+	class TimerStart* timerStart;
 
 	Missile* missile;
 	Collects* collects;
