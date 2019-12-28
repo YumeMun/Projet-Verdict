@@ -14,6 +14,7 @@ private:
 	Caméra* caméra;
 	HUD* hud;
 	Player* Player1, * Player2;
+	class Transition* transition;
 	class TimerStart* timerStart;
 
 	Missile* missile;

@@ -35,6 +35,8 @@ void PlayerSelector::Setup()
 	listSelector[1]->player.setFillColor(sf::Color::Red);
 	listSelector[1]->player.setOutlineColor(sf::Color::Black);
 	listSelector[1]->player.setOutlineThickness(5);
+
+	transition = new Transition();
 }
 
 void PlayerSelector::Update()
@@ -68,6 +70,11 @@ void PlayerSelector::Update()
 		else
 			listSelector[i]->player.setOutlineColor(sf::Color::Black);
 	}
+
+	if (isGameStart)
+	{
+		transition->Update();
+	}
 }
 
 void PlayerSelector::Display()
@@ -76,6 +83,11 @@ void PlayerSelector::Display()
 	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(listSelector[i]->player);
+	}
+
+	if (isGameStart)
+	{
+		transition->DrawTransition();
 	}
 }
 
@@ -130,7 +142,14 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 		if (sf::Joystick::isButtonPressed(0, 7))
 		{
+			isGameStart = true;
+			//GameManager::Instance()->LoadScene(e_Enum::JEU);
+		}
+
+		if (isGameStart && transition->GetIsTransitionDone())
+		{
 			GameManager::Instance()->LoadScene(e_Enum::JEU);
+			isGameStart = false;
 		}
 	}
 }

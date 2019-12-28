@@ -68,6 +68,9 @@
     <ClCompile Include="TimerStart.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -144,6 +147,9 @@
     </ClInclude>
     <ClInclude Include="TimerStart.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>Fichiers d%27en tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

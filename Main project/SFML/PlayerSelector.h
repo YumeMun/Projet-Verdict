@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "Transition.h"
 
 class PlayerSelector : public Scene
 {
@@ -23,4 +24,6 @@ private:
 	int SkinSelector = 1;
 
 	sf::Clock SelectionTimer;
+	class Transition* transition;
+	bool isGameStart = false;
 };

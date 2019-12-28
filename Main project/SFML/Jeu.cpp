@@ -18,6 +18,7 @@ Jeu::Jeu()
 	Player1 = new Player(1, sf::Vector2f(400, 800));
 	Player2 = new Player(2, sf::Vector2f(400, 800));
 
+	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
 	timerStart = new TimerStart();
 
 	for (int i = 0; i < 6; i++)
@@ -62,40 +63,45 @@ void Jeu::Update()
 			}
 		}
 
-		if (/*caméra->GetStart() == true*/ timerStart->GetIsTimerEnd())
+		if (transition->GetIsTransitionBackDone())
 		{
-			Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
-			Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
-
-			if (Player1->newMissile != NULL)
-				Player1->newMissile->Update(ElapsedTime, map);
-
-			if (Player2->newMissile != NULL)
-				Player2->newMissile->Update(ElapsedTime, map);
-
-			if (Player1->GetPos().x > Player2->GetPos().x)
+			if (timerStart->GetIsTimerEnd())
 			{
-				if (Player1->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player1->IsAlive() == true)
-				{
-					Player1->Score++;
-					Player1->PlayerFirstTimer.restart();
-				}
-			}
-			else if (Player2->GetPos().x > Player1->GetPos().x)
-			{
-				if (Player2->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player2->IsAlive() == true)
-				{
-					Player2->Score++;
-					Player2->PlayerFirstTimer.restart();
-				}
-			}
+				Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
+				Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
 
-			map->Update(ElapsedTime, caméra);
+				if (Player1->newMissile != NULL)
+					Player1->newMissile->Update(ElapsedTime, map);
+
+				if (Player2->newMissile != NULL)
+					Player2->newMissile->Update(ElapsedTime, map);
+
+				if (Player1->GetPos().x > Player2->GetPos().x)
+				{
+					if (Player1->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player1->IsAlive() == true)
+					{
+						Player1->Score++;
+						Player1->PlayerFirstTimer.restart();
+					}
+				}
+				else if (Player2->GetPos().x > Player1->GetPos().x)
+				{
+					if (Player2->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player2->IsAlive() == true)
+					{
+						Player2->Score++;
+						Player2->PlayerFirstTimer.restart();
+					}
+				}
+
+				map->Update(ElapsedTime, caméra);
+			}
+			else
+				timerStart->UpdateRect();
 		}
 		else
-			timerStart->UpdateRect();
+			transition->UpdateBack();
 
-		caméra->Update(ElapsedTime);
+		caméra->Update(ElapsedTime, timerStart);
 
 		collects->Update(missile);
 
@@ -128,9 +134,14 @@ void Jeu::Display()
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	hud->Display(Player1->HasCollectible, Player2->HasCollectible);
 
-	if (!caméra->GetStart() == true)
+	if (!timerStart->GetIsTimerEnd())
 	{
 		timerStart->DrawRect();
+	}
+
+	if (!transition->GetIsTransitionBackDone())
+	{
+		transition->DrawTransition();
 	}
 
 	if (MenuIG_Activated == true)
