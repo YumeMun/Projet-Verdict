@@ -19,4 +19,6 @@ private:
 	sf::Text m_Quit;
 	int m_MenuChoice = 1;
 	sf::Clock m_Clock;
+
+	sf::Sprite spBackground;
 };

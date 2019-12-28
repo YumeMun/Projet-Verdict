@@ -17,6 +17,8 @@ public:
 private:
 	void VirtualKeyboard();
 
+	sf::Sprite spBackground;
+
 	sf::Text SaveText;
 	sf::Text NameText;
 

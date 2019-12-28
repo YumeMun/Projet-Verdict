@@ -6,6 +6,8 @@ ChooseLevelEditor::ChooseLevelEditor()
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+
 	for (int i = 0; i < 2; i++)
 	{
 		ChoiceIcon[i].setRadius(120);
@@ -83,6 +85,8 @@ void ChooseLevelEditor::Update()
 
 void ChooseLevelEditor::Display()
 {
+	m_actualWindow->draw(spBackground);
+
 	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(ChoiceIcon[i]);

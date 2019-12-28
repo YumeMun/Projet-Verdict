@@ -25,4 +25,6 @@ private:
 
 	std::string LevelName[10];
 	sf::Text LevelNameText[10];
+
+	sf::Sprite spBackground;
 };

@@ -7,6 +7,8 @@ OpenLevelEditor::OpenLevelEditor()
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+
 	for (int i = 0; i < 10; i++)
 	{
 		LevelIcon[i].setSize(sf::Vector2f{ 200, 150 });
@@ -68,6 +70,8 @@ void OpenLevelEditor::Update()
 
 void OpenLevelEditor::Display()
 {
+	m_actualWindow->draw(spBackground);
+
 	for (int i = 0; i < 10; i++)
 	{
 		if (LevelName[i] != "")

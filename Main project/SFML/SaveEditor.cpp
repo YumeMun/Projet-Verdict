@@ -11,6 +11,8 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+
 	SaveText.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	SaveText.setCharacterSize(40);
 	SaveText.setFillColor(sf::Color::White);
@@ -94,6 +96,8 @@ void SaveEditor::Update()
 
 void SaveEditor::Display()
 {
+	m_actualWindow->draw(spBackground);
+
 	m_actualWindow->draw(SaveText);
 	m_actualWindow->draw(NameText);
 

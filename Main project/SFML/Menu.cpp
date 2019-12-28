@@ -38,6 +38,8 @@ Menu::Menu()
 	m_Quit.setFillColor(sf::Color::White);
 	m_Quit.setString("Quitter");
 	m_Quit.setPosition(300, 700);
+
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 }
 
 Menu::~Menu()
@@ -74,6 +76,7 @@ void Menu::Update()
 
 void Menu::Display()
 {
+	m_actualWindow->draw(spBackground);
 	m_actualWindow->draw(m_NewGame);
 	m_actualWindow->draw(m_LevelEditor);
 	m_actualWindow->draw(m_Option);

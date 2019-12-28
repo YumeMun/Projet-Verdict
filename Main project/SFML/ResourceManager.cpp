@@ -100,6 +100,11 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Thème2.jpg", "Thème2"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Background_interface.jpg", "Background interface"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé

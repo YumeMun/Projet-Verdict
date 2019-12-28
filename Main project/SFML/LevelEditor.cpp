@@ -108,9 +108,7 @@ void LevelEditor::Update()
 	CurrentTime = (float)clock() / CLOCKS_PER_SEC;
 	ElapsedTime = CurrentTime - LastFrameTime;
 
-	if (!sf::Joystick::isConnected(0))
-		MouseManager();
-	else if (sf::Joystick::isConnected(0))
+	if (sf::Joystick::isConnected(0))
 		ControllerManager();
 
 	LastFrameTime = CurrentTime;
@@ -177,8 +175,11 @@ void LevelEditor::Display()
 
 	m_actualWindow->draw(SelecterTarget);
 
-	hud->Display();
-	BackgroundChoice();
+	if (HudDisplay == true)
+	{
+		hud->Display();
+		BackgroundChoice();
+	}
 }
 
 void LevelEditor::EventManager(sf::Event p_pollingEvent)
@@ -186,66 +187,9 @@ void LevelEditor::EventManager(sf::Event p_pollingEvent)
 	hud->EventManager(p_pollingEvent);
 }
 
-void LevelEditor::MouseManager()
-{
-	MousePos = sf::Mouse::getPosition(*m_actualWindow);
-	MousePosToView.x = m_actualWindow->mapPixelToCoords(MousePos, View).x;
-	MousePosToView.y = m_actualWindow->mapPixelToCoords(MousePos, View).y;
-
-
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && Select == 0)
-	{
-		CasePos.x = MousePosToView.x / 64;
-		CasePos.y = MousePosToView.y / 64;
-		Select = 1;
-	}
-	if (Select == 1)
-	{
-		if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
-		{
-			Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
-
-			Select = 2;
-		}
-		else
-			Select = 2;
-	}
-
-	if (!sf::Mouse::isButtonPressed(sf::Mouse::Left) && Select == 2)
-	{
-		Select = 0;
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Delete))
-	{
-		Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-	}
-
-	if (MousePos.x > 1900)
-	{
-		View.move(600 * ElapsedTime, 0);
-	}
-	else if (MousePos.x < 20)
-	{
-		View.move(-600 * ElapsedTime, 0);
-	}
-	else if (MousePos.y > 1060)
-	{
-		View.move(0, 600 * ElapsedTime);
-	}
-	else if (MousePos.y < 20)
-	{
-		View.move(0, -600 * ElapsedTime);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		Sauvegarde();
-	}
-}
-
 void LevelEditor::ControllerManager()
 {
+
 	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) <= -50)
 	{
 		SelecterTarget.move(-600 * ElapsedTime, 0);
@@ -295,8 +239,18 @@ void LevelEditor::ControllerManager()
 		View.zoom(1.01);
 	}
 
-	if (SelectionTimer.getElapsedTime().asMilliseconds() > 500)
+	if (SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 	{
+		if (sf::Joystick::isButtonPressed(0, 6))
+		{
+			if (HudDisplay == true)
+				HudDisplay = false;
+			else if (HudDisplay == false)
+				HudDisplay = true;
+
+			SelectionTimer.restart();
+		}
+
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
 			CasePos.x = SelecterTarget.getPosition().x / 64;
@@ -341,7 +295,7 @@ void LevelEditor::ControllerManager()
 			GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
 		}
 	}
-	
+
 	if (sf::Joystick::isButtonPressed(0, 7))
 		Sauvegarde();
 }
@@ -365,7 +319,7 @@ void LevelEditor::BackgroundChoice()
 {
 	if (SelectionBackground == 1)
 		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème1"));
-	else if(SelectionBackground == 2)
+	else if (SelectionBackground == 2)
 		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème2"));
 
 	spFlèches[0].setPosition(20, 230);

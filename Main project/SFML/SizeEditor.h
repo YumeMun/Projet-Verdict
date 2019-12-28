@@ -24,4 +24,6 @@ private:
 
 	int LevelSelected;
 	sf::Clock SelectionTimer;
+
+	sf::Sprite spBackground;
 };

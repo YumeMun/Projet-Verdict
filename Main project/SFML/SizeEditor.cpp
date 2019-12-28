@@ -8,6 +8,8 @@ SizeEditor::SizeEditor()
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+
 	LevelSelected = 1;
 
 	EnterSizeText.setFont(*ResourceManager::Instance()->GetFont("Font"));
@@ -131,6 +133,8 @@ void SizeEditor::Update()
 
 void SizeEditor::Display()
 {
+	m_actualWindow->draw(spBackground);
+
 	m_actualWindow->draw(EnterSizeText);
 	m_actualWindow->draw(InfosRect);
 	m_actualWindow->draw(InfosText);

@@ -13,7 +13,6 @@ public:
 	virtual void Display();
 	virtual void EventManager(sf::Event p_pollingEvent);
 
-	void MouseManager();
 	void ControllerManager();
 
 	void Sauvegarde();
@@ -47,6 +46,7 @@ private:
 
 	//sf::Sprite spTile[8];
 
+	bool HudDisplay = true;
 	sf::Sprite spInterface;
 
 	int SelectionBackground = 1;
