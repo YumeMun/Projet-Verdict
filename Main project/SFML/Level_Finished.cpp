@@ -10,6 +10,8 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score)
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
+
 	J1Score = _J1Score;
 	J2Score = _J2Score;
 
@@ -31,6 +33,11 @@ Level_Finished::~Level_Finished()
 
 void Level_Finished::Update()
 {
+	if (!transition->GetIsTransitionBackDone())
+	{
+		transition->UpdateBack();
+	}
+
 	if (J1Score > J2Score)
 	{
 		WinText.setString("Joueur 1 a gagné !");
@@ -58,6 +65,7 @@ void Level_Finished::Update()
 
 	if (sf::Joystick::isButtonPressed(0, 1))
 	{
+		transition->ResetTransition();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 	}
 }
@@ -70,6 +78,11 @@ void Level_Finished::Display()
 	{
 		ScoreText[i].setPosition(700 + i * 550, 540);
 		m_actualWindow->draw(ScoreText[i]);
+	}
+
+	if (!transition->GetIsTransitionBackDone())
+	{
+		transition->DrawTransition();
 	}
 }
 
