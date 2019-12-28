@@ -55,6 +55,14 @@ Menu::Menu()
 		spButton[i].setTexture(*ResourceManager::Instance()->GetTexture("Menu bouton non sélectionné"));
 		spButton[i].setPosition(40, 350 + i * 100);
 	}
+
+	rectLogo = { 0, 0, 872, 396 };
+	spLogo.setTextureRect(rectLogo);
+	spLogo.setTexture(*ResourceManager::Instance()->GetTexture("Logo"));
+	spLogo.setPosition(sf::Vector2f(1450, 50));
+	spLogo.setScale(sf::Vector2f(0.5, 0.5));
+
+	timerAnimLogo.restart();
 }
 
 Menu::~Menu()
@@ -136,6 +144,44 @@ void Menu::Update()
 		m_Quit.setPosition(45, 745);
 		m_Credits.setPosition(1673, 895);
 	}
+
+	if (!isRestart)
+	{
+		if (timerAnimLogo.getElapsedTime().asSeconds() >= 0.04)
+		{
+			rectLogo.left += 872;
+			spLogo.setTextureRect(rectLogo);
+			animCount++;
+			timerAnimLogo.restart();
+		}
+
+		if (animCount == 16)
+		{
+			rectLogo.left = 0;
+			rectLogo.top = 396;
+			spLogo.setTextureRect(rectLogo);
+			isRestart = true;
+			timerLogoRestart.restart();
+		}
+	}
+	else
+	{
+		if (timerLogoRestart.getElapsedTime().asSeconds() <= 15)
+		{
+			rectLogo.left = 0;
+			rectLogo.top = 396;
+			spLogo.setTextureRect(rectLogo);
+		}
+		else
+		{
+			animCount = 0;
+			isRestart = false;
+
+			rectLogo.left = 0;
+			rectLogo.top = 0;
+			spLogo.setTextureRect(rectLogo);
+		}
+	}
 }
 
 void Menu::Display()
@@ -155,6 +201,8 @@ void Menu::Display()
 	m_actualWindow->draw(m_Quit);
 	m_actualWindow->draw(m_Commande);
 	m_actualWindow->draw(m_Credits);
+
+	m_actualWindow->draw(spLogo);
 }
 
 void Menu::EventManager(sf::Event p_pollingEvent)
