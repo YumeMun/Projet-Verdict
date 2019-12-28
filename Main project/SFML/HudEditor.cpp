@@ -86,20 +86,7 @@ void HudEditor::Display()
 
 void HudEditor::EventManager(sf::Event p_pollingEvent)
 {
-	if (p_pollingEvent.type == sf::Event::MouseWheelMoved)
-	{
-		if (p_pollingEvent.mouseWheel.delta > 0)
-		{
-			if (Selection > 1)
-				Selection--;
-		}
-		else if (p_pollingEvent.mouseWheel.delta < 0)
-		{
-			if (Selection < 8)
-				Selection++;
-		}
-	}
-	else if (sf::Joystick::isConnected(0))
+	if (sf::Joystick::isConnected(0))
 	{
 		if (sf::Joystick::isButtonPressed(0, 4) && KeyPress == false)
 		{

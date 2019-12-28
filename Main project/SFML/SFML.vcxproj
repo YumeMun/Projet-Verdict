@@ -169,6 +169,8 @@
     <ClCompile Include="Chargement.cpp" />
     <ClCompile Include="ChooseLevelEditor.cpp" />
     <ClCompile Include="Collects.cpp" />
+    <ClCompile Include="Commandes.cpp" />
+    <ClCompile Include="Credits.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HudEditor.cpp" />
@@ -181,6 +183,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="OpenLevelEditor.cpp" />
+    <ClCompile Include="Options.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerSelector.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -194,6 +197,8 @@
     <ClInclude Include="Caméra.h" />
     <ClInclude Include="Chargement.h" />
     <ClInclude Include="ChooseLevelEditor.h" />
+    <ClInclude Include="Commandes.h" />
+    <ClInclude Include="Credits.h" />
     <ClInclude Include="dirent.h" />
     <ClInclude Include="Collects.h" />
     <ClInclude Include="Enum.h" />
@@ -208,6 +213,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Missile.h" />
     <ClInclude Include="OpenLevelEditor.h" />
+    <ClInclude Include="Options.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerSelector.h" />
     <ClInclude Include="ResourceManager.h" />

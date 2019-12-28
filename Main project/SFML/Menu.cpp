@@ -165,15 +165,18 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 		{
 			if (m_MenuChoice == 1)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
-			if (m_MenuChoice == 2)
+			else if (m_MenuChoice == 2)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
-			if (m_MenuChoice == 3)
+			else if (m_MenuChoice == 3)
+				GameManager::Instance()->LoadScene(e_Enum::e_Scene::COMMANDES);
+			else if (m_MenuChoice == 4)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPTIONS);
-			if (m_MenuChoice == 4)
-				std::cout << "Options"; // Sprite pop-up des différents controles
-			if (m_MenuChoice == 5)
+			else if (m_MenuChoice == 5)
 				m_actualWindow->close();
+			else if (m_MenuChoice == 6)
+				GameManager::Instance()->LoadScene(e_Enum::e_Scene::CREDITS);
 		}
+
 
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -50.f)
 		{

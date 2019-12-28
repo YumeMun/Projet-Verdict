@@ -15,6 +15,9 @@
 #include "ChooseLevelEditor.h"
 #include "OpenLevelEditor.h"
 #include "Level_Finished.h"
+#include "Credits.h"
+#include "Commandes.h"
+#include "Options.h"
 
 class GameManager : public Singleton<GameManager>
 {
@@ -37,4 +40,7 @@ public:
 	Scene* m_ActualScene;
 
 	sf::RenderWindow* GetWindow();
+
+	int VolumeMusique = 60;
+	int VolumeFX = 60;
 };

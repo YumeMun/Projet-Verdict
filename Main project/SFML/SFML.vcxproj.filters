@@ -62,14 +62,23 @@
     <ClCompile Include="Player.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
-    <ClCompile Include="Level_Finished.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="TimerStart.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="Transition.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Commandes.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Level_Finished.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,14 +151,23 @@
     <ClInclude Include="Player.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
-    <ClInclude Include="Level_Finished.h">
-      <Filter>Fichiers d%27en tête\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="TimerStart.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
       <Filter>Fichiers d%27en tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Fichiers d%27en tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Commandes.h">
+      <Filter>Fichiers d%27en tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Options.h">
+      <Filter>Fichiers d%27en tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Level_Finished.h">
+      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

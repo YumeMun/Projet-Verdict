@@ -54,6 +54,15 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 	case e_Enum::e_Scene::MENU:
 		m_ActualScene = new Menu();
 		break;
+	case e_Enum::e_Scene::COMMANDES:
+		m_ActualScene = new Commandes();
+		break;
+	case e_Enum::e_Scene::OPTIONS:
+		m_ActualScene = new Options();
+		break;
+	case e_Enum::e_Scene::CREDITS:
+		m_ActualScene = new Credits();
+		break;
 	case e_Enum::e_Scene::JEU:
 		m_ActualScene = new Jeu();
 		break;
