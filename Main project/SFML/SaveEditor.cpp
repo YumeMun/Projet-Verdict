@@ -7,7 +7,7 @@ SaveEditor::SaveEditor()
 {
 }
 
-SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save)
+SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground)
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -22,6 +22,7 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save)
 	Save = _Save;
 	Size_X = _SizeX;
 	Size_Y = _SizeY;
+	SelectionBackground = _SelectionBackground;
 
 	KeyRect.setOutlineColor(sf::Color::White);
 	KeyRect.setOutlineThickness(2);
@@ -123,6 +124,7 @@ void SaveEditor::SaveIt()
 
 	SaveFile << Size_X << "\n";
 	SaveFile << Size_Y << "\n";
+	SaveFile << SelectionBackground << "\n";
 	SaveFile << Save;
 
 	SaveFile.close();

@@ -17,6 +17,7 @@ public:
 	void ControllerManager();
 
 	void Sauvegarde();
+	void BackgroundChoice();
 
 private:
 	bool KeyPress = false;
@@ -47,6 +48,10 @@ private:
 	//sf::Sprite spTile[8];
 
 	sf::Sprite spInterface;
+
+	int SelectionBackground = 1;
+	sf::Sprite spFlèches[2];
+	sf::Sprite spBackground;
 
 	sf::Clock SelectionTimer;
 };

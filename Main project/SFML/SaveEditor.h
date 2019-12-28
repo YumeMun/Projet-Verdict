@@ -5,7 +5,7 @@ class SaveEditor : public Scene
 {
 public:
 	SaveEditor();
-	SaveEditor(int _SizeX, int _SizeY, std::string _Save);
+	SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground);
 	~SaveEditor();
 
 	virtual void Update();
@@ -24,6 +24,7 @@ private:
 	std::string Save;
 	int Size_X;
 	int Size_Y;
+	int SelectionBackground;
 
 	sf::Clock clock;
 	bool Press = false, EnterPress = false;

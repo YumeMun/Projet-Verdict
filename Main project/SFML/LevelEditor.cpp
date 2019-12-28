@@ -28,6 +28,9 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 	SelecterTarget.setOrigin(32, 32);
 	SelecterTarget.setPosition(m_actualWindow->getSize().x / 2, m_actualWindow->getSize().y / 2);
 
+	spFlèches[0].setTexture(*ResourceManager::Instance()->GetTexture("Flèche gauche"));
+	spFlèches[1].setTexture(*ResourceManager::Instance()->GetTexture("Flèche droite"));
+
 	if (_LevelName == "")
 	{
 		Size_X = _SizeX;
@@ -69,6 +72,7 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 
 		LoadFile >> Size_X;
 		LoadFile >> Size_Y;
+		LoadFile >> SelectionBackground;
 
 		for (int y = 0; y < Size_Y; y++)
 		{
@@ -174,6 +178,7 @@ void LevelEditor::Display()
 	m_actualWindow->draw(SelecterTarget);
 
 	hud->Display();
+	BackgroundChoice();
 }
 
 void LevelEditor::EventManager(sf::Event p_pollingEvent)
@@ -353,5 +358,35 @@ void LevelEditor::Sauvegarde()
 		Save += "\n";
 	}
 
-	GameManager::Instance()->m_ActualScene = new SaveEditor(Size_X, Size_Y, Save);
+	GameManager::Instance()->m_ActualScene = new SaveEditor(Size_X, Size_Y, Save, SelectionBackground);
+}
+
+void LevelEditor::BackgroundChoice()
+{
+	if (SelectionBackground == 1)
+		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème1"));
+	else if(SelectionBackground == 2)
+		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème2"));
+
+	spFlèches[0].setPosition(20, 230);
+	spFlèches[1].setPosition(260, 230);
+	spBackground.setPosition(55, 200);
+
+	for (int i = 0; i < 2; i++)
+	{
+		m_actualWindow->draw(spFlèches[i]);
+	}
+
+	m_actualWindow->draw(spBackground);
+
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) >= 10)
+	{
+		if (SelectionBackground < 2)
+			SelectionBackground++;
+	}
+	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::PovX) <= -10)
+	{
+		if (SelectionBackground > 1)
+			SelectionBackground--;
+	}
 }

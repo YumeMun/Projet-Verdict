@@ -80,6 +80,26 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("MenuIG_J2.png", "MenuIG J2"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Flèche_droite.png", "Flèche droite"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Flèche_gauche.png", "Flèche gauche"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Thème1.jpg", "Thème1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Thème2.jpg", "Thème2"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé
