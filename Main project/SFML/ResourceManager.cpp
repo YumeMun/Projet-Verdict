@@ -19,6 +19,11 @@ void ResourceManager::Load()
 
 	Textures* newTexture = new Textures();
 
+	newTexture = new Textures();
+
+	if (newTexture->Create("logoAnim.png", "Logo"))
+		_textures.push_back(newTexture);
+
 	for (int i = 0; i < 8; i++)
 	{
 		newTexture = new Textures();

@@ -20,4 +20,9 @@ private:
 
 	sf::Text LoadingTxt;
 	sf::RectangleShape LoadingBar, LoadingBack;
+
+	sf::Sprite spLogo;
+	sf::IntRect rectLogo;
+	sf::Clock timerAnimLogo;
+	int animCount = 0;
 };
