@@ -17,8 +17,12 @@ private:
 	sf::Text m_Commande;
 	sf::Text m_LevelEditor;
 	sf::Text m_Quit;
+	sf::Text m_Credits;
 	int m_MenuChoice = 1;
 	sf::Clock m_Clock;
 
 	sf::Sprite spBackground;
+	sf::Sprite spButton[5];
+	sf::Sprite spFlèche;
+	sf::Sprite spCreditsButton;
 };

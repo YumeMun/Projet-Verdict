@@ -110,6 +110,31 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Background_interface.jpg", "Background interface"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_button_unselected.png", "Menu bouton non sélectionné"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_button_selected.png", "Menu bouton sélectionné"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Flèche menu.png", "Flèche menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("LittleButton_unselected.png", "Petit bouton non sélectionné"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("LittleButton_selected.png", "Petit bouton sélectionné"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé
