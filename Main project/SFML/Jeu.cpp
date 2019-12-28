@@ -109,7 +109,13 @@ void Jeu::Update()
 
 		if (Player1->Hasfinished == true && Player2->Hasfinished == true)
 		{
-			GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score);
+			transition->Update();
+
+			if (transition->GetIsTransitionDone())
+			{
+				transition->ResetTransition();
+				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score);
+			}	
 		}
 	}
 
@@ -161,6 +167,11 @@ void Jeu::Display()
 			m_actualWindow->draw(MenuIGText[4]);
 			m_actualWindow->draw(MenuIGText[5]);
 		}
+	}
+
+	if (Player1->Hasfinished == true && Player2->Hasfinished == true)
+	{
+		transition->DrawTransition();
 	}
 }
 

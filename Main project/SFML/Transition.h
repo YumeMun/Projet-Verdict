@@ -2,7 +2,7 @@
 #include "GameManager.h"
 #include "Scene.h"
 
-#define TRANSITION_SPEED 10
+#define TRANSITION_SPEED 20
 
 class Transition
 {

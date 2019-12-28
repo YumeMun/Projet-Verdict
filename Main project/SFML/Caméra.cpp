@@ -33,7 +33,7 @@ void Caméra::Update(float _dTime, TimerStart* _timer)
 		clock.restart();
 	}
 
-	if (/*isGameStart*/ _timer->GetIsTimerEnd())
+	if (/*isGameStart ||*/ _timer->GetIsTimerEnd())
 	{
 		cameraCenter.x += CAMERA_SPEED * _dTime;
 		camera.setCenter(cameraCenter);

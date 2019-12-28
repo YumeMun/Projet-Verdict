@@ -25,4 +25,11 @@ private:
 	sf::Sprite spButton[5];
 	sf::Sprite spFlèche;
 	sf::Sprite spCreditsButton;
+
+	sf::Sprite spLogo;
+	sf::IntRect rectLogo;
+	sf::Clock timerAnimLogo;
+	sf::Clock timerLogoRestart;
+	bool isRestart = false;
+	int animCount = 0;
 };

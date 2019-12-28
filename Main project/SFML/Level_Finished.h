@@ -18,4 +18,6 @@ private:
 
 	sf::Text WinText;
 	sf::Text ScoreText[2];
+
+	class Transition* transition;
 };

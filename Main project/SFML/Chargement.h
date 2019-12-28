@@ -25,4 +25,5 @@ private:
 	sf::IntRect rectLogo;
 	sf::Clock timerAnimLogo;
 	int animCount = 0;
+	bool isLogoRestart = false;
 };
