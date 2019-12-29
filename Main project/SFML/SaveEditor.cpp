@@ -20,12 +20,19 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 
 	NameText.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	NameText.setCharacterSize(40);
-	NameText.setFillColor(sf::Color::Red);
+	NameText.setFillColor(sf::Color::White);
 
 	Save = _Save;
 	Size_X = _SizeX;
 	Size_Y = _SizeY;
 	SelectionBackground = _SelectionBackground;
+
+	for (int i = 0; i < 2; i++)
+	{
+		spButtons[i].setTexture(*ResourceManager::Instance()->GetTexture("Menu bouton non sélectionné"));
+		spButtons[i].setOrigin(spButtons[i].getGlobalBounds().width / 2, spButtons[i].getGlobalBounds().height / 2);
+		spButtons[i].setPosition(1010, 450 + i * 200);
+	}
 
 	KeyRect.setOutlineColor(sf::Color::White);
 	KeyRect.setOutlineThickness(2);
@@ -78,6 +85,25 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 
 	X = 0;
 	Y = 1;
+
+	spPopUp.setTexture(*ResourceManager::Instance()->GetTexture("Fenêtre popup"));
+	spPopUp.setOrigin(spPopUp.getGlobalBounds().width / 2, spPopUp.getGlobalBounds().height / 2);
+	spPopUp.setPosition(960, 540);
+
+	for (int i = 0; i < 3; i++)
+	{
+		PopUpText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
+		PopUpText[i].setCharacterSize(35);
+		PopUpText[i].setFillColor(sf::Color::White);
+
+		PopUpText[1].setString("Oui");
+		PopUpText[1].setCharacterSize(35);
+		PopUpText[1].setPosition(800, 570);
+
+		PopUpText[2].setString("Non");
+		PopUpText[2].setCharacterSize(35);
+		PopUpText[2].setPosition(1050, 570);
+	}
 }
 
 SaveEditor::~SaveEditor()
@@ -88,23 +114,88 @@ void SaveEditor::Update()
 {
 	SaveText.setString("Donnez un nom à votre niveau : ");
 	SaveText.setOrigin(SaveText.getGlobalBounds().width / 2, 0);
-	SaveText.setPosition(960, 540);
+	SaveText.setPosition(960, 420);
 
 	NameText.setString(LevelName);
 	NameText.setOrigin(NameText.getGlobalBounds().width / 2, 0);
-	NameText.setPosition(960, 650);
+	NameText.setPosition(960, 620);
+
+	if (PopUpActivated == 1)
+	{
+		PopUpText[0].setString("	Voulez-vous vraiment appeler\n		votre niveau « " + LevelName + " » ?");
+		PopUpText[0].setPosition(630, 470);
+
+		if (SelectionPopUp == 1)
+		{
+			PopUpText[1].setFillColor(sf::Color{ 255, 156, 0, 255 });
+			PopUpText[2].setFillColor(sf::Color::White);
+		}
+		else if (SelectionPopUp == 2)
+		{
+			PopUpText[1].setFillColor(sf::Color::White);
+			PopUpText[2].setFillColor(sf::Color{ 255, 156, 0, 255 });
+		}
+
+		if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 50)
+			SelectionPopUp = 2;
+		else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
+			SelectionPopUp = 1;
+
+		if (sf::Joystick::isButtonPressed(0, 0) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
+		{
+			if (SelectionPopUp == 1)
+			{
+				PopUpActivated = 2;
+			}
+			else if (SelectionPopUp == 2)
+				PopUpActivated = 0;
+
+			SelectionTimer.restart();
+		}
+	}
+	else if (PopUpActivated == 2)
+	{
+		PopUpText[0].setString("Niveau sauvegardé avec succès !");
+		PopUpText[0].setPosition(640, 510);
+
+		if (SelectionTimer.getElapsedTime().asSeconds() > 1.5)
+		{
+			SaveIt();
+		}
+	}
 }
 
 void SaveEditor::Display()
 {
 	m_actualWindow->draw(spBackground);
 
+	for (int i = 0; i < 2; i++)
+	{
+		m_actualWindow->draw(spButtons[i]);
+	}
+
 	m_actualWindow->draw(SaveText);
 	m_actualWindow->draw(NameText);
 
-	VirtualKeyboard();
+	if (PopUpActivated == 0)
+		VirtualKeyboard();
 
 	m_actualWindow->draw(spBoutonRetour);
+
+	if (PopUpActivated != 0)
+	{
+		m_actualWindow->draw(spPopUp);
+
+		for (int i = 0; i < 3; i++)
+		{
+			if (PopUpActivated == 1)
+			{
+				m_actualWindow->draw(PopUpText[i]);
+			}
+			else
+				m_actualWindow->draw(PopUpText[0]);
+		}
+	}
 }
 
 void SaveEditor::EventManager(sf::Event p_pollingEvent)
@@ -615,9 +706,11 @@ void SaveEditor::VirtualKeyboard()
 			if (LevelName.length() >= 1)
 				LevelName.pop_back();
 		}
-		else if (Keyboard[2][10] == ENTER_SELECTED)
+		else if (Keyboard[2][10] == ENTER_SELECTED && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 		{
-			SaveIt();
+			PopUpActivated = 1;
+			SelectionTimer.restart();
+			//SaveIt();
 		}
 
 		else if (Keyboard[0][0] == BASICKEY_SELECTED)
@@ -757,7 +850,7 @@ void SaveEditor::VirtualKeyboard()
 		}
 
 		if (Keyboard[3][8] == BASICKEY_SELECTED)
-		LevelName += ",";
+			LevelName += ",";
 		else if (Keyboard[3][9] == BASICKEY_SELECTED)
 			LevelName += ".";
 		else if (Keyboard[3][10] == BASICKEY_SELECTED)
