@@ -213,9 +213,22 @@ void Player::Animations()
 	//{
 		if (!isJumping)
 		{
-			PlayerRect.top = 0;
+			if (Player_Movement.x >= SPEED)
+			{
+				PlayerRect.left = 0;
+				PlayerRect.top = 54;
+				spPlayer.setTextureRect(PlayerRect);
+			}
+			else
+			{
+				PlayerRect.left = 0;
+				PlayerRect.top = 0;
+				spPlayer.setTextureRect(PlayerRect);
+			}
 
-			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+			//PlayerRect.top = 0;
+
+			/*if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 			{
 				if (FrameIndex < 5)
 					FrameIndex++;
@@ -231,7 +244,7 @@ void Player::Animations()
 				spPlayer.setTextureRect(PlayerRect);
 
 				AnimClock.restart();
-			}
+			}*/
 		}
 		else
 		{
