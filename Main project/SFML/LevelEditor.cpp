@@ -88,11 +88,6 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 	Case.setOutlineColor(sf::Color::White);
 	Case.setOutlineThickness(1);
 
-	//for (int i = 0; i < 8; i++)
-	//{
-	//	spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Case" + std::to_string(i + 1)));
-	//}
-
 	BandeauGaucheRect.setSize(sf::Vector2f{ 370, 1080 });
 	BandeauGaucheRect.setFillColor(sf::Color{ 0, 0, 0, 150 });
 
@@ -141,6 +136,60 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 	}
 
 	hud = new HudEditor();
+
+	for (int i = 0; i < 60; i++)
+	{
+		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
+
+		spTile[0].setTextureRect(sf::IntRect{ 0 * 64, 0 * 64, 64, 64 });
+		spTile[1].setTextureRect(sf::IntRect{ 1 * 64, 0 * 64, 64, 64 });
+		spTile[2].setTextureRect(sf::IntRect{ 2 * 64, 0 * 64, 64, 64 });
+		spTile[3].setTextureRect(sf::IntRect{ 0 * 64, 1 * 64, 64, 64 });
+		spTile[4].setTextureRect(sf::IntRect{ 1 * 64, 1 * 64, 64, 64 });
+		spTile[5].setTextureRect(sf::IntRect{ 2 * 64, 1 * 64, 64, 64 });
+		spTile[6].setTextureRect(sf::IntRect{ 0 * 64, 2 * 64, 64, 64 });
+		spTile[7].setTextureRect(sf::IntRect{ 1 * 64, 2 * 64, 64, 64 });
+		spTile[8].setTextureRect(sf::IntRect{ 2 * 64, 2 * 64, 64, 64 });
+		spTile[9].setTextureRect(sf::IntRect{ 0 * 64, 3 * 64, 64, 64 });
+		spTile[10].setTextureRect(sf::IntRect{ 1 * 64, 3 * 64, 64, 64 });
+		spTile[11].setTextureRect(sf::IntRect{ 2 * 64, 3 * 64, 64, 64 });
+		spTile[12].setTextureRect(sf::IntRect{ 3 * 64, 3 * 64, 64, 64 });
+		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 4 * 64, 64, 64 });
+		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 4 * 64, 64, 64 });
+		spTile[15].setTextureRect(sf::IntRect{ 2 * 64, 4 * 64, 64, 64 });
+		spTile[16].setTextureRect(sf::IntRect{ 3 * 64, 4 * 64, 64, 64 });
+		spTile[17].setTextureRect(sf::IntRect{ 0 * 64, 5 * 64, 64, 64 });
+		spTile[18].setTextureRect(sf::IntRect{ 0 * 64, 6 * 64, 64, 64 });
+		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
+		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
+		spTile[21].setTextureRect(sf::IntRect{ 0 * 64, 9 * 64, 64, 64 });
+		spTile[22].setTextureRect(sf::IntRect{ 0 * 64, 10 * 64, 64, 64 });
+		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
+		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
+		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 11 * 64, 64, 64 });
+		spTile[26].setTextureRect(sf::IntRect{ 3 * 64, 11 * 64, 64, 64 });
+		spTile[27].setTextureRect(sf::IntRect{ 0 * 64, 12 * 64, 64, 64 });
+		spTile[28].setTextureRect(sf::IntRect{ 1 * 64, 12 * 64, 64, 64 });
+		spTile[29].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 64, 64 });
+		spTile[30].setTextureRect(sf::IntRect{ 1 * 64, 13 * 64, 64, 64 });
+		spTile[31].setTextureRect(sf::IntRect{ 2 * 64, 13 * 64, 64, 64 });
+		spTile[32].setTextureRect(sf::IntRect{ 0 * 64, 14 * 64, 64, 64 });
+		spTile[33].setTextureRect(sf::IntRect{ 1 * 64, 14 * 64, 64, 64 });
+		spTile[34].setTextureRect(sf::IntRect{ 2 * 64, 14 * 64, 64, 64 });
+
+		spTile[35].setTextureRect(sf::IntRect{ 0 * 64, 17 * 64, 4 * 64, 64 });
+
+		spTile[36].setTextureRect(sf::IntRect{ 0 * 64, 18 * 64, 64, 4 * 64 });
+
+		spTile[37].setTextureRect(sf::IntRect{ 0 * 64, 22 * 64, 64, 3 * 64 });
+
+		spTile[38].setTextureRect(sf::IntRect{ 0 * 64, 16 * 64, 64, 64 });
+		spTile[39].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
+		spTile[40].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
+		spTile[41].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });
+
+		spTile[42].setTextureRect(sf::IntRect{ 2 * 64, 12 * 64, 64, 64 });
+	}
 }
 
 LevelEditor::~LevelEditor()
@@ -267,36 +316,176 @@ void LevelEditor::Display()
 					m_actualWindow->draw(Case);
 					break;
 				case 1:
-					/*spTile[0].setPosition(CasePos);
-					m_actualWindow->draw(spTile[0]);*/
+					spTile[0].setPosition(CasePos);
+					m_actualWindow->draw(spTile[0]);
 					break;
 				case 2:
-					/*spTile[1].setPosition(CasePos);
-					m_actualWindow->draw(spTile[1]);*/
+					spTile[1].setPosition(CasePos);
+					m_actualWindow->draw(spTile[1]);
 					break;
 				case 3:
-					/*spTile[2].setPosition(CasePos);
-					m_actualWindow->draw(spTile[2]);*/
+					spTile[2].setPosition(CasePos);
+					m_actualWindow->draw(spTile[2]);
 					break;
 				case 4:
-					/*spTile[3].setPosition(CasePos);
-					m_actualWindow->draw(spTile[3]);*/
+					spTile[3].setPosition(CasePos);
+					m_actualWindow->draw(spTile[3]);
 					break;
 				case 5:
-					/*spTile[4].setPosition(CasePos);
-					m_actualWindow->draw(spTile[4]);*/
+					spTile[4].setPosition(CasePos);
+					m_actualWindow->draw(spTile[4]);
 					break;
 				case 6:
-					/*spTile[5].setPosition(CasePos);
-					m_actualWindow->draw(spTile[5]);*/
+					spTile[5].setPosition(CasePos);
+					m_actualWindow->draw(spTile[5]);
 					break;
 				case 7:
-					/*spTile[6].setPosition(CasePos);
-					m_actualWindow->draw(spTile[6]);*/
+					spTile[6].setPosition(CasePos);
+					m_actualWindow->draw(spTile[6]);
 					break;
 				case 8:
-					/*spTile[7].setPosition(CasePos);
-					m_actualWindow->draw(spTile[7]);*/
+					spTile[7].setPosition(CasePos);
+					m_actualWindow->draw(spTile[7]);
+					break;
+				case 9:
+					spTile[8].setPosition(CasePos);
+					m_actualWindow->draw(spTile[8]);
+					break;
+				case 10:
+					spTile[9].setPosition(CasePos);
+					m_actualWindow->draw(spTile[9]);
+					break;
+				case 11:
+					spTile[10].setPosition(CasePos);
+					m_actualWindow->draw(spTile[10]);
+					break;
+				case 12:
+					spTile[11].setPosition(CasePos);
+					m_actualWindow->draw(spTile[11]);
+					break;
+				case 13:
+					spTile[12].setPosition(CasePos);
+					m_actualWindow->draw(spTile[12]);
+					break;
+				case 14:
+					spTile[13].setPosition(CasePos);
+					m_actualWindow->draw(spTile[13]);
+					break;
+				case 15:
+					spTile[14].setPosition(CasePos);
+					m_actualWindow->draw(spTile[14]);
+					break;
+				case 16:
+					spTile[15].setPosition(CasePos);
+					m_actualWindow->draw(spTile[15]);
+					break;
+				case 17:
+					spTile[16].setPosition(CasePos);
+					m_actualWindow->draw(spTile[16]);
+					break;
+				case 18:
+					spTile[17].setPosition(CasePos);
+					m_actualWindow->draw(spTile[17]);
+					break;
+				case 19:
+					spTile[18].setPosition(CasePos);
+					m_actualWindow->draw(spTile[18]);
+					break;
+				case 20:
+					spTile[19].setPosition(CasePos);
+					m_actualWindow->draw(spTile[19]);
+					break;
+				case 21:
+					spTile[20].setPosition(CasePos);
+					m_actualWindow->draw(spTile[20]);
+					break;
+				case 22:
+					spTile[21].setPosition(CasePos);
+					m_actualWindow->draw(spTile[21]);
+					break;
+				case 23:
+					spTile[22].setPosition(CasePos);
+					m_actualWindow->draw(spTile[22]);
+					break;
+				case 24:
+					spTile[23].setPosition(CasePos);
+					m_actualWindow->draw(spTile[23]);
+					break;
+				case 25:
+					spTile[24].setPosition(CasePos);
+					m_actualWindow->draw(spTile[24]);
+					break;
+				case 26:
+					spTile[25].setPosition(CasePos);
+					m_actualWindow->draw(spTile[25]);
+					break;
+				case 27:
+					spTile[26].setPosition(CasePos);
+					m_actualWindow->draw(spTile[26]);
+					break;
+				case 28:
+					spTile[27].setPosition(CasePos);
+					m_actualWindow->draw(spTile[27]);
+					break;
+				case 29:
+					spTile[28].setPosition(CasePos);
+					m_actualWindow->draw(spTile[28]);
+					break;
+				case 30:
+					spTile[29].setPosition(CasePos);
+					m_actualWindow->draw(spTile[29]);
+					break;
+				case 31:
+					spTile[30].setPosition(CasePos);
+					m_actualWindow->draw(spTile[30]);
+					break;
+				case 32:
+					spTile[31].setPosition(CasePos);
+					m_actualWindow->draw(spTile[31]);
+					break;
+				case 33:
+					spTile[32].setPosition(CasePos);
+					m_actualWindow->draw(spTile[32]);
+					break;
+				case 34:
+					spTile[33].setPosition(CasePos);
+					m_actualWindow->draw(spTile[33]);
+					break;
+				case 35:
+					spTile[34].setPosition(CasePos);
+					m_actualWindow->draw(spTile[34]);
+					break;
+				case 36:
+					spTile[35].setPosition(CasePos);
+					m_actualWindow->draw(spTile[35]);
+					break;
+				case 37:
+					spTile[36].setPosition(CasePos);
+					m_actualWindow->draw(spTile[36]);
+					break;
+				case 38:
+					spTile[37].setPosition(CasePos);
+					m_actualWindow->draw(spTile[37]);
+					break;
+				case 39:
+					spTile[38].setPosition(CasePos);
+					m_actualWindow->draw(spTile[38]);
+					break;
+				case 40:
+					spTile[39].setPosition(CasePos);
+					m_actualWindow->draw(spTile[39]);
+					break;
+				case 41:
+					spTile[40].setPosition(CasePos);
+					m_actualWindow->draw(spTile[40]);
+					break;
+				case 42:
+					spTile[41].setPosition(CasePos);
+					m_actualWindow->draw(spTile[41]);
+					break;
+				case 43:
+					spTile[42].setPosition(CasePos);
+					m_actualWindow->draw(spTile[42]);
 					break;
 				}
 			}
@@ -338,23 +527,34 @@ void LevelEditor::EventManager(sf::Event p_pollingEvent)
 
 void LevelEditor::ControllerManager()
 {
-
 	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) <= -50)
 	{
-		spSelecterTarget.move(-600 * ElapsedTime, 0);
+		if (spSelecterTarget.getPosition().x > View.getCenter().x - View.getSize().x / 2)
+			spSelecterTarget.move(-600 * ElapsedTime, 0);
+		else
+			spSelecterTarget.move(600 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X) >= 50)
 	{
-		spSelecterTarget.move(600 * ElapsedTime, 0);
+		if (spSelecterTarget.getPosition().x < View.getCenter().x + View.getSize().x / 2)
+			spSelecterTarget.move(600 * ElapsedTime, 0);
+		else
+			spSelecterTarget.move(-600 * ElapsedTime, 0);
 	}
 
 	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y) <= -50)
 	{
-		spSelecterTarget.move(0, -600 * ElapsedTime);
+		if (spSelecterTarget.getPosition().y < View.getCenter().y - View.getSize().y / 2)
+			spSelecterTarget.move(0, 600 * ElapsedTime);
+		else
+			spSelecterTarget.move(0, -600 * ElapsedTime);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y) >= 50)
 	{
-		spSelecterTarget.move(0, 600 * ElapsedTime);
+		if (spSelecterTarget.getPosition().y > View.getCenter().y + View.getSize().y / 2)
+			spSelecterTarget.move(0, -600 * ElapsedTime);
+		else
+			spSelecterTarget.move(0, 600 * ElapsedTime);
 	}
 
 	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -50)
@@ -432,7 +632,7 @@ void LevelEditor::ControllerManager()
 		}
 		else
 			spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));
-		
+
 	}
 
 	if (sf::Joystick::isButtonPressed(0, 7))
