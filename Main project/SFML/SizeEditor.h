@@ -15,10 +15,11 @@ public:
 private:
 	sf::Text EnterSizeText;
 
-	sf::RectangleShape InfosRect;
+	sf::Sprite spInfosRect;
 	sf::Text InfosText;
 
-	sf::RectangleShape LevelIcon[3];
+	sf::Sprite spButton;
+	sf::Sprite spLevelIcon[3];
 
 	sf::Text LevelNumero[3];
 
@@ -26,4 +27,5 @@ private:
 	sf::Clock SelectionTimer;
 
 	sf::Sprite spBackground;
+	sf::Sprite spFlèche;
 };

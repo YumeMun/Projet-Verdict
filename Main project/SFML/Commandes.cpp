@@ -9,6 +9,7 @@ Commandes::Commandes()
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 	spCommandes.setTexture(*ResourceManager::Instance()->GetTexture("Commandes jeu"));
 	spCommandes.setOrigin(spCommandes.getGlobalBounds().width / 2, spCommandes.getGlobalBounds().height / 2);
 
@@ -75,6 +76,8 @@ void Commandes::Display()
 
 	m_actualWindow->draw(spTouches[0]);
 	m_actualWindow->draw(spTouches[1]);
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void Commandes::EventManager(sf::Event p_pollingEvent)

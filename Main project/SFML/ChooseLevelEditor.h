@@ -15,7 +15,7 @@ private:
 	int ChoiceSelected;
 	sf::Clock SelectionTimer;
 
-	sf::CircleShape ChoiceIcon[2];
+	sf::Sprite spChoiceIcon[2];
 	sf::Text ChoiceText[2];
 
 	sf::Sprite spBackground;

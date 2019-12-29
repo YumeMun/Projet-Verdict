@@ -9,43 +9,46 @@ SizeEditor::SizeEditor()
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
+
+	spFlèche.setTexture(*ResourceManager::Instance()->GetTexture("Flèche menu"));
+	spFlèche.setPosition(70, 90);
 
 	LevelSelected = 1;
 
+	spButton.setTexture(*ResourceManager::Instance()->GetTexture("Menu bouton non sélectionné"));
+	spButton.setScale(1.8, 1);
+	spButton.setOrigin(spButton.getGlobalBounds().width / 2, spButton.getGlobalBounds().height / 2);
+	spButton.setPosition(1400, 105);
+
 	EnterSizeText.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	EnterSizeText.setFillColor(sf::Color::White);
-	EnterSizeText.setCharacterSize(40);
-	EnterSizeText.setString("Choisis une taille pour ton niveau !");
-	EnterSizeText.setOrigin(EnterSizeText.getGlobalBounds().width / 2, 0);
-	EnterSizeText.setPosition(sf::Vector2f{ 960, 100 });
+	EnterSizeText.setCharacterSize(50);
+	EnterSizeText.setString("Choisissez une taille pour votre niveau");
+	EnterSizeText.setPosition(sf::Vector2f{ 120, 75 });
 
-	InfosRect.setSize(sf::Vector2f{ 400, 150 });
-	InfosRect.setFillColor(sf::Color::Black);
-	InfosRect.setOutlineColor(sf::Color::White);
-	InfosRect.setOutlineThickness(3);
-	InfosRect.setOrigin(InfosRect.getGlobalBounds().width / 2, InfosRect.getGlobalBounds().height / 2);
-	InfosRect.setPosition(960, 800);
+	spInfosRect.setTexture(*ResourceManager::Instance()->GetTexture("Fenêtre popup"));
+	spInfosRect.setOrigin(spInfosRect.getGlobalBounds().width / 2, spInfosRect.getGlobalBounds().height / 2);
+	spInfosRect.setPosition(960, 800);
 
 	InfosText.setFont(*ResourceManager::Instance()->GetFont("Font"));
-	InfosText.setCharacterSize(25);
+	InfosText.setCharacterSize(35);
 	InfosText.setFillColor(sf::Color::White);
-	InfosText.setPosition(InfosRect.getPosition().x - 180, InfosRect.getPosition().y - 40);
+	InfosText.setPosition(spInfosRect.getPosition().x - 230, spInfosRect.getPosition().y - 50);
 
 	for (int i = 0; i < 3; i++)
 	{
-		LevelIcon[i].setSize(sf::Vector2f{ 150, 150 });
-		LevelIcon[i].setFillColor(sf::Color::Black);
-		LevelIcon[i].setOutlineColor(sf::Color::White);
-		LevelIcon[i].setOutlineThickness(3);
-		LevelIcon[i].setPosition(680 + i * 200, 300);
+		spLevelIcon[i].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
+		spLevelIcon[i].setScale(0.7, 0.7);
+		spLevelIcon[i].setPosition(350 + i * 400, 300);
 
 		LevelNumero[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
-		LevelNumero[i].setCharacterSize(30);
-		LevelNumero[i].setFillColor(sf::Color::White);
+		LevelNumero[i].setCharacterSize(60);
+		LevelNumero[i].setFillColor(sf::Color{ 132, 39, 21, 255 });
 		LevelNumero[0].setString("1");
 		LevelNumero[1].setString("2");
 		LevelNumero[2].setString("3");
-		LevelNumero[i].setPosition(750 + i * 200, 400);
+		LevelNumero[i].setPosition(540 + i * 400, 380);
 	}
 }
 
@@ -72,40 +75,31 @@ void SizeEditor::Update()
 
 	if (LevelSelected == 1)
 	{
-		LevelIcon[0].setOutlineColor(sf::Color::Red);
-		LevelNumero[0].setFillColor(sf::Color::Red);
+		spLevelIcon[0].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton sélectionné"));
 
-		LevelIcon[1].setOutlineColor(sf::Color::White);
-		LevelNumero[1].setFillColor(sf::Color::White);
+		spLevelIcon[1].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
-		LevelIcon[2].setOutlineColor(sf::Color::White);
-		LevelNumero[2].setFillColor(sf::Color::White);
+		spLevelIcon[2].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
 		InfosText.setString("Longueur : Courte\nDurée estimée : 40 secondes");
 	}
 	else if (LevelSelected == 2)
 	{
-		LevelIcon[0].setOutlineColor(sf::Color::White);
-		LevelNumero[0].setFillColor(sf::Color::White);
+		spLevelIcon[0].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
-		LevelIcon[1].setOutlineColor(sf::Color::Red);
-		LevelNumero[1].setFillColor(sf::Color::Red);
+		spLevelIcon[1].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton sélectionné"));
 
-		LevelIcon[2].setOutlineColor(sf::Color::White);
-		LevelNumero[2].setFillColor(sf::Color::White);
+		spLevelIcon[2].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
 		InfosText.setString("Longueur : Moyenne\nDurée estimée : 1 minute");
 	}
 	else if (LevelSelected == 3)
 	{
-		LevelIcon[0].setOutlineColor(sf::Color::White);
-		LevelNumero[0].setFillColor(sf::Color::White);
+		spLevelIcon[0].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
-		LevelIcon[1].setOutlineColor(sf::Color::White);
-		LevelNumero[1].setFillColor(sf::Color::White);
+		spLevelIcon[1].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
-		LevelIcon[2].setOutlineColor(sf::Color::Red);
-		LevelNumero[2].setFillColor(sf::Color::Red);
+		spLevelIcon[2].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton sélectionné"));
 
 		InfosText.setString("Longueur : Grande\nDurée estimée : 1 minute 30");
 	}
@@ -134,16 +128,20 @@ void SizeEditor::Update()
 void SizeEditor::Display()
 {
 	m_actualWindow->draw(spBackground);
+	m_actualWindow->draw(spButton);
+	m_actualWindow->draw(spFlèche);
 
 	m_actualWindow->draw(EnterSizeText);
-	m_actualWindow->draw(InfosRect);
+	m_actualWindow->draw(spInfosRect);
 	m_actualWindow->draw(InfosText);
 
 	for (int i = 0; i < 3; i++)
 	{
-		m_actualWindow->draw(LevelIcon[i]);
+		m_actualWindow->draw(spLevelIcon[i]);
 		m_actualWindow->draw(LevelNumero[i]);
 	}
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void SizeEditor::EventManager(sf::Event p_pollingEvent)

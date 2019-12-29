@@ -89,6 +89,8 @@ void PlayerSelector::Display()
 	{
 		transition->DrawTransition();
 	}
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void PlayerSelector::EventManager(sf::Event p_pollingEvent)

@@ -9,6 +9,7 @@ Options::Options()
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 	spFlèche.setTexture(*ResourceManager::Instance()->GetTexture("Flèche menu"));
 
 	for (int i = 0; i < 2; i++)
@@ -189,6 +190,8 @@ void Options::Display()
 		m_actualWindow->draw(OptionsText[i]);
 	}
 	m_actualWindow->draw(spFlèche);
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void Options::EventManager(sf::Event p_pollingEvent)

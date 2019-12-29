@@ -118,6 +118,7 @@ void LevelEditor::Display()
 {
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	m_actualWindow->draw(spInterface);
+	m_actualWindow->draw(spBoutonRetour);
 
 	m_actualWindow->setView(View);
 

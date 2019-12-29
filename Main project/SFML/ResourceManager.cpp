@@ -190,6 +190,26 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Options_button_selected.png", "Options bouton sélectionné"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Editor_button_unselected.png", "Editeur bouton non sélectionné"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Editor_button_selected.png", "Editeur bouton sélectionné"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Popup.png", "Fenêtre popup"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Bouton_retour.png", "Bouton retour"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé

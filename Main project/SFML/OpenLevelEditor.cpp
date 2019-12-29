@@ -8,6 +8,7 @@ OpenLevelEditor::OpenLevelEditor()
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -81,6 +82,8 @@ void OpenLevelEditor::Display()
 
 		m_actualWindow->draw(LevelNameText[i]);
 	}
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)

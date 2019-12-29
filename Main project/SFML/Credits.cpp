@@ -26,6 +26,7 @@ void Credits::Update()
 void Credits::Display()
 {
 	m_actualWindow->draw(spBackground);
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void Credits::EventManager(sf::Event p_pollingEvent)

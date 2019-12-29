@@ -51,6 +51,8 @@ void LevelSelector::Display()
 
 	m_Level.setString("Niveau " + std::to_string(m_MenuChoice));
 	m_actualWindow->draw(m_Level);
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void LevelSelector::Setup()

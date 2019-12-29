@@ -12,6 +12,8 @@ protected:
 	sf::Event m_eventPoll;
 	sf::RenderWindow* m_actualWindow;
 
+	sf::Sprite spBoutonRetour;
+
 public:
 	Scene();
 	~Scene();

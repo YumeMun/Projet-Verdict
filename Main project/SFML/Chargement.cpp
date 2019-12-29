@@ -73,7 +73,7 @@ void Chargement::Update()
 		}
 
 		// 24 is font + texture vectors final size
-		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 55) * LoadingBack.getSize().x, 50));
+		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 59) * LoadingBack.getSize().x, 50));
 	}
 }
 

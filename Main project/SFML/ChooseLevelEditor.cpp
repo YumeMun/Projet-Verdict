@@ -7,19 +7,18 @@ ChooseLevelEditor::ChooseLevelEditor()
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 
 	for (int i = 0; i < 2; i++)
 	{
-		ChoiceIcon[i].setRadius(120);
-		ChoiceIcon[i].setFillColor(sf::Color::Black);
-		ChoiceIcon[i].setOutlineColor(sf::Color::White);
-		ChoiceIcon[i].setOutlineThickness(3);
-		ChoiceIcon[i].setPosition(600 + i * 450, 450);
+		spChoiceIcon[i].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
+		spChoiceIcon[i].setOrigin(spChoiceIcon[i].getGlobalBounds().width / 2, spChoiceIcon[i].getGlobalBounds().height / 2);
+		spChoiceIcon[i].setPosition(650 + i * 700, 540);
 
 		ChoiceText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
-		ChoiceText[i].setCharacterSize(40);
-		ChoiceText[i].setFillColor(sf::Color::White);
-		ChoiceText[i].setPosition(660 + i * 430, 540);
+		ChoiceText[i].setCharacterSize(60);
+		ChoiceText[i].setFillColor(sf::Color{ 132, 39, 21, 255});
+		ChoiceText[i].setPosition(550 + i * 670, 500);
 
 		ChoiceText[0].setString("Ouvrir");
 		ChoiceText[1].setString("Nouveau");
@@ -51,19 +50,15 @@ void ChooseLevelEditor::Update()
 
 	if (ChoiceSelected == 1)
 	{
-		ChoiceIcon[0].setOutlineColor(sf::Color::Red);
-		ChoiceText[0].setFillColor(sf::Color::Red);
+		spChoiceIcon[0].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton sélectionné"));
 
-		ChoiceIcon[1].setOutlineColor(sf::Color::White);
-		ChoiceText[1].setFillColor(sf::Color::White);
+		spChoiceIcon[1].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 	}
 	else if (ChoiceSelected == 2)
 	{
-		ChoiceIcon[0].setOutlineColor(sf::Color::White);
-		ChoiceText[0].setFillColor(sf::Color::White);
+		spChoiceIcon[0].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton non sélectionné"));
 
-		ChoiceIcon[1].setOutlineColor(sf::Color::Red);
-		ChoiceText[1].setFillColor(sf::Color::Red);
+		spChoiceIcon[1].setTexture(*ResourceManager::Instance()->GetTexture("Editeur bouton sélectionné"));
 	}
 
 	if (sf::Joystick::isButtonPressed(0, 0) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
@@ -89,9 +84,11 @@ void ChooseLevelEditor::Display()
 
 	for (int i = 0; i < 2; i++)
 	{
-		m_actualWindow->draw(ChoiceIcon[i]);
+		m_actualWindow->draw(spChoiceIcon[i]);
 		m_actualWindow->draw(ChoiceText[i]);
 	}
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void ChooseLevelEditor::EventManager(sf::Event p_pollingEvent)

@@ -12,6 +12,7 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 
 	SaveText.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	SaveText.setCharacterSize(40);
@@ -102,6 +103,8 @@ void SaveEditor::Display()
 	m_actualWindow->draw(NameText);
 
 	VirtualKeyboard();
+
+	m_actualWindow->draw(spBoutonRetour);
 }
 
 void SaveEditor::EventManager(sf::Event p_pollingEvent)
