@@ -235,18 +235,14 @@ void Player::Animations()
 		}
 		else
 		{
-			std::cout << "isJumping" << std::endl;
-
 			PlayerRect.top = PlayerRect.height*4;
 
 			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 			{
-				std::cout << "frame index :" << FrameIndex << std::endl;
 				if (FrameIndex < 12)
 					FrameIndex++;
 				else
 				{
-					std::cout << "isJumping end" << std::endl;
 					FrameIndex = 0;
 					PlayerRect.top = 1 * PlayerRect.height;
 					StartAnim = true;
