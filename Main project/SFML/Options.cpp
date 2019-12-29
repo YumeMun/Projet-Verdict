@@ -18,13 +18,10 @@ Options::Options()
 		OptionsText[i].setCharacterSize(50);
 		OptionsText[i].setFillColor(sf::Color::White);
 		OptionsText[i].setPosition(500, 250 + i * 350);
-		OptionsText[0].setString("Volume de la musique");
-		OptionsText[1].setString("Volume des effets sonores");
+		OptionsText[0].setString("Musiques");
+		OptionsText[1].setString("Effets sonores");
 
 		VolumeRect[i].width = 241, VolumeRect[i].height = 158;
-
-		spIconeVolume[i].setTexture(*ResourceManager::Instance()->GetTexture("Icone volume"));
-		spIconeVolume[i].setPosition(750, 400 + i * 350);
 
 		spVolume[i].setTexture(*ResourceManager::Instance()->GetTexture("Volume"));
 		spVolume[i].setPosition(850, 350 + i * 350);
@@ -184,7 +181,6 @@ void Options::Display()
 	m_actualWindow->draw(spBackground);
 	for (int i = 0; i < 2; i++)
 	{
-		m_actualWindow->draw(spIconeVolume[i]);
 		m_actualWindow->draw(spVolume[i]);
 		m_actualWindow->draw(spButton[i]);
 		m_actualWindow->draw(OptionsText[i]);

@@ -16,7 +16,6 @@ private:
 	sf::Sprite spBackground;
 	sf::Sprite spFlèche;
 
-	sf::Sprite spIconeVolume[2];
 	sf::Sprite spVolume[2];
 	sf::Sprite spButton[2];
 	sf::Text OptionsText[2];

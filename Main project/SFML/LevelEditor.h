@@ -55,12 +55,15 @@ private:
 
 	sf::Clock SelectionTimer;
 
-	bool PopUpActivated = false;
+	int PopUpActivated = 0;
 	sf::Sprite spPopUp;
 	sf::Text PopUpText[3];
 	int SelectionPopUp = 1;
 
+	sf::Sprite spBoutonSauvegarde;
 	sf::Sprite spTouches;
-
+	sf::Sprite spToucheSelect;
 	sf::Sprite spTouchesZoom[4];
+
+	sf::RectangleShape BandeauGaucheRect;
 };

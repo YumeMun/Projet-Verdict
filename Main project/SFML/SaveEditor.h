@@ -31,6 +31,8 @@ private:
 	sf::Clock clock;
 	bool Press = false, EnterPress = false;
 
+	sf::Sprite spButtons[2];
+
 	int Keyboard[5][12];
 	sf::RectangleShape KeyRect;
 	sf::Vector2f KeyPos;
@@ -44,6 +46,12 @@ private:
 	bool Maj = false;
 
 	sf::Sprite Key[4];
+
+	int PopUpActivated = 0;
+	sf::Sprite spPopUp;
+	sf::Text PopUpText[3];
+	int SelectionPopUp = 1;
+	sf::Clock SelectionTimer;
 };
 
 enum Keys

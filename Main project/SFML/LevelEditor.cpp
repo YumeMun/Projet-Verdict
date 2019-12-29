@@ -93,6 +93,15 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 	//	spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Case" + std::to_string(i + 1)));
 	//}
 
+	BandeauGaucheRect.setSize(sf::Vector2f{ 370, 1080 });
+	BandeauGaucheRect.setFillColor(sf::Color{ 0, 0, 0, 150 });
+
+	spBoutonSauvegarde.setTexture(*ResourceManager::Instance()->GetTexture("Bouton sauvegarder"));
+	spBoutonSauvegarde.setPosition(1500, 1000);
+
+	spToucheSelect.setTexture(*ResourceManager::Instance()->GetTexture("Touche select"));
+	spToucheSelect.setPosition(50, 880);
+
 	spTouches.setTexture(*ResourceManager::Instance()->GetTexture("Touches éditeur"));
 	spTouches.setPosition(20, 400);
 
@@ -103,8 +112,8 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 
 	spTouchesZoom[0].setPosition(120, 630);
 	spTouchesZoom[1].setPosition(220, 630);
-	spTouchesZoom[2].setPosition(120, 780);
-	spTouchesZoom[3].setPosition(220, 780);
+	spTouchesZoom[2].setPosition(120, 760);
+	spTouchesZoom[3].setPosition(220, 760);
 
 	spTouchesZoom[0].setScale(0.8, 0.8);
 	spTouchesZoom[1].setScale(0.8, 0.8);
@@ -121,8 +130,6 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
 		PopUpText[i].setCharacterSize(25);
 		PopUpText[i].setFillColor(sf::Color::White);
 
-		PopUpText[0].setString("					Voulez-vous vraiment quitter\n							le mode édition ?\n(Vos dernières modifications ne seront pas sauvegardées)");
-		PopUpText[0].setPosition(575, 470);
 
 		PopUpText[1].setString("Oui");
 		PopUpText[1].setCharacterSize(35);
@@ -150,13 +157,20 @@ void LevelEditor::Update()
 		if (sf::Joystick::isConnected(0))
 			ControllerManager();
 
-		if (sf::Joystick::isButtonPressed(0, 1))
+		if (sf::Joystick::isButtonPressed(0, 1) && SelectionTimer.getElapsedTime().asMilliseconds() > 500)
 		{
-			PopUpActivated = true;
+			PopUpActivated = 1;
+		}
+		else if (sf::Joystick::isButtonPressed(0, 3) && SelectionTimer.getElapsedTime().asMilliseconds() > 500)
+		{
+			PopUpActivated = 2;
 		}
 	}
-	else if (PopUpActivated == true)
+	else if (PopUpActivated == 1)
 	{
+		PopUpText[0].setString("					Voulez-vous vraiment quitter\n							le mode édition ?\n(Vos dernières modifications ne seront pas sauvegardées)");
+		PopUpText[0].setPosition(575, 470);
+
 		if (SelectionPopUp == 1)
 		{
 			PopUpText[1].setFillColor(sf::Color{ 255, 156, 0, 255 });
@@ -178,7 +192,52 @@ void LevelEditor::Update()
 			if (SelectionPopUp == 1)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
 			else if (SelectionPopUp == 2)
-				PopUpActivated = false;
+			{
+				SelectionTimer.restart();
+				PopUpActivated = 0;
+			}
+		}
+	}
+	else if (PopUpActivated == 2)
+	{
+		PopUpText[0].setString("Voulez-vous vraiment tout effacer ?");
+		PopUpText[0].setPosition(680, 500);
+
+		if (SelectionPopUp == 1)
+		{
+			PopUpText[1].setFillColor(sf::Color{ 255, 156, 0, 255 });
+			PopUpText[2].setFillColor(sf::Color::White);
+		}
+		else if (SelectionPopUp == 2)
+		{
+			PopUpText[1].setFillColor(sf::Color::White);
+			PopUpText[2].setFillColor(sf::Color{ 255, 156, 0, 255 });
+		}
+
+		if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 50)
+			SelectionPopUp = 2;
+		else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
+			SelectionPopUp = 1;
+
+		if (sf::Joystick::isButtonPressed(0, 0))
+		{
+			if (SelectionPopUp == 1)
+			{
+				for (int y = 0; y < Size_Y; y++)
+				{
+					for (int x = 0; x < Size_X; x++)
+					{
+						Tableau[y][x] = 0;
+					}
+				}
+				SelectionTimer.restart();
+				PopUpActivated = 0;
+			}
+			else if (SelectionPopUp == 2)
+			{
+				SelectionTimer.restart();
+				PopUpActivated = 0;
+			}
 		}
 	}
 
@@ -248,9 +307,13 @@ void LevelEditor::Display()
 
 	if (HudDisplay == true)
 	{
+		m_actualWindow->setView(m_actualWindow->getDefaultView());
+		m_actualWindow->draw(BandeauGaucheRect);
 		hud->Display();
 		BackgroundChoice();
+		m_actualWindow->draw(spBoutonSauvegarde);
 		m_actualWindow->draw(spTouches);
+		m_actualWindow->draw(spToucheSelect);
 
 		for (int i = 0; i < 4; i++)
 		{
@@ -258,7 +321,7 @@ void LevelEditor::Display()
 		}
 	}
 
-	if (PopUpActivated == true)
+	if (PopUpActivated != 0)
 	{
 		m_actualWindow->draw(spPopUp);
 		for (int i = 0; i < 3; i++)
@@ -370,16 +433,6 @@ void LevelEditor::ControllerManager()
 		else
 			spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));
 		
-		if (sf::Joystick::isButtonPressed(0, 3))
-		{
-			for (int y = 0; y < Size_Y; y++)
-			{
-				for (int x = 0; x < Size_X; x++)
-				{
-					Tableau[y][x] = 0;
-				}
-			}
-		}
 	}
 
 	if (sf::Joystick::isButtonPressed(0, 7))
