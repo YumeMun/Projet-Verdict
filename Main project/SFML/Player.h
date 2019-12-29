@@ -40,6 +40,8 @@ private:
 
 	bool isJumping = false;
 	bool isSpeedMax = false;
+	bool isSwitching = false;
+	bool isSwitchingBack = false;
 
 	sf::Clock BoostClock;
 
@@ -58,4 +60,5 @@ private:
 	};
 
 	int FrameIndex = 0;
+	int lastFrameSpeed = 800;
 };

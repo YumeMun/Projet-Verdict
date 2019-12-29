@@ -48,7 +48,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
-		Player_Movement.x = 0;
+		//Player_Movement.x = 0;
 		Player_Movement.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
@@ -213,41 +213,94 @@ void Player::Animations()
 	//{
 		if (!isJumping)
 		{
+			if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
+			{
+				isSwitchingBack = true;
+				//isSpeedMax = false;
+				AnimClock.restart();
+			}
+			else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
+			{
+				isSwitching = true;
+				//isSpeedMax = true;
+				AnimClock.restart();
+			}
+			
 			if (Player_Movement.x >= SPEED)
 			{
-				PlayerRect.left = 0;
-				PlayerRect.top = 54;
-				spPlayer.setTextureRect(PlayerRect);
+				isSpeedMax = true;
 			}
 			else
 			{
-				PlayerRect.left = 0;
-				PlayerRect.top = 0;
-				spPlayer.setTextureRect(PlayerRect);
+				isSpeedMax = false;
 			}
 
-			//PlayerRect.top = 0;
-
-			/*if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+			if (isSpeedMax)
 			{
-				if (FrameIndex < 5)
-					FrameIndex++;
-				else
+				if (!isSwitching)
 				{
 					FrameIndex = 0;
-					//PlayerRect.top = 1 * PlayerRect.height;
-					PlayerRect.top = 0;
-					StartAnim = true;
+					PlayerRect.left = 0;
+					PlayerRect.top = 54;
+					spPlayer.setTextureRect(PlayerRect);
 				}
+				else
+				{
+					if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+					{
+						if (FrameIndex < 5)
+							FrameIndex++;
+						else
+						{
+							FrameIndex = 0;
+							isSwitching = false;
+						}
 
-				PlayerRect.left = FrameIndex * PlayerRect.width;
-				spPlayer.setTextureRect(PlayerRect);
+						PlayerRect.left = FrameIndex * PlayerRect.width;
+						spPlayer.setTextureRect(PlayerRect);
+						AnimClock.restart();
+					}
+				}
+			}
+			else
+			{
+				if (!isSwitchingBack)
+				{
+					FrameIndex = 0;
+					PlayerRect.left = 0;
+					PlayerRect.top = 0;
+					spPlayer.setTextureRect(PlayerRect);
+				}
+				else
+				{
+					if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+					{
+						if (FrameIndex < 4)
+							FrameIndex++;
+						else
+						{
+							FrameIndex = 0;
+							isSwitchingBack = false;
+						}
 
-				AnimClock.restart();
-			}*/
+						PlayerRect.left = FrameIndex * PlayerRect.width;
+						spPlayer.setTextureRect(PlayerRect);
+						AnimClock.restart();
+					}
+				}
+			}
 		}
 		else
 		{
+			if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
+			{
+				isSwitchingBack = true;
+			}
+			else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
+			{
+				isSwitching = true;
+			}
+
 			PlayerRect.top = PlayerRect.height*4;
 
 			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
@@ -269,6 +322,12 @@ void Player::Animations()
 			}
 		}
 	//}
+
+		//std::cout << "speed :" << Player_Movement.x << std::endl;
+		//std::cout << "is switching :" << isSwitching << std::endl;
+		//std::cout << "is switching back :" << isSwitchingBack << std::endl;
+		std::cout << "is speed max :" << isSpeedMax << std::endl;
+		lastFrameSpeed = Player_Movement.x;
 }
 
 sf::Vector2f Player::GetPos()
