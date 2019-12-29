@@ -210,6 +210,41 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Bouton_retour.png", "Bouton retour"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Curseur_pose.png", "Curseur pose"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Curseur_suppr.png", "Curseur suppression"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Touches_éditeur.png", "Touches éditeur"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("RT.png", "RT"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("LT.png", "LT"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Loupe+.png", "Loupe+"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Loupe-.png", "Loupe-"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé

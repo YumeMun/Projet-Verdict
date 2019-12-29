@@ -26,4 +26,6 @@ private:
 	sf::Clock SelectionTimer;
 	class Transition* transition;
 	bool isGameStart = false;
+
+	sf::Sprite spBackground;
 };

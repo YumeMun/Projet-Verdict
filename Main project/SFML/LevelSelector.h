@@ -20,4 +20,6 @@ private:
 	bool LeftPressed = false;
 	bool RightPressed = false;
 	sf::Text m_Level;
+
+	sf::Sprite spBackground;
 };

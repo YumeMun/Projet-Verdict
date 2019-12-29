@@ -31,7 +31,7 @@ private:
 	int Size_Y;
 	std::string Save;
 
-	sf::CircleShape SelecterTarget;
+	sf::Sprite spSelecterTarget;
 
 	sf::Vector2i MousePos;
 	sf::Vector2i MousePosToView;
@@ -54,4 +54,13 @@ private:
 	sf::Sprite spBackground;
 
 	sf::Clock SelectionTimer;
+
+	bool PopUpActivated = false;
+	sf::Sprite spPopUp;
+	sf::Text PopUpText[3];
+	int SelectionPopUp = 1;
+
+	sf::Sprite spTouches;
+
+	sf::Sprite spTouchesZoom[4];
 };

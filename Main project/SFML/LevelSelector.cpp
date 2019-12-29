@@ -44,6 +44,8 @@ void LevelSelector::Update()
 
 void LevelSelector::Display()
 {
+	m_actualWindow->draw(spBackground);
+
 	for (int i = 0; i < m_LevelSelector.size(); i++)
 	{
 		m_actualWindow->draw(m_LevelSelector[i]);
@@ -74,6 +76,8 @@ void LevelSelector::Setup()
 		x = 1360;
 	}
 
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 }
 
 void LevelSelector::EventManager(sf::Event p_pollingEvent)

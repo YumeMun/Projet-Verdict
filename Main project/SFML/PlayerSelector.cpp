@@ -1,5 +1,6 @@
 #include "PlayerSelector.h"
 #include "GameManager.h"
+#include "ResourceManager.h"
 
 PlayerSelector::PlayerSelector()
 {
@@ -10,6 +11,9 @@ PlayerSelector::PlayerSelector()
 	rectPlay.setPosition(sf::Vector2f(1920 / 2, 1080 / 2 + 200));
 	rectPlay.setSize(sf::Vector2f(300, 100));
 	rectPlay.setFillColor(sf::Color::Yellow);
+
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 }
 
 PlayerSelector::~PlayerSelector()
@@ -79,6 +83,7 @@ void PlayerSelector::Update()
 
 void PlayerSelector::Display()
 {
+	m_actualWindow->draw(spBackground);
 	//m_actualWindow->draw(rectPlay);
 	for (int i = 0; i < 2; i++)
 	{
