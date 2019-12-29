@@ -10,11 +10,11 @@ Player::Player(int _ID, sf::Vector2f _Pos)
 {
 	ID = _ID;
 
-	PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 200, PlayerRect.height = 56;
+	PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 121, PlayerRect.height = 54;
 	spPlayer.setTextureRect(PlayerRect);
 
-	spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player"));
-	spPlayer.setOrigin(200 / 2, 56 / 2);
+	spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player2"));
+	spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
 	spPlayer.setPosition(_Pos);
 	spPlayer.setScale(sf::Vector2f{ 1.7, 1.7 });
 
@@ -87,6 +87,8 @@ void Player::Controls(Map* _Map)
 			Player_Movement.y = -SPEED * 2;
 			Player_Movement.y = -SPEED * 1.5;
 
+			FrameIndex = 0;
+			isJumping = true;
 			Jump = true;
 
 			KeyPress = true;
@@ -205,29 +207,59 @@ bool Player::IsAlive()
 
 void Player::Animations()
 {
-	static int FrameIndex = 0;
+	//static int FrameIndex = 0;
 
-	if (StartAnim == false)
-	{
-		PlayerRect.top = 0;
-
-		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+	//if (StartAnim == false)
+	//{
+		if (!isJumping)
 		{
-			if (FrameIndex < 5)
-				FrameIndex++;
-			else
+			PlayerRect.top = 0;
+
+			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 			{
-				FrameIndex = 0;
-				PlayerRect.top = 1 * PlayerRect.height;
-				StartAnim = true;
+				if (FrameIndex < 5)
+					FrameIndex++;
+				else
+				{
+					FrameIndex = 0;
+					//PlayerRect.top = 1 * PlayerRect.height;
+					PlayerRect.top = 0;
+					StartAnim = true;
+				}
+
+				PlayerRect.left = FrameIndex * PlayerRect.width;
+				spPlayer.setTextureRect(PlayerRect);
+
+				AnimClock.restart();
 			}
-
-			PlayerRect.left = FrameIndex * PlayerRect.width;
-			spPlayer.setTextureRect(PlayerRect);
-
-			AnimClock.restart();
 		}
-	}
+		else
+		{
+			std::cout << "isJumping" << std::endl;
+
+			PlayerRect.top = PlayerRect.height*4;
+
+			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+			{
+				std::cout << "frame index :" << FrameIndex << std::endl;
+				if (FrameIndex < 12)
+					FrameIndex++;
+				else
+				{
+					std::cout << "isJumping end" << std::endl;
+					FrameIndex = 0;
+					PlayerRect.top = 1 * PlayerRect.height;
+					StartAnim = true;
+					isJumping = false;
+				}
+
+				PlayerRect.left = FrameIndex * PlayerRect.width;
+				spPlayer.setTextureRect(PlayerRect);
+
+				AnimClock.restart();
+			}
+		}
+	//}
 }
 
 sf::Vector2f Player::GetPos()

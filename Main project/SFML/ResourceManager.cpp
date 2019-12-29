@@ -50,7 +50,7 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Player.png", "Player"))
+	if (newTexture->Create("Player2.png", "Player2"))
 		_textures.push_back(newTexture);
 
 	for (int i = 0; i < 4; i++)

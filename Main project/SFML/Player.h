@@ -15,6 +15,7 @@ public:
 	void Controls(Map* _Map);
 	bool IsAlive();
 	void Animations();
+
 	sf::Vector2f GetPos();
 
 	bool Hasfinished;
@@ -37,6 +38,8 @@ private:
 	sf::Clock AnimClock;
 	bool StartAnim = false;
 
+	bool isJumping = false;
+
 	sf::Clock BoostClock;
 
 	sf::Sprite spPlayer;
@@ -52,4 +55,6 @@ private:
 		UP,
 		DOWN
 	};
+
+	int FrameIndex = 0;
 };
