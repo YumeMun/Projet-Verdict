@@ -231,65 +231,65 @@ void Player::Animations()
 			spPlayer.setTextureRect(PlayerRect);
 
 			AnimClock.restart();
-		if (!isJumping)
+			if (!isJumping)
+			{
+				if (Player_Movement.x >= SPEED)
+				{
+					PlayerRect.left = 0;
+					PlayerRect.top = 54;
+					spPlayer.setTextureRect(PlayerRect);
+				}
+				else
+				{
+					PlayerRect.left = 0;
+					PlayerRect.top = 0;
+					spPlayer.setTextureRect(PlayerRect);
+				}
+
+				//PlayerRect.top = 0;
+
+				/*if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+				{
+					if (FrameIndex < 5)
+						FrameIndex++;
+					else
+					{
+						FrameIndex = 0;
+						//PlayerRect.top = 1 * PlayerRect.height;
+						PlayerRect.top = 0;
+						StartAnim = true;
+					}
+
+					PlayerRect.left = FrameIndex * PlayerRect.width;
+					spPlayer.setTextureRect(PlayerRect);
+
+					AnimClock.restart();
+				}*/
+			}
+		}
+		else
 		{
-			if (Player_Movement.x >= SPEED)
-			{
-				PlayerRect.left = 0;
-				PlayerRect.top = 54;
-				spPlayer.setTextureRect(PlayerRect);
-			}
-			else
-			{
-				PlayerRect.left = 0;
-				PlayerRect.top = 0;
-				spPlayer.setTextureRect(PlayerRect);
-			}
+			PlayerRect.top = PlayerRect.height * 4;
 
-			//PlayerRect.top = 0;
-
-			/*if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 			{
-				if (FrameIndex < 5)
+				if (FrameIndex < 12)
 					FrameIndex++;
 				else
 				{
 					FrameIndex = 0;
-					//PlayerRect.top = 1 * PlayerRect.height;
-					PlayerRect.top = 0;
+					PlayerRect.top = 1 * PlayerRect.height;
 					StartAnim = true;
+					isJumping = false;
 				}
 
 				PlayerRect.left = FrameIndex * PlayerRect.width;
 				spPlayer.setTextureRect(PlayerRect);
 
 				AnimClock.restart();
-			}*/
-		}
-	}
-	else
-	{
-		PlayerRect.top = PlayerRect.height * 4;
-
-		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
-		{
-			if (FrameIndex < 12)
-				FrameIndex++;
-			else
-			{
-				FrameIndex = 0;
-				PlayerRect.top = 1 * PlayerRect.height;
-				StartAnim = true;
-				isJumping = false;
 			}
-
-			PlayerRect.left = FrameIndex * PlayerRect.width;
-			spPlayer.setTextureRect(PlayerRect);
-
-			AnimClock.restart();
 		}
 	}
-	//}
 }
 
 sf::Sprite Player::GetSprite()
