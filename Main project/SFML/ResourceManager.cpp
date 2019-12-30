@@ -260,6 +260,11 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("InfoTile.jpg", "Info tile"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Huile_test.png", "OilFlake"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé

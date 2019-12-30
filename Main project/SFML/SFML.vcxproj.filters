@@ -83,6 +83,9 @@
     <ClCompile Include="Shockwave.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
+    <ClCompile Include="Oilflake.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -173,6 +176,9 @@
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
     <ClInclude Include="Shockwave.h">
+      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="Oilflake.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
   </ItemGroup>

@@ -70,10 +70,6 @@ void Jeu::Update()
 				Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
 				Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
 
-				Shockwave* newShock = new Shockwave(1, Player1->GetPos());
-
-				Collectibles.push_back(newShock);
-
 				/*if (Player1->newMissile != NULL)
 					Player1->newMissile->Update(ElapsedTime, map);
 
@@ -105,13 +101,7 @@ void Jeu::Update()
 		else
 			transition->UpdateBack();
 
-		for (int i = 0; i < Collectibles.size(); i++)
-		{
-			Collectibles[i]->Update(Player1->GetSprite(), Player2->GetSprite(), ElapsedTime);
-
-			if (Collectibles[i]->IsAlive() == false)
-				Collectibles.erase(Collectibles.begin() + i);
-		}
+		CollectiblesManager();
 
 		caméra->Update(ElapsedTime, timerStart);
 
@@ -143,9 +133,6 @@ void Jeu::Display()
 	//collects->Display();
 	Player2->Display(m_actualWindow);
 	Player1->Display(m_actualWindow);
-
-	if (Player1->CollectibleUsed() == true)
-		std::cout << Player1->GetCollectID() << std::endl;
 
 	for (int i = 0; i < Collectibles.size(); i++)
 	{
@@ -198,6 +185,93 @@ void Jeu::Display()
 
 void Jeu::EventManager(sf::Event p_pollingEvent)
 {
+}
+
+void Jeu::CollectiblesManager()
+{
+	if (Player1->CollectibleUsed() == true)
+	{
+		if (Player1->GetCollectID() == e_Enum::e_Collects::ROCKET)
+		{
+
+		}
+		else if (Player1->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
+		{
+			Shockwave* newCollect = new Shockwave(1, Player1->GetPos());
+			Collectibles.push_back(newCollect);
+			Player1->SetCollectID(0);
+		}
+		else if (Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
+		{
+			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1 ,Player1->GetPos()));
+			Collectibles.push_back(newCollect);
+			Player1->SetCollectID(0);
+		}
+		else if (Player1->GetCollectID() == e_Enum::e_Collects::LEVITATION)
+		{
+
+		}
+		else if (Player1->GetCollectID() == e_Enum::e_Collects::SWAP)
+		{
+			if (Player2->GetCollectID() != 0)
+			{
+				Player1->SetCollectID(Player2->GetCollectID());
+				Player2->SetCollectID(0);
+			}
+			else
+				Player1->SetCollectID(0);
+		}
+		else if (Player1->GetCollectID() == e_Enum::e_Collects::BUMPER)
+		{
+
+		}
+	}
+
+	if (Player2->CollectibleUsed() == true)
+	{
+		if (Player2->GetCollectID() == e_Enum::e_Collects::ROCKET)
+		{
+
+		}
+		else if (Player2->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
+		{
+			Shockwave* newCollect = new Shockwave(2, Player2->GetPos());
+			Collectibles.push_back(newCollect);
+			Player2->SetCollectID(0);
+		}
+		else if (Player2->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
+		{
+			Oilflake* newCollect = new Oilflake(2, Player2->GetPos());
+			Collectibles.push_back(newCollect);
+			Player2->SetCollectID(0);
+		}
+		else if (Player2->GetCollectID() == e_Enum::e_Collects::LEVITATION)
+		{
+
+		}
+		else if (Player2->GetCollectID() == e_Enum::e_Collects::SWAP)
+		{
+			if (Player1->GetCollectID() != 0)
+			{
+				Player2->SetCollectID(Player1->GetCollectID());
+				Player1->SetCollectID(0);
+			}
+			else
+				Player2->SetCollectID(0);
+		}
+		else if (Player2->GetCollectID() == e_Enum::e_Collects::BUMPER)
+		{
+
+		}
+	}
+
+	for (int i = 0; i < Collectibles.size(); i++)
+	{
+		Collectibles[i]->Update(Player1, Player2, ElapsedTime);
+
+		if (Collectibles[i]->IsAlive() == false)
+			Collectibles.erase(Collectibles.begin() + i);
+	}
 }
 
 void Jeu::MenuIG(int ID)

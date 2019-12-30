@@ -5,6 +5,7 @@
 #include "Level_Finished.h"
 #include "TimerStart.h"
 #include "Shockwave.h"
+#include "Oilflake.h"
 
 class Jeu :public Scene
 {
@@ -38,4 +39,6 @@ public:
 	virtual void Update();
 	virtual void Display();
 	virtual void EventManager(sf::Event p_pollingEvent);
+
+	void CollectiblesManager();
 };

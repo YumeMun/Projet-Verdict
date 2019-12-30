@@ -27,10 +27,11 @@ public:
 	//void MissileCollide();
 
 	bool CollectibleCollide(Map* _Map);
+	bool CollectibleUsed();
+	bool HasCollectible, Oiled = false;
 	int GetCollectID();
 	void LauchCollectible();
-	bool CollectibleUsed();
-	bool HasCollectible;
+	void SetCollectID(int _CollectID);
 
 	//Missile* newMissile;
 

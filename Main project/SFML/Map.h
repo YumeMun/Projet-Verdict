@@ -18,6 +18,8 @@ public:
 
 	sf::Vector2f GetCheckPoint(sf::Vector2f _Pos);
 
+	sf::Vector2f GetNextTile(int _Type, sf::Vector2f _Pos);
+
 private:
 	sf::RenderWindow* m_actualWindow;
 

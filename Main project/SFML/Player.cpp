@@ -63,6 +63,10 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	else
 		Hasfinished = true;
 
+	if (CollectID != 0)
+		HasCollectible = true;
+	else if (CollectID == 0)
+		HasCollectible = false;
 
 	/*if (newMissile != NULL)
 		MissileCollide();*/
@@ -82,7 +86,7 @@ void Player::Controls(Map* _Map)
 {
 	if (sf::Joystick::isConnected(ID - 1));
 	{
-		if (sf::Joystick::isButtonPressed(ID - 1, 0) && KeyPress == false && Jump == false)
+		if (sf::Joystick::isButtonPressed(ID - 1, 0) && KeyPress == false && Jump == false && Oiled == false)
 		{
 			Player_Movement.y = -SPEED * 2;
 			Player_Movement.y = -SPEED * 1.5;
@@ -149,12 +153,17 @@ void Player::Controls(Map* _Map)
 		}
 		else
 		{
-			if (Player_Movement.x < SPEED)
+			if (Player_Movement.x < SPEED && Oiled == false)
 				Player_Movement.x += 10;
-			else if (Player_Movement.x >= SPEED && Boost == false)
+			else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
 				Player_Movement.x = SPEED;
 			else if (Boost == true)
 				Player_Movement.x = SPEED * 1.5;
+			else if (Oiled == true)
+			{
+				if (Player_Movement.x >= SPEED / 2)
+					Player_Movement.x = SPEED / 2;
+			}
 		}
 
 		if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 3)
@@ -331,8 +340,7 @@ bool Player::CollectibleCollide(Map* _Map)
 
 		if (HasCollectible == false)
 		{
-			CollectID = rand() % 6 + 1;
-			HasCollectible = true;
+			CollectID = e_Enum::OILFLAKE;//rand() % 6 + 1;
 		}
 
 		return true;
@@ -363,13 +371,17 @@ void Player::LauchCollectible()
 		{
 			UseIt = true;
 			//newMissile = new Missile(Missile_Direction, spPlayer.getPosition());
-			HasCollectible = false;
 		}
 	}
 	else
 	{
 		UseIt = false;
 	}
+}
+
+void Player::SetCollectID(int _CollectID)
+{
+	CollectID = _CollectID;
 }
 
 bool Player::CollectibleUsed()

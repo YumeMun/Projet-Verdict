@@ -211,3 +211,20 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 		}
 	}
 }
+
+sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
+{
+	for (int y = (_Pos.y) / 64; y < Size_Y; y++)
+	{
+		for (int x = (_Pos.x - 100) / 64; x < (_Pos.x + 200) / 64; x++)
+		{
+			if (Tableau[y][x] == _Type)
+			{
+				CasePos.x = (float)x * 64;
+				CasePos.y = (float)y * 64;
+
+				return CasePos;
+			}
+		}
+	}
+}
