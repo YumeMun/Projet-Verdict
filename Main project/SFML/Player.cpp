@@ -22,7 +22,7 @@ Player::Player(int _ID, sf::Vector2f _Pos)
 
 	HasCollectible = false;
 	Hasfinished = false;
-} 
+}
 
 Player::~Player()
 {
@@ -64,11 +64,11 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		Hasfinished = true;
 
 
-	if (newMissile != NULL)
-		MissileCollide();
+	/*if (newMissile != NULL)
+		MissileCollide();*/
 
 	CollectibleCollide(_Map);
-	UseCollectible();
+	LauchCollectible();
 
 	Animations();
 }
@@ -211,51 +211,56 @@ void Player::Animations()
 
 	//if (StartAnim == false)
 	//{
-		if (!isJumping)
+	if (!isJumping)
+	{
+		PlayerRect.top = 0;
+
+		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 		{
-			PlayerRect.top = 0;
-
-			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+			if (FrameIndex < 5)
+				FrameIndex++;
+			else
 			{
-				if (FrameIndex < 5)
-					FrameIndex++;
-				else
-				{
-					FrameIndex = 0;
-					//PlayerRect.top = 1 * PlayerRect.height;
-					PlayerRect.top = 0;
-					StartAnim = true;
-				}
-
-				PlayerRect.left = FrameIndex * PlayerRect.width;
-				spPlayer.setTextureRect(PlayerRect);
-
-				AnimClock.restart();
+				FrameIndex = 0;
+				//PlayerRect.top = 1 * PlayerRect.height;
+				PlayerRect.top = 0;
+				StartAnim = true;
 			}
+
+			PlayerRect.left = FrameIndex * PlayerRect.width;
+			spPlayer.setTextureRect(PlayerRect);
+
+			AnimClock.restart();
 		}
-		else
+	}
+	else
+	{
+		PlayerRect.top = PlayerRect.height * 4;
+
+		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 		{
-			PlayerRect.top = PlayerRect.height*4;
-
-			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+			if (FrameIndex < 12)
+				FrameIndex++;
+			else
 			{
-				if (FrameIndex < 12)
-					FrameIndex++;
-				else
-				{
-					FrameIndex = 0;
-					PlayerRect.top = 1 * PlayerRect.height;
-					StartAnim = true;
-					isJumping = false;
-				}
-
-				PlayerRect.left = FrameIndex * PlayerRect.width;
-				spPlayer.setTextureRect(PlayerRect);
-
-				AnimClock.restart();
+				FrameIndex = 0;
+				PlayerRect.top = 1 * PlayerRect.height;
+				StartAnim = true;
+				isJumping = false;
 			}
+
+			PlayerRect.left = FrameIndex * PlayerRect.width;
+			spPlayer.setTextureRect(PlayerRect);
+
+			AnimClock.restart();
 		}
+	}
 	//}
+}
+
+sf::Sprite Player::GetSprite()
+{
+	return spPlayer;
 }
 
 sf::Vector2f Player::GetPos()
@@ -263,33 +268,38 @@ sf::Vector2f Player::GetPos()
 	return spPlayer.getPosition();
 }
 
-void Player::MissileCollide()
-{
-	if (spPlayer.getPosition().x - spPlayer.getGlobalBounds().width / 2 >= newMissile->GetMissile().getPosition().x
-		&& spPlayer.getPosition().x + spPlayer.getGlobalBounds().width / 2 <= newMissile->GetMissile().getPosition().x + newMissile->GetMissile().getGlobalBounds().width
-		&& spPlayer.getPosition().y - spPlayer.getGlobalBounds().height / 2 >= newMissile->GetMissile().getPosition().y
-		&& spPlayer.getPosition().y + spPlayer.getGlobalBounds().width / 2 <= newMissile->GetMissile().getPosition().y + newMissile->GetMissile().getGlobalBounds().height)
-	{
-		Player_Movement.x = 0;
-		delete newMissile;
-	}
-	else
-	{
-		if (Player_Movement.x < SPEED)
-			Player_Movement.x += 10;
-		else if (Player_Movement.x >= SPEED)
-			Player_Movement.x = SPEED;
-	}
-}
+//void Player::MissileCollide()
+//{
+//	if (spPlayer.getPosition().x - spPlayer.getGlobalBounds().width / 2 >= newMissile->GetMissile().getPosition().x
+//		&& spPlayer.getPosition().x + spPlayer.getGlobalBounds().width / 2 <= newMissile->GetMissile().getPosition().x + newMissile->GetMissile().getGlobalBounds().width
+//		&& spPlayer.getPosition().y - spPlayer.getGlobalBounds().height / 2 >= newMissile->GetMissile().getPosition().y
+//		&& spPlayer.getPosition().y + spPlayer.getGlobalBounds().width / 2 <= newMissile->GetMissile().getPosition().y + newMissile->GetMissile().getGlobalBounds().height)
+//	{
+//		Player_Movement.x = 0;
+//		delete newMissile;
+//	}
+//	else
+//	{
+//		if (Player_Movement.x < SPEED)
+//			Player_Movement.x += 10;
+//		else if (Player_Movement.x >= SPEED)
+//			Player_Movement.x = SPEED;
+//	}
+//}
 
 bool Player::CollectibleCollide(Map* _Map)
 {
+	srand(time(NULL));
+
 	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 9)
 	{
 		_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
 
 		if (HasCollectible == false)
+		{
+			CollectID = rand() % 6 + 1;
 			HasCollectible = true;
+		}
 
 		return true;
 	}
@@ -297,23 +307,38 @@ bool Player::CollectibleCollide(Map* _Map)
 	return false;
 }
 
-void Player::UseCollectible()
+int Player::GetCollectID()
 {
-	if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
+	return CollectID;
+}
+
+void Player::LauchCollectible()
+{
+	/*if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
 	{
 		Missile_Direction = 0;
 	}
 	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
 	{
 		Missile_Direction = 1;
-	}
+	}*/
 
 	if (HasCollectible == true)
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 1))
 		{
-			newMissile = new Missile(Missile_Direction, spPlayer.getPosition());
+			UseIt = true;
+			//newMissile = new Missile(Missile_Direction, spPlayer.getPosition());
 			HasCollectible = false;
 		}
 	}
+	else
+	{
+		UseIt = false;
+	}
+}
+
+bool Player::CollectibleUsed()
+{
+	return UseIt;
 }

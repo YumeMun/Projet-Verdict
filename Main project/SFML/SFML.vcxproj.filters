@@ -80,6 +80,9 @@
     <ClCompile Include="Level_Finished.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
+    <ClCompile Include="Shockwave.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -167,6 +170,9 @@
       <Filter>Fichiers d%27en tête\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Level_Finished.h">
+      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="Shockwave.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
   </ItemGroup>

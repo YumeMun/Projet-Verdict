@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Level_Finished.h"
 #include "TimerStart.h"
+#include "Shockwave.h"
 
 class Jeu :public Scene
 {
@@ -17,8 +18,8 @@ private:
 	class Transition* transition;
 	class TimerStart* timerStart;
 
-	Missile* missile;
-	Collects* collects;
+	//Missile* missile;
+	//Collects* collects;
 
 	sf::Clock Clock;
 	void MenuIG(int ID);
@@ -28,6 +29,8 @@ private:
 	int SelectionMenuIG = 1;
 	int StateMenuIG = 0;
 	int ID;
+
+	std::vector<Collects*> Collectibles;
 
 public:
 	Jeu();
