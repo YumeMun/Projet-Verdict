@@ -15,12 +15,19 @@ public:
 private:
 	bool KeyPress = false;
 
-	sf::RenderWindow* m_actualWindow;
+	void TileName();
 
-	//sf::Sprite spTile[8];
+	sf::RenderWindow* m_actualWindow;
 
 	sf::Sprite spTile[60];
 
+	sf::Sprite spTouches[2];
+
 	sf::Sprite spBandeau;
 	sf::RectangleShape SelectionShape;
+
+	sf::Sprite spInfoTileRect;
+	sf::Text InfoTileText;
+
+	sf::Clock SelectionTimer;
 };

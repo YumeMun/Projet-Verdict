@@ -43,6 +43,7 @@ private:
 	bool StartAnim = false;
 
 	bool isJumping = false;
+	bool isSpeedMax = false;
 
 	sf::Clock BoostClock;
 

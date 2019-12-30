@@ -96,16 +96,16 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 void Map::Display()
 {
-	for (int i = 3; i > -1; i--)
+	/*for (int i = 3; i > -1; i--)
 	{
 		m_actualWindow->draw(Plan[i]);
 		m_actualWindow->draw(Plan2[i]);
-	}
+	}*/
 
-	for (int i = 0; i < 2; i++)
+	/*for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(Plan1[i]);
-	}
+	}*/
 
 	for (int y = 0; y < Size_Y; y++)
 	{
