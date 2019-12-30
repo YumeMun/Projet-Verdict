@@ -124,6 +124,7 @@ void Jeu::Update()
 
 void Jeu::Display()
 {
+	m_actualWindow->clear(sf::Color::White);
 	m_actualWindow->setView(*caméra->GetCamera());
 	map->Display();
 

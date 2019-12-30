@@ -38,7 +38,7 @@ void GameManager::Display()
 	//Affichage de chaque scène et display
 	m_Window.setMouseCursorVisible(false);
 	m_Window.setVerticalSyncEnabled(true);
-	m_Window.clear(sf::Color::White);
+	m_Window.clear();
 	m_ActualScene->Display();
 	m_Window.display();
 }
