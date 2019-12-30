@@ -613,6 +613,24 @@ void LevelEditor::ControllerManager()
 				Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
 
 				Select = 2;
+
+				if (hud->Selection == 28)
+				{
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 28;
+					for (int i = CasePos.y; i < 33; i++)
+					{
+						Tableau[(int)i+1][(int)CasePos.x] = 43;
+					}
+				}
+
+				if (hud->Selection == 29)
+				{
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 29;
+					for (int i = CasePos.y; i > 0; i--)
+					{
+						Tableau[(int)i-1][(int)CasePos.x] = 43;
+					}
+				}
 			}
 			else
 				Select = 2;
