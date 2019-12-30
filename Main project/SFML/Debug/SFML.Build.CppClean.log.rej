@@ -1,0 +1,6 @@
+diff a/Main project/SFML/Debug/SFML.Build.CppClean.log b/Main project/SFML/Debug/SFML.Build.CppClean.log	(rejected hunks)
+@@ -40,3 +40,4 @@
+ c:\users\allan\desktop\runner\main project\sfml\debug\sfml.tlog\link.read.1.tlog
+ c:\users\allan\desktop\runner\main project\sfml\debug\sfml.tlog\link.write.1.tlog
+ =======
++>>>>>>> 3619aee239401d20327895ff96c2c928378cc173
