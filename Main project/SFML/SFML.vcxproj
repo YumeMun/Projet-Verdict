@@ -189,6 +189,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SaveEditor.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Shockwave.cpp" />
     <ClCompile Include="SizeEditor.cpp" />
     <ClCompile Include="TimerStart.cpp" />
     <ClCompile Include="Transition.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SaveEditor.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Shockwave.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SizeEditor.h" />
     <ClInclude Include="TimerStart.h" />

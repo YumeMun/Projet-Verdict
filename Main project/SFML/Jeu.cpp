@@ -12,8 +12,8 @@ Jeu::Jeu()
 	caméra = new Caméra();
 	hud = new HUD();
 
-	collects = new Collects();
-	missile = new Missile();
+	//collects = new Collects();
+	///missile = new Missile();
 
 	Player1 = new Player(1, sf::Vector2f(400, 800));
 	Player2 = new Player(2, sf::Vector2f(400, 800));
@@ -70,11 +70,15 @@ void Jeu::Update()
 				Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
 				Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
 
-				if (Player1->newMissile != NULL)
+				Shockwave* newShock = new Shockwave(1, Player1->GetPos());
+
+				Collectibles.push_back(newShock);
+
+				/*if (Player1->newMissile != NULL)
 					Player1->newMissile->Update(ElapsedTime, map);
 
 				if (Player2->newMissile != NULL)
-					Player2->newMissile->Update(ElapsedTime, map);
+					Player2->newMissile->Update(ElapsedTime, map);*/
 
 				if (Player1->GetPos().x > Player2->GetPos().x)
 				{
@@ -101,9 +105,17 @@ void Jeu::Update()
 		else
 			transition->UpdateBack();
 
+		for (int i = 0; i < Collectibles.size(); i++)
+		{
+			Collectibles[i]->Update(Player1->GetSprite(), Player2->GetSprite(), ElapsedTime);
+
+			if (Collectibles[i]->IsAlive() == false)
+				Collectibles.erase(Collectibles.begin() + i);
+		}
+
 		caméra->Update(ElapsedTime, timerStart);
 
-		collects->Update(missile);
+		//collects->Update(missile);
 
 		hud->Update(caméra->GetCameraCenter(), caméra->GetSizeCamera(), Player1->GetPos(), Player2->GetPos());
 
@@ -128,15 +140,23 @@ void Jeu::Display()
 	m_actualWindow->setView(*caméra->GetCamera());
 	map->Display();
 
-	collects->Display();
+	//collects->Display();
 	Player2->Display(m_actualWindow);
 	Player1->Display(m_actualWindow);
 
-	if (Player1->newMissile != NULL)
+	if (Player1->CollectibleUsed() == true)
+		std::cout << Player1->GetCollectID() << std::endl;
+
+	for (int i = 0; i < Collectibles.size(); i++)
+	{
+		Collectibles[i]->Display(m_actualWindow);
+	}
+
+	/*if (Player1->newMissile != NULL)
 		m_actualWindow->draw(Player1->newMissile->GetMissile());
 
 	if (Player2->newMissile != NULL)
-		m_actualWindow->draw(Player2->newMissile->GetMissile());
+		m_actualWindow->draw(Player2->newMissile->GetMissile());*/
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	hud->Display(Player1->HasCollectible, Player2->HasCollectible);

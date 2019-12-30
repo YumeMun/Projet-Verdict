@@ -25,4 +25,14 @@ namespace e_Enum
 		PLAYERSELECTOR,
 		LEVELFINISHED
 	};
+
+	enum e_Collects
+	{
+		ROCKET = 0,
+		SHOCKWAVE,
+		OILFLAKE,
+		LEVITATION,
+		SWAP,
+		BUMPER
+	};
 }

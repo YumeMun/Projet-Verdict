@@ -16,24 +16,28 @@ public:
 	bool IsAlive();
 	void Animations();
 
+	sf::Sprite GetSprite();
+
 	sf::Vector2f GetPos();
 
 	bool Hasfinished;
 	sf::Clock PlayerFirstTimer;
 	int Score;
 
-	void MissileCollide();
+	//void MissileCollide();
 
 	bool CollectibleCollide(Map* _Map);
-	void UseCollectible();
+	int GetCollectID();
+	void LauchCollectible();
+	bool CollectibleUsed();
 	bool HasCollectible;
 
-	Missile* newMissile;
+	//Missile* newMissile;
 
 private:
-	bool KeyPress = false, Alive = true, Jump = true, Boost = false;
+	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
 
-	int ID = 0, Player_Direction = 0, Missile_Direction = 0;;
+	int ID = 0, Player_Direction = 0, Missile_Direction = 0, CollectID = 0;
 
 	sf::Clock AnimClock;
 	bool StartAnim = false;
