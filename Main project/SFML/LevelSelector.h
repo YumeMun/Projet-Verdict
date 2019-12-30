@@ -14,7 +14,7 @@ public:
 private:
 	sf::RectangleShape m_shape;
 	std::vector<sf::RectangleShape> m_LevelSelector;
-	int m_NbLevel;
+	int FilesNumber;
 	int m_MenuChoice = 1;
 	sf::Clock m_Clock;
 	bool LeftPressed = false;
@@ -22,4 +22,10 @@ private:
 	sf::Text m_Level;
 
 	sf::Sprite spBackground;
+
+	sf::Text LevelNameText[100];
+	std::string LevelName[100];
+
+	void LoadLevels();
+	std::string ObjSeparator;
 };

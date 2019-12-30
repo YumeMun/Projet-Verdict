@@ -610,7 +610,8 @@ void LevelEditor::ControllerManager()
 		{
 			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
 			{
-				Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
+				if (hud->Selection != 36 && hud->Selection != 37 && hud->Selection != 38)
+					Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
 
 				Select = 2;
 
@@ -619,16 +620,44 @@ void LevelEditor::ControllerManager()
 					Tableau[(int)CasePos.y][(int)CasePos.x] = 28;
 					for (int i = CasePos.y; i < 33; i++)
 					{
-						Tableau[(int)i+1][(int)CasePos.x] = 43;
+						Tableau[(int)i + 1][(int)CasePos.x] = 43;
 					}
 				}
-
-				if (hud->Selection == 29)
+				else if (hud->Selection == 29)
 				{
 					Tableau[(int)CasePos.y][(int)CasePos.x] = 29;
 					for (int i = CasePos.y; i > 0; i--)
 					{
-						Tableau[(int)i-1][(int)CasePos.x] = 43;
+						Tableau[(int)i - 1][(int)CasePos.x] = 43;
+					}
+				}
+				else if (hud->Selection == 36)
+				{
+					if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 0)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 36;
+						Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 44;
+						Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 44;
+						Tableau[(int)CasePos.y][(int)CasePos.x + 3] = 44;
+					}
+				}
+				else if (hud->Selection == 37)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 0)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 37;
+						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 44;
+						Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 44;
+						Tableau[(int)CasePos.y + 3][(int)CasePos.x] = 44;
+					}
+				}
+				else if (hud->Selection == 38)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 38;
+						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 45;
+						Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 45;
 					}
 				}
 			}
