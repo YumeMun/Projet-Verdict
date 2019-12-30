@@ -7,7 +7,7 @@ Oilflake::Oilflake(int _ID, sf::Vector2f _Pos)
 
 	spOil.setTexture(*ResourceManager::Instance()->GetTexture("OilFlake"));
 
-	spOil.setTextureRect(sf::IntRect(0, 0, 192, 37));
+	spOil.setTextureRect(sf::IntRect(0, 0, 200, 40));
 
 	spOil.setPosition(_Pos);
 }
@@ -52,7 +52,7 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, float _Elapsed)
 		}
 	}
 
-	spOil.setTextureRect(sf::IntRect(192 * AnimFrameIndex, 0, 192, 37));
+	spOil.setTextureRect(sf::IntRect(200 * AnimFrameIndex, 0, 200, 40));
 }
 
 void Oilflake::Display(sf::RenderWindow* _Window)
