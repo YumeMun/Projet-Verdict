@@ -265,6 +265,31 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Huile_test.png", "OilFlake"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Level_select_background.png", "Background sélection niveau"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("LevelSelection_button.png", "Selection niveau bouton"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("LevelSelection_flechedroite.png", "Selection niveau flèche droite"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("LevelSelection_flechegauche.png", "Selection niveau flèche gauche"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Touches_sélection.png", "Touches sélection"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé

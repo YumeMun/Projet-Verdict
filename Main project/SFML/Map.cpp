@@ -37,7 +37,7 @@ Map::Map()
 
 	std::ifstream LoadFile;
 
-	LoadFile.open("Ressources/Sauvegardes/Niveau1.txt", std::ios_base::in);
+	LoadFile.open("Ressources/Sauvegardes/0Niveau1.txt", std::ios_base::in);
 
 	LoadFile >> Size_X;
 	LoadFile >> Size_Y;
