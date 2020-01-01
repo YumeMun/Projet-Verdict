@@ -296,7 +296,7 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if (Tableau[y][x] == 8 && x > (_Pos.x / 64))
+			if (Tableau[y][x] == 26 && x > (_Pos.x / 64))
 			{
 				XList.push_back(x);
 			}
@@ -307,10 +307,13 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int y = 0; y < XList.size(); y++)
 		{
-			if (XList[i] < XList[y])
-				XList.erase(XList.begin() + y);
-			else
-				XList.erase(XList.begin() + i);
+			if (XList.size() >= 2)
+			{
+				if (XList[i] < XList[y])
+					XList.erase(XList.begin() + y);
+				else
+					XList.erase(XList.begin() + i);
+			}
 		}
 	}
 
@@ -318,7 +321,7 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int x = 0; x < XList[0] + 1; x++)
 		{
-			if (Tableau[y][x] == 8 && x == XList[0] && x > (_Pos.x / 64))
+			if (Tableau[y][x] == 26 && x == XList[0] && x > (_Pos.x / 64))
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;

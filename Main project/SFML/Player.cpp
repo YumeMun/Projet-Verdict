@@ -104,14 +104,15 @@ void Player::Controls(Map* _Map)
 			KeyPress = false;
 	}
 
-	if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 1)
+	for (int i = 1; i < 6; i++)
 	{
-		spPlayer.setPosition(sf::Vector2f(GetPos().x, _Map->GetNextTile(1, GetPos()).y - Player_ColliderLimit.y));
+		if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == i)
+		{
+			spPlayer.setPosition(sf::Vector2f(GetPos().x, _Map->GetNextTile(i, GetPos()).y - Player_ColliderLimit.y));
+		}
 	}
 
-	if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 1 ||
-		_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 2 ||
-		_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 3)
+	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6)
 	{
 		Jump = false;
 	}
@@ -121,7 +122,7 @@ void Player::Controls(Map* _Map)
 		Player_Movement.y += GRAVITY * GRAVITYFACTOR;
 		Jump = true;
 	}
-	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 1 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 4))
+	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6))
 	{
 		if (Player_Movement.y > 0)
 		{
@@ -132,7 +133,7 @@ void Player::Controls(Map* _Map)
 		if (Player_SlopVector.y != 0)
 			Player_SlopVector.y = 0;
 
-		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 4 && Boost == false)
+		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 11 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
@@ -142,7 +143,7 @@ void Player::Controls(Map* _Map)
 	if (BoostClock.getElapsedTime().asSeconds() >= 2)
 		Boost = false;
 
-	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit.y / 2) == 1)
+	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit.y / 2) != 0)
 	{
 		if (Player_Movement.y < 0)
 			Player_Movement.y = 0;
@@ -155,12 +156,13 @@ void Player::Controls(Map* _Map)
 	{
 		spPlayer.setRotation(0);
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 1 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 7)
+		if ((_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6) ||
+			(_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))
 		{
 			Player_Movement.x = 0;
 
-			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + 20) == 7)
-				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + 20, 0);
+			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
 		}
 		else
 		{
@@ -177,11 +179,11 @@ void Player::Controls(Map* _Map)
 			}
 		}
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 3 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 6)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 12)
 		{
 			Player_Direction = UP;
 		}
-		else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 2 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 5)
+		else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 13)
 		{
 			Player_Direction = DOWN;
 		}
@@ -193,7 +195,7 @@ void Player::Controls(Map* _Map)
 		//Player_Movement.x = SPEED;
 		Player_SlopVector.y = -Player_Movement.x;
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 6 && Boost == false)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 12 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
@@ -209,13 +211,13 @@ void Player::Controls(Map* _Map)
 		Player_Movement.x = SPEED;
 		Player_SlopVector.y = Player_Movement.x;
 
-		if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 6 && Boost == false)
+		if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 13 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
 		}
 
-		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 1)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) <= 6)
 			Player_Direction = NONE;
 	}
 }
@@ -229,116 +231,116 @@ void Player::Animations()
 {
 	if (!isJumping)
 	{
-			if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
+		if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
+		{
+			isSwitchingBack = true;
+			//isSpeedMax = false;
+			AnimClock.restart();
+		}
+		else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
+		{
+			isSwitching = true;
+			//isSpeedMax = true;
+			AnimClock.restart();
+		}
+
+		if (Player_Movement.x >= SPEED)
+		{
+			isSpeedMax = true;
+		}
+		else
+		{
+			isSpeedMax = false;
+		}
+
+		if (isSpeedMax)
+		{
+			if (isSwitching)
 			{
-				isSwitchingBack = true;
-				//isSpeedMax = false;
-				AnimClock.restart();
-			}
-			else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
-			{
-				isSwitching = true;
-				//isSpeedMax = true;
-				AnimClock.restart();
-			}
-			
-			if (Player_Movement.x >= SPEED)
-			{
-				isSpeedMax = true;
+				FrameIndex = 0;
+				PlayerRect.left = 0;
+				PlayerRect.top = 54;
+				spPlayer.setTextureRect(PlayerRect);
 			}
 			else
 			{
-				isSpeedMax = false;
-			}
-
-			if (isSpeedMax)
-			{
-				if (isSwitching)
+				if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 				{
-					FrameIndex = 0;
-					PlayerRect.left = 0;
-					PlayerRect.top = 54;
-					spPlayer.setTextureRect(PlayerRect);
-				}
-				else
-				{
-					if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+					if (FrameIndex < 5)
+						FrameIndex++;
+					else
 					{
-						if (FrameIndex < 5)
-							FrameIndex++;
-						else
-						{
-							FrameIndex = 0;
-							isSwitching = false;
-						}
-
-						PlayerRect.left = FrameIndex * PlayerRect.width;
-						spPlayer.setTextureRect(PlayerRect);
-						AnimClock.restart();
+						FrameIndex = 0;
+						isSwitching = false;
 					}
+
+					PlayerRect.left = FrameIndex * PlayerRect.width;
+					spPlayer.setTextureRect(PlayerRect);
+					AnimClock.restart();
 				}
+			}
+		}
+		else
+		{
+			if (!isSwitchingBack)
+			{
+				FrameIndex = 0;
+				PlayerRect.left = 0;
+				PlayerRect.top = 0;
+				spPlayer.setTextureRect(PlayerRect);
 			}
 			else
 			{
-				if (!isSwitchingBack)
+				if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 				{
-					FrameIndex = 0;
-					PlayerRect.left = 0;
-					PlayerRect.top = 0;
-					spPlayer.setTextureRect(PlayerRect);
-				}
-				else
-				{
-					if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+					if (FrameIndex < 4)
+						FrameIndex++;
+					else
 					{
-						if (FrameIndex < 4)
-							FrameIndex++;
-						else
-						{
-							FrameIndex = 0;
-							isSwitchingBack = false;
-						}
-
-						PlayerRect.left = FrameIndex * PlayerRect.width;
-						spPlayer.setTextureRect(PlayerRect);
-						AnimClock.restart();
+						FrameIndex = 0;
+						isSwitchingBack = false;
 					}
+
+					PlayerRect.left = FrameIndex * PlayerRect.width;
+					spPlayer.setTextureRect(PlayerRect);
+					AnimClock.restart();
 				}
 			}
+		}
 	}
 	else
 	{
-			if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
+		if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
+		{
+			isSwitchingBack = true;
+		}
+		else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
+		{
+			isSwitching = true;
+		}
+
+		PlayerRect.top = PlayerRect.height * 4;
+		PlayerRect.top = PlayerRect.height * 4;
+
+		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+		{
+			if (FrameIndex < 12)
+				FrameIndex++;
+			else
 			{
-				isSwitchingBack = true;
+				FrameIndex = 0;
+				PlayerRect.top = 1 * PlayerRect.height;
+				StartAnim = true;
+				isJumping = false;
 			}
-			else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
-			{
-				isSwitching = true;
-			}
 
-			PlayerRect.top = PlayerRect.height*4;
-			PlayerRect.top = PlayerRect.height * 4;
+			PlayerRect.left = FrameIndex * PlayerRect.width;
+			spPlayer.setTextureRect(PlayerRect);
 
-			if (AnimClock.getElapsedTime().asMilliseconds() > 100)
-			{
-				if (FrameIndex < 12)
-					FrameIndex++;
-				else
-				{
-					FrameIndex = 0;
-					PlayerRect.top = 1 * PlayerRect.height;
-					StartAnim = true;
-					isJumping = false;
-				}
-
-				PlayerRect.left = FrameIndex * PlayerRect.width;
-				spPlayer.setTextureRect(PlayerRect);
-
-				AnimClock.restart();
-			}
+			AnimClock.restart();
+		}
 	}
-		lastFrameSpeed = Player_Movement.x;
+	lastFrameSpeed = Player_Movement.x;
 }
 
 sf::Sprite Player::GetSprite()
@@ -374,7 +376,7 @@ bool Player::CollectibleCollide(Map* _Map)
 {
 	srand(time(NULL));
 
-	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 9)
+	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 23)
 	{
 		_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
 
