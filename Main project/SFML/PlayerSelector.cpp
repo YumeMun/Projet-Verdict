@@ -4,6 +4,10 @@
 
 PlayerSelector::PlayerSelector()
 {
+}
+
+PlayerSelector::PlayerSelector(std::string _LevelName)
+{
 	std::cout << "PlayerSelector constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
@@ -14,6 +18,8 @@ PlayerSelector::PlayerSelector()
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
+
+	LevelName = _LevelName;
 }
 
 PlayerSelector::~PlayerSelector()
@@ -150,12 +156,11 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		if (sf::Joystick::isButtonPressed(0, 7))
 		{
 			isGameStart = true;
-			//GameManager::Instance()->LoadScene(e_Enum::JEU);
 		}
 
 		if (isGameStart && transition->GetIsTransitionDone())
 		{
-			GameManager::Instance()->LoadScene(e_Enum::JEU);
+			GameManager::Instance()->m_ActualScene = new Jeu(LevelName);
 			isGameStart = false;
 		}
 	}

@@ -6,6 +6,7 @@ class Map
 {
 public:
 	Map();
+	Map(std::string _LevelName);
 	~Map();
 
 	void Update(float _Elapsed, Caméra* _Cam);
@@ -25,6 +26,7 @@ private:
 
 	int Size_X;
 	int Size_Y;
+	int SelectionBackground;
 	int Tableau[34][1200];
 	sf::Vector2f CasePos;
 	sf::Sprite Plan[4], Plan2[4], Plan1[2];

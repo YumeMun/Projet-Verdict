@@ -140,7 +140,7 @@ void LevelSelector::EventManager(sf::Event p_pollingEvent)
 
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
-			GameManager::Instance()->LoadScene(e_Enum::e_Scene::PLAYERSELECTOR);
+			GameManager::Instance()->m_ActualScene = new PlayerSelector(LevelName[m_MenuChoice - 1]);
 		}
 		else if (sf::Joystick::isButtonPressed(0, 1))
 		{
