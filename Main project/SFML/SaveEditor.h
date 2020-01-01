@@ -52,6 +52,11 @@ private:
 	sf::Text PopUpText[3];
 	int SelectionPopUp = 1;
 	sf::Clock SelectionTimer;
+
+	void LoadLevels();
+	std::string ObjSeparator;
+	std::string LoadLevelNames[100];
+	int FilesNumber = 0;
 };
 
 enum Keys

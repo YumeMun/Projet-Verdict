@@ -5,6 +5,10 @@
 
 Map::Map()
 {
+}
+
+Map::Map(std::string _LevelName)
+{
 	std::cout << "Map constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
@@ -35,15 +39,19 @@ Map::Map()
 	Collectible.setRadius(30);
 	Collectible.setFillColor(sf::Color::Green);
 
+	std::cout << _LevelName << std::endl;
+
 	std::ifstream LoadFile;
 
-	LoadFile.open("Ressources/Sauvegardes/Niveau1.txt", std::ios_base::in);
+	if (_LevelName == "Niveau1" || _LevelName == "Niveau2")
+		LoadFile.open("Ressources/Sauvegardes/0" + _LevelName + ".txt", std::ios_base::in);
+	else
+		LoadFile.open("Ressources/Sauvegardes/" + _LevelName + ".txt", std::ios_base::in);
 
 	LoadFile >> Size_X;
 	LoadFile >> Size_Y;
+	LoadFile >> SelectionBackground;
 
-	Size_X = (Size_X / 64) + 1;
-	Size_Y = (Size_Y / 64) + 1;
 
 	for (int y = 0; y < Size_Y; y++)
 	{
@@ -60,7 +68,7 @@ Map::~Map()
 {
 }
 
-void Map::Update(float _Elapsed, Caméra* _Cam)
+void Map::Update(float _Elapsed, Caméra * _Cam)
 {
 	for (int i = 1; i < 4; i++)
 	{

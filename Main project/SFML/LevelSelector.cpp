@@ -26,9 +26,13 @@ void LevelSelector::Update()
 		m_LevelSelector[m_MenuChoice - 1].move(50, 0);
 		m_LevelSelector[m_MenuChoice].move(50, 0);
 
-		if (m_LevelSelector[m_MenuChoice - 1].getPosition().x >= 560)
+		LevelNameText[m_MenuChoice - 1].move(50, 0);
+		LevelNameText[m_MenuChoice].move(50, 0);
+
+		if (m_LevelSelector[m_MenuChoice - 1].getPosition().x >= 960)
 		{
-			m_LevelSelector[m_MenuChoice - 1].setPosition(560, 140);
+			m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
+			LevelNameText[m_MenuChoice - 1].setPosition(540, 120);
 			LeftPressed = false;
 		}
 	}
@@ -38,9 +42,13 @@ void LevelSelector::Update()
 		m_LevelSelector[m_MenuChoice - 1].move(-50, 0);
 		m_LevelSelector[m_MenuChoice - 2].move(-50, 0);
 
-		if (m_LevelSelector[m_MenuChoice - 1].getPosition().x <= 560)
+		LevelNameText[m_MenuChoice - 1].move(-50, 0);
+		LevelNameText[m_MenuChoice - 2].move(-50, 0);
+
+		if (m_LevelSelector[m_MenuChoice - 1].getPosition().x <= 960)
 		{
-			m_LevelSelector[m_MenuChoice - 1].setPosition(560, 140);
+			m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
+			LevelNameText[m_MenuChoice - 1].setPosition(540, 120);
 			RightPressed = false;
 		}
 	}
@@ -49,13 +57,29 @@ void LevelSelector::Update()
 void LevelSelector::Display()
 {
 	m_actualWindow->draw(spBackground);
+	m_actualWindow->draw(spButton);
 
 	for (int i = 0; i < m_LevelSelector.size(); i++)
 	{
 		m_actualWindow->draw(m_LevelSelector[i]);
 
-		if (i == m_MenuChoice - 1)
-			m_actualWindow->draw(LevelNameText[i]);
+		if(LevelName[i] == "0Niveau1" || LevelName[i] == "0Niveau2")
+		LevelName[i] = LevelName[i].substr(LevelName[i].find_first_not_of('0'));
+
+		LevelNameText[i].setString(LevelName[i]);
+		m_actualWindow->draw(LevelNameText[i]);
+	}
+
+	if (RightPressed == false && LeftPressed == false)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			if (m_MenuChoice != FilesNumber)
+				m_actualWindow->draw(spFlèches[0]);
+
+			if (m_MenuChoice != 1)
+				m_actualWindow->draw(spFlèches[1]);
+		}
 	}
 
 	m_actualWindow->draw(spBoutonRetour);
@@ -66,16 +90,28 @@ void LevelSelector::Setup()
 	int x = 0;
 	for (int i = 1; i <= FilesNumber; i++)
 	{
-		std::cout << "ok" << std::endl;
-		m_shape.setSize({ 800, 800 });
-		m_shape.setFillColor(sf::Color::White);
-		m_shape.setPosition(560 + x, 140);
-		m_LevelSelector.push_back(m_shape);
+		spLevelSelection.setTexture(*ResourceManager::Instance()->GetTexture("Background sélection niveau"));
+		spLevelSelection.setOrigin(spLevelSelection.getGlobalBounds().width / 2, spLevelSelection.getGlobalBounds().height / 2);
+		spLevelSelection.setPosition(960 + x, 540);
+		m_LevelSelector.push_back(spLevelSelection);
+
+		LevelNameText[i - 1].setPosition(540 + x, 120);
+
 		x = 1360;
 	}
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
+
+	spButton.setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau bouton"));
+	spButton.setOrigin(spButton.getGlobalBounds().width / 2, spButton.getGlobalBounds().height / 2);
+	spButton.setPosition(900, 150);
+
+	spFlèches[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche droite"));
+	spFlèches[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
+
+	spFlèches[0].setPosition(1500, 500);
+	spFlèches[1].setPosition(350, 500);
 }
 
 void LevelSelector::EventManager(sf::Event p_pollingEvent)
@@ -104,7 +140,7 @@ void LevelSelector::EventManager(sf::Event p_pollingEvent)
 
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
-			GameManager::Instance()->LoadScene(e_Enum::e_Scene::PLAYERSELECTOR);
+			GameManager::Instance()->m_ActualScene = new PlayerSelector(LevelName[m_MenuChoice - 1]);
 		}
 		else if (sf::Joystick::isButtonPressed(0, 1))
 		{
@@ -131,7 +167,7 @@ void LevelSelector::LoadLevels()
 
 	LoadNames.erase(0, 3);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		pos = LoadNames.find(ObjSeparator);
 		data = LoadNames.substr(0, pos);
@@ -139,17 +175,13 @@ void LevelSelector::LoadLevels()
 		LoadNames.erase(0, pos + ObjSeparator.length());
 
 		LevelNameText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
-		LevelNameText[i].setFillColor(sf::Color::Black);
-		LevelNameText[i].setCharacterSize(40);
+		LevelNameText[i].setFillColor(sf::Color::White);
+		LevelNameText[i].setCharacterSize(50);
 		LevelNameText[i].setString(LevelName[i]);
-		LevelNameText[i].setPosition(900, 960);
 
 		if (LevelName[i] != "")
 		{
 			FilesNumber++;
 		}
-
-		std::cout << "Nom du fichier : " << LevelName[i] << std::endl;
-		std::cout << "Nombre de fichiers : " << FilesNumber << std::endl;
 	}
 }

@@ -35,6 +35,7 @@ private:
 
 public:
 	Jeu();
+	Jeu(std::string _LevelName);
 	~Jeu();
 	virtual void Update();
 	virtual void Display();

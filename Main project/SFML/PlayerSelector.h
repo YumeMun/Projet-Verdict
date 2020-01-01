@@ -6,6 +6,7 @@ class PlayerSelector : public Scene
 {
 public:
 	PlayerSelector();
+	PlayerSelector(std::string _LevelName);
 	~PlayerSelector();
 	void Setup();
 	virtual void Update();
@@ -28,4 +29,6 @@ private:
 	bool isGameStart = false;
 
 	sf::Sprite spBackground;
+
+	std::string LevelName;
 };

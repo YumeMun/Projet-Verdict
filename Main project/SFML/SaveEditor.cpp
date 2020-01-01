@@ -2,6 +2,7 @@
 #include "ResourceManager.h"
 #include "GameManager.h"
 #include <fstream>
+#include "dirent.h"
 
 SaveEditor::SaveEditor()
 {
@@ -104,6 +105,9 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 		PopUpText[2].setCharacterSize(35);
 		PopUpText[2].setPosition(1050, 570);
 	}
+
+	ObjSeparator = ".txt";
+	LoadLevels();
 }
 
 SaveEditor::~SaveEditor()
@@ -161,6 +165,18 @@ void SaveEditor::Update()
 		if (SelectionTimer.getElapsedTime().asSeconds() > 1.5)
 		{
 			SaveIt();
+		}
+	}
+
+	if (PopUpActivated == 3)
+	{
+		PopUpText[0].setString("Vous ne pouvez pas utiliser le nom\n		d'un niveau déjà existant");
+		PopUpText[0].setPosition(640, 510);
+
+		if (sf::Joystick::isButtonPressed(0, 0) && SelectionTimer.getElapsedTime().asMilliseconds() > 500)
+		{
+			PopUpActivated = 0;
+			SelectionTimer.restart();
 		}
 	}
 }
@@ -708,9 +724,22 @@ void SaveEditor::VirtualKeyboard()
 		}
 		else if (Keyboard[2][10] == ENTER_SELECTED && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 		{
-			PopUpActivated = 1;
-			SelectionTimer.restart();
-			//SaveIt();
+			bool SameName = false;
+
+			for (int i = 0; i < FilesNumber; i++)
+			{
+				if (LoadLevelNames[i] == LevelName)
+				{
+					SameName = true;
+					PopUpActivated = 3;
+					SelectionTimer.restart();
+				}
+			}
+			if (SameName == false)
+			{
+				PopUpActivated = 1;
+				SelectionTimer.restart();
+			}
 		}
 
 		else if (Keyboard[0][0] == BASICKEY_SELECTED)
@@ -867,5 +896,37 @@ void SaveEditor::VirtualKeyboard()
 			LevelName += ";";
 
 		clock.restart();
+	}
+}
+
+void SaveEditor::LoadLevels()
+{
+	DIR* rep;
+	std::string LoadNames;
+
+	rep = opendir("Ressources/Sauvegardes");
+	struct dirent* lecture;
+
+	while ((lecture = readdir(rep)))
+	{
+		LoadNames += lecture->d_name;
+	}
+
+	static int pos = 0;
+	std::string data;
+
+	LoadNames.erase(0, 3);
+
+	for (int i = 0; i < 100; i++)
+	{
+		pos = LoadNames.find(ObjSeparator);
+		data = LoadNames.substr(0, pos);
+		LoadLevelNames[i] = data;
+		LoadNames.erase(0, pos + ObjSeparator.length());
+
+		if (LoadLevelNames[i] != "")
+		{
+			FilesNumber++;
+		}
 	}
 }

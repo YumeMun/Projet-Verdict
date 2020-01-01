@@ -4,11 +4,15 @@
 
 Jeu::Jeu()
 {
-	std::cout << "Jeu constructor" << std::endl;
+}
+
+Jeu::Jeu(std::string _LevelName)
+{
+		std::cout << "Jeu constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
-	map = new Map();
+	map = new Map(_LevelName);
 	caméra = new Caméra();
 	hud = new HUD();
 

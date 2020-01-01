@@ -12,8 +12,8 @@ public:
 	virtual void EventManager(sf::Event p_pollingEvent);
 
 private:
-	sf::RectangleShape m_shape;
-	std::vector<sf::RectangleShape> m_LevelSelector;
+	sf::Sprite spLevelSelection;
+	std::vector<sf::Sprite> m_LevelSelector;
 	int FilesNumber;
 	int m_MenuChoice = 1;
 	sf::Clock m_Clock;
@@ -22,6 +22,8 @@ private:
 	sf::Text m_Level;
 
 	sf::Sprite spBackground;
+	sf::Sprite spButton;
+	sf::Sprite spFlèches[2];
 
 	sf::Text LevelNameText[100];
 	std::string LevelName[100];
