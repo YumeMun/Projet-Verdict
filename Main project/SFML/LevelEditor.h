@@ -6,7 +6,7 @@ class LevelEditor :
 {
 public:
 	LevelEditor();
-	LevelEditor(int _SizeX, int _SizeY, std::string _LevelName);
+	LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _isNewLevel);
 	~LevelEditor();
 
 	virtual void Update();
@@ -16,10 +16,12 @@ public:
 	void ControllerManager();
 
 	void Sauvegarde();
+	void SaveIt();
 	void BackgroundChoice();
 
 private:
 	bool KeyPress = false;
+	bool isNewLevel;
 
 	HudEditor* hud;
 
@@ -30,6 +32,7 @@ private:
 	int Size_X;
 	int Size_Y;
 	std::string Save;
+	std::string LevelName;
 
 	sf::Sprite spSelecterTarget;
 

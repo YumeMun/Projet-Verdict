@@ -8,11 +8,14 @@ LevelEditor::LevelEditor()
 {
 }
 
-LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName)
+LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _isNewLevel)
 {
 	std::cout << "Editeur" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
+
+	LevelName = _LevelName;
+	isNewLevel = _isNewLevel;
 
 	spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur"));
 
@@ -265,6 +268,41 @@ void LevelEditor::Update()
 				}
 				SelectionTimer.restart();
 				PopUpActivated = 0;
+			}
+			else if (SelectionPopUp == 2)
+			{
+				SelectionTimer.restart();
+				PopUpActivated = 0;
+			}
+		}
+	}
+	else if (PopUpActivated == 3)
+	{
+		PopUpText[0].setString("Voulez-vous sauvegarder les modifications ?");
+		PopUpText[0].setPosition(680, 500);
+
+		if (SelectionPopUp == 1)
+		{
+			PopUpText[1].setFillColor(sf::Color{ 255, 156, 0, 255 });
+			PopUpText[2].setFillColor(sf::Color::White);
+		}
+		else if (SelectionPopUp == 2)
+		{
+			PopUpText[1].setFillColor(sf::Color::White);
+			PopUpText[2].setFillColor(sf::Color{ 255, 156, 0, 255 });
+		}
+
+		if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 50)
+			SelectionPopUp = 2;
+		else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
+			SelectionPopUp = 1;
+
+		if (sf::Joystick::isButtonPressed(0, 0))
+		{
+			if (SelectionPopUp == 1)
+			{
+				SaveIt();
+				SelectionTimer.restart();
 			}
 			else if (SelectionPopUp == 2)
 			{
@@ -610,7 +648,27 @@ void LevelEditor::Sauvegarde()
 		Save += "\n";
 	}
 
-	GameManager::Instance()->m_ActualScene = new SaveEditor(Size_X, Size_Y, Save, SelectionBackground);
+	if (isNewLevel == false)
+		GameManager::Instance()->m_ActualScene = new SaveEditor(Size_X, Size_Y, Save, SelectionBackground, false, "");
+
+	else if (isNewLevel == true)
+		PopUpActivated = 3;
+}
+
+void LevelEditor::SaveIt()
+{
+	std::ofstream SaveFile;
+
+	SaveFile.open("Ressources/Sauvegardes/" + LevelName + ".txt", std::ios_base::out);
+
+	SaveFile << Size_X << "\n";
+	SaveFile << Size_Y << "\n";
+	SaveFile << SelectionBackground << "\n";
+	SaveFile << Save;
+
+	SaveFile.close();
+
+	GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPENLEVELEDITOR);
 }
 
 void LevelEditor::BackgroundChoice()

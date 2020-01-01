@@ -8,9 +8,15 @@ SaveEditor::SaveEditor()
 {
 }
 
-SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground)
+SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground, bool _RenameLevel, std::string _LastLevelName)
 {
+	std::cout << "Save constructor" << std::endl;
+
 	m_actualWindow = GameManager::Instance()->GetWindow();
+
+	RenameLevel = _RenameLevel;
+	LevelName = _LastLevelName;
+	LastLevelName = _LastLevelName;
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
@@ -27,6 +33,40 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 	Size_X = _SizeX;
 	Size_Y = _SizeY;
 	SelectionBackground = _SelectionBackground;
+
+	if (RenameLevel == true)
+	{
+		std::ifstream LoadFile;
+
+		LoadFile.open("Ressources/Sauvegardes/" + LastLevelName + ".txt", std::ios_base::in);
+
+		LoadFile >> Size_X;
+		LoadFile >> Size_Y;
+		LoadFile >> SelectionBackground;
+		
+		for (int y = 0; y < Size_Y; y++)
+		{
+			for (int x = 0; x < Size_X; x++)
+			{
+				LoadFile >> Tableau[y][x];
+			}
+		}
+
+		LoadFile.close();
+
+		std::string Temp = "Ressources/Sauvegardes/" + LastLevelName + ".txt";
+		remove(Temp.c_str());
+
+		for (int y = 0; y < Size_Y; y++)
+		{
+			for (int x = 0; x < Size_X; x++)
+			{
+				Save += std::to_string(Tableau[y][x]) + " ";
+			}
+
+			Save += "\n";
+		}
+	}
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -216,17 +256,27 @@ void SaveEditor::Display()
 
 void SaveEditor::EventManager(sf::Event p_pollingEvent)
 {
-	if (sf::Joystick::isButtonPressed(0, 1))
+	if (RenameLevel == false)
 	{
-		std::ofstream TempSave;
+		if (sf::Joystick::isButtonPressed(0, 1))
+		{
+			std::ofstream TempSave;
 
-		TempSave.open("Ressources/Sauvegardes/TempSave.txt", std::ios_base::out);
+			TempSave.open("Ressources/Sauvegardes/TempSave.txt", std::ios_base::out);
 
-		TempSave << Save;
+			TempSave << Save;
 
-		TempSave.close();
+			TempSave.close();
 
-		GameManager::Instance()->m_ActualScene = new LevelEditor(Size_X, Size_Y, "");
+			GameManager::Instance()->m_ActualScene = new LevelEditor(Size_X, Size_Y, "", false);
+		}
+	}
+	else if (RenameLevel == true)
+	{
+		if (sf::Joystick::isButtonPressed(0, 1))
+		{
+			GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPENLEVELEDITOR);
+		}
 	}
 }
 
@@ -243,7 +293,7 @@ void SaveEditor::SaveIt()
 
 	SaveFile.close();
 
-	GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
+	GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPENLEVELEDITOR);
 }
 
 void SaveEditor::VirtualKeyboard()

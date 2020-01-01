@@ -152,7 +152,7 @@ void OpenLevelEditor::Setup()
 
 	spTouches.setTexture(*ResourceManager::Instance()->GetTexture("Touches sélection"));
 	spTouches.setOrigin(spTouches.getGlobalBounds().width / 2, spTouches.getGlobalBounds().height / 2);
-	spTouches.setPosition(720, 700);
+	spTouches.setPosition(720, 650);
 
 	int x = 0;
 	for (int i = 1; i <= FilesNumber; i++)
@@ -198,11 +198,15 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 
 				if (sf::Joystick::isButtonPressed(0, 0))
 				{
-					GameManager::Instance()->m_ActualScene = new LevelEditor(0, 0, LevelName[m_MenuChoice + 1]);
+					GameManager::Instance()->m_ActualScene = new LevelEditor(0, 0, LevelName[m_MenuChoice + 1], true);
 				}
 				else if (sf::Joystick::isButtonPressed(0, 2))
 				{
 					PopUpActivated = 1;
+				}
+				else if (sf::Joystick::isButtonPressed(0, 3))
+				{
+					GameManager::Instance()->m_ActualScene = new SaveEditor(0, 0, " ", 1, true, LevelName[m_MenuChoice + 1]);
 				}
 			}
 		}

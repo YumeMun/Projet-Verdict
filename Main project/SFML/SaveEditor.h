@@ -5,7 +5,7 @@ class SaveEditor : public Scene
 {
 public:
 	SaveEditor();
-	SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground);
+	SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground, bool _RenameLevel, std::string _LastLevelName);
 	~SaveEditor();
 
 	virtual void Update();
@@ -15,6 +15,9 @@ public:
 	void SaveIt();
 
 private:
+	bool RenameLevel;
+	int Tableau[34][1200];
+
 	void VirtualKeyboard();
 
 	sf::Sprite spBackground;
@@ -22,6 +25,7 @@ private:
 	sf::Text SaveText;
 	sf::Text NameText;
 
+	std::string LastLevelName;
 	std::string LevelName;
 	std::string Save;
 	int Size_X;
