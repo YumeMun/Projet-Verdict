@@ -18,6 +18,9 @@ Player::Player(int _ID, sf::Vector2f _Pos)
 	spPlayer.setPosition(_Pos);
 	spPlayer.setScale(sf::Vector2f{ 1.7, 1.7 });
 
+	Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
+	Player_ColliderLimit.y = spPlayer.getOrigin().y * 2;
+
 	Player_Movement.x = SPEED;
 
 	HasCollectible = false;
@@ -101,27 +104,35 @@ void Player::Controls(Map* _Map)
 			KeyPress = false;
 	}
 
+	if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 1)
+	{
+		spPlayer.setPosition(sf::Vector2f(GetPos().x, _Map->GetNextTile(1, GetPos()).y - Player_ColliderLimit.y));
+	}
+
 	if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 1 ||
 		_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 2 ||
-		_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 3)
+		_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 3)
 	{
 		Jump = false;
 	}
 
-	if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 0 || _Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 8)
+	if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 0 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8) && Player_Direction != UP)
 	{
 		Player_Movement.y += GRAVITY * GRAVITYFACTOR;
 		Jump = true;
 	}
-	else if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 1 || _Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 4)
+	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 1 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 4))
 	{
 		if (Player_Movement.y > 0)
+		{
 			Player_Movement.y = 0;
+			Jump = false;
+		}
 
 		if (Player_SlopVector.y != 0)
 			Player_SlopVector.y = 0;
 
-		if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 4 && Boost == false)
+		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 4 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
@@ -131,7 +142,7 @@ void Player::Controls(Map* _Map)
 	if (BoostClock.getElapsedTime().asSeconds() >= 2)
 		Boost = false;
 
-	if (_Map->GetTile(GetPos().x, GetPos().y - spPlayer.getOrigin().y) == 1)
+	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit.y / 2) == 1)
 	{
 		if (Player_Movement.y < 0)
 			Player_Movement.y = 0;
@@ -144,12 +155,12 @@ void Player::Controls(Map* _Map)
 	{
 		spPlayer.setRotation(0);
 
-		if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 1 || _Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 7)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 1 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 7)
 		{
 			Player_Movement.x = 0;
 
-			if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y + 20) == 7)
-				_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y + 20, 0);
+			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + 20) == 7)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + 20, 0);
 		}
 		else
 		{
@@ -166,11 +177,11 @@ void Player::Controls(Map* _Map)
 			}
 		}
 
-		if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 3)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 3 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 6)
 		{
 			Player_Direction = UP;
 		}
-		else if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 2)
+		else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 2 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 5)
 		{
 			Player_Direction = DOWN;
 		}
@@ -179,16 +190,16 @@ void Player::Controls(Map* _Map)
 	{
 		spPlayer.setRotation(315);
 
-		Player_Movement.x = SPEED;
+		//Player_Movement.x = SPEED;
 		Player_SlopVector.y = -Player_Movement.x;
 
-		if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y + spPlayer.getOrigin().y) == 6 && Boost == false)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 6 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
 		}
 
-		if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y + spPlayer.getOrigin().y) == 0)
+		if (_Map->GetTile(GetPos().x + 200, GetPos().y + 100) == 0)
 			Player_Direction = NONE;
 	}
 	else if (Player_Direction == DOWN)
@@ -198,13 +209,13 @@ void Player::Controls(Map* _Map)
 		Player_Movement.x = SPEED;
 		Player_SlopVector.y = Player_Movement.x;
 
-		if (_Map->GetTile(GetPos().x - spPlayer.getOrigin().x, GetPos().y + spPlayer.getOrigin().y) == 6 && Boost == false)
+		if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 6 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
 		}
 
-		if (_Map->GetTile(GetPos().x, GetPos().y + spPlayer.getOrigin().y) == 1)
+		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 1)
 			Player_Direction = NONE;
 	}
 }

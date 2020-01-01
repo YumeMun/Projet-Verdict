@@ -33,6 +33,7 @@ public:
 	void LauchCollectible();
 	void SetCollectID(int _CollectID);
 
+	sf::Vector2f Player_Movement;
 	//Missile* newMissile;
 
 private:
@@ -54,8 +55,8 @@ private:
 	sf::IntRect PlayerRect;
 
 	sf::Vector2f Player_Vector;
-	sf::Vector2f Player_Movement;
 	sf::Vector2f Player_SlopVector;
+	sf::Vector2f Player_ColliderLimit;
 
 	enum _eDirection
 	{
