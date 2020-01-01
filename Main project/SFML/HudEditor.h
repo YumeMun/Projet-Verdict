@@ -19,7 +19,7 @@ private:
 
 	sf::RenderWindow* m_actualWindow;
 
-	sf::Sprite spTile[60];
+	sf::Sprite spTile[30];
 
 	sf::Sprite spTouches[2];
 

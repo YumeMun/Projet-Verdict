@@ -47,7 +47,7 @@ private:
 	sf::Vector2f CasePos;
 	sf::Vector2f SelectCasePos;
 
-	sf::Sprite spTile[60];
+	sf::Sprite spTile[30];
 
 	bool HudDisplay = true;
 	sf::Sprite spInterface;

@@ -29,7 +29,7 @@ HudEditor::HudEditor()
 	spTouches[0].setPosition(10, 45);
 	spTouches[1].setPosition(1770, 45);
 
-	for (int i = 0; i < 60; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
 		spTile[i].setScale(0.8, 0.8);
