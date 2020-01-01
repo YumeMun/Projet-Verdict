@@ -31,6 +31,13 @@ OpenLevelEditor::OpenLevelEditor()
 		PopUpText[2].setPosition(1050, 570);
 	}
 
+	NoFileText.setFont(*ResourceManager::Instance()->GetFont("Font"));
+	NoFileText.setCharacterSize(50);
+	NoFileText.setFillColor(sf::Color::White);
+	NoFileText.setString("	Aucun niveau à charger,\nveuillez créer un nouveau niveau");
+	NoFileText.setOrigin(NoFileText.getGlobalBounds().width / 2, NoFileText.getGlobalBounds().height / 2);
+	NoFileText.setPosition(960, 540);
+
 	Setup();
 }
 
@@ -40,83 +47,92 @@ OpenLevelEditor::~OpenLevelEditor()
 
 void OpenLevelEditor::Update()
 {
-	if (LeftPressed == true)
+	if (FilesNumber != 0)
 	{
-		m_LevelSelector[m_MenuChoice - 1].move(50, 0);
-		m_LevelSelector[m_MenuChoice].move(50, 0);
-
-		LevelNameText[m_MenuChoice + 1].move(50, 0);
-		LevelNameText[m_MenuChoice + 2].move(50, 0);
-
-		if (m_LevelSelector[m_MenuChoice - 1].getPosition().x >= 960)
+		if (LeftPressed == true)
 		{
-			m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
-			LevelNameText[m_MenuChoice + 1].setPosition(540, 120);
-			LeftPressed = false;
+			m_LevelSelector[m_MenuChoice - 1].move(50, 0);
+			m_LevelSelector[m_MenuChoice].move(50, 0);
+
+			LevelNameText[m_MenuChoice + 1].move(50, 0);
+			LevelNameText[m_MenuChoice + 2].move(50, 0);
+
+			if (m_LevelSelector[m_MenuChoice - 1].getPosition().x >= 960)
+			{
+				m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
+				LevelNameText[m_MenuChoice + 1].setPosition(540, 120);
+				LeftPressed = false;
+			}
 		}
-	}
 
-	if (RightPressed == true)
-	{
-		m_LevelSelector[m_MenuChoice - 1].move(-50, 0);
-		m_LevelSelector[m_MenuChoice - 2].move(-50, 0);
-
-		LevelNameText[m_MenuChoice + 1].move(-50, 0);
-		LevelNameText[m_MenuChoice].move(-50, 0);
-
-		if (m_LevelSelector[m_MenuChoice - 1].getPosition().x <= 960)
+		if (RightPressed == true)
 		{
-			m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
-			LevelNameText[m_MenuChoice + 1].setPosition(540, 120);
-			RightPressed = false;
-		}
-	}
+			m_LevelSelector[m_MenuChoice - 1].move(-50, 0);
+			m_LevelSelector[m_MenuChoice - 2].move(-50, 0);
 
-	if (PopUpActivated != 0)
-		PopUp();
+			LevelNameText[m_MenuChoice + 1].move(-50, 0);
+			LevelNameText[m_MenuChoice].move(-50, 0);
+
+			if (m_LevelSelector[m_MenuChoice - 1].getPosition().x <= 960)
+			{
+				m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
+				LevelNameText[m_MenuChoice + 1].setPosition(540, 120);
+				RightPressed = false;
+			}
+		}
+
+		if (PopUpActivated != 0)
+			PopUp();
+	}
 }
 
 void OpenLevelEditor::Display()
 {
 	m_actualWindow->draw(spBackground);
-	m_actualWindow->draw(spButton);
 
-	for (int i = 0; i < m_LevelSelector.size(); i++)
+	if (FilesNumber != 0)
 	{
-		m_actualWindow->draw(m_LevelSelector[i]);
+		m_actualWindow->draw(spButton);
 
-		m_actualWindow->draw(LevelNameText[2 + i]);
-	}
-
-	if (RightPressed == false && LeftPressed == false)
-	{
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < m_LevelSelector.size(); i++)
 		{
-			if (m_MenuChoice != FilesNumber)
-				m_actualWindow->draw(spFlèches[0]);
+			m_actualWindow->draw(m_LevelSelector[i]);
 
-			if (m_MenuChoice != 1)
-				m_actualWindow->draw(spFlèches[1]);
+			m_actualWindow->draw(LevelNameText[2 + i]);
 		}
-		m_actualWindow->draw(spTouches);
+
+		if (RightPressed == false && LeftPressed == false)
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				if (m_MenuChoice != FilesNumber)
+					m_actualWindow->draw(spFlèches[0]);
+
+				if (m_MenuChoice != 1)
+					m_actualWindow->draw(spFlèches[1]);
+			}
+			m_actualWindow->draw(spTouches);
+		}
+
+		if (PopUpActivated != 0)
+		{
+			m_actualWindow->draw(spPopUp);
+
+			for (int i = 0; i < 3; i++)
+			{
+				if (PopUpActivated == 1)
+				{
+					m_actualWindow->draw(PopUpText[i]);
+				}
+				else
+					m_actualWindow->draw(PopUpText[0]);
+			}
+		}
 	}
+	else
+		m_actualWindow->draw(NoFileText);
 
 	m_actualWindow->draw(spBoutonRetour);
-
-	if (PopUpActivated != 0)
-	{
-		m_actualWindow->draw(spPopUp);
-
-		for (int i = 0; i < 3; i++)
-		{
-			if (PopUpActivated == 1)
-			{
-				m_actualWindow->draw(PopUpText[i]);
-			}
-			else
-				m_actualWindow->draw(PopUpText[0]);
-		}
-	}
 }
 
 void OpenLevelEditor::Setup()
@@ -154,43 +170,47 @@ void OpenLevelEditor::Setup()
 
 void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 {
-	if (PopUpActivated == 0 && SelectionTimer.getElapsedTime().asMilliseconds() > 500)
+	if (FilesNumber != 0)
 	{
-		if (m_Clock.getElapsedTime().asSeconds() >= 0.5)
+		if (PopUpActivated == 0 && SelectionTimer.getElapsedTime().asMilliseconds() > 500)
 		{
-			if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -50.f)
+			if (m_Clock.getElapsedTime().asSeconds() >= 0.5)
 			{
-				if (m_MenuChoice != 1)
+				if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -50.f)
 				{
-					m_MenuChoice = m_MenuChoice - 1;
-					LeftPressed = true;
+					if (m_MenuChoice != 1)
+					{
+						m_MenuChoice = m_MenuChoice - 1;
+						LeftPressed = true;
+					}
+
+					m_Clock.restart();
+				}
+				if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 50.f)
+				{
+					if (m_MenuChoice != FilesNumber)
+					{
+						m_MenuChoice = m_MenuChoice + 1;
+						RightPressed = true;
+					}
+					m_Clock.restart();
 				}
 
-				m_Clock.restart();
-			}
-			if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 50.f)
-			{
-				if (m_MenuChoice != FilesNumber)
+				if (sf::Joystick::isButtonPressed(0, 0))
 				{
-					m_MenuChoice = m_MenuChoice + 1;
-					RightPressed = true;
+					GameManager::Instance()->m_ActualScene = new LevelEditor(0, 0, LevelName[m_MenuChoice + 1]);
 				}
-				m_Clock.restart();
-			}
-
-			if (sf::Joystick::isButtonPressed(0, 0))
-			{
-				GameManager::Instance()->m_ActualScene = new LevelEditor(0, 0, LevelName[m_MenuChoice + 1]);
-			}
-			else if (sf::Joystick::isButtonPressed(0, 1))
-			{
-				GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
-			}
-			else if (sf::Joystick::isButtonPressed(0, 2))
-			{
-				PopUpActivated = 1;
+				else if (sf::Joystick::isButtonPressed(0, 2))
+				{
+					PopUpActivated = 1;
+				}
 			}
 		}
+	}
+
+	if (sf::Joystick::isButtonPressed(0, 1))
+	{
+		GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
 	}
 }
 

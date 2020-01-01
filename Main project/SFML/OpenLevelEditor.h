@@ -40,4 +40,6 @@ private:
 	sf::Text PopUpText[3];
 	int SelectionPopUp = 1;
 	sf::Clock SelectionTimer;
+
+	sf::Text NoFileText;
 };
