@@ -30,7 +30,8 @@ private:
 	int Tableau[34][1200];
 	sf::Vector2f CasePos;
 	sf::Sprite Plan[4], Plan2[4], Plan1[2];
-	sf::Sprite spTile[8];
+
+	sf::Sprite spTile[30];
 
 	std::vector<int> XList;
 

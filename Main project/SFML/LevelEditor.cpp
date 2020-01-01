@@ -140,7 +140,7 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 
 	hud = new HudEditor();
 
-	for (int i = 0; i < 60; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
 

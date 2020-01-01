@@ -39,7 +39,43 @@ Map::Map(std::string _LevelName)
 	Collectible.setRadius(30);
 	Collectible.setFillColor(sf::Color::Green);
 
-	std::cout << _LevelName << std::endl;
+	for (int i = 0; i < 30; i++)
+	{
+		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
+
+		spTile[0].setTextureRect(sf::IntRect{ 0 * 64, 0 * 64, 64, 64 });
+		spTile[1].setTextureRect(sf::IntRect{ 1 * 64, 0 * 64, 64, 64 });
+		spTile[2].setTextureRect(sf::IntRect{ 2 * 64, 0 * 64, 64, 64 });
+		spTile[3].setTextureRect(sf::IntRect{ 0 * 64, 1 * 64, 64, 64 });
+		spTile[4].setTextureRect(sf::IntRect{ 1 * 64, 1 * 64, 64, 64 });
+		spTile[5].setTextureRect(sf::IntRect{ 2 * 64, 1 * 64, 64, 64 });
+		spTile[6].setTextureRect(sf::IntRect{ 0 * 64, 3 * 64, 64, 64 });
+		spTile[7].setTextureRect(sf::IntRect{ 1 * 64, 3 * 64, 64, 64 });
+		spTile[8].setTextureRect(sf::IntRect{ 0 * 64, 4 * 64, 64, 64 });
+		spTile[9].setTextureRect(sf::IntRect{ 1 * 64, 4 * 64, 64, 64 });
+		spTile[10].setTextureRect(sf::IntRect{ 0 * 64, 5 * 64, 64, 64 });
+		spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
+		spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
+		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
+		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
+		spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 12 * 64, 64, 64 });
+		spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 64, 64 });
+		spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 13 * 64, 64, 64 });
+		spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 13 * 64, 64, 64 });
+
+		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 17 * 64, 4 * 64, 64 });
+
+		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 18 * 64, 64, 4 * 64 });
+
+		spTile[21].setTextureRect(sf::IntRect{ 0 * 64, 22 * 64, 64, 3 * 64 });
+
+		spTile[22].setTextureRect(sf::IntRect{ 0 * 64, 16 * 64, 64, 64 });
+		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
+		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
+		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });
+
+		spTile[26].setTextureRect(sf::IntRect{ 2 * 64, 12 * 64, 64, 64 });
+	}
 
 	std::ifstream LoadFile;
 
@@ -159,8 +195,80 @@ void Map::Display()
 				m_actualWindow->draw(spTile[7]);
 				break;
 			case 9:
-				Collectible.setPosition(CasePos);
-				m_actualWindow->draw(Collectible);
+				spTile[8].setPosition(CasePos);
+				m_actualWindow->draw(spTile[8]);
+				break;
+			case 10:
+				spTile[9].setPosition(CasePos);
+				m_actualWindow->draw(spTile[9]);
+				break;
+			case 11:
+				spTile[10].setPosition(CasePos);
+				m_actualWindow->draw(spTile[10]);
+				break;
+			case 12:
+				spTile[11].setPosition(CasePos);
+				m_actualWindow->draw(spTile[11]);
+				break;
+			case 13:
+				spTile[12].setPosition(CasePos);
+				m_actualWindow->draw(spTile[12]);
+				break;
+			case 14:
+				spTile[13].setPosition(CasePos);
+				m_actualWindow->draw(spTile[13]);
+				break;
+			case 15:
+				spTile[14].setPosition(CasePos);
+				m_actualWindow->draw(spTile[14]);
+				break;
+			case 16:
+				spTile[15].setPosition(CasePos);
+				m_actualWindow->draw(spTile[15]);
+				break;
+			case 17:
+				spTile[16].setPosition(CasePos);
+				m_actualWindow->draw(spTile[16]);
+				break;
+			case 18:
+				spTile[17].setPosition(CasePos);
+				m_actualWindow->draw(spTile[17]);
+				break;
+			case 19:
+				spTile[18].setPosition(CasePos);
+				m_actualWindow->draw(spTile[18]);
+				break;
+			case 20:
+				spTile[19].setPosition(CasePos);
+				m_actualWindow->draw(spTile[19]);
+				break;
+			case 21:
+				spTile[20].setPosition(CasePos);
+				m_actualWindow->draw(spTile[20]);
+				break;
+			case 22:
+				spTile[21].setPosition(CasePos);
+				m_actualWindow->draw(spTile[21]);
+				break;
+			case 23:
+				spTile[22].setPosition(CasePos);
+				m_actualWindow->draw(spTile[22]);
+				break;
+			case 24:
+				spTile[23].setPosition(CasePos);
+				m_actualWindow->draw(spTile[23]);
+				break;
+			case 25:
+				spTile[24].setPosition(CasePos);
+				m_actualWindow->draw(spTile[24]);
+				break;
+			case 26:
+				spTile[25].setPosition(CasePos);
+				m_actualWindow->draw(spTile[25]);
+				break;
+			case 27:
+				spTile[26].setPosition(CasePos);
+				m_actualWindow->draw(spTile[26]);
 				break;
 			}
 		}
