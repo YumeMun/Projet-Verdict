@@ -36,8 +36,16 @@ private:
 
 	std::vector<int> XList;
 
+<<<<<<< HEAD
 	sf::CircleShape Collectible;
 
 	sf::Clock timerLazer;
 	bool isLazerOn = true;
+=======
+	void AnimTiles();
+	sf::Clock AnimBoostClock;
+	int FrameIndexBoost = 0;
+	sf::Clock AnimCollectClock;
+	int FrameIndexCollect = 0;
+>>>>>>> caf3378206d93b920686bbfc68a7721b54b35e0e
 };

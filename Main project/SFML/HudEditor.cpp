@@ -63,7 +63,7 @@ HudEditor::HudEditor()
 		spTile[21].setScale(0.28, 0.28);
 		spTile[21].setTextureRect(sf::IntRect{ 0 * 64, 22 * 64, 64, 3 * 64 });
 
-		spTile[22].setTextureRect(sf::IntRect{ 0 * 64, 16 * 64, 64, 64 });
+		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 16 * 64, 64, 64 });
 		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
 		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
 		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });

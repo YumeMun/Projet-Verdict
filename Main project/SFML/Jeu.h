@@ -12,6 +12,8 @@ class Jeu :public Scene
 private:
 	float CurrentTime, LastFrameTime, ElapsedTime;
 
+	std::string LevelName;
+
 	Map* map;
 	Caméra* caméra;
 	HUD* hud;
@@ -21,6 +23,8 @@ private:
 
 	//Missile* missile;
 	//Collects* collects;
+
+	sf::Sprite spFirstOrSecond[2];
 
 	sf::Clock Clock;
 	void MenuIG(int ID);
