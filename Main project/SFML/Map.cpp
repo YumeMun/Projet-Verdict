@@ -373,11 +373,11 @@ sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
 	}
 }
 
-<<<<<<< HEAD
 bool Map::GetIsLazerOn()
 {
 	return isLazerOn;
-=======
+}
+
 void Map::AnimTiles()
 {
 	if (AnimBoostClock.getElapsedTime().asMilliseconds() > 50)
@@ -403,5 +403,4 @@ void Map::AnimTiles()
 
 		AnimCollectClock.restart();
 	}
->>>>>>> caf3378206d93b920686bbfc68a7721b54b35e0e
 }
