@@ -33,6 +33,7 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
+	std::cout << "timer trap : " << timerTrapFactor.getElapsedTime().asMilliseconds() << std::endl;
 	if (spPlayer.getPosition().x < 12000 * 64 && spPlayer.getPosition().y < 34 * 64 &&
 		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
 		Controls(_Map);
@@ -156,13 +157,23 @@ void Player::Controls(Map* _Map)
 	{
 		spPlayer.setRotation(0);
 
-		if ((_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6) ||
-			(_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
+			/*|| (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))*/
 		{
 			Player_Movement.x = 0;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
+		{
+			std::cout << "piege hit, speed player avant : " << Player_Movement.x << std::endl;
 
-			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
-				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
+			_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
+
+			timerTrapFactor.restart();
+			SetHitTrap();
+			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
+
+			std::cout << "speed factor : " << trapSpeedFactor << std::endl;
+			std::cout << "speed player apres : " << Player_Movement.x << std::endl;
 		}
 		else
 		{
@@ -424,6 +435,21 @@ void Player::LauchCollectible()
 void Player::SetCollectID(int _CollectID)
 {
 	CollectID = _CollectID;
+}
+
+void Player::SetHitTrap()
+{
+	if (timerTrapFactor.getElapsedTime().asSeconds() < 3)
+	{
+		trapSpeedFactor = 0;
+		trapSpeedFactor = -(-(0.1 * trapHitCount) * ((-3.5) * log(trapHitCount)) - 3);
+		trapHitCount++;
+	}
+	else
+	{
+		trapSpeedFactor = 1;
+		trapHitCount = 1;
+	}
 }
 
 bool Player::CollectibleUsed()

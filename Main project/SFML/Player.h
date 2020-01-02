@@ -36,6 +36,8 @@ public:
 	sf::Vector2f Player_Movement;
 	//Missile* newMissile;
 
+	void SetHitTrap();
+
 private:
 	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
 
@@ -48,6 +50,10 @@ private:
 	bool isSpeedMax = false;
 	bool isSwitching = false;
 	bool isSwitchingBack = false;
+
+	int trapHitCount = 1;
+	float trapSpeedFactor = 1; 
+	sf::Clock timerTrapFactor;
 
 	sf::Clock BoostClock;
 
