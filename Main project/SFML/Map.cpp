@@ -98,6 +98,8 @@ Map::Map(std::string _LevelName)
 	}
 
 	LoadFile.close();
+
+	timerLazer.restart();
 }
 
 Map::~Map()
@@ -106,6 +108,17 @@ Map::~Map()
 
 void Map::Update(float _Elapsed, Caméra * _Cam)
 {
+	if (timerLazer.getElapsedTime().asSeconds() > 1)
+	{
+		timerLazer.restart();
+		if (isLazerOn)
+		{
+			isLazerOn = false;
+		}
+		else
+			isLazerOn = true;
+	}
+
 	for (int i = 1; i < 4; i++)
 	{
 		Plan[i].move((320 + (190 * (i - 1))) * _Elapsed, 0);
@@ -239,16 +252,25 @@ void Map::Display()
 				m_actualWindow->draw(spTile[18]);
 				break;
 			case 20:
-				spTile[19].setPosition(CasePos);
-				m_actualWindow->draw(spTile[19]);
+				spTile[19].setPosition(CasePos);//
+				if (isLazerOn)
+				{
+					m_actualWindow->draw(spTile[19]);
+				}
 				break;
 			case 21:
-				spTile[20].setPosition(CasePos);
-				m_actualWindow->draw(spTile[20]);
+				spTile[20].setPosition(CasePos);//
+				if (isLazerOn)
+				{
+					m_actualWindow->draw(spTile[20]);
+				}
 				break;
 			case 22:
-				spTile[21].setPosition(CasePos);
-				m_actualWindow->draw(spTile[21]);
+				spTile[21].setPosition(CasePos);//
+				if (isLazerOn)
+				{
+					m_actualWindow->draw(spTile[21]);
+				}
 				break;
 			case 23:
 				spTile[22].setPosition(CasePos);
@@ -346,4 +368,9 @@ sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
 			}
 		}
 	}
+}
+
+bool Map::GetIsLazerOn()
+{
+	return isLazerOn;
 }

@@ -20,6 +20,7 @@ public:
 	sf::Vector2f GetCheckPoint(sf::Vector2f _Pos);
 
 	sf::Vector2f GetNextTile(int _Type, sf::Vector2f _Pos);
+	bool GetIsLazerOn();
 
 private:
 	sf::RenderWindow* m_actualWindow;
@@ -36,4 +37,7 @@ private:
 	std::vector<int> XList;
 
 	sf::CircleShape Collectible;
+
+	sf::Clock timerLazer;
+	bool isLazerOn = true;
 };

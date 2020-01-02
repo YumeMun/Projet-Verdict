@@ -37,6 +37,7 @@ public:
 	//Missile* newMissile;
 
 	void SetHitTrap();
+	void SetHitLazer();
 
 private:
 	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
@@ -50,6 +51,7 @@ private:
 	bool isSpeedMax = false;
 	bool isSwitching = false;
 	bool isSwitchingBack = false;
+	bool isHitLazer = false;
 
 	int trapHitCount = 1;
 	float trapSpeedFactor = 1; 

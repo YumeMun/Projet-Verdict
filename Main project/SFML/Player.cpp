@@ -33,7 +33,6 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
-	std::cout << "timer trap : " << timerTrapFactor.getElapsedTime().asMilliseconds() << std::endl;
 	if (spPlayer.getPosition().x < 12000 * 64 && spPlayer.getPosition().y < 34 * 64 &&
 		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
 		Controls(_Map);
@@ -174,6 +173,15 @@ void Player::Controls(Map* _Map)
 
 			std::cout << "speed factor : " << trapSpeedFactor << std::endl;
 			std::cout << "speed player apres : " << Player_Movement.x << std::endl;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 20 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 22)
+		{
+			if (_Map->GetIsLazerOn())
+			{
+				timerTrapFactor.restart();
+				SetHitLazer();
+				//Player_Movement.x = Player_Movement.x / trapSpeedFactor;
+			}
 		}
 		else
 		{
@@ -439,17 +447,28 @@ void Player::SetCollectID(int _CollectID)
 
 void Player::SetHitTrap()
 {
-	if (timerTrapFactor.getElapsedTime().asSeconds() < 3)
+	if (timerTrapFactor.getElapsedTime().asSeconds() < 3)  //courbe active dans un delai de :3s
 	{
-		trapSpeedFactor = 0;
-		trapSpeedFactor = -(-(0.1 * trapHitCount) * ((-3.5) * log(trapHitCount)) - 3);
-		trapHitCount++;
+		trapSpeedFactor = -(-(0.1 * trapHitCount) * ((-3) * log(trapHitCount)) - 3.5); // -3 = a (amplitude courbe en x),   3.5 = ymax quand x = 1
+		if (trapHitCount < 4)
+		{
+			trapHitCount++;
+		}
+		else
+			trapHitCount = 1;
 	}
 	else
 	{
 		trapSpeedFactor = 1;
 		trapHitCount = 1;
 	}
+}
+
+void Player::SetHitLazer()
+{
+	//trapSpeedFactor = 5;
+	Player_Movement.x = 100;
+
 }
 
 bool Player::CollectibleUsed()
