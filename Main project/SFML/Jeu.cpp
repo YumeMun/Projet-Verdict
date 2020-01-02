@@ -12,6 +12,8 @@ Jeu::Jeu(std::string _LevelName)
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	LevelName = _LevelName;
+
 	map = new Map(_LevelName);
 	caméra = new Caméra();
 	hud = new HUD();
@@ -19,7 +21,7 @@ Jeu::Jeu(std::string _LevelName)
 	//collects = new Collects();
 	///missile = new Missile();
 
-	Player1 = new Player(1, sf::Vector2f(400, 800));
+	Player1 = new Player(1, sf::Vector2f(600, 800));
 	Player2 = new Player(2, sf::Vector2f(400, 800));
 
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
@@ -38,6 +40,13 @@ Jeu::Jeu(std::string _LevelName)
 		MenuIGText[4].setString("Oui");
 		MenuIGText[5].setString("Non");
 	}
+
+	spFirstOrSecond[0].setTexture(*ResourceManager::Instance()->GetTexture("First"));
+	spFirstOrSecond[1].setTexture(*ResourceManager::Instance()->GetTexture("Second"));
+	spFirstOrSecond[0].setOrigin(spFirstOrSecond[0].getGlobalBounds().width / 2, spFirstOrSecond[0].getGlobalBounds().height / 2);
+	spFirstOrSecond[1].setOrigin(spFirstOrSecond[1].getGlobalBounds().width / 2, spFirstOrSecond[1].getGlobalBounds().height / 2);
+	spFirstOrSecond[0].setPosition(350, 100);
+	spFirstOrSecond[1].setPosition(1550, 100);
 }
 
 Jeu::~Jeu()
@@ -87,6 +96,9 @@ void Jeu::Update()
 						Player1->Score++;
 						Player1->PlayerFirstTimer.restart();
 					}
+
+					spFirstOrSecond[0].setPosition(350, 100);
+					spFirstOrSecond[1].setPosition(1550, 100);
 				}
 				else if (Player2->GetPos().x > Player1->GetPos().x)
 				{
@@ -95,6 +107,8 @@ void Jeu::Update()
 						Player2->Score++;
 						Player2->PlayerFirstTimer.restart();
 					}
+					spFirstOrSecond[0].setPosition(1550, 100);
+					spFirstOrSecond[1].setPosition(350, 100);
 				}
 
 				map->Update(ElapsedTime, caméra);
@@ -134,7 +148,6 @@ void Jeu::Display()
 	m_actualWindow->setView(*caméra->GetCamera());
 	map->Display();
 
-	//collects->Display();
 	Player2->Display(m_actualWindow);
 	Player1->Display(m_actualWindow);
 
@@ -143,14 +156,14 @@ void Jeu::Display()
 		Collectibles[i]->Display(m_actualWindow);
 	}
 
-	/*if (Player1->newMissile != NULL)
-		m_actualWindow->draw(Player1->newMissile->GetMissile());
-
-	if (Player2->newMissile != NULL)
-		m_actualWindow->draw(Player2->newMissile->GetMissile());*/
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	hud->Display(Player1->HasCollectible, Player2->HasCollectible);
+
+	for (int i = 0; i < 2; i++)
+	{
+		m_actualWindow->draw(spFirstOrSecond[i]);
+	}
 
 	if (!timerStart->GetIsTimerEnd())
 	{
@@ -320,14 +333,14 @@ void Jeu::MenuIG(int ID)
 
 		if (Clock.getElapsedTime().asMilliseconds() > 300)
 		{
-			if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) >= 50)
+			if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) >= 50 || sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::Y) >= 50)
 			{
 				if (SelectionMenuIG < 3)
 					SelectionMenuIG++;
 
 				Clock.restart();
 			}
-			else if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) <= -50)
+			else if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) <= -50 || sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::Y) <= -50)
 			{
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
@@ -396,7 +409,7 @@ void Jeu::MenuIG(int ID)
 			{
 				if (SelectionMenuIG == 1)
 				{
-					GameManager::Instance()->LoadScene(e_Enum::e_Scene::JEU);
+					GameManager::Instance()->m_ActualScene = new Jeu(LevelName);
 					Clock.restart();
 				}
 				else if (SelectionMenuIG == 2)

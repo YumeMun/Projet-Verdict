@@ -290,6 +290,18 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Touches_sélection.png", "Touches sélection"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("First.png", "First"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Second.png", "Second"))
+		_textures.push_back(newTexture);
+
+	//Au dessus y a 77 ressources (marre de recompter à chaque fois)
 }
 
 //Fonction retournant une texture selon le nom appelé

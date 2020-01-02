@@ -35,5 +35,9 @@ private:
 
 	std::vector<int> XList;
 
-	sf::CircleShape Collectible;
+	void AnimTiles();
+	sf::Clock AnimBoostClock;
+	int FrameIndexBoost = 0;
+	sf::Clock AnimCollectClock;
+	int FrameIndexCollect = 0;
 };

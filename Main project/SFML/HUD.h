@@ -31,7 +31,6 @@ public:
 
 private:
 	sf::RenderWindow* m_actualWindow;
-	//Player* player;
 
 	sf::RectangleShape iconPlayer[2];
 	sf::RectangleShape bcIconPlayer[2];

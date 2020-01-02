@@ -69,4 +69,10 @@ private:
 	sf::Sprite spTouchesZoom[4];
 
 	sf::RectangleShape BandeauGaucheRect;
+
+	void AnimTiles();
+	sf::Clock AnimBoostClock;
+	int FrameIndexBoost = 0;
+	sf::Clock AnimCollectClock;
+	int FrameIndexCollect = 0;
 };

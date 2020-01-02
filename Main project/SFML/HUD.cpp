@@ -58,28 +58,6 @@ void HUD::SetupPlayerHUD()
 void HUD::Update(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2f _posP1, sf::Vector2f _posP2)
 {
 	SetProgressionPlayer(_posP1, _posP2);
-	//GetCollisionWithCollectible(_posPlayer1, _posPlayer2);
-
-	/*for (int i = 0; i < NB_COLLECTABLE; i++)
-	{
-		if (listCollectable[i]->isCollected)
-		{
-			std::cout << "item collected, item no :" << i << std::endl;
-			for (int y = 0; y < NB_PLAYER; y++)
-			{
-				if (!listCollectable[y]->isPlayerFull)
-				{
-					if (listCollectable[y]->playerThatCollected)
-					{
-						listCollectable[y]->iconCollectable[i].setPosition(listCollectable[y]->posPlayerHUD);
-						listCollectable[y]->isIconDrawable = true;
-						listCollectable[i]->isCollected = false;
-						listCollectable[y]->isPlayerFull = true;
-					}
-				}
-			}
-		}
-	}*/
 }
 
 void HUD::Display(bool _J1HasCollectible, bool _J2HasCollectible)
@@ -120,8 +98,6 @@ void HUD::SetProgressionLevel(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera
 
 	Player2.setPosition({ posProgressionNiveau.x + progressionPlayer2, posProgressionNiveau.y - (_sizeCamera.x / POS_PLAYER_Y_RELATIVE_LEVEL) });
 	Player2.setSize({ PLAYER_WIDTH * (_sizeCamera.x / CAMERA_HEIGHT_MIN), PLAYER_WIDTH * (_sizeCamera.x / CAMERA_HEIGHT_MIN) });
-
-	//std::cout << _posPlayer1.x << std::endl;
 }
 
 void HUD::SetProgressionPlayer(sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer2)
@@ -132,6 +108,4 @@ void HUD::SetProgressionPlayer(sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer
 	progressionNiveau.setPosition(sf::Vector2f((1920 / 2) - (progressionNiveau.getGlobalBounds().width / 2), POS_MINI_LEVEL_Y));
 	Player1.setPosition({ progressionNiveau.getPosition().x - (Player1.getGlobalBounds().width/2) + progressionPlayer1, POS_MINI_PLAYER_Y });
 	Player2.setPosition({ progressionNiveau.getPosition().x - (Player2.getGlobalBounds().width/2) + progressionPlayer2, POS_MINI_PLAYER_Y });
-
-	//std::cout << _posPlayer1.x << std::endl;
 }

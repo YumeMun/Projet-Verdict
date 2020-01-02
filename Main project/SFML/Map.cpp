@@ -36,9 +36,6 @@ Map::Map(std::string _LevelName)
 		Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, 0);
 	}
 
-	Collectible.setRadius(30);
-	Collectible.setFillColor(sf::Color::Green);
-
 	for (int i = 0; i < 30; i++)
 	{
 		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
@@ -69,7 +66,7 @@ Map::Map(std::string _LevelName)
 
 		spTile[21].setTextureRect(sf::IntRect{ 0 * 64, 22 * 64, 64, 3 * 64 });
 
-		spTile[22].setTextureRect(sf::IntRect{ 0 * 64, 16 * 64, 64, 64 });
+		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 16 * 64, 64, 64 });
 		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
 		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
 		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });
@@ -151,6 +148,8 @@ void Map::Display()
 		m_actualWindow->draw(Plan1[i]);
 	}*/
 
+	AnimTiles();
+
 	for (int y = 0; y < Size_Y; y++)
 	{
 		for (int x = 0; x < Size_X; x++)
@@ -203,14 +202,17 @@ void Map::Display()
 				m_actualWindow->draw(spTile[9]);
 				break;
 			case 11:
+				spTile[10].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 5 * 64, 64, 64 });
 				spTile[10].setPosition(CasePos);
 				m_actualWindow->draw(spTile[10]);
 				break;
 			case 12:
+				spTile[11].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 7 * 64, 64, 64 });
 				spTile[11].setPosition(CasePos);
 				m_actualWindow->draw(spTile[11]);
 				break;
 			case 13:
+				spTile[12].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 8 * 64, 64, 64 });
 				spTile[12].setPosition(CasePos);
 				m_actualWindow->draw(spTile[12]);
 				break;
@@ -251,6 +253,7 @@ void Map::Display()
 				m_actualWindow->draw(spTile[21]);
 				break;
 			case 23:
+				spTile[22].setTextureRect(sf::IntRect{ FrameIndexCollect * 64, 16 * 64, 64, 64 });
 				spTile[22].setPosition(CasePos);
 				m_actualWindow->draw(spTile[22]);
 				break;
@@ -345,5 +348,32 @@ sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
 				return CasePos;
 			}
 		}
+	}
+}
+
+void Map::AnimTiles()
+{
+	if (AnimBoostClock.getElapsedTime().asMilliseconds() > 50)
+	{
+		if (FrameIndexBoost < 14)
+		{
+			FrameIndexBoost++;
+		}
+		else
+			FrameIndexBoost = 0;
+
+		AnimBoostClock.restart();
+	}
+
+	if (AnimCollectClock.getElapsedTime().asMilliseconds() > 50)
+	{
+		if (FrameIndexCollect < 17)
+		{
+			FrameIndexCollect++;
+		}
+		else
+			FrameIndexCollect = 0;
+
+		AnimCollectClock.restart();
 	}
 }
