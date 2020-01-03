@@ -160,7 +160,8 @@ void Player::Controls(Map * _Map)
 		Jump = false;
 	}
 
-	if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 0 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8) && Player_Direction == NONE)
+	if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 0 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8 ||
+		_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 20) && Player_Direction == NONE)
 	{
 		Player_Movement.y += GRAVITY * GRAVITYFACTOR;
 		Jump = true;
@@ -197,7 +198,6 @@ void Player::Controls(Map * _Map)
 
 	if (Player_Direction == NONE)
 	{
-<<<<<<< HEAD
 		spPlayer.setRotation(0);
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
@@ -243,9 +243,6 @@ void Player::Controls(Map * _Map)
 		}
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 12)
-=======
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 12)
->>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 		{
 			Player_Direction = UP;
 		}
@@ -514,11 +511,7 @@ bool Player::CollectibleCollide(Map * _Map)
 
 		if (HasCollectible == false)
 		{
-<<<<<<< HEAD
-			CollectID = e_Enum::ROCKET;//rand() % 6 + 1;
-=======
 			CollectID = /*e_Enum::OILFLAKE;*/rand() % 6 + 1;
->>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 		}
 
 		return true;
@@ -534,14 +527,11 @@ int Player::GetCollectID()
 
 int Player::GetAimDir()
 {
-<<<<<<< HEAD
 	return Rocket_Direction;
 }
 
 void Player::LauchCollectible()
 {
-=======
->>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 	if (HasCollectible == true)
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 1))

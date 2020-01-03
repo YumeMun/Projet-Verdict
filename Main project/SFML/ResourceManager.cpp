@@ -308,21 +308,21 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-<<<<<<< HEAD
 	if (newTexture->Create("sprite_missile.png", "Rocket"))
-=======
-	if (newTexture->Create("HudJ1.png", "HUD J1"))
->>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
 
-<<<<<<< HEAD
+	if (newTexture->Create("HudJ1.png", "HUD J1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("sprite_fume_missile.png", "Smoke"))
 		_textures.push_back(newTexture);
 
-	//Au dessus y a 79 ressources (marre de recompter à chaque fois)
-=======
+	newTexture = new Textures();
+
 	if (newTexture->Create("HudJ2.png", "HUD J2"))
 		_textures.push_back(newTexture);
 
@@ -340,11 +340,10 @@ void ResourceManager::Load()
 	}
 
 	//Au dessus y a 86 ressources (marre de recompter à chaque fois)
->>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 }
 
 //Fonction retournant une texture selon le nom appelé
-sf::Texture * ResourceManager::GetTexture(std::string _FileName)
+sf::Texture* ResourceManager::GetTexture(std::string _FileName)
 {
 	for (int i = 0; i < _textures.size(); i++)
 	{
