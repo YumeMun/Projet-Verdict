@@ -8,12 +8,12 @@ class Player
 {
 public:
 	Player();
-	Player(int _ID, sf::Vector2f _Pos, Map* _Map);
+	Player(int _ID, sf::Vector2f _Pos, class Map* _Map);
 	~Player();
-	void Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos);
+	void Update(float _Elapsed, class Map* _Map, class Caméra* _Cam, sf::Vector2f _Pos);
 	void Display(sf::RenderWindow* _Window);
-	void Controls(Map* _Map);
-	void Traps(Map* _Map);
+	void Controls(class Map* _Map);
+	void Traps(class Map* _Map, class Caméra* _Cam);
 	bool IsAlive();
 	void Animations();
 
@@ -27,7 +27,7 @@ public:
 
 	//void MissileCollide();
 
-	bool CollectibleCollide(Map* _Map);
+	bool CollectibleCollide(class Map* _Map);
 	bool CollectibleUsed();
 	bool HasCollectible, Oiled = false;
 	int GetCollectID();

@@ -10,7 +10,7 @@ public:
 	Missile(int _Direction, sf::Vector2f _PlayerPos);
 	~Missile();
 
-	void Update(float _ElapsedTime, Map* _Map);
+	void Update(float _ElapsedTime, class Map* _Map);
 
 	sf::RectangleShape GetMissile();
 private:

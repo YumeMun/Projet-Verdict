@@ -19,7 +19,7 @@ Caméra::~Caméra()
 {
 }
 
-void Caméra::Update(float _dTime, TimerStart* _timer)
+void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* _player2)
 {
 	if (clock.getElapsedTime().asSeconds() >= 3)
 	{
@@ -29,7 +29,12 @@ void Caméra::Update(float _dTime, TimerStart* _timer)
 
 	if (_timer->GetIsTimerEnd())
 	{
-		camera.move(CAMERA_SPEED * _dTime, 0);
+		if (_player1->GetPos().x > GetCameraCenter().x + (sizeCamera.x/4) || _player2->GetPos().x > GetCameraCenter().x + (sizeCamera.x / 4))
+		{
+			camera.move(CAMERA_SPEED_MAX * _dTime, 0);
+		}
+		else
+			camera.move(CAMERA_SPEED * _dTime, 0);
 	}
 }
 

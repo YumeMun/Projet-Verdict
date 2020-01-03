@@ -1,5 +1,7 @@
 #pragma once
 #include "Scene.h"
+#include "Player.h"
+
 #define DISTANCE_MIN_X 1000
 #define DISTANCE_MAX_X 1500
 #define CAMERA_WIDTH_MIN 2000*1.778 // = (distance min x * 2) * ratio ecran
@@ -15,6 +17,7 @@
 #define PLAYER_SPEED 300
 
 #define CAMERA_SPEED 800
+#define CAMERA_SPEED_MAX 1200
 
 class Caméra
 {
@@ -22,7 +25,7 @@ public:
 	Caméra();
 	~Caméra();
 
-	void Update(float _dTime, class TimerStart* _timer);
+	void Update(float _dTime, class TimerStart* _timer, class Player* _player1, class Player* _player2);
 	void Display();
 
 	sf::View* GetCamera();
@@ -54,4 +57,5 @@ private:
 	sf::View camera;
 
 	sf::Clock clock;
+	class Player* player;
 };

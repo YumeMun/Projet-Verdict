@@ -9,7 +9,7 @@ public:
 	Map(std::string _LevelName);
 	~Map();
 
-	void Update(float _Elapsed, Caméra* _Cam);
+	void Update(float _Elapsed, class Caméra* _Cam);
 	void Display();
 
 	int GetTile(int _X, int _Y);

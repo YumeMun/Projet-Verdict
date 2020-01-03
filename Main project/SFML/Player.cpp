@@ -61,7 +61,7 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
 	{
 		Controls(_Map);
-		Traps(_Map);
+		Traps(_Map, _Cam);
 
 		if (isNumeroDisplay == false)
 		{
@@ -69,7 +69,6 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 			isNumeroDisplay = true;
 		}
 	}
-
 	else if (Alive == true)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
@@ -109,7 +108,9 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 
 	CollectibleCollide(_Map);
 	LauchCollectible();
+	std::cout << "player speed :" << Player_Movement.x << std::endl;
 	Animations();
+
 }
 
 void Player::Display(sf::RenderWindow * _Window)
@@ -240,7 +241,7 @@ void Player::Controls(Map * _Map)
 	}
 }
 
-void Player::Traps(Map * _Map)
+void Player::Traps(Map * _Map, Caméra* _Cam)
 {
 	if (Player_Direction == NONE)
 	{
@@ -258,10 +259,21 @@ void Player::Traps(Map * _Map)
 			SetHitTrap();
 			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
 		}
-		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
 		{
+			std::cout << "player is collide CHAMP ELECT" << std::endl;
+
 			timerTrapFactor.restart();
 			SetHitLazer();
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 29)
+		{
+			std::cout << "player collide LAZER" << std::endl;
+
+			spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+			Player_Movement.x = 0;
+			Player_Movement.y = 0;
+			Alive = false;
 		}
 		else
 		{
@@ -292,13 +304,11 @@ void Player::Animations()
 		if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
 		{
 			isSwitchingBack = true;
-			//isSpeedMax = false;
 			AnimClock.restart();
 		}
 		else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
 		{
 			isSwitching = true;
-			//isSpeedMax = true;
 			AnimClock.restart();
 		}
 
@@ -313,18 +323,18 @@ void Player::Animations()
 
 		if (isSpeedMax)
 		{
-			if (isSwitching)
+			if (!isSwitching)
 			{
 				FrameIndex = 0;
 				PlayerRect.left = 0;
-				PlayerRect.top = 54;
+				PlayerRect.top = 1*PlayerRect.height;
 				spPlayer.setTextureRect(PlayerRect);
 			}
 			else
 			{
 				if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 				{
-					if (FrameIndex < 5)
+					if (!FrameIndex >= 4)
 						FrameIndex++;
 					else
 					{
@@ -336,6 +346,8 @@ void Player::Animations()
 					spPlayer.setTextureRect(PlayerRect);
 					AnimClock.restart();
 				}
+
+
 			}
 		}
 		else
@@ -351,7 +363,7 @@ void Player::Animations()
 			{
 				if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 				{
-					if (FrameIndex < 4)
+					if (!FrameIndex >= 3)
 						FrameIndex++;
 					else
 					{
@@ -377,12 +389,16 @@ void Player::Animations()
 			isSwitching = true;
 		}
 
-		PlayerRect.top = PlayerRect.height * 4;
-		PlayerRect.top = PlayerRect.height * 4;
+		if (Player_Movement.x >= SPEED)
+		{
+			PlayerRect.top = PlayerRect.height * 3;
+		}
+		else
+			PlayerRect.top = PlayerRect.height * 4;
 
 		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 		{
-			if (FrameIndex < 12)
+			if (FrameIndex < 11)
 				FrameIndex++;
 			else
 			{
@@ -521,7 +537,7 @@ void Player::SetHitTrap()
 void Player::SetHitLazer()
 {
 	//trapSpeedFactor = 5;
-	Player_Movement.x = 100;
+	Player_Movement.x = 200;
 
 }
 
