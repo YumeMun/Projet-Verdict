@@ -6,7 +6,7 @@ Player::Player()
 
 }
 
-Player::Player(int _ID, sf::Vector2f _Pos)
+Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map)
 {
 	ID = _ID;
 
@@ -17,10 +17,10 @@ Player::Player(int _ID, sf::Vector2f _Pos)
 
 		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1"));
 		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
-		spPlayer.setPosition(_Pos);
+		spPlayer.setPosition(_Map->GetStartPos().x + 300, _Map->GetStartPos().y);
 
 		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
-		Player_ColliderLimit.y = spPlayer.getOrigin().y * 2;
+		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
 	}
 	else if (ID == 2)
 	{
@@ -29,11 +29,14 @@ Player::Player(int _ID, sf::Vector2f _Pos)
 
 		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player2"));
 		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
-		spPlayer.setPosition(_Pos);
+		spPlayer.setPosition(_Map->GetStartPos().x - 100, _Map->GetStartPos().y);
 
 		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
-		Player_ColliderLimit.y = spPlayer.getOrigin().y * 2;
+		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
 	}
+
+	Point.setRadius(5);
+	Point.setFillColor(sf::Color::Red);
 
 	Player_Movement.x = SPEED;
 
@@ -76,21 +79,20 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 		Alive = false;
 	}
 
-	if (spPlayer.getPosition().x < 20400)
+	if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
 		spPlayer.move(Player_Vector * _Elapsed);
 	}
-	else
+
+
+	if(_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
 		Hasfinished = true;
 
 	if (CollectID != 0)
 		HasCollectible = true;
 	else if (CollectID == 0)
 		HasCollectible = false;
-
-	/*if (newMissile != NULL)
-		MissileCollide();*/
 
 	CollectibleCollide(_Map);
 	LauchCollectible();
@@ -101,6 +103,8 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 void Player::Display(sf::RenderWindow * _Window)
 {
 	_Window->draw(spPlayer);
+	Point.setPosition(GetPos().x, GetPos().y);
+	_Window->draw(Point);
 }
 
 void Player::Controls(Map * _Map)

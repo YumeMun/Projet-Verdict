@@ -8,7 +8,7 @@ class Player
 {
 public:
 	Player();
-	Player(int _ID, sf::Vector2f _Pos);
+	Player(int _ID, sf::Vector2f _Pos, Map* _Map);
 	~Player();
 	void Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos);
 	void Display(sf::RenderWindow* _Window);
@@ -76,4 +76,6 @@ private:
 
 	int FrameIndex = 0;
 	int lastFrameSpeed = 800;
+
+	sf::CircleShape Point;
 };
