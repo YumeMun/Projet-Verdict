@@ -35,9 +35,6 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map)
 		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
 	}
 
-	Point.setRadius(5);
-	Point.setFillColor(sf::Color::Red);
-
 	Player_Movement.x = SPEED;
 
 	HasCollectible = false;
@@ -103,8 +100,6 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 void Player::Display(sf::RenderWindow * _Window)
 {
 	_Window->draw(spPlayer);
-	Point.setPosition(GetPos().x, GetPos().y);
-	_Window->draw(Point);
 }
 
 void Player::Controls(Map * _Map)

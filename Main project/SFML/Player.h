@@ -76,6 +76,4 @@ private:
 
 	int FrameIndex = 0;
 	int lastFrameSpeed = 800;
-
-	sf::CircleShape Point;
 };

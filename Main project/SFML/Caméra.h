@@ -42,7 +42,6 @@ private:
 	sf::Sprite spBc;
 
 	sf::Vector2f sizeCamera;
-	sf::Vector2f cameraCenter;
 	float distancePlayerX;
 	float distancePlayerY;
 	bool isPlayer1First;

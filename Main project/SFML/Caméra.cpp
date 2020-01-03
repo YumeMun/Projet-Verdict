@@ -10,15 +10,9 @@ Caméra::Caméra()
 
 	sizeCamera = { 1920, 1080 };
 	camera.setViewport({ 0, 0, 1, 1 });
-	camera.setCenter(1920, 1080);
+	camera.setCenter(1728, 1080);
 	camera.setSize(sizeCamera);
-	camera.zoom(2);
-
-	respawnPoint = { 6000, 500 };
-
-	listRespawnPoint[0] = { 6000, 500 };
-	listRespawnPoint[1] = { 9000, 700 };
-	listRespawnPoint[2] = { 12000, 900 };
+	camera.zoom(1.8);
 }
 
 Caméra::~Caméra()
@@ -35,8 +29,7 @@ void Caméra::Update(float _dTime, TimerStart* _timer)
 
 	if (_timer->GetIsTimerEnd())
 	{
-		cameraCenter.x += CAMERA_SPEED * _dTime;
-		camera.setCenter(cameraCenter);
+		camera.move(CAMERA_SPEED * _dTime, 0);
 	}
 }
 
@@ -52,9 +45,7 @@ sf::View* Caméra::GetCamera()
 
 sf::Vector2f Caméra::GetCameraCenter()
 {
-	cameraCenter.x = camera.getCenter().x;
-	cameraCenter.y = GetCamera()->getCenter().y;
-	return cameraCenter;
+	return camera.getCenter();
 }
 
 float Caméra::GetDistancePlayer()
