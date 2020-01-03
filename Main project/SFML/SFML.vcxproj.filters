@@ -47,16 +47,10 @@
     <ClCompile Include="Caméra.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
-    <ClCompile Include="Collects.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
     <ClCompile Include="HUD.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
-    <ClCompile Include="Missile.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -80,11 +74,20 @@
     <ClCompile Include="Level_Finished.cpp">
       <Filter>Fichiers sources\Scenes\Jeu</Filter>
     </ClCompile>
-    <ClCompile Include="Shockwave.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
     <ClCompile Include="Oilflake.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Collects.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Shockwave.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Rocket.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Smoke.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,9 +133,6 @@
     <ClInclude Include="Caméra.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
-    <ClInclude Include="Collects.h">
-      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
-    </ClInclude>
     <ClInclude Include="HUD.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
@@ -143,9 +143,6 @@
       <Filter>Fichiers d%27en tête\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
-    </ClInclude>
-    <ClInclude Include="Missile.h">
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
@@ -176,10 +173,19 @@
       <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
     </ClInclude>
     <ClInclude Include="Shockwave.h">
-      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
     </ClInclude>
     <ClInclude Include="Oilflake.h">
-      <Filter>Fichiers d%27en tête\Scenes\Jeu</Filter>
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Smoke.h">
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Collects.h">
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +218,12 @@
     </Filter>
     <Filter Include="Fichiers d%27en tête\Scenes\Jeu">
       <UniqueIdentifier>{3a5d813c-a75b-4c3b-948c-df7c2f738248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en tête\Scenes\Collectibles">
+      <UniqueIdentifier>{9e6f2924-dd7b-43c4-92f5-1b5e7dd256de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Scenes\Jeu\Collectibles">
+      <UniqueIdentifier>{2e31341c-1851-4f98-8460-6e4200914226}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

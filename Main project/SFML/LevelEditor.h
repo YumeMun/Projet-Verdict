@@ -14,6 +14,7 @@ public:
 	virtual void EventManager(sf::Event p_pollingEvent);
 
 	void ControllerManager();
+	void CheckIfCaseIsFree();
 
 	void Sauvegarde();
 	void SaveIt();
@@ -75,4 +76,8 @@ private:
 	int FrameIndexBoost = 0;
 	sf::Clock AnimCollectClock;
 	int FrameIndexCollect = 0;
+
+	sf::RectangleShape CaseFreeOrNot;
+	bool StartIsPut = false;
+	bool EndIsPut = false;
 };

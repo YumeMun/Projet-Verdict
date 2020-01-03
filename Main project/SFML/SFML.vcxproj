@@ -181,17 +181,18 @@
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Missile.cpp" />
     <ClCompile Include="Oilflake.cpp" />
     <ClCompile Include="OpenLevelEditor.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerSelector.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="SaveEditor.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shockwave.cpp" />
     <ClCompile Include="SizeEditor.cpp" />
+    <ClCompile Include="Smoke.cpp" />
     <ClCompile Include="TimerStart.cpp" />
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
@@ -213,18 +214,19 @@
     <ClInclude Include="Level_Finished.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="Missile.h" />
     <ClInclude Include="Oilflake.h" />
     <ClInclude Include="OpenLevelEditor.h" />
     <ClInclude Include="Options.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerSelector.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Rocket.h" />
     <ClInclude Include="SaveEditor.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shockwave.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SizeEditor.h" />
+    <ClInclude Include="Smoke.h" />
     <ClInclude Include="TimerStart.h" />
     <ClInclude Include="Transition.h" />
   </ItemGroup>

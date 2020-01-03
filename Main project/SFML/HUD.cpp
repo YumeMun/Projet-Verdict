@@ -13,12 +13,6 @@ HUD::HUD()
 
 	SetupProgressLevel();
 	SetupPlayerHUD();
-
-	for (int i = 0; i < 2; i++)
-	{
-		iconCollectable[i].setRadius(30);
-		iconCollectable[i].setFillColor(sf::Color::Green);
-	}
 }
 
 HUD::~HUD()
@@ -54,7 +48,7 @@ void HUD::Update(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2
 	//SetProgressionPlayer(_posP1, _posP2);
 }
 
-void HUD::Display(bool _J1HasCollectible, bool _J2HasCollectible)
+void HUD::Display(Player* _Player1, Player* _PLayer2)
 {
 	//m_actualWindow->draw(progressionNiveau);
 	//m_actualWindow->draw(Player2);
@@ -65,7 +59,7 @@ void HUD::Display(bool _J1HasCollectible, bool _J2HasCollectible)
 		m_actualWindow->draw(IconPlayer[i]);
 	}
 
-	AnimationHUD(_J1HasCollectible, _J2HasCollectible);
+	AnimationHUD(_Player1, _PLayer2);
 }
 
 void HUD::SetProgressionLevel(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer2)
@@ -94,9 +88,38 @@ void HUD::SetProgressionPlayer(sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer
 	Player2.setPosition({ progressionNiveau.getPosition().x - (Player2.getGlobalBounds().width / 2) + progressionPlayer2, POS_MINI_PLAYER_Y });
 }
 
-void HUD::AnimationHUD(bool _J1HasCollectible, bool _J2HasCollectible)
+void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 {
-	if (_J1HasCollectible == true)
+	if (_Player1->GetCollectID() == 1)
+		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
+	else if (_Player1->GetCollectID() == 2)
+		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
+	else if (_Player1->GetCollectID() == 3)
+		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
+	else if (_Player1->GetCollectID() == 4)
+		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
+	else if (_Player1->GetCollectID() == 5)
+		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
+	else if (_Player1->GetCollectID() == 6)
+		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
+
+	if (_Player2->GetCollectID() == 1)
+		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
+	else if (_Player2->GetCollectID() == 2)
+		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
+	else if (_Player2->GetCollectID() == 3)
+		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
+	else if (_Player2->GetCollectID() == 4)
+		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
+	else if (_Player2->GetCollectID() == 5)
+		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
+	else if (_Player2->GetCollectID() == 6)
+		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
+
+	spIconCollect[0].setOrigin(spIconCollect[0].getGlobalBounds().width / 2, spIconCollect[0].getGlobalBounds().height / 2);
+	spIconCollect[1].setOrigin(spIconCollect[1].getGlobalBounds().width / 2, spIconCollect[1].getGlobalBounds().height / 2);
+
+	if (_Player1->HasCollectible == true)
 	{
 		if (AnimClock[0].getElapsedTime().asMilliseconds() > 50)
 		{
@@ -113,14 +136,14 @@ void HUD::AnimationHUD(bool _J1HasCollectible, bool _J2HasCollectible)
 		if (FrameIndex[0] == 15)
 		{
 			HudDisplay[0] = true;
-			iconCollectable[0].setPosition(IconPlayer[0].getPosition().x + 200, IconPlayer[0].getPosition().y + 70);
-			m_actualWindow->draw(iconCollectable[0]);
+			spIconCollect[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+			m_actualWindow->draw(spIconCollect[0]);
 
 			if (sf::Joystick::isButtonPressed(0, 1))
 				FrameIndex[0] = 0;
 		}
 	}
-	else if (_J1HasCollectible == false && HudDisplay[0] == true)
+	else if (_Player1->HasCollectible == false && HudDisplay[0] == true)
 	{
 		if (AnimClock[0].getElapsedTime().asMilliseconds() > 50)
 		{
@@ -139,7 +162,7 @@ void HUD::AnimationHUD(bool _J1HasCollectible, bool _J2HasCollectible)
 	}
 
 
-	if (_J2HasCollectible == true)
+	if (_Player2->HasCollectible == true)
 	{
 		if (AnimClock[1].getElapsedTime().asMilliseconds() > 50)
 		{
@@ -156,14 +179,14 @@ void HUD::AnimationHUD(bool _J1HasCollectible, bool _J2HasCollectible)
 		if (FrameIndex[1] == 15)
 		{
 			HudDisplay[1] = true;
-			iconCollectable[1].setPosition(IconPlayer[1].getPosition().x + 200, IconPlayer[1].getPosition().y + 70);
-			m_actualWindow->draw(iconCollectable[1]);
+			spIconCollect[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+			m_actualWindow->draw(spIconCollect[1]);
 
 			if (sf::Joystick::isButtonPressed(1, 1))
 				FrameIndex[1] = 0;
 		}
 	}
-	else if (_J2HasCollectible == false && HudDisplay[1] == true)
+	else if (_Player2->HasCollectible == false && HudDisplay[1] == true)
 	{
 		if (AnimClock[1].getElapsedTime().asMilliseconds() > 50)
 		{

@@ -1,7 +1,6 @@
 #pragma once
 #include "Scene.h"
 #include "Map.h"
-#include "Missile.h"
 
 
 class Player
@@ -31,6 +30,7 @@ public:
 	bool CollectibleUsed();
 	bool HasCollectible, Oiled = false;
 	int GetCollectID();
+	int GetAimDir();
 	void LauchCollectible();
 	void SetCollectID(int _CollectID);
 
@@ -43,7 +43,7 @@ public:
 private:
 	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
 
-	int ID = 0, Player_Direction = 0, Missile_Direction = 0, CollectID = 0;
+	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0;
 
 	sf::Clock AnimClock;
 	bool StartAnim = false;

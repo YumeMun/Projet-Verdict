@@ -16,7 +16,7 @@ Oilflake::~Oilflake()
 {
 }
 
-void Oilflake::Update(Player* _Player1, Player* _Player2, float _Elapsed)
+void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed)
 {
 	if (ID == 1)
 	{

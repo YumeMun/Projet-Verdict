@@ -151,7 +151,7 @@ void Jeu::Display()
 
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
-	hud->Display(Player1->HasCollectible, Player2->HasCollectible);
+	hud->Display(Player1, Player2);
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -203,7 +203,9 @@ void Jeu::CollectiblesManager()
 	{
 		if (Player1->GetCollectID() == e_Enum::e_Collects::ROCKET)
 		{
-
+			Rocket* newCollect = new Rocket(1, Player1->GetAimDir(), Player1->GetPos());
+			Collectibles.push_back(newCollect);
+			Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
 		{
@@ -241,7 +243,9 @@ void Jeu::CollectiblesManager()
 	{
 		if (Player2->GetCollectID() == e_Enum::e_Collects::ROCKET)
 		{
-
+			Rocket* newCollect = new Rocket(2, Player2->GetAimDir(), Player2->GetPos());
+			Collectibles.push_back(newCollect);
+			Player2->SetCollectID(0);
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
 		{
@@ -277,7 +281,7 @@ void Jeu::CollectiblesManager()
 
 	for (int i = 0; i < Collectibles.size(); i++)
 	{
-		Collectibles[i]->Update(Player1, Player2, ElapsedTime);
+		Collectibles[i]->Update(Player1, Player2, map,ElapsedTime);
 
 		if (Collectibles[i]->IsAlive() == false)
 			Collectibles.erase(Collectibles.begin() + i);

@@ -161,12 +161,13 @@ void Player::Controls(Map * _Map)
 		Jump = false;
 	}
 
-	if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 0 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8) && Player_Direction != UP)
+	if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 0 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8 ||
+		_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 20) && Player_Direction == NONE)
 	{
 		Player_Movement.y += GRAVITY * GRAVITYFACTOR;
 		Jump = true;
 	}
-	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6) || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 11)
+	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6) || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 11)
 	{
 		if (Player_Movement.y > 0)
 		{
@@ -198,11 +199,55 @@ void Player::Controls(Map * _Map)
 
 	if (Player_Direction == NONE)
 	{
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 12)
+		spPlayer.setRotation(0);
+
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
+			/*|| (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))*/
+		{
+			Player_Movement.x = 0;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
+		{
+			std::cout << "piege hit, speed player avant : " << Player_Movement.x << std::endl;
+
+			_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
+
+			timerTrapFactor.restart();
+			SetHitTrap();
+			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
+
+			std::cout << "speed factor : " << trapSpeedFactor << std::endl;
+			std::cout << "speed player apres : " << Player_Movement.x << std::endl;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 20 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 22)
+		{
+			if (_Map->GetIsLazerOn())
+			{
+				timerTrapFactor.restart();
+				SetHitLazer();
+				//Player_Movement.x = Player_Movement.x / trapSpeedFactor;
+			}
+		}
+		else
+		{
+			if (Player_Movement.x < SPEED && Oiled == false)
+				Player_Movement.x += 10;
+			else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
+				Player_Movement.x = SPEED;
+			else if (Boost == true)
+				Player_Movement.x = SPEED * 1.5;
+			else if (Oiled == true)
+			{
+				if (Player_Movement.x >= SPEED / 2)
+					Player_Movement.x = SPEED / 2;
+			}
+		}
+
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 12)
 		{
 			Player_Direction = UP;
 		}
-		else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 8 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 13)
+		else if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 8 || _Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 13)
 		{
 			Player_Direction = DOWN;
 		}
@@ -220,7 +265,7 @@ void Player::Controls(Map * _Map)
 			BoostClock.restart();
 		}
 
-		if (_Map->GetTile(GetPos().x + 200, GetPos().y + 100) == 0)
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 0)
 			Player_Direction = NONE;
 	}
 	else if (Player_Direction == DOWN)
@@ -228,7 +273,7 @@ void Player::Controls(Map * _Map)
 		spPlayer.setRotation(45);
 
 		Player_Movement.x = SPEED;
-		Player_SlopVector.y = Player_Movement.x;
+		Player_SlopVector.y = SPEED;
 
 		if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 13 && Boost == false)
 		{
@@ -237,7 +282,18 @@ void Player::Controls(Map * _Map)
 		}
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) <= 6)
+		{
 			Player_Direction = NONE;
+		}
+	}
+
+	if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
+	{
+		Rocket_Direction = 0;
+	}
+	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
+	{
+		Rocket_Direction = 1;
 	}
 }
 
@@ -471,7 +527,7 @@ bool Player::CollectibleCollide(Map * _Map)
 
 		if (HasCollectible == false)
 		{
-			CollectID = e_Enum::OILFLAKE;//rand() % 6 + 1;
+			CollectID = /*e_Enum::OILFLAKE;*/rand() % 6 + 1;
 		}
 
 		return true;
@@ -485,23 +541,19 @@ int Player::GetCollectID()
 	return CollectID;
 }
 
+int Player::GetAimDir()
+{
+	return Rocket_Direction;
+}
+
 void Player::LauchCollectible()
 {
-	/*if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
-	{
-		Missile_Direction = 0;
-	}
-	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
-	{
-		Missile_Direction = 1;
-	}*/
-
 	if (HasCollectible == true)
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 1))
 		{
 			UseIt = true;
-			//newMissile = new Missile(Missile_Direction, spPlayer.getPosition());
+			HasCollectible = false;
 		}
 	}
 	else
