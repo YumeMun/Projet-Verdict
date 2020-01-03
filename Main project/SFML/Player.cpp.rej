@@ -1,0 +1,9 @@
+diff a/Main project/SFML/Player.cpp b/Main project/SFML/Player.cpp	(rejected hunks)
+@@ -197,6 +197,7 @@
+  
+  	if (Player_Direction == NONE)
+  	{
+++<<<<<<< HEAD
+ +		spPlayer.setRotation(0);
+ +
+ +		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)

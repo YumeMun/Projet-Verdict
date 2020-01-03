@@ -574,7 +574,7 @@ void LevelEditor::ControllerManager()
 		{
 			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
 			{
-				if (hud->Selection != 36 && hud->Selection != 37 && hud->Selection != 38)
+				if (hud->Selection != 20 && hud->Selection != 21 && hud->Selection != 22)
 					Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
 
 				Select = 2;
@@ -614,6 +614,22 @@ void LevelEditor::ControllerManager()
 						Tableau[(int)CasePos.y][(int)CasePos.x] = 22;
 						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 29;
 						Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 29;
+					}
+				}
+				else if (hud->Selection == 7)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 7;
+						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 9;
+					}
+				}
+				else if (hud->Selection == 8)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 8;
+						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 10;
 					}
 				}
 			}

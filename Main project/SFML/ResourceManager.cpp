@@ -50,6 +50,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("Player1.png", "Player1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("Player2.png", "Player2"))
 		_textures.push_back(newTexture);
 
@@ -303,15 +308,39 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+<<<<<<< HEAD
 	if (newTexture->Create("sprite_missile.png", "Rocket"))
+=======
+	if (newTexture->Create("HudJ1.png", "HUD J1"))
+>>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
 
+<<<<<<< HEAD
 	if (newTexture->Create("sprite_fume_missile.png", "Smoke"))
 		_textures.push_back(newTexture);
 
 	//Au dessus y a 79 ressources (marre de recompter à chaque fois)
+=======
+	if (newTexture->Create("HudJ2.png", "HUD J2"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("NumeroJoueur.png", "Numero joueur"))
+		_textures.push_back(newTexture);
+
+	for (int i = 0; i < 6; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("Collect" + std::to_string(i + 1) + ".png", "Collect" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
+
+	//Au dessus y a 86 ressources (marre de recompter à chaque fois)
+>>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 }
 
 //Fonction retournant une texture selon le nom appelé

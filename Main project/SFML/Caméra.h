@@ -14,7 +14,7 @@
 #define NOMBRE_POINT_SPAWN 3
 #define PLAYER_SPEED 300
 
-#define CAMERA_SPEED 700
+#define CAMERA_SPEED 800
 
 class Caméra
 {
@@ -42,7 +42,6 @@ private:
 	sf::Sprite spBc;
 
 	sf::Vector2f sizeCamera;
-	sf::Vector2f cameraCenter;
 	float distancePlayerX;
 	float distancePlayerY;
 	bool isPlayer1First;

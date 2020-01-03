@@ -254,21 +254,15 @@ void Map::Display()
 				m_actualWindow->draw(spTile[18]);
 				break;
 			case 20:
-				spTile[19].setPosition(CasePos);//
-				if (isLazerOn)
-				{
-					m_actualWindow->draw(spTile[19]);
-				}
+				spTile[19].setPosition(CasePos);
+				m_actualWindow->draw(spTile[19]);
 				break;
 			case 21:
-				spTile[20].setPosition(CasePos);//
-				if (isLazerOn)
-				{
-					m_actualWindow->draw(spTile[20]);
-				}
+				spTile[20].setPosition(CasePos);
+				m_actualWindow->draw(spTile[20]);
 				break;
 			case 22:
-				spTile[21].setPosition(CasePos);//
+				spTile[21].setPosition(CasePos);
 				if (isLazerOn)
 				{
 					m_actualWindow->draw(spTile[21]);
@@ -310,6 +304,33 @@ void Map::SetTile(int _X, int _Y, int _Tile)
 	Tableau[_Y / 64][_X / 64] = _Tile;
 }
 
+sf::Vector2f Map::GetStartPos()
+{
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x] == 24)
+			{
+				XListStart.push_back(x);
+			}
+		}
+	}
+
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < XListStart[0] + 1; x++)
+		{
+			if (Tableau[y][x] == 24 && x == XListStart[0])
+			{
+				CasePos.x = (float)x * 64;
+				CasePos.y = (float)y * 64;
+				return CasePos;
+			}
+		}
+	}
+}
+
 sf::Vector2f Map::GetPos()
 {
 	return sf::Vector2f();
@@ -323,30 +344,30 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 		{
 			if (Tableau[y][x] == 26 && x > (_Pos.x / 64))
 			{
-				XList.push_back(x);
+				XListCheckpoint.push_back(x);
 			}
 		}
 	}
 
-	for (int i = 0; i < XList.size(); i++)
+	for (int i = 0; i < XListCheckpoint.size(); i++)
 	{
-		for (int y = 0; y < XList.size(); y++)
+		for (int y = 0; y < XListCheckpoint.size(); y++)
 		{
-			if (XList.size() >= 2)
+			if (XListCheckpoint.size() >= 2)
 			{
-				if (XList[i] < XList[y])
-					XList.erase(XList.begin() + y);
+				if (XListCheckpoint[i] < XListCheckpoint[y])
+					XListCheckpoint.erase(XListCheckpoint.begin() + y);
 				else
-					XList.erase(XList.begin() + i);
+					XListCheckpoint.erase(XListCheckpoint.begin() + i);
 			}
 		}
 	}
 
 	for (int y = 0; y < Size_Y; y++)
 	{
-		for (int x = 0; x < XList[0] + 1; x++)
+		for (int x = 0; x < XListCheckpoint[0] + 1; x++)
 		{
-			if (Tableau[y][x] == 26 && x == XList[0] && x > (_Pos.x / 64))
+			if (Tableau[y][x] == 26 && x == XListCheckpoint[0] && x > (_Pos.x / 64))
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;

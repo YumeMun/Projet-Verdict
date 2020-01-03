@@ -7,11 +7,12 @@ class Player
 {
 public:
 	Player();
-	Player(int _ID, sf::Vector2f _Pos);
+	Player(int _ID, sf::Vector2f _Pos, Map* _Map);
 	~Player();
 	void Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos);
 	void Display(sf::RenderWindow* _Window);
 	void Controls(Map* _Map);
+	void Traps(Map* _Map);
 	bool IsAlive();
 	void Animations();
 
@@ -61,6 +62,12 @@ private:
 
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;
+
+	sf::Sprite spNumeroJoueur;
+	sf::Clock DisplayNumeroTimer;
+	sf::Clock AnimNumero;
+	int FrameIndexNumero = 0;
+	bool isNumeroDisplay;
 
 	sf::Vector2f Player_Vector;
 	sf::Vector2f Player_SlopVector;

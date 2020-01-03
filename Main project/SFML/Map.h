@@ -14,6 +14,7 @@ public:
 
 	int GetTile(int _X, int _Y);
 	void SetTile(int _X, int _Y, int _Tile);
+	sf::Vector2f GetStartPos();
 
 	sf::Vector2f GetPos();
 
@@ -34,7 +35,8 @@ private:
 
 	sf::Sprite spTile[30];
 
-	std::vector<int> XList;
+	std::vector<int> XListCheckpoint;
+	std::vector<int> XListStart;
 
 	sf::CircleShape Collectible;
 

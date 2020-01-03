@@ -1,0 +1,9 @@
+diff a/Main project/SFML/ResourceManager.cpp b/Main project/SFML/ResourceManager.cpp	(rejected hunks)
+@@ -322,6 +322,7 @@
+ +		_textures.push_back(newTexture);
+ +
+ +	//Au dessus y a 79 ressources (marre de recompter � chaque fois)
+++=======
+  	if (newTexture->Create("HudJ2.png", "HUD J2"))
+  		_textures.push_back(newTexture);
+  

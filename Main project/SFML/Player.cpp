@@ -6,20 +6,44 @@ Player::Player()
 
 }
 
-Player::Player(int _ID, sf::Vector2f _Pos)
+Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map)
 {
 	ID = _ID;
 
-	PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 121, PlayerRect.height = 54;
-	spPlayer.setTextureRect(PlayerRect);
+	if (ID == 1)
+	{
+		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 360, PlayerRect.height = 135;
+		spPlayer.setTextureRect(PlayerRect);
 
-	spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player2"));
-	spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
-	spPlayer.setPosition(_Pos);
-	spPlayer.setScale(sf::Vector2f{ 1.7, 1.7 });
+		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1"));
+		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
+		spPlayer.setPosition(_Map->GetStartPos().x + 300, _Map->GetStartPos().y);
 
-	Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
-	Player_ColliderLimit.y = spPlayer.getOrigin().y * 2;
+		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
+		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
+
+		spNumeroJoueur.setTexture(*ResourceManager::Instance()->GetTexture("Numero joueur"));
+		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 0, 101, 105 });
+		spNumeroJoueur.setOrigin(101 / 2, 105 / 2);
+		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
+	}
+	else if (ID == 2)
+	{
+		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 372, PlayerRect.height = 150;
+		spPlayer.setTextureRect(PlayerRect);
+
+		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player2"));
+		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
+		spPlayer.setPosition(_Map->GetStartPos().x - 100, _Map->GetStartPos().y);
+
+		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
+		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
+
+		spNumeroJoueur.setTexture(*ResourceManager::Instance()->GetTexture("Numero joueur"));
+		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 105, 101, 105 });
+		spNumeroJoueur.setOrigin(101 / 2, 105 / 2);
+		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
+	}
 
 	Player_Movement.x = SPEED;
 
@@ -31,11 +55,21 @@ Player::~Player()
 {
 }
 
-void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
+void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos)
 {
 	if (spPlayer.getPosition().x < 12000 * 64 && spPlayer.getPosition().y < 34 * 64 &&
 		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
+	{
 		Controls(_Map);
+		Traps(_Map);
+
+		if (isNumeroDisplay == false)
+		{
+			DisplayNumeroTimer.restart();
+			isNumeroDisplay = true;
+		}
+	}
+
 	else if (Alive == true)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
@@ -51,19 +85,21 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
-		//Player_Movement.x = 0;
 		Player_Movement.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
+		DisplayNumeroTimer.restart();
 		Alive = false;
 	}
 
-	if (spPlayer.getPosition().x < 20400)
+	if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
 		spPlayer.move(Player_Vector * _Elapsed);
 	}
-	else
+
+
+	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
 		Hasfinished = true;
 
 	if (CollectID != 0)
@@ -71,21 +107,23 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	else if (CollectID == 0)
 		HasCollectible = false;
 
-	/*if (newMissile != NULL)
-		MissileCollide();*/
-
 	CollectibleCollide(_Map);
 	LauchCollectible();
-
 	Animations();
 }
 
-void Player::Display(sf::RenderWindow* _Window)
+void Player::Display(sf::RenderWindow * _Window)
 {
 	_Window->draw(spPlayer);
+
+	if (DisplayNumeroTimer.getElapsedTime().asSeconds() < 15)
+	{
+		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
+		_Window->draw(spNumeroJoueur);
+	}
 }
 
-void Player::Controls(Map* _Map)
+void Player::Controls(Map * _Map)
 {
 	if (sf::Joystick::isConnected(ID - 1));
 	{
@@ -159,6 +197,7 @@ void Player::Controls(Map* _Map)
 
 	if (Player_Direction == NONE)
 	{
+<<<<<<< HEAD
 		spPlayer.setRotation(0);
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
@@ -204,6 +243,9 @@ void Player::Controls(Map* _Map)
 		}
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 12)
+=======
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x * 2, GetPos().y) == 12)
+>>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 		{
 			Player_Direction = UP;
 		}
@@ -254,6 +296,46 @@ void Player::Controls(Map* _Map)
 	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
 	{
 		Rocket_Direction = 1;
+	}
+}
+
+void Player::Traps(Map * _Map)
+{
+	if (Player_Direction == NONE)
+	{
+		spPlayer.setRotation(0);
+
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
+		{
+			Player_Movement.x = 0;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
+		{
+			_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
+
+			timerTrapFactor.restart();
+			SetHitTrap();
+			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
+		{
+			timerTrapFactor.restart();
+			SetHitLazer();
+		}
+		else
+		{
+			if (Player_Movement.x < SPEED && Oiled == false)
+				Player_Movement.x += 10;
+			else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
+				Player_Movement.x = SPEED;
+			else if (Boost == true)
+				Player_Movement.x = SPEED * 1.5;
+			else if (Oiled == true)
+			{
+				if (Player_Movement.x >= SPEED / 2)
+					Player_Movement.x = SPEED / 2;
+			}
+		}
 	}
 }
 
@@ -376,6 +458,21 @@ void Player::Animations()
 		}
 	}
 	lastFrameSpeed = Player_Movement.x;
+
+	if (AnimNumero.getElapsedTime().asMilliseconds() > 30)
+	{
+		if (FrameIndexNumero < 18)
+			FrameIndexNumero++;
+		else
+			FrameIndexNumero = 0;
+
+		if (ID == 1)
+			spNumeroJoueur.setTextureRect(sf::IntRect{ FrameIndexNumero * 101, 0, 101, 105 });
+		else if (ID == 2)
+			spNumeroJoueur.setTextureRect(sf::IntRect{ FrameIndexNumero * 101, 105, 101, 105 });
+
+		AnimNumero.restart();
+	}
 }
 
 sf::Sprite Player::GetSprite()
@@ -407,7 +504,7 @@ sf::Vector2f Player::GetPos()
 //	}
 //}
 
-bool Player::CollectibleCollide(Map* _Map)
+bool Player::CollectibleCollide(Map * _Map)
 {
 	srand(time(NULL));
 
@@ -417,7 +514,11 @@ bool Player::CollectibleCollide(Map* _Map)
 
 		if (HasCollectible == false)
 		{
+<<<<<<< HEAD
 			CollectID = e_Enum::ROCKET;//rand() % 6 + 1;
+=======
+			CollectID = /*e_Enum::OILFLAKE;*/rand() % 6 + 1;
+>>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 		}
 
 		return true;
@@ -433,17 +534,20 @@ int Player::GetCollectID()
 
 int Player::GetAimDir()
 {
+<<<<<<< HEAD
 	return Rocket_Direction;
 }
 
 void Player::LauchCollectible()
 {
+=======
+>>>>>>> bee8c9a0b73f91181d2aa052cec9fbf129eb0a09
 	if (HasCollectible == true)
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 1))
 		{
 			UseIt = true;
-			//newMissile = new Missile(Missile_Direction, spPlayer.getPosition());
+			HasCollectible = false;
 		}
 	}
 	else

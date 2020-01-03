@@ -8,7 +8,7 @@ Jeu::Jeu()
 
 Jeu::Jeu(std::string _LevelName)
 {
-		std::cout << "Jeu constructor" << std::endl;
+	std::cout << "Jeu constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -21,8 +21,8 @@ Jeu::Jeu(std::string _LevelName)
 	//collects = new Collects();
 	///missile = new Missile();
 
-	Player1 = new Player(1, sf::Vector2f(600, 800));
-	Player2 = new Player(2, sf::Vector2f(400, 800));
+	Player1 = new Player(1, sf::Vector2f(600, 800), map);
+	Player2 = new Player(2, sf::Vector2f(200, 800), map);
 
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
 	timerStart = new TimerStart();
@@ -45,8 +45,8 @@ Jeu::Jeu(std::string _LevelName)
 	spFirstOrSecond[1].setTexture(*ResourceManager::Instance()->GetTexture("Second"));
 	spFirstOrSecond[0].setOrigin(spFirstOrSecond[0].getGlobalBounds().width / 2, spFirstOrSecond[0].getGlobalBounds().height / 2);
 	spFirstOrSecond[1].setOrigin(spFirstOrSecond[1].getGlobalBounds().width / 2, spFirstOrSecond[1].getGlobalBounds().height / 2);
-	spFirstOrSecond[0].setPosition(350, 100);
-	spFirstOrSecond[1].setPosition(1550, 100);
+	spFirstOrSecond[0].setPosition(520, 70);
+	spFirstOrSecond[1].setPosition(1400, 70);
 }
 
 Jeu::~Jeu()
@@ -83,12 +83,6 @@ void Jeu::Update()
 				Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
 				Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
 
-				/*if (Player1->newMissile != NULL)
-					Player1->newMissile->Update(ElapsedTime, map);
-
-				if (Player2->newMissile != NULL)
-					Player2->newMissile->Update(ElapsedTime, map);*/
-
 				if (Player1->GetPos().x > Player2->GetPos().x)
 				{
 					if (Player1->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player1->IsAlive() == true)
@@ -97,8 +91,8 @@ void Jeu::Update()
 						Player1->PlayerFirstTimer.restart();
 					}
 
-					spFirstOrSecond[0].setPosition(350, 100);
-					spFirstOrSecond[1].setPosition(1550, 100);
+					spFirstOrSecond[0].setPosition(520, 70);
+					spFirstOrSecond[1].setPosition(1400, 70);
 				}
 				else if (Player2->GetPos().x > Player1->GetPos().x)
 				{
@@ -107,8 +101,8 @@ void Jeu::Update()
 						Player2->Score++;
 						Player2->PlayerFirstTimer.restart();
 					}
-					spFirstOrSecond[0].setPosition(1550, 100);
-					spFirstOrSecond[1].setPosition(350, 100);
+					spFirstOrSecond[0].setPosition(1400, 70);
+					spFirstOrSecond[1].setPosition(520, 70);
 				}
 
 				map->Update(ElapsedTime, caméra);
@@ -121,9 +115,8 @@ void Jeu::Update()
 
 		CollectiblesManager();
 
-		caméra->Update(ElapsedTime, timerStart);
-
-		//collects->Update(missile);
+		if (Player1->Hasfinished == false && Player2->Hasfinished == false)
+			caméra->Update(ElapsedTime, timerStart);
 
 		hud->Update(caméra->GetCameraCenter(), caméra->GetSizeCamera(), Player1->GetPos(), Player2->GetPos());
 
@@ -135,7 +128,7 @@ void Jeu::Update()
 			{
 				transition->ResetTransition();
 				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score);
-			}	
+			}
 		}
 	}
 
@@ -158,7 +151,7 @@ void Jeu::Display()
 
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
-	hud->Display(Player1->HasCollectible, Player2->HasCollectible);
+	hud->Display(Player1, Player2);
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -222,7 +215,7 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
-			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1 ,Player1->GetPos()));
+			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1, Player1->GetPos()));
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}
