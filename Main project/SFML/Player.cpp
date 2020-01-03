@@ -21,6 +21,11 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map)
 
 		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
 		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
+
+		spNumeroJoueur.setTexture(*ResourceManager::Instance()->GetTexture("Numero joueur"));
+		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 0, 101, 105 });
+		spNumeroJoueur.setOrigin(101 / 2, 105 / 2);
+		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
 	}
 	else if (ID == 2)
 	{
@@ -33,6 +38,11 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map)
 
 		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
 		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
+
+		spNumeroJoueur.setTexture(*ResourceManager::Instance()->GetTexture("Numero joueur"));
+		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 105, 101, 105 });
+		spNumeroJoueur.setOrigin(101 / 2, 105 / 2);
+		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
 	}
 
 	Player_Movement.x = SPEED;
@@ -52,6 +62,12 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 	{
 		Controls(_Map);
 		Traps(_Map);
+
+		if (isNumeroDisplay == false)
+		{
+			DisplayNumeroTimer.restart();
+			isNumeroDisplay = true;
+		}
 	}
 
 	else if (Alive == true)
@@ -69,10 +85,10 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
-		//Player_Movement.x = 0;
 		Player_Movement.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
+		DisplayNumeroTimer.restart();
 		Alive = false;
 	}
 
@@ -83,7 +99,7 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 	}
 
 
-	if(_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
+	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
 		Hasfinished = true;
 
 	if (CollectID != 0)
@@ -93,13 +109,18 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 
 	CollectibleCollide(_Map);
 	LauchCollectible();
-
 	Animations();
 }
 
 void Player::Display(sf::RenderWindow * _Window)
 {
 	_Window->draw(spPlayer);
+
+	if (DisplayNumeroTimer.getElapsedTime().asSeconds() < 15)
+	{
+		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
+		_Window->draw(spNumeroJoueur);
+	}
 }
 
 void Player::Controls(Map * _Map)
@@ -378,6 +399,21 @@ void Player::Animations()
 		}
 	}
 	lastFrameSpeed = Player_Movement.x;
+
+	if (AnimNumero.getElapsedTime().asMilliseconds() > 30)
+	{
+		if (FrameIndexNumero < 18)
+			FrameIndexNumero++;
+		else
+			FrameIndexNumero = 0;
+
+		if (ID == 1)
+			spNumeroJoueur.setTextureRect(sf::IntRect{ FrameIndexNumero * 101, 0, 101, 105 });
+		else if (ID == 2)
+			spNumeroJoueur.setTextureRect(sf::IntRect{ FrameIndexNumero * 101, 105, 101, 105 });
+
+		AnimNumero.restart();
+	}
 }
 
 sf::Sprite Player::GetSprite()

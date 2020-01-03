@@ -316,6 +316,11 @@ void ResourceManager::Load()
 	if (newTexture->Create("HudJ2.png", "HUD J2"))
 		_textures.push_back(newTexture);
 
+	newTexture = new Textures();
+
+	if (newTexture->Create("NumeroJoueur.png", "Numero joueur"))
+		_textures.push_back(newTexture);
+
 	//Au dessus y a 80 ressources (marre de recompter à chaque fois)
 }
 

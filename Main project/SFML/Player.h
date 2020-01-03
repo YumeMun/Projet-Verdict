@@ -63,6 +63,12 @@ private:
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;
 
+	sf::Sprite spNumeroJoueur;
+	sf::Clock DisplayNumeroTimer;
+	sf::Clock AnimNumero;
+	int FrameIndexNumero = 0;
+	bool isNumeroDisplay;
+
 	sf::Vector2f Player_Vector;
 	sf::Vector2f Player_SlopVector;
 	sf::Vector2f Player_ColliderLimit;
