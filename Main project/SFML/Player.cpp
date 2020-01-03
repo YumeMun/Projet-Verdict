@@ -112,6 +112,11 @@ void Player::Controls(Map* _Map)
 		}
 	}
 
+	if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 11)
+	{
+		spPlayer.setPosition(sf::Vector2f(GetPos().x, _Map->GetNextTile(11, GetPos()).y - Player_ColliderLimit.y));
+	}
+
 	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6)
 	{
 		Jump = false;
@@ -122,7 +127,7 @@ void Player::Controls(Map* _Map)
 		Player_Movement.y += GRAVITY * GRAVITYFACTOR;
 		Jump = true;
 	}
-	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6))
+	else if ((_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 6) || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) <= 11)
 	{
 		if (Player_Movement.y > 0)
 		{
