@@ -311,6 +311,17 @@ void LevelEditor::Update()
 			}
 		}
 	}
+	else if (PopUpActivated == 4)
+	{
+		PopUpText[0].setString("				Oups, une erreur est survenue.\nVeuillez vérifier qu'il y a bien un départ et une arrivée.");
+		PopUpText[0].setPosition(600, 500);
+
+		if (sf::Joystick::isButtonPressed(0, 0) || sf::Joystick::isButtonPressed(0, 1))
+		{
+			PopUpActivated = 0;
+			SelectionTimer.restart();
+		}
+	}
 
 	LastFrameTime = CurrentTime;
 }
@@ -456,6 +467,8 @@ void LevelEditor::Display()
 		}
 	}
 
+	CheckIfCaseIsFree();
+
 	m_actualWindow->draw(spSelecterTarget);
 
 	if (HudDisplay == true)
@@ -477,9 +490,17 @@ void LevelEditor::Display()
 	if (PopUpActivated != 0)
 	{
 		m_actualWindow->draw(spPopUp);
-		for (int i = 0; i < 3; i++)
+
+		if (PopUpActivated != 4)
 		{
-			m_actualWindow->draw(PopUpText[i]);
+			for (int i = 0; i < 3; i++)
+			{
+				m_actualWindow->draw(PopUpText[i]);
+			}
+		}
+		else
+		{
+			m_actualWindow->draw(PopUpText[0]);
 		}
 	}
 }
@@ -574,7 +595,7 @@ void LevelEditor::ControllerManager()
 		{
 			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
 			{
-				if (hud->Selection != 20 && hud->Selection != 21 && hud->Selection != 22)
+				if (hud->Selection < 20)
 					Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
 
 				Select = 2;
@@ -632,6 +653,33 @@ void LevelEditor::ControllerManager()
 						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 10;
 					}
 				}
+				else if (hud->Selection == 23)
+				{
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 23;
+				}
+				else if (hud->Selection == 24)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 24;
+						StartIsPut = true;
+					}
+				}
+				else if (hud->Selection == 25)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 25;
+						EndIsPut = true;
+					}
+				}
+				else if (hud->Selection == 26)
+				{
+					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 26;
+					}
+				}
 			}
 			else
 				Select = 2;
@@ -647,6 +695,92 @@ void LevelEditor::ControllerManager()
 			spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur suppression"));
 			CasePos.x = spSelecterTarget.getPosition().x / 64;
 			CasePos.y = spSelecterTarget.getPosition().y / 64;
+
+			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 24)
+			{
+				StartIsPut = false;
+			}
+			else if (Tableau[(int)CasePos.y][(int)CasePos.x] == 25)
+			{
+				EndIsPut = false;
+			}
+
+			if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 28)
+				Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
+			else if (Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 28)
+				Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 0;
+			else if (Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 28)
+				Tableau[(int)CasePos.y][(int)CasePos.x + 3] = 0;
+			else if (Tableau[(int)CasePos.y][(int)CasePos.x - 1] == 20)
+			{
+				Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 0;
+			}
+			else if (Tableau[(int)CasePos.y][(int)CasePos.x - 2] == 20)
+			{
+				Tableau[(int)CasePos.y][(int)CasePos.x - 2] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
+			}
+			else if (Tableau[(int)CasePos.y][(int)CasePos.x - 3] == 20)
+			{
+				Tableau[(int)CasePos.y][(int)CasePos.x - 3] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x - 2] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+			}
+
+
+			if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 28)
+				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+			else if (Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 28)
+				Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
+			else if (Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 28)
+				Tableau[(int)CasePos.y + 3][(int)CasePos.x] = 0;
+			else if (Tableau[(int)CasePos.y - 1][(int)CasePos.x] == 21)
+			{
+				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
+			}
+			else if (Tableau[(int)CasePos.y - 2][(int)CasePos.x] == 21)
+			{
+				Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+			}
+			else if (Tableau[(int)CasePos.y - 3][(int)CasePos.x] == 21)
+			{
+				Tableau[(int)CasePos.y - 3][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+			}
+
+
+			if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 29)
+				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+			else if (Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 29)
+				Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
+			else if (Tableau[(int)CasePos.y - 1][(int)CasePos.x] == 22)
+			{
+				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+			}
+			else if (Tableau[(int)CasePos.y - 2][(int)CasePos.x] == 22)
+			{
+				Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+			}
+
+
 			Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
 		}
 		else
@@ -655,7 +789,145 @@ void LevelEditor::ControllerManager()
 	}
 
 	if (sf::Joystick::isButtonPressed(0, 7))
-		Sauvegarde();
+	{
+		if (StartIsPut == true && EndIsPut == true)
+		{
+			Sauvegarde();
+		}
+		else
+		{
+			PopUpActivated = 4;
+		}
+	}
+}
+
+void LevelEditor::CheckIfCaseIsFree()
+{
+	CasePos.x = spSelecterTarget.getPosition().x / 64;
+	CasePos.y = spSelecterTarget.getPosition().y / 64;
+
+	if (hud->Selection < 20)
+	{
+		if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 150 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 20)
+	{
+		if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 0)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 4 * 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 4 * 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 21)
+	{
+		if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 0)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 4 * 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 4 * 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 22)
+	{
+		if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 3 * 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 3 * 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 23)
+	{
+		if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 150 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 24)
+	{
+		if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 150 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 25)
+	{
+		if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 150 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+	else if (hud->Selection == 26)
+	{
+		if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 0, 255, 0, 100 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+		else
+		{
+			CaseFreeOrNot.setSize(sf::Vector2f{ 64, 64 });
+			CaseFreeOrNot.setFillColor(sf::Color{ 255, 0, 0, 150 });
+			CaseFreeOrNot.setPosition((int)CasePos.x * 64, (int)CasePos.y * 64);
+		}
+	}
+
+	m_actualWindow->draw(CaseFreeOrNot);
 }
 
 void LevelEditor::Sauvegarde()
