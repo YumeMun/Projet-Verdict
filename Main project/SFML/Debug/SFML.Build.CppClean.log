@@ -1,9 +1,9 @@
 c:\users\pc\desktop\verdict\main project\sfml\debug\vc142.pdb
 c:\users\pc\desktop\verdict\main project\sfml\debug\vc142.idb
+c:\users\pc\desktop\verdict\main project\sfml\debug\player.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\options.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\openleveleditor.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\oilflake.obj
-c:\users\pc\desktop\verdict\main project\sfml\debug\missile.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\menu.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\map.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\jeu.obj
@@ -28,10 +28,12 @@ c:\users\pc\desktop\verdict\main project\sfml\debug\scene.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\saveeditor.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\resourcemanager.obj
 c:\users\pc\desktop\verdict\main project\sfml\debug\playerselector.obj
-c:\users\pc\desktop\verdict\main project\sfml\debug\player.obj
-c:\users\pc\desktop\verdict\main project\debug\sfml.ilk
+c:\users\pc\desktop\verdict\main project\sfml\debug\rocket.obj
+c:\users\pc\desktop\verdict\main project\sfml\debug\smoke.obj
 c:\users\pc\desktop\verdict\main project\debug\sfml.exe
+c:\users\pc\desktop\verdict\main project\debug\sfml.ilk
 c:\users\pc\desktop\verdict\main project\debug\sfml.pdb
+c:\users\pc\desktop\verdict\main project\sfml\debug\player.new.obj.enc
 c:\users\pc\desktop\verdict\main project\sfml\debug\sfml.tlog\cl.command.1.tlog
 c:\users\pc\desktop\verdict\main project\sfml\debug\sfml.tlog\cl.read.1.tlog
 c:\users\pc\desktop\verdict\main project\sfml\debug\sfml.tlog\cl.write.1.tlog

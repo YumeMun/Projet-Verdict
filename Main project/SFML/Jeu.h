@@ -6,6 +6,7 @@
 #include "TimerStart.h"
 #include "Shockwave.h"
 #include "Oilflake.h"
+#include "Rocket.h"
 
 class Jeu :public Scene
 {

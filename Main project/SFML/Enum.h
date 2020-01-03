@@ -28,7 +28,7 @@ namespace e_Enum
 
 	enum e_Collects
 	{
-		ROCKET = 0,
+		ROCKET = 1,
 		SHOCKWAVE,
 		OILFLAKE,
 		LEVITATION,

@@ -301,7 +301,17 @@ void ResourceManager::Load()
 	if (newTexture->Create("Second.png", "Second"))
 		_textures.push_back(newTexture);
 
-	//Au dessus y a 77 ressources (marre de recompter à chaque fois)
+	newTexture = new Textures();
+
+	if (newTexture->Create("sprite_missile.png", "Rocket"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("sprite_fume_missile.png", "Smoke"))
+		_textures.push_back(newTexture);
+
+	//Au dessus y a 79 ressources (marre de recompter à chaque fois)
 }
 
 //Fonction retournant une texture selon le nom appelé
