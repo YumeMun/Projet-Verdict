@@ -151,7 +151,7 @@ void Jeu::Display()
 
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
-	hud->Display(Player1->HasCollectible, Player2->HasCollectible);
+	hud->Display(Player1, Player2);
 
 	for (int i = 0; i < 2; i++)
 	{

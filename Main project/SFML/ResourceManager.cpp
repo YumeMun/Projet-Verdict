@@ -321,7 +321,15 @@ void ResourceManager::Load()
 	if (newTexture->Create("NumeroJoueur.png", "Numero joueur"))
 		_textures.push_back(newTexture);
 
-	//Au dessus y a 80 ressources (marre de recompter à chaque fois)
+	for (int i = 0; i < 6; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("Collect" + std::to_string(i + 1) + ".png", "Collect" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
+
+	//Au dessus y a 86 ressources (marre de recompter à chaque fois)
 }
 
 //Fonction retournant une texture selon le nom appelé

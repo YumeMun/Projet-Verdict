@@ -455,7 +455,7 @@ bool Player::CollectibleCollide(Map * _Map)
 
 		if (HasCollectible == false)
 		{
-			CollectID = e_Enum::OILFLAKE;//rand() % 6 + 1;
+			CollectID = /*e_Enum::OILFLAKE;*/rand() % 6 + 1;
 		}
 
 		return true;
@@ -471,21 +471,12 @@ int Player::GetCollectID()
 
 void Player::LauchCollectible()
 {
-	/*if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
-	{
-		Missile_Direction = 0;
-	}
-	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
-	{
-		Missile_Direction = 1;
-	}*/
-
 	if (HasCollectible == true)
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 1))
 		{
 			UseIt = true;
-			//newMissile = new Missile(Missile_Direction, spPlayer.getPosition());
+			HasCollectible = false;
 		}
 	}
 	else
