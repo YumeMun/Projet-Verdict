@@ -574,7 +574,7 @@ void LevelEditor::ControllerManager()
 		{
 			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
 			{
-				if (hud->Selection != 36 && hud->Selection != 37 && hud->Selection != 38)
+				if (hud->Selection != 20 && hud->Selection != 21 && hud->Selection != 22)
 					Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
 
 				Select = 2;

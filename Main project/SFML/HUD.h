@@ -29,11 +29,15 @@ public:
 	void SetProgressionLevel(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer2); //ancien
 	void SetProgressionPlayer(sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer2);
 
+	void AnimationHUD(bool _J1HasCollectible, bool J2HasCollectible);
+
 private:
 	sf::RenderWindow* m_actualWindow;
 
-	sf::RectangleShape iconPlayer[2];
-	sf::RectangleShape bcIconPlayer[2];
+	sf::Sprite IconPlayer[2];
+	sf::Clock AnimClock[2];
+	int FrameIndex[2];
+	bool HudDisplay[2];
 	
 	sf::CircleShape iconCollectable[2];
 	sf::Vector2f posPlayerHUD;

@@ -50,6 +50,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("Player1.png", "Player1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("Player2.png", "Player2"))
 		_textures.push_back(newTexture);
 
@@ -301,7 +306,17 @@ void ResourceManager::Load()
 	if (newTexture->Create("Second.png", "Second"))
 		_textures.push_back(newTexture);
 
-	//Au dessus y a 77 ressources (marre de recompter à chaque fois)
+	newTexture = new Textures();
+
+	if (newTexture->Create("HudJ1.png", "HUD J1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("HudJ2.png", "HUD J2"))
+		_textures.push_back(newTexture);
+
+	//Au dessus y a 80 ressources (marre de recompter à chaque fois)
 }
 
 //Fonction retournant une texture selon le nom appelé

@@ -45,8 +45,8 @@ Jeu::Jeu(std::string _LevelName)
 	spFirstOrSecond[1].setTexture(*ResourceManager::Instance()->GetTexture("Second"));
 	spFirstOrSecond[0].setOrigin(spFirstOrSecond[0].getGlobalBounds().width / 2, spFirstOrSecond[0].getGlobalBounds().height / 2);
 	spFirstOrSecond[1].setOrigin(spFirstOrSecond[1].getGlobalBounds().width / 2, spFirstOrSecond[1].getGlobalBounds().height / 2);
-	spFirstOrSecond[0].setPosition(350, 100);
-	spFirstOrSecond[1].setPosition(1550, 100);
+	spFirstOrSecond[0].setPosition(520, 70);
+	spFirstOrSecond[1].setPosition(1400, 70);
 }
 
 Jeu::~Jeu()
@@ -97,8 +97,8 @@ void Jeu::Update()
 						Player1->PlayerFirstTimer.restart();
 					}
 
-					spFirstOrSecond[0].setPosition(350, 100);
-					spFirstOrSecond[1].setPosition(1550, 100);
+					spFirstOrSecond[0].setPosition(520, 70);
+					spFirstOrSecond[1].setPosition(1400, 70);
 				}
 				else if (Player2->GetPos().x > Player1->GetPos().x)
 				{
@@ -107,8 +107,8 @@ void Jeu::Update()
 						Player2->Score++;
 						Player2->PlayerFirstTimer.restart();
 					}
-					spFirstOrSecond[0].setPosition(1550, 100);
-					spFirstOrSecond[1].setPosition(350, 100);
+					spFirstOrSecond[0].setPosition(1400, 70);
+					spFirstOrSecond[1].setPosition(520, 70);
 				}
 
 				map->Update(ElapsedTime, caméra);

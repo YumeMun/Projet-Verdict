@@ -14,7 +14,7 @@
 #define NOMBRE_POINT_SPAWN 3
 #define PLAYER_SPEED 300
 
-#define CAMERA_SPEED 700
+#define CAMERA_SPEED 800
 
 class Caméra
 {

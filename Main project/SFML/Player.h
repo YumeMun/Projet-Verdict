@@ -13,6 +13,7 @@ public:
 	void Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos);
 	void Display(sf::RenderWindow* _Window);
 	void Controls(Map* _Map);
+	void Traps(Map* _Map);
 	bool IsAlive();
 	void Animations();
 

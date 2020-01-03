@@ -254,21 +254,15 @@ void Map::Display()
 				m_actualWindow->draw(spTile[18]);
 				break;
 			case 20:
-				spTile[19].setPosition(CasePos);//
-				if (isLazerOn)
-				{
-					m_actualWindow->draw(spTile[19]);
-				}
+				spTile[19].setPosition(CasePos);
+				m_actualWindow->draw(spTile[19]);
 				break;
 			case 21:
-				spTile[20].setPosition(CasePos);//
-				if (isLazerOn)
-				{
-					m_actualWindow->draw(spTile[20]);
-				}
+				spTile[20].setPosition(CasePos);
+				m_actualWindow->draw(spTile[20]);
 				break;
 			case 22:
-				spTile[21].setPosition(CasePos);//
+				spTile[21].setPosition(CasePos);
 				if (isLazerOn)
 				{
 					m_actualWindow->draw(spTile[21]);
