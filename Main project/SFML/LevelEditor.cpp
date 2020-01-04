@@ -467,7 +467,8 @@ void LevelEditor::Display()
 		}
 	}
 
-	CheckIfCaseIsFree();
+	if (spSelecterTarget.getPosition().x >= 0 && spSelecterTarget.getPosition().x <= Size_X * 64 && spSelecterTarget.getPosition().y >= 0 && spSelecterTarget.getPosition().y <= Size_Y * 64)
+		CheckIfCaseIsFree();
 
 	m_actualWindow->draw(spSelecterTarget);
 
@@ -585,206 +586,209 @@ void LevelEditor::ControllerManager()
 			SelectionTimer.restart();
 		}
 
-		if (sf::Joystick::isButtonPressed(0, 0))
+		if (spSelecterTarget.getPosition().x >= 0 && spSelecterTarget.getPosition().x <= Size_X * 64 && spSelecterTarget.getPosition().y >= 0 && spSelecterTarget.getPosition().y <= Size_Y * 64)
 		{
-			CasePos.x = spSelecterTarget.getPosition().x / 64;
-			CasePos.y = spSelecterTarget.getPosition().y / 64;
-			Select = 1;
-		}
-		if (Select == 1)
-		{
-			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
+			if (sf::Joystick::isButtonPressed(0, 0))
 			{
-				if (hud->Selection < 20)
-					Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
+				CasePos.x = spSelecterTarget.getPosition().x / 64;
+				CasePos.y = spSelecterTarget.getPosition().y / 64;
+				Select = 1;
+			}
+			if (Select == 1)
+			{
+				if (Tableau[(int)CasePos.y][(int)CasePos.x] == 0)
+				{
+					if (hud->Selection < 20)
+						Tableau[(int)CasePos.y][(int)CasePos.x] = hud->Selection;
 
-				Select = 2;
+					Select = 2;
 
-				if (hud->Selection == 16)
-				{
-					Tableau[(int)CasePos.y][(int)CasePos.x] = 16;
-					for (int i = CasePos.y; i < 33; i++)
+					if (hud->Selection == 16)
 					{
-						Tableau[(int)i + 1][(int)CasePos.x] = 27;
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 16;
+						for (int i = CasePos.y; i < 33; i++)
+						{
+							Tableau[(int)i + 1][(int)CasePos.x] = 27;
+						}
+					}
+					else if (hud->Selection == 20)
+					{
+						if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 20;
+							Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 28;
+							Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 28;
+							Tableau[(int)CasePos.y][(int)CasePos.x + 3] = 28;
+						}
+					}
+					else if (hud->Selection == 21)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 21;
+							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 28;
+							Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 28;
+							Tableau[(int)CasePos.y + 3][(int)CasePos.x] = 28;
+						}
+					}
+					else if (hud->Selection == 22)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 22;
+							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 29;
+							Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 29;
+						}
+					}
+					else if (hud->Selection == 7)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 7;
+							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 9;
+						}
+					}
+					else if (hud->Selection == 8)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 8;
+							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 10;
+						}
+					}
+					else if (hud->Selection == 23)
+					{
+						Tableau[(int)CasePos.y][(int)CasePos.x] = 23;
+					}
+					else if (hud->Selection == 24)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 24;
+							StartIsPut = true;
+						}
+					}
+					else if (hud->Selection == 25)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 25;
+							EndIsPut = true;
+						}
+					}
+					else if (hud->Selection == 26)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 26;
+						}
 					}
 				}
-				else if (hud->Selection == 20)
+				else
+					Select = 2;
+			}
+
+			if (!sf::Joystick::isButtonPressed(0, 0) && Select == 2)
+			{
+				Select = 0;
+			}
+
+			if (sf::Joystick::isButtonPressed(0, 2))
+			{
+				spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur suppression"));
+				CasePos.x = spSelecterTarget.getPosition().x / 64;
+				CasePos.y = spSelecterTarget.getPosition().y / 64;
+
+				if (Tableau[(int)CasePos.y][(int)CasePos.x] == 24)
 				{
-					if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 0 && Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 0)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 20;
-						Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 28;
-						Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 28;
-						Tableau[(int)CasePos.y][(int)CasePos.x + 3] = 28;
-					}
+					StartIsPut = false;
 				}
-				else if (hud->Selection == 21)
+				else if (Tableau[(int)CasePos.y][(int)CasePos.x] == 25)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 0)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 21;
-						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 28;
-						Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 28;
-						Tableau[(int)CasePos.y + 3][(int)CasePos.x] = 28;
-					}
+					EndIsPut = false;
 				}
-				else if (hud->Selection == 22)
+
+				if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 28)
+					Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
+				else if (Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 28)
+					Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 0;
+				else if (Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 28)
+					Tableau[(int)CasePos.y][(int)CasePos.x + 3] = 0;
+				else if (Tableau[(int)CasePos.y][(int)CasePos.x - 1] == 20)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0 && Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 0)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 22;
-						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 29;
-						Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 29;
-					}
+					Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 0;
 				}
-				else if (hud->Selection == 7)
+				else if (Tableau[(int)CasePos.y][(int)CasePos.x - 2] == 20)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 7;
-						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 9;
-					}
+					Tableau[(int)CasePos.y][(int)CasePos.x - 2] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
 				}
-				else if (hud->Selection == 8)
+				else if (Tableau[(int)CasePos.y][(int)CasePos.x - 3] == 20)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 8;
-						Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 10;
-					}
+					Tableau[(int)CasePos.y][(int)CasePos.x - 3] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x - 2] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
 				}
-				else if (hud->Selection == 23)
+
+
+				if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 28)
+					Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+				else if (Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 28)
+					Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
+				else if (Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 28)
+					Tableau[(int)CasePos.y + 3][(int)CasePos.x] = 0;
+				else if (Tableau[(int)CasePos.y - 1][(int)CasePos.x] == 21)
 				{
-					Tableau[(int)CasePos.y][(int)CasePos.x] = 23;
+					Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
 				}
-				else if (hud->Selection == 24)
+				else if (Tableau[(int)CasePos.y - 2][(int)CasePos.x] == 21)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 24;
-						StartIsPut = true;
-					}
+					Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
 				}
-				else if (hud->Selection == 25)
+				else if (Tableau[(int)CasePos.y - 3][(int)CasePos.x] == 21)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 25;
-						EndIsPut = true;
-					}
+					Tableau[(int)CasePos.y - 3][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
 				}
-				else if (hud->Selection == 26)
+
+
+				if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 29)
+					Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
+				else if (Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 29)
+					Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
+				else if (Tableau[(int)CasePos.y - 1][(int)CasePos.x] == 22)
 				{
-					if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
-					{
-						Tableau[(int)CasePos.y][(int)CasePos.x] = 26;
-					}
+					Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
 				}
+				else if (Tableau[(int)CasePos.y - 2][(int)CasePos.x] == 22)
+				{
+					Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
+					Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
+				}
+
+
+				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
 			}
 			else
-				Select = 2;
+				spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));
 		}
-
-		if (!sf::Joystick::isButtonPressed(0, 0) && Select == 2)
-		{
-			Select = 0;
-		}
-
-		if (sf::Joystick::isButtonPressed(0, 2))
-		{
-			spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur suppression"));
-			CasePos.x = spSelecterTarget.getPosition().x / 64;
-			CasePos.y = spSelecterTarget.getPosition().y / 64;
-
-			if (Tableau[(int)CasePos.y][(int)CasePos.x] == 24)
-			{
-				StartIsPut = false;
-			}
-			else if (Tableau[(int)CasePos.y][(int)CasePos.x] == 25)
-			{
-				EndIsPut = false;
-			}
-
-			if (Tableau[(int)CasePos.y][(int)CasePos.x + 1] == 28)
-				Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
-			else if (Tableau[(int)CasePos.y][(int)CasePos.x + 2] == 28)
-				Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 0;
-			else if (Tableau[(int)CasePos.y][(int)CasePos.x + 3] == 28)
-				Tableau[(int)CasePos.y][(int)CasePos.x + 3] = 0;
-			else if (Tableau[(int)CasePos.y][(int)CasePos.x - 1] == 20)
-			{
-				Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x + 2] = 0;
-			}
-			else if (Tableau[(int)CasePos.y][(int)CasePos.x - 2] == 20)
-			{
-				Tableau[(int)CasePos.y][(int)CasePos.x - 2] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x + 1] = 0;
-			}
-			else if (Tableau[(int)CasePos.y][(int)CasePos.x - 3] == 20)
-			{
-				Tableau[(int)CasePos.y][(int)CasePos.x - 3] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x - 2] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x - 1] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-			}
-
-
-			if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 28)
-				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
-			else if (Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 28)
-				Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
-			else if (Tableau[(int)CasePos.y + 3][(int)CasePos.x] == 28)
-				Tableau[(int)CasePos.y + 3][(int)CasePos.x] = 0;
-			else if (Tableau[(int)CasePos.y - 1][(int)CasePos.x] == 21)
-			{
-				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
-			}
-			else if (Tableau[(int)CasePos.y - 2][(int)CasePos.x] == 21)
-			{
-				Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
-			}
-			else if (Tableau[(int)CasePos.y - 3][(int)CasePos.x] == 21)
-			{
-				Tableau[(int)CasePos.y - 3][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-			}
-
-
-			if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 29)
-				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
-			else if (Tableau[(int)CasePos.y + 2][(int)CasePos.x] == 29)
-				Tableau[(int)CasePos.y + 2][(int)CasePos.x] = 0;
-			else if (Tableau[(int)CasePos.y - 1][(int)CasePos.x] == 22)
-			{
-				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 0;
-			}
-			else if (Tableau[(int)CasePos.y - 2][(int)CasePos.x] == 22)
-			{
-				Tableau[(int)CasePos.y - 2][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y - 1][(int)CasePos.x] = 0;
-				Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-			}
-
-
-			Tableau[(int)CasePos.y][(int)CasePos.x] = 0;
-		}
-		else
-			spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));
 
 	}
 
