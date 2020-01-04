@@ -131,7 +131,6 @@ void Player::Controls(Map * _Map)
 		if (sf::Joystick::isButtonPressed(ID - 1, 0) && KeyPress == false && Jump == false && Oiled == false)
 		{
 			Player_Movement.y = -SPEED * 2;
-			Player_Movement.y = -SPEED * 1.5;
 
 			FrameIndex = 0;
 			isJumping = true;
