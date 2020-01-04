@@ -32,9 +32,23 @@ void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* 
 
 	if (_timer->GetIsTimerEnd())
 	{
-		if (_player1->GetPos().x > GetCameraCenter().x + (sizeCamera.x/4) || _player2->GetPos().x > GetCameraCenter().x + (sizeCamera.x / 4))
+		if (_player1->GetPos().x > GetCameraCenter().x + (sizeCamera.x/4))
 		{
-			camera.move(CAMERA_SPEED_MAX * _dTime, 0);
+			if (_player1->Player_Movement.x > 800)
+			{
+				camera.move(_player1->Player_Movement.x * _dTime, 0);
+			}
+			else
+				camera.move(CAMERA_SPEED * _dTime, 0);
+		}
+		else if (_player2->GetPos().x > GetCameraCenter().x + (sizeCamera.x / 4))
+		{
+			if (_player2->Player_Movement.x > 800)
+			{
+				camera.move(_player2->Player_Movement.x * _dTime, 0);
+			}
+			else
+				camera.move(CAMERA_SPEED * _dTime, 0);
 		}
 		else
 			camera.move(CAMERA_SPEED * _dTime, 0);
