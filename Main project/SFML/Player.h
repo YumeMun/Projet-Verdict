@@ -28,12 +28,13 @@ public:
 
 	bool CollectibleCollide(class Map* _Map);
 	bool CollectibleUsed();
-	bool HasCollectible, Oiled = false;
+	bool HasCollectible, Oiled = false, Invincible = false;
 	int GetCollectID();
 	int GetAimDir();
 	void LauchCollectible();
 	void SetCollectID(int _CollectID);
 
+	sf::Clock InvincibleTime;
 	sf::Vector2f Player_Movement;
 	//Missile* newMissile;
 

@@ -664,16 +664,22 @@ void LevelEditor::ControllerManager()
 					{
 						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
 						{
-							Tableau[(int)CasePos.y][(int)CasePos.x] = 24;
-							StartIsPut = true;
+							if (StartIsPut == false)
+							{
+								Tableau[(int)CasePos.y][(int)CasePos.x] = 24;
+								StartIsPut = true;
+							}
 						}
 					}
 					else if (hud->Selection == 25)
 					{
 						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] >= 1 && Tableau[(int)CasePos.y + 1][(int)CasePos.x] <= 6)
 						{
-							Tableau[(int)CasePos.y][(int)CasePos.x] = 25;
-							EndIsPut = true;
+							if (EndIsPut == false)
+							{
+								Tableau[(int)CasePos.y][(int)CasePos.x] = 25;
+								EndIsPut = true;
+							}
 						}
 					}
 					else if (hud->Selection == 26)
