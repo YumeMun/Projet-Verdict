@@ -81,7 +81,10 @@ void TimerStart::UpdateRect()
 			if (posPointY[0] < 1080 / 2)
 				posPointY[0] += RECT_SPEED_Y;
 			else
+			{
+				posPointY[0] = 1080 / 2;
 				rect0IsDone = true;
+			}
 		}
 		shape[0].setPoint(2, { (1920 / 2) + posPointX[0], 0 });
 		shape[0].setPoint(1, { (1920 / 2) + posPointX[0], 0 + posPointY[0] });
@@ -111,7 +114,10 @@ void TimerStart::UpdateRect()
 			if (posPointY[2] < 1080 / 2)
 				posPointY[2] += RECT_SPEED_Y;
 			else
+			{
+				posPointY[2] = 1080 / 2;
 				rect2IsDone = true;
+			}
 		}
 		shape[2].setPoint(2, { (1920/2) - posPointX[2], 1080});
 		shape[2].setPoint(1, { (1920/2) - posPointX[2], 1080 - posPointY[2] });

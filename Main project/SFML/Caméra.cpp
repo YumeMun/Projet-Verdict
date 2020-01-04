@@ -2,17 +2,20 @@
 #include "GameManager.h"
 #include "Jeu.h"
 
-Caméra::Caméra()
+Caméra::Caméra(Player* _player1)
 {
 	std::cout << "Camera constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
-	sizeCamera = { 1920, 1080 };
+	sizeCamera = { (1920*1.8)/2.4, (1080*1.8)/2.4 };
 	camera.setViewport({ 0, 0, 1, 1 });
-	camera.setCenter(1728, 1080);
+	centerCam = _player1->GetPos();
+	camera.setCenter(_player1->GetPos());
 	camera.setSize(sizeCamera);
-	camera.zoom(1.8);
+	//camera.zoom(1.8);
+	std::cout << "center cam y start: " << centerCam.y << std::endl;
+	std::cout << "center cam x start: " << centerCam.x << std::endl;
 }
 
 Caméra::~Caméra()
@@ -71,4 +74,36 @@ sf::Vector2f Caméra::GetCamOrigin()
 bool Caméra::GetStart()
 {
 	return isGameStart;
+}
+
+bool Caméra::GetIsZoomEnd()
+{
+	return isZoomEnd;
+}
+
+void Caméra::UpdateZoom(float _Elapsed, Map* _map)
+{
+	if (sizeCamera.x < 1920*1.8)
+	{
+		camera.zoom(zoom);
+	}
+
+	if (centerCam.y > _map->GetStartPos().y - 520)
+	{
+		std::cout << "center cam y : " << centerCam.y << std::endl;
+		centerCam.y -= CAMERA_ZOOM_SPEED * _Elapsed;
+		camera.setCenter(centerCam);
+	}
+
+	if (centerCam.x < _map->GetStartPos().x + 1300)
+	{
+		std::cout << "center cam X : " << centerCam.x << std::endl;
+		centerCam.x += (CAMERA_ZOOM_SPEED*(16/9)) * _Elapsed;
+		camera.setCenter(centerCam);
+	}
+	else
+	{
+		centerCam = { _map->GetStartPos().x + 1300, _map->GetStartPos().y - 520 };
+		camera.setCenter(centerCam);
+	}
 }

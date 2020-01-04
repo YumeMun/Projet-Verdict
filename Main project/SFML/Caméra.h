@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "Player.h"
+#include "Map.h"
 
 #define DISTANCE_MIN_X 1000
 #define DISTANCE_MAX_X 1500
@@ -18,11 +19,13 @@
 
 #define CAMERA_SPEED 800
 #define CAMERA_SPEED_MAX 1200
+#define CAMERA_ZOOM 2
+#define CAMERA_ZOOM_SPEED 310
 
 class Caméra
 {
 public:
-	Caméra();
+	Caméra(class Player* _player1);
 	~Caméra();
 
 	void Update(float _dTime, class TimerStart* _timer, class Player* _player1, class Player* _player2);
@@ -37,6 +40,10 @@ public:
 	sf::Vector2f GetCamOrigin();
 
 	bool GetStart();
+
+	bool GetIsZoomEnd();
+	//float ResetZoom();
+	void UpdateZoom(float _Elapsed, class Map* _map);
 
 private:
 	sf::RenderWindow* m_actualWindow;
@@ -58,4 +65,9 @@ private:
 
 	sf::Clock clock;
 	class Player* player;
+
+	//bool isZoomStart = true;
+	bool isZoomEnd = false;
+	float zoom = 1.0075;
+	sf::Vector2f centerCam;
 };

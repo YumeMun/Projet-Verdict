@@ -15,14 +15,17 @@ Jeu::Jeu(std::string _LevelName)
 	LevelName = _LevelName;
 
 	map = new Map(_LevelName);
-	caméra = new Caméra();
-	hud = new HUD();
+	//cam
+	//hud
 
 	//collects = new Collects();
 	///missile = new Missile();
 
 	Player1 = new Player(1, sf::Vector2f(600, 800), map);
 	Player2 = new Player(2, sf::Vector2f(200, 800), map);
+
+	caméra = new Caméra(Player1);
+	hud = new HUD();
 
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
 	timerStart = new TimerStart();
@@ -108,7 +111,13 @@ void Jeu::Update()
 				map->Update(ElapsedTime, caméra);
 			}
 			else
+			{
 				timerStart->UpdateRect();
+				if (caméra->GetSizeCamera().x < 1920 * 1.8)
+				{
+					caméra->UpdateZoom(ElapsedTime, map);
+				}
+			}
 		}
 		else
 			transition->UpdateBack();
