@@ -105,15 +105,15 @@ Map::~Map()
 
 void Map::Update(float _Elapsed, Caméra * _Cam)
 {
-	if (timerLazer.getElapsedTime().asSeconds() > 1)
+	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
 		timerLazer.restart();
 		if (isLazerOn)
 		{
-			isLazerOn = false;
+			isLazerOn = 0;
 		}
 		else
-			isLazerOn = true;
+			isLazerOn = 1;
 	}
 
 	for (int i = 1; i < 4; i++)
@@ -262,11 +262,9 @@ void Map::Display()
 				m_actualWindow->draw(spTile[20]);
 				break;
 			case 22:
+				spTile[21].setTextureRect(sf::IntRect{ FrameIndexLaser * 64, 22 * 64, 64, 3 * 64 });
 				spTile[21].setPosition(CasePos);// lazer 
-				if (isLazerOn)
-				{
-					m_actualWindow->draw(spTile[21]);
-				}
+				m_actualWindow->draw(spTile[21]);
 				break;
 			case 23:
 				spTile[22].setTextureRect(sf::IntRect{ FrameIndexCollect * 64, 16 * 64, 64, 64 });
@@ -394,7 +392,7 @@ sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
 	}
 }
 
-bool Map::GetIsLazerOn()
+int Map::GetIsLazerOn()
 {
 	return isLazerOn;
 }
@@ -423,5 +421,32 @@ void Map::AnimTiles()
 			FrameIndexCollect = 0;
 
 		AnimCollectClock.restart();
+	}
+
+	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
+	{
+		if (isLazerOn == 0)
+		{
+			if (FrameIndexLaser < 14)
+			{
+				FrameIndexLaser++;
+			}
+			else
+				FrameIndexLaser = 14;
+		}
+		else if (isLazerOn == 1)
+		{
+			if (FrameIndexLaser < 16)
+			{
+				FrameIndexLaser++;
+			}
+			else
+			{
+				FrameIndexLaser = 0;
+				isLazerOn = 3;
+			}
+		}
+
+		AnimLaserClock.restart();
 	}
 }
