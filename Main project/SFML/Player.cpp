@@ -97,9 +97,11 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 		spPlayer.move(Player_Vector * _Elapsed);
 	}
 
-
 	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
 		Hasfinished = true;
+
+	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
+		Invincible = false;
 
 	if (CollectID != 0)
 		HasCollectible = true;
@@ -257,7 +259,7 @@ void Player::Controls(Map * _Map)
 		{
 			Player_Direction = UP;
 		}
-		else if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 8 || _Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 13)
+		else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y * 2) == 8 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y * 2) == 13)
 		{
 			Player_Direction = DOWN;
 		}
@@ -283,7 +285,7 @@ void Player::Controls(Map * _Map)
 		spPlayer.setRotation(45);
 
 		Player_Movement.x = SPEED;
-		Player_SlopVector.y = SPEED;
+		Player_SlopVector.y = Player_Movement.x;
 
 		if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 13 && Boost == false)
 		{
@@ -537,7 +539,7 @@ bool Player::CollectibleCollide(Map * _Map)
 
 		if (HasCollectible == false)
 		{
-			CollectID = /*e_Enum::OILFLAKE;*/rand() % 6 + 1;
+			CollectID = e_Enum::SHOCKWAVE;/*rand() % 6 + 1;*/
 		}
 
 		return true;

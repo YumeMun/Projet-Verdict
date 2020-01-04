@@ -313,6 +313,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("sprite_onde_de_choc.png", "Shock"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("HudJ1.png", "HUD J1"))
 		_textures.push_back(newTexture);
 
@@ -339,7 +344,7 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	//Au dessus y a 86 ressources (marre de recompter à chaque fois)
+	//Au dessus y a 87 ressources (marre de recompter à chaque fois)
 }
 
 //Fonction retournant une texture selon le nom appelé

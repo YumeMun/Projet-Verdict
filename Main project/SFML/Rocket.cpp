@@ -55,7 +55,7 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 
 	if (ID == 1)
 	{
-		if (_Player2->GetSprite().getGlobalBounds().contains(spRocket.getPosition()))
+		if (_Player2->GetSprite().getGlobalBounds().contains(spRocket.getPosition()) && _Player2->Invincible == false)
 		{
 			Alive = false;
 			_Player2->Player_Movement.x = 0;
@@ -63,7 +63,7 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 	}
 	else if (ID == 2)
 	{
-		if (_Player1->GetSprite().getGlobalBounds().contains(spRocket.getPosition()))
+		if (_Player1->GetSprite().getGlobalBounds().contains(spRocket.getPosition()) && _Player1->Invincible == false)
 		{
 			Alive = false;
 			_Player1->Player_Movement.x = 0;
