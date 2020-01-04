@@ -108,7 +108,7 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 
 	CollectibleCollide(_Map);
 	LauchCollectible();
-	std::cout << "player speed :" << Player_Movement.x << std::endl;
+
 	Animations();
 
 }
@@ -135,6 +135,17 @@ void Player::Controls(Map * _Map)
 
 			FrameIndex = 0;
 			isJumping = true;
+			if (Player_Movement.x >= SPEED)
+			{
+				PlayerRect.top = PlayerRect.height * 3;
+				isStartJumpSpeedMax = true;
+			}
+			else
+			{
+				PlayerRect.top = PlayerRect.height * 4;
+				isStartJumpSpeedMax = false;
+			}
+
 			Jump = true;
 
 			KeyPress = true;
@@ -388,9 +399,10 @@ void Player::Animations()
 			}
 			else
 			{
+				PlayerRect.top = 0;
 				if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 				{
-					if (!FrameIndex >= 4)
+					if (FrameIndex < 4)
 						FrameIndex++;
 					else
 					{
@@ -417,9 +429,10 @@ void Player::Animations()
 			}
 			else
 			{
+				PlayerRect.top = 2 * PlayerRect.height;
 				if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 				{
-					if (!FrameIndex >= 3)
+					if (FrameIndex < 3)
 						FrameIndex++;
 					else
 					{
@@ -437,20 +450,9 @@ void Player::Animations()
 	else
 	{
 		if (Player_Movement.x < SPEED && lastFrameSpeed >= SPEED)
-		{
 			isSwitchingBack = true;
-		}
 		else if (lastFrameSpeed < SPEED && Player_Movement.x >= SPEED)
-		{
 			isSwitching = true;
-		}
-
-		if (Player_Movement.x >= SPEED)
-		{
-			PlayerRect.top = PlayerRect.height * 3;
-		}
-		else
-			PlayerRect.top = PlayerRect.height * 4;
 
 		if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 		{
@@ -459,7 +461,16 @@ void Player::Animations()
 			else
 			{
 				FrameIndex = 0;
-				PlayerRect.top = 1 * PlayerRect.height;
+				if (isStartJumpSpeedMax)
+				{
+					if (isSwitchingBack)
+						PlayerRect.top = 2 * PlayerRect.height;
+					else
+						PlayerRect.top = 1 * PlayerRect.height;
+				}
+				else
+					PlayerRect.top = 0 * PlayerRect.height;
+
 				StartAnim = true;
 				isJumping = false;
 			}
@@ -591,6 +602,46 @@ void Player::SetHitLazer()
 	//trapSpeedFactor = 5;
 	Player_Movement.x = 200;
 
+}
+
+void Player::SetAnimWheelStart()
+{
+	std::cout << "frame index : " << FrameIndex << std::endl;
+	PlayerRect.top = 0;
+	if (AnimClock.getElapsedTime().asMilliseconds() > 100)
+	{
+		/*if (!FrameIndex >= 4)
+			FrameIndex++;
+		else
+		{
+			FrameIndex = 0;
+			PlayerRect.top = 1 * PlayerRect.height;
+		}*/
+
+		if (FrameIndex < 4)
+			FrameIndex++;
+		else
+		{
+			FrameIndex = 0;
+			PlayerRect.top = 1 * PlayerRect.height;
+			isAnimStartEnd = true;
+		}
+
+		PlayerRect.left = FrameIndex * PlayerRect.width;
+		spPlayer.setTextureRect(PlayerRect);
+		AnimClock.restart();
+	}
+}
+
+void Player::SetAnimClockRestart()
+{
+	AnimClock.restart();
+	FrameIndex = 0;
+}
+
+int Player::GetFrameIndex()
+{
+	return FrameIndex;
 }
 
 bool Player::CollectibleUsed()

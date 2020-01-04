@@ -24,6 +24,8 @@ Caméra::~Caméra()
 
 void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* _player2)
 {
+	//std::cout << "player 1 speed : " << _player1->Player_Movement.x << std::endl;
+
 	if (clock.getElapsedTime().asSeconds() >= 3)
 	{
 		isGameStart = true;

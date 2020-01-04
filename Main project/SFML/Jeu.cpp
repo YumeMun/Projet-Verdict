@@ -117,6 +117,21 @@ void Jeu::Update()
 				{
 					caméra->UpdateZoom(ElapsedTime, map);
 				}
+
+				if (isPlayerAnimStart)
+				{
+					Player1->SetAnimClockRestart();
+					Player2->SetAnimClockRestart();
+					isPlayerAnimStart = false;
+				}
+				else
+				{
+					if (!Player1->isAnimStartEnd || !Player2->isAnimStartEnd)
+					{
+						Player1->SetAnimWheelStart();
+						Player2->SetAnimWheelStart();
+					}
+				}
 			}
 		}
 		else

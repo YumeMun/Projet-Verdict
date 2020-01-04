@@ -38,6 +38,7 @@ private:
 
 	std::vector<Collects*> Collectibles;
 
+	bool isPlayerAnimStart = true;
 public:
 	Jeu();
 	Jeu(std::string _LevelName);

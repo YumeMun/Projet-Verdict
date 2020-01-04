@@ -39,6 +39,10 @@ public:
 
 	void SetHitTrap();
 	void SetHitLazer();
+	void SetAnimWheelStart();
+	void SetAnimClockRestart();
+	int GetFrameIndex();
+	bool isAnimStartEnd = false;
 
 private:
 	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
@@ -53,6 +57,7 @@ private:
 	bool isSwitching = false;
 	bool isSwitchingBack = false;
 	bool isHitLazer = false;
+	bool isStartJumpSpeedMax = false;
 
 	int trapHitCount = 1;
 	float trapSpeedFactor = 1; 
