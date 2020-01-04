@@ -6,16 +6,16 @@ Player::Player()
 
 }
 
-Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map)
+Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 {
 	ID = _ID;
 
 	if (ID == 1)
 	{
-		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 360, PlayerRect.height = 135;
+		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 372, PlayerRect.height = 150;
 		spPlayer.setTextureRect(PlayerRect);
 
-		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1"));
+		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinNumber)));
 		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
 		spPlayer.setPosition(_Map->GetStartPos().x + 300, _Map->GetStartPos().y);
 

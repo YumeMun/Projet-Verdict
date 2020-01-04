@@ -6,13 +6,16 @@ Jeu::Jeu()
 {
 }
 
-Jeu::Jeu(std::string _LevelName)
+Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 {
 	std::cout << "Jeu constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	LevelName = _LevelName;
+
+	skinJ1 = skinSelectedJ1;
+	skinJ2 = skinSelectedJ2;
 
 	map = new Map(_LevelName);
 	//cam
@@ -21,8 +24,8 @@ Jeu::Jeu(std::string _LevelName)
 	//collects = new Collects();
 	///missile = new Missile();
 
-	Player1 = new Player(1, sf::Vector2f(600, 800), map);
-	Player2 = new Player(2, sf::Vector2f(200, 800), map);
+	Player1 = new Player(1, sf::Vector2f(600, 800), map, skinJ1);
+	Player2 = new Player(2, sf::Vector2f(200, 800), map, skinJ2);
 
 	caméra = new Caméra(Player1);
 	hud = new HUD();
@@ -430,7 +433,7 @@ void Jeu::MenuIG(int ID)
 			{
 				if (SelectionMenuIG == 1)
 				{
-					GameManager::Instance()->m_ActualScene = new Jeu(LevelName);
+					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, skinJ1, skinJ2);
 					Clock.restart();
 				}
 				else if (SelectionMenuIG == 2)

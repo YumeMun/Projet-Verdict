@@ -7,7 +7,7 @@ class Player
 {
 public:
 	Player();
-	Player(int _ID, sf::Vector2f _Pos, class Map* _Map);
+	Player(int _ID, sf::Vector2f _Pos, class Map* _Map, int _skinNumber);
 	~Player();
 	void Update(float _Elapsed, class Map* _Map, class Caméra* _Cam, sf::Vector2f _Pos);
 	void Display(sf::RenderWindow* _Window);

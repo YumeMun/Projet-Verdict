@@ -7,6 +7,7 @@
 #include "Shockwave.h"
 #include "Oilflake.h"
 #include "Rocket.h"
+#include "PlayerSelector.h"
 
 class Jeu :public Scene
 {
@@ -35,13 +36,15 @@ private:
 	int SelectionMenuIG = 1;
 	int StateMenuIG = 0;
 	int ID;
+	int skinJ1;
+	int skinJ2;
 
 	std::vector<Collects*> Collectibles;
 
 	bool isPlayerAnimStart = true;
 public:
 	Jeu();
-	Jeu(std::string _LevelName);
+	Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2);
 	~Jeu();
 	virtual void Update();
 	virtual void Display();

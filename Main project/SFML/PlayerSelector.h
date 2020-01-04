@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "Transition.h"
 
+#define NB_SKIN 4
+
 class PlayerSelector : public Scene
 {
 public:
@@ -13,9 +15,14 @@ public:
 	virtual void Display();
 	virtual void EventManager(sf::Event p_pollingEvent);
 
+	int GetSkinNumberJ1();
+	int GetSkinNumberJ2();
+
 private:
 	sf::RectangleShape rectPlay;
 	sf::RectangleShape player;
+	sf::Sprite spPlayer;
+	sf::IntRect rectPlayer;
 	std::vector<PlayerSelector*> listSelector;
 
 	bool isSetup = false;
@@ -25,6 +32,7 @@ private:
 	int SkinSelector = 1;
 
 	sf::Clock SelectionTimer;
+	sf::Clock timerSwitchSkin;
 	class Transition* transition;
 	bool isGameStart = false;
 
