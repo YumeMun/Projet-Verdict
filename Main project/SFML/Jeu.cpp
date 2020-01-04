@@ -230,7 +230,8 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::LEVITATION)
 		{
-
+			Player1->InvincibleTime.restart();
+			Player1->Invincible = true;
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
@@ -270,7 +271,8 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::LEVITATION)
 		{
-
+			Player2->InvincibleTime.restart();
+			Player2->Invincible = true;
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{

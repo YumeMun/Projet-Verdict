@@ -14,10 +14,10 @@ public:
 private :
 	bool Alive = true;
 
-	int ID = 0;
+	int ID = 0, AnimFrameIndex = 0;
 
-	sf::Clock LifeTime;
+	sf::Clock AnimTime;
 
-	sf::CircleShape spShockwave;
+	sf::Sprite spShockwave;
 };
 

@@ -23,7 +23,7 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 		if (_Player2->GetPos().x >= spOil.getGlobalBounds().left &&
 			_Player2->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
 			_Player2->GetPos().y >= spOil.getGlobalBounds().top - 200 &&
-			_Player2->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height)
+			_Player2->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height && _Player2->Invincible == false)
 		{
 			_Player2->Oiled = true;
 		}
@@ -35,7 +35,7 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 		if (_Player1->GetPos().x >= spOil.getGlobalBounds().left &&
 			_Player1->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
 			_Player1->GetPos().y >= spOil.getGlobalBounds().top - 200 &&
-			_Player1->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height)
+			_Player1->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height && _Player1->Invincible == false)
 		{
 			_Player1->Oiled = true;
 		}
