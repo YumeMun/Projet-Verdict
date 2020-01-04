@@ -21,7 +21,7 @@ public:
 	sf::Vector2f GetCheckPoint(sf::Vector2f _Pos);
 
 	sf::Vector2f GetNextTile(int _Type, sf::Vector2f _Pos);
-	bool GetIsLazerOn();
+	int GetIsLazerOn();
 
 private:
 	sf::RenderWindow* m_actualWindow;
@@ -41,10 +41,12 @@ private:
 	sf::CircleShape Collectible;
 
 	sf::Clock timerLazer;
-	bool isLazerOn = true;
+	int isLazerOn = true;
 	void AnimTiles();
 	sf::Clock AnimBoostClock;
 	int FrameIndexBoost = 0;
 	sf::Clock AnimCollectClock;
 	int FrameIndexCollect = 0;
+	sf::Clock AnimLaserClock;
+	int FrameIndexLaser = 0;
 };

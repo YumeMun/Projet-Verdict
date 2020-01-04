@@ -168,7 +168,7 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 
 		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 18 * 64, 64, 4 * 64 });
 
-		spTile[21].setTextureRect(sf::IntRect{ 0 * 64, 22 * 64, 64, 3 * 64 });
+		spTile[21].setTextureRect(sf::IntRect{ 14 * 64, 22 * 64, 64, 3 * 64 });
 
 		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 16 * 64, 64, 64 });
 		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
