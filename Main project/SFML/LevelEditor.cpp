@@ -155,27 +155,28 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 		spTile[8].setTextureRect(sf::IntRect{ 0 * 64, 4 * 64, 64, 64 });
 		spTile[9].setTextureRect(sf::IntRect{ 1 * 64, 4 * 64, 64, 64 });
 		spTile[10].setTextureRect(sf::IntRect{ 0 * 64, 5 * 64, 64, 64 });
-		spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
-		spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
-		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
-		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
-		spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 12 * 64, 64, 64 });
-		spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 64, 64 });
-		spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 13 * 64, 64, 64 });
-		spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 13 * 64, 64, 64 });
+		spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 6 * 64, 64, 64 });
+		spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
+		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
+		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 8 * 64, 64, 64 });
+		spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 9 * 64, 64, 64 });
 
-		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 17 * 64, 4 * 64, 64 });
+		spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 10 * 64, 64, 64 });
+		spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 10 * 64, 64, 64 });
+		spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 10 * 64, 64, 64 });
 
-		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 18 * 64, 64, 4 * 64 });
+		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 4 * 64, 64 });
 
-		spTile[21].setTextureRect(sf::IntRect{ 14 * 64, 22 * 64, 64, 3 * 64 });
+		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 14 * 64, 64, 4 * 64 });
 
-		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 16 * 64, 64, 64 });
-		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
-		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
-		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });
+		spTile[21].setTextureRect(sf::IntRect{ 14 * 64, 18 * 64, 64, 3 * 64 });
 
-		spTile[26].setTextureRect(sf::IntRect{ 2 * 64, 12 * 64, 64, 64 });
+		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 12 * 64, 64, 64 });
+		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
+		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
+		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 11 * 64, 64, 64 });
+
+		spTile[26].setTextureRect(sf::IntRect{ 1 * 64, 9 * 64, 64, 64 });
 	}
 }
 
@@ -396,12 +397,12 @@ void LevelEditor::Display()
 					m_actualWindow->draw(spTile[10]);
 					break;
 				case 12:
-					spTile[11].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 7 * 64, 64, 64 });
+					spTile[11].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 6 * 64, 64, 64 });
 					spTile[11].setPosition(CasePos);
 					m_actualWindow->draw(spTile[11]);
 					break;
 				case 13:
-					spTile[12].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 8 * 64, 64, 64 });
+					spTile[12].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 7 * 64, 64, 64 });
 					spTile[12].setPosition(CasePos);
 					m_actualWindow->draw(spTile[12]);
 					break;
@@ -430,10 +431,12 @@ void LevelEditor::Display()
 					m_actualWindow->draw(spTile[18]);
 					break;
 				case 20:
+					spTile[19].setTextureRect(sf::IntRect{ FrameIndexElect *  (4 * 64), 13 * 64, 4 * 64, 64 });
 					spTile[19].setPosition(CasePos);
 					m_actualWindow->draw(spTile[19]);
 					break;
 				case 21:
+					spTile[20].setTextureRect(sf::IntRect{ FrameIndexElect * 64, 14 * 64, 64, 4 * 64 });
 					spTile[20].setPosition(CasePos);
 					m_actualWindow->draw(spTile[20]);
 					break;
@@ -442,7 +445,7 @@ void LevelEditor::Display()
 					m_actualWindow->draw(spTile[21]);
 					break;
 				case 23:
-					spTile[22].setTextureRect(sf::IntRect{ FrameIndexCollect * 64, 16 * 64, 64, 64 });
+					spTile[22].setTextureRect(sf::IntRect{ FrameIndexCollect * 64, 12 * 64, 64, 64 });
 					spTile[22].setPosition(CasePos);
 					m_actualWindow->draw(spTile[22]);
 					break;
@@ -654,6 +657,22 @@ void LevelEditor::ControllerManager()
 						{
 							Tableau[(int)CasePos.y][(int)CasePos.x] = 8;
 							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 10;
+						}
+					}
+					else if (hud->Selection == 12)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 12;
+							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 14;
+						}
+					}
+					else if (hud->Selection == 13)
+					{
+						if (Tableau[(int)CasePos.y + 1][(int)CasePos.x] == 0)
+						{
+							Tableau[(int)CasePos.y][(int)CasePos.x] = 13;
+							Tableau[(int)CasePos.y + 1][(int)CasePos.x] = 15;
 						}
 					}
 					else if (hud->Selection == 23)
@@ -1009,7 +1028,7 @@ void LevelEditor::AnimTiles()
 {
 	if (AnimBoostClock.getElapsedTime().asMilliseconds() > 50)
 	{
-		if (FrameIndexBoost < 14)
+		if (FrameIndexBoost < 10)
 		{
 			FrameIndexBoost++;
 		}
@@ -1029,5 +1048,17 @@ void LevelEditor::AnimTiles()
 			FrameIndexCollect = 0;
 
 		AnimCollectClock.restart();
+	}
+
+	if (AnimElectClock.getElapsedTime().asMilliseconds() > 50)
+	{
+		if (FrameIndexElect < 8)
+		{
+			FrameIndexElect++;
+		}
+		else
+			FrameIndexElect = 0;
+
+		AnimElectClock.restart();
 	}
 }

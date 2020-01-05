@@ -45,28 +45,30 @@ HudEditor::HudEditor()
 		spTile[8].setTextureRect(sf::IntRect{ 0 * 64, 4 * 64, 64, 64 });
 		spTile[9].setTextureRect(sf::IntRect{ 1 * 64, 4 * 64, 64, 64 });
 		spTile[10].setTextureRect(sf::IntRect{ 0 * 64, 5 * 64, 64, 64 });
-		spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
-		spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
-		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
-		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
-		spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 12 * 64, 64, 64 });
-		spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 64, 64 });
-		spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 13 * 64, 64, 64 });
-		spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 13 * 64, 64, 64 });
+		spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 6 * 64, 64, 64 });
+		spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
+		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
+		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 8 * 64, 64, 64 });
+		spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 9 * 64, 64, 64 });
+
+		spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 10 * 64, 64, 64 });
+		spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 10 * 64, 64, 64 });
+		spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 10 * 64, 64, 64 });
 
 		spTile[19].setScale(0.2, 0.2);
-		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 17 * 64, 4 * 64, 64 });
+		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 4 * 64, 64 });
 
 		spTile[20].setScale(0.2, 0.2);
-		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 18 * 64, 64, 4 * 64 });
+		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 14 * 64, 64, 4 * 64 });
 
 		spTile[21].setScale(0.28, 0.28);
-		spTile[21].setTextureRect(sf::IntRect{ 14 * 64, 22 * 64, 64, 3 * 64 });
+		spTile[21].setTextureRect(sf::IntRect{ 14 * 64, 18 * 64, 64, 3 * 64 });
 
-		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 16 * 64, 64, 64 });
-		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
-		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
-		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });
+		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 12 * 64, 64, 64 });
+
+		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
+		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
+		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 11 * 64, 64, 64 });
 	}
 
 	Selection = 1;
@@ -115,31 +117,30 @@ void HudEditor::Display()
 
 void HudEditor::EventManager(sf::Event p_pollingEvent)
 {
-	if (sf::Joystick::isConnected(0))
+	if (sf::Joystick::isButtonPressed(0, 4) && SelectionTimer.getElapsedTime().asMilliseconds() > 200)
 	{
-		if (sf::Joystick::isButtonPressed(0, 4) && SelectionTimer.getElapsedTime().asMilliseconds() > 100)
-		{
-			if (Selection > 1)
-				Selection--;
+		if (Selection > 1)
+			Selection--;
 
-			spTouches[0].setTexture(*ResourceManager::Instance()->GetTexture("LB Press"));
-		}
-		else if (sf::Joystick::isButtonPressed(0, 5) && SelectionTimer.getElapsedTime().asMilliseconds() > 100)
-		{
-			if (Selection < 26)
-				Selection++;
+		SelectionTimer.restart();
+	}
+	if (sf::Joystick::isButtonPressed(0, 5) && SelectionTimer.getElapsedTime().asMilliseconds() > 00)
+	{
+		if (Selection < 26)
+			Selection++;
 
-			spTouches[1].setTexture(*ResourceManager::Instance()->GetTexture("RB Press"));
-		}
-		else if (!sf::Joystick::isButtonPressed(0, 4) && !sf::Joystick::isButtonPressed(0, 5))
-		{
-			spTouches[0].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
-			spTouches[1].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
-		}
+		SelectionTimer.restart();
 	}
 
-	if (SelectionTimer.getElapsedTime().asMilliseconds() > 100)
-		SelectionTimer.restart();
+	if (sf::Joystick::isButtonPressed(0, 4))
+		spTouches[0].setTexture(*ResourceManager::Instance()->GetTexture("LB Press"));
+	else if (sf::Joystick::isButtonPressed(0, 5))
+		spTouches[1].setTexture(*ResourceManager::Instance()->GetTexture("RB Press"));
+	else if (!sf::Joystick::isButtonPressed(0, 4) && !sf::Joystick::isButtonPressed(0, 5))
+	{
+		spTouches[0].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
+		spTouches[1].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
+	}
 }
 
 void HudEditor::TileName()

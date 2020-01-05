@@ -38,40 +38,48 @@ Map::Map(std::string _LevelName)
 
 	for (int i = 0; i < 30; i++)
 	{
-		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
+		for (int i = 0; i < 30; i++)
+		{
+			spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Tileset"));
 
-		spTile[0].setTextureRect(sf::IntRect{ 0 * 64, 0 * 64, 64, 64 });
-		spTile[1].setTextureRect(sf::IntRect{ 1 * 64, 0 * 64, 64, 64 });
-		spTile[2].setTextureRect(sf::IntRect{ 2 * 64, 0 * 64, 64, 64 });
-		spTile[3].setTextureRect(sf::IntRect{ 0 * 64, 1 * 64, 64, 64 });
-		spTile[4].setTextureRect(sf::IntRect{ 1 * 64, 1 * 64, 64, 64 });
-		spTile[5].setTextureRect(sf::IntRect{ 2 * 64, 1 * 64, 64, 64 });
-		spTile[6].setTextureRect(sf::IntRect{ 0 * 64, 3 * 64, 64, 64 });
-		spTile[7].setTextureRect(sf::IntRect{ 1 * 64, 3 * 64, 64, 64 });
-		spTile[8].setTextureRect(sf::IntRect{ 0 * 64, 4 * 64, 64, 64 });
-		spTile[9].setTextureRect(sf::IntRect{ 1 * 64, 4 * 64, 64, 64 });
-		spTile[10].setTextureRect(sf::IntRect{ 0 * 64, 5 * 64, 64, 64 });
-		spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
-		spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
-		spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
-		spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
-		spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 12 * 64, 64, 64 });
-		spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 64, 64 });
-		spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 13 * 64, 64, 64 });
-		spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 13 * 64, 64, 64 });
+			spTile[0].setTextureRect(sf::IntRect{ 0 * 64, 0 * 64, 64, 64 });
+			spTile[1].setTextureRect(sf::IntRect{ 1 * 64, 0 * 64, 64, 64 });
+			spTile[2].setTextureRect(sf::IntRect{ 2 * 64, 0 * 64, 64, 64 });
+			spTile[3].setTextureRect(sf::IntRect{ 0 * 64, 1 * 64, 64, 64 });
+			spTile[4].setTextureRect(sf::IntRect{ 1 * 64, 1 * 64, 64, 64 });
+			spTile[5].setTextureRect(sf::IntRect{ 2 * 64, 1 * 64, 64, 64 });
+			spTile[6].setTextureRect(sf::IntRect{ 0 * 64, 3 * 64, 64, 64 });
+			spTile[7].setTextureRect(sf::IntRect{ 1 * 64, 3 * 64, 64, 64 });
+			spTile[8].setTextureRect(sf::IntRect{ 0 * 64, 4 * 64, 64, 64 });
+			spTile[9].setTextureRect(sf::IntRect{ 1 * 64, 4 * 64, 64, 64 });
+			spTile[10].setTextureRect(sf::IntRect{ 0 * 64, 5 * 64, 64, 64 });
+			spTile[11].setTextureRect(sf::IntRect{ 0 * 64, 6 * 64, 64, 64 });
+			spTile[12].setTextureRect(sf::IntRect{ 0 * 64, 7 * 64, 64, 64 });
+			spTile[13].setTextureRect(sf::IntRect{ 0 * 64, 8 * 64, 64, 64 });
+			spTile[14].setTextureRect(sf::IntRect{ 1 * 64, 8 * 64, 64, 64 });
+			spTile[15].setTextureRect(sf::IntRect{ 0 * 64, 9 * 64, 64, 64 });
 
-		spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 17 * 64, 4 * 64, 64 });
+			spTile[16].setTextureRect(sf::IntRect{ 0 * 64, 10 * 64, 64, 64 });
+			spTile[17].setTextureRect(sf::IntRect{ 1 * 64, 10 * 64, 64, 64 });
+			spTile[18].setTextureRect(sf::IntRect{ 2 * 64, 10 * 64, 64, 64 });
 
-		spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 18 * 64, 64, 4 * 64 });
+			spTile[19].setTextureRect(sf::IntRect{ 0 * 64, 13 * 64, 4 * 64, 64 });
 
-		spTile[21].setTextureRect(sf::IntRect{ 0 * 64, 22 * 64, 64, 3 * 64 });
+			spTile[20].setTextureRect(sf::IntRect{ 0 * 64, 14 * 64, 64, 4 * 64 });
 
-		spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 16 * 64, 64, 64 });
-		spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 15 * 64, 64, 64 });
-		spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 15 * 64, 64, 64 });
-		spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 15 * 64, 64, 64 });
+			spTile[21].setTextureRect(sf::IntRect{ 14 * 64, 18 * 64, 64, 3 * 64 });
 
-		spTile[26].setTextureRect(sf::IntRect{ 2 * 64, 12 * 64, 64, 64 });
+			spTile[22].setTextureRect(sf::IntRect{ 9 * 64, 12 * 64, 64, 64 });
+			spTile[23].setTextureRect(sf::IntRect{ 0 * 64, 11 * 64, 64, 64 });
+			spTile[24].setTextureRect(sf::IntRect{ 1 * 64, 11 * 64, 64, 64 });
+			spTile[25].setTextureRect(sf::IntRect{ 2 * 64, 11 * 64, 64, 64 });
+
+			spTile[26].setTextureRect(sf::IntRect{ 1 * 64, 9 * 64, 64, 64 });
+
+			spTile[27].setTextureRect(sf::IntRect{ 0 * 64, 21 * 64, 318, 318 });
+			spTile[28].setTextureRect(sf::IntRect{ 0 * 64, (21 * 64) + (1 * 318), 318, 318 });
+			spTile[29].setTextureRect(sf::IntRect{ 0 * 64, (21 * 64) + ( 2 * 318), 318, 318 });
+		}
 	}
 
 	std::ifstream LoadFile;
@@ -220,12 +228,12 @@ void Map::Display()
 				m_actualWindow->draw(spTile[10]);
 				break;
 			case 12:
-				spTile[11].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 7 * 64, 64, 64 });
+				spTile[11].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 6 * 64, 64, 64 });
 				spTile[11].setPosition(CasePos);
 				m_actualWindow->draw(spTile[11]);
 				break;
 			case 13:
-				spTile[12].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 8 * 64, 64, 64 });
+				spTile[12].setTextureRect(sf::IntRect{ FrameIndexBoost * 64, 7 * 64, 64, 64 });
 				spTile[12].setPosition(CasePos);
 				m_actualWindow->draw(spTile[12]);
 				break;
@@ -254,20 +262,21 @@ void Map::Display()
 				m_actualWindow->draw(spTile[18]);
 				break;
 			case 20:
-				spTile[19].setPosition(CasePos); //ce 2
+				spTile[19].setTextureRect(sf::IntRect{ FrameIndexElect * (4 * 64), 13 * 64, 4 * 64, 64 });
+				spTile[19].setPosition(CasePos);
 				m_actualWindow->draw(spTile[19]);
 				break;
 			case 21:
-				spTile[20].setPosition(CasePos); //ce 1
+				spTile[20].setTextureRect(sf::IntRect{ FrameIndexElect * 64, 14 * 64, 64, 4 * 64 });
+				spTile[20].setPosition(CasePos);
 				m_actualWindow->draw(spTile[20]);
 				break;
 			case 22:
-				spTile[21].setTextureRect(sf::IntRect{ FrameIndexLaser * 64, 22 * 64, 64, 3 * 64 });
-				spTile[21].setPosition(CasePos);// lazer 
+				spTile[21].setPosition(CasePos);
 				m_actualWindow->draw(spTile[21]);
 				break;
 			case 23:
-				spTile[22].setTextureRect(sf::IntRect{ FrameIndexCollect * 64, 16 * 64, 64, 64 });
+				spTile[22].setTextureRect(sf::IntRect{ FrameIndexCollect * 64, 12 * 64, 64, 64 });
 				spTile[22].setPosition(CasePos);
 				m_actualWindow->draw(spTile[22]);
 				break;
@@ -286,6 +295,67 @@ void Map::Display()
 			case 27:
 				spTile[26].setPosition(CasePos);
 				m_actualWindow->draw(spTile[26]);
+				break;
+			case 35:
+				if (AnimCaisseClock.getElapsedTime().asMilliseconds() > 50)
+				{
+					if (FrameIndexCaisse < 8)
+					{
+						FrameIndexCaisse++;
+					}
+					else
+					{
+						FrameIndexCaisse = 0;
+						Tableau[y][x] = 0;
+					}
+
+					AnimCaisseClock.restart();
+				}
+
+				spTile[27].setTextureRect(sf::IntRect{ FrameIndexCaisse * 318, 21 * 64, 318, 318 });
+				spTile[27].setOrigin(spTile[27].getGlobalBounds().width / 2, spTile[27].getGlobalBounds().height / 2);
+				spTile[27].setPosition(CasePos);
+				m_actualWindow->draw(spTile[27]);
+				break;
+			case 36:
+				if (AnimCaisseClock.getElapsedTime().asMilliseconds() > 50)
+				{
+					if (FrameIndexCaisse < 8)
+					{
+						FrameIndexCaisse++;
+					}
+					else
+					{
+						FrameIndexCaisse = 0;
+						Tableau[y][x] = 0;
+					}
+
+					AnimCaisseClock.restart();
+				}
+				spTile[28].setTextureRect(sf::IntRect{ FrameIndexCaisse * 318, (21 * 64) + (1 * 318), 318, 318 });
+				spTile[28].setOrigin(spTile[28].getGlobalBounds().width / 2, spTile[28].getGlobalBounds().height / 2);
+				spTile[28].setPosition(CasePos);
+				m_actualWindow->draw(spTile[28]);
+				break;
+			case 37:
+				if (AnimCaisseClock.getElapsedTime().asMilliseconds() > 50)
+				{
+					if (FrameIndexCaisse < 8)
+					{
+						FrameIndexCaisse++;
+					}
+					else
+					{
+						FrameIndexCaisse = 0;
+						Tableau[y][x] = 0;
+					}
+
+					AnimCaisseClock.restart();
+				}
+				spTile[29].setTextureRect(sf::IntRect{ FrameIndexCaisse * 318, (21 * 64) + (2 * 318), 318, 318 });
+				spTile[29].setOrigin(spTile[29].getGlobalBounds().width / 2, spTile[29].getGlobalBounds().height / 2);
+				spTile[29].setPosition(CasePos);
+				m_actualWindow->draw(spTile[29]);
 				break;
 			}
 		}
@@ -401,7 +471,7 @@ void Map::AnimTiles()
 {
 	if (AnimBoostClock.getElapsedTime().asMilliseconds() > 50)
 	{
-		if (FrameIndexBoost < 14)
+		if (FrameIndexBoost < 10)
 		{
 			FrameIndexBoost++;
 		}
@@ -421,6 +491,18 @@ void Map::AnimTiles()
 			FrameIndexCollect = 0;
 
 		AnimCollectClock.restart();
+	}
+
+	if (AnimElectClock.getElapsedTime().asMilliseconds() > 50)
+	{
+		if (FrameIndexElect < 8)
+		{
+			FrameIndexElect++;
+		}
+		else
+			FrameIndexElect = 0;
+
+		AnimElectClock.restart();
 	}
 
 	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)

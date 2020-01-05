@@ -221,16 +221,18 @@ void Player::Controls(Map * _Map)
 		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
 		{
-			std::cout << "piege hit, speed player avant : " << Player_Movement.x << std::endl;
+			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 17)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 35);
 
-			_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
+			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 18)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 36);
+
+			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 19)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 37);
 
 			timerTrapFactor.restart();
 			SetHitTrap();
 			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
-
-			std::cout << "speed factor : " << trapSpeedFactor << std::endl;
-			std::cout << "speed player apres : " << Player_Movement.x << std::endl;
 		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 20 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 22)
 		{
@@ -310,7 +312,7 @@ void Player::Controls(Map * _Map)
 	}
 }
 
-void Player::Traps(Map * _Map, Caméra* _Cam)
+void Player::Traps(Map * _Map, Caméra * _Cam)
 {
 	if (Player_Direction == NONE)
 	{
@@ -320,25 +322,13 @@ void Player::Traps(Map * _Map, Caméra* _Cam)
 		{
 			Player_Movement.x = 0;
 		}
-		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
-		{
-			_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 0);
-
-			timerTrapFactor.restart();
-			SetHitTrap();
-			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
-		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
 		{
-			std::cout << "player is collide CHAMP ELECT" << std::endl;
-
 			timerTrapFactor.restart();
 			SetHitLazer();
 		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 29)
 		{
-			std::cout << "player collide LAZER" << std::endl;
-
 			spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 			Player_Movement.x = 0;
 			Player_Movement.y = 0;
@@ -396,7 +386,7 @@ void Player::Animations()
 			{
 				FrameIndex = 0;
 				PlayerRect.left = 0;
-				PlayerRect.top = 1*PlayerRect.height;
+				PlayerRect.top = 1 * PlayerRect.height;
 				spPlayer.setTextureRect(PlayerRect);
 			}
 			else
@@ -608,7 +598,6 @@ void Player::SetHitLazer()
 
 void Player::SetAnimWheelStart()
 {
-	std::cout << "frame index : " << FrameIndex << std::endl;
 	PlayerRect.top = 0;
 	if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 	{

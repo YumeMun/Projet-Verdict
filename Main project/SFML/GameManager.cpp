@@ -7,7 +7,7 @@ GameManager::GameManager()
 //Création de la fenêtre et chargement de scène
 void GameManager::Start()
 {
-	m_Window.create(sf::VideoMode(1920, 1080), "Projet Runner", sf::Style::Fullscreen);
+	m_Window.create(sf::VideoMode(1920, 1080), "Projet Runner"/*, sf::Style::Fullscreen*/);
 	LoadScene(e_Enum::CHARGEMENT);
 }
 

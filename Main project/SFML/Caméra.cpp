@@ -106,14 +106,12 @@ void Caméra::UpdateZoom(float _Elapsed, Map* _map)
 
 	if (centerCam.y > _map->GetStartPos().y - 520)
 	{
-		std::cout << "center cam y : " << centerCam.y << std::endl;
 		centerCam.y -= CAMERA_ZOOM_SPEED * _Elapsed;
 		camera.setCenter(centerCam);
 	}
 
 	if (centerCam.x < _map->GetStartPos().x + 1300)
 	{
-		std::cout << "center cam X : " << centerCam.x << std::endl;
 		centerCam.x += (CAMERA_ZOOM_SPEED*(16/9)) * _Elapsed;
 		camera.setCenter(centerCam);
 	}

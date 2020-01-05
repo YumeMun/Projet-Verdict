@@ -76,6 +76,8 @@ private:
 	int FrameIndexBoost = 0;
 	sf::Clock AnimCollectClock;
 	int FrameIndexCollect = 0;
+	sf::Clock AnimElectClock;
+	int FrameIndexElect = 0;
 
 	sf::RectangleShape CaseFreeOrNot;
 	bool StartIsPut = false;

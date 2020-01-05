@@ -49,4 +49,8 @@ private:
 	int FrameIndexCollect = 0;
 	sf::Clock AnimLaserClock;
 	int FrameIndexLaser = 0;
+	sf::Clock AnimElectClock;
+	int FrameIndexElect = 0;
+	sf::Clock AnimCaisseClock;
+	int FrameIndexCaisse = 0;
 };
