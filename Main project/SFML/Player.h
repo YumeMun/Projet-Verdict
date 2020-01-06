@@ -11,7 +11,7 @@ public:
 	~Player();
 	void Update(float _Elapsed, class Map* _Map, class Caméra* _Cam, sf::Vector2f _Pos);
 	void Display(sf::RenderWindow* _Window);
-	void Controls(class Map* _Map);
+	void Controls(class Map* _Map, float _Elapsed);
 	void Traps(class Map* _Map, class Caméra* _Cam);
 	bool IsAlive();
 	void Animations();
@@ -65,6 +65,9 @@ private:
 	sf::Clock timerTrapFactor;
 
 	sf::Clock BoostClock;
+
+	//Provisoire
+	sf::CircleShape ColliderCircle;
 
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;
