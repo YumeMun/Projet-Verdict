@@ -172,7 +172,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 0) && KeyPress == false && Jump == false && Oiled == false)
 		{
-			Player_Movement.y = -SPEED * 2;
+			Player_Movement.y = -SPEED * 1.5;
 
 			FrameIndex = 0;
 			isJumping = true;
@@ -264,10 +264,12 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	{
 		//spPlayer.setRotation(315); 
 
-		//Player_Movement.x = SPEED;
+		if(Boost == true)
+			Player_Movement.x = SPEED * 1.5;
+
 		Player_SlopVector.y = -Player_Movement.x;
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 12 && Boost == false)
+		if (_Map->GetTile(GetPos().x + 50, GetPos().y + 50) == 12 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
@@ -282,7 +284,11 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	{
 		//spPlayer.setRotation(45);
 
+		if(Boost == false)
 		Player_Movement.x = SPEED;
+		else if (Boost == true)
+			Player_Movement.x = SPEED * 1.5;
+
 		Player_SlopVector.y = Player_Movement.x;
 
 		if (_Map->GetTile(GetPos().x - Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) == 13 && Boost == false)
