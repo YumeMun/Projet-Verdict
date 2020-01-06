@@ -27,7 +27,7 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 	Player1 = new Player(1, sf::Vector2f(600, 800), map, skinJ1);
 	Player2 = new Player(2, sf::Vector2f(200, 800), map, skinJ2);
 
-	caméra = new Caméra(Player2);
+	caméra = new Caméra(Player1, Player2);
 	hud = new HUD();
 
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });

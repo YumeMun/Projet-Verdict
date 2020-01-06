@@ -20,12 +20,13 @@
 #define CAMERA_SPEED 800
 #define CAMERA_SPEED_MAX 1200
 #define CAMERA_ZOOM 2
-#define CAMERA_ZOOM_SPEED 550 //ancien : 310
+//#define CAMERA_ZOOM_SPEED 550
+#define CAMERA_ZOOM_SPEED 500
 
 class Caméra
 {
 public:
-	Caméra(class Player* _player1);
+	Caméra(class Player* _player1, class Player* _player2);
 	~Caméra();
 
 	void Update(float _dTime, class TimerStart* _timer, class Player* _player1, class Player* _player2, class Map* _map);
@@ -75,5 +76,6 @@ private:
 
 	//bool isZoomStart = true;
 	bool isZoomEnd = false;
-	float zoom = 1.0075;
+	float zoom = 1.0080;
+	float X;
 };
