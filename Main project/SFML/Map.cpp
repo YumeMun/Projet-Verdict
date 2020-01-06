@@ -13,6 +13,8 @@ Map::Map(std::string _LevelName)
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	CheckPos = sf::Vector2f(0, 0);
+
 	for (int i = 0; i < 4; i++)
 	{
 		Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i + 1)));
@@ -106,7 +108,8 @@ Map::Map(std::string _LevelName)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			
+			if (Tableau[y][x] == 26)
+				Tableau[y][x] = 0;
 		}
 	}
 
@@ -121,6 +124,21 @@ Map::~Map()
 
 void Map::Update(float _Elapsed, Caméra* _Cam)
 {
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+			{
+				if (x >= (CheckPos.x + 1920) / 64 && x <= (CheckPos.x + 4800) / 64)
+				{
+					Tableau[y - 1][x] = 26;
+					CheckPos = sf::Vector2f(x * 64, (y - 1) * 64);
+				}
+			}
+		}
+	}
+
 	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
 		if (isLazerOn == 3)
@@ -135,9 +153,9 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	for (int i = 1; i < 4; i++)
 	{
-		//Plan[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
+		Plan[i].move(((_Cam->GetCamSpeed() * 0.45) + ((_Cam->GetCamSpeed() * 0.27) * (i - 1))) * _Elapsed, 0);
 
-		//Plan2[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
+		Plan2[i].move(((_Cam->GetCamSpeed() * 0.45) + ((_Cam->GetCamSpeed() * 0.27) * (i - 1))) * _Elapsed, 0);
 	}
 
 	//std::cout << Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width << std::endl;

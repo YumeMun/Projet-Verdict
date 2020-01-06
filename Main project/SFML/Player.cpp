@@ -68,7 +68,7 @@ Player::~Player()
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 &&
-		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
+		spPlayer.getPosition().x > 0 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
 		Traps(_Map, _Cam);

@@ -99,6 +99,11 @@ float Caméra::GetDistancePlayer()
 	return distancePlayerX;
 }
 
+float Caméra::GetCamSpeed()
+{
+	return cameraSpeed;
+}
+
 sf::Vector2f Caméra::GetSizeCamera()
 {
 	return camera.getSize();

@@ -34,6 +34,7 @@ public:
 	sf::View* GetCamera();
 	sf::Vector2f GetCameraCenter();
 	float GetDistancePlayer();
+	float GetCamSpeed();
 	sf::Vector2f GetSizeCamera();
 
 	//Pas la vrai origine(25% de l'écran)

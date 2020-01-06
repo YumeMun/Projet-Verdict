@@ -33,7 +33,7 @@ private:
 	int Size_Y;
 	int SelectionBackground;
 	int Tableau[34][1200];
-	sf::Vector2f CasePos;
+	sf::Vector2f CasePos, CheckPos;
 	sf::Sprite Plan[4], Plan2[4], Plan1[2];
 
 	sf::Sprite spTile[30];
