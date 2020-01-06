@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v142:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0
+<<<<<<< HEAD
 Debug|x64|D:\Users\B.Bigot\Desktop\Verdict\Main project\|
+=======
+Debug|x64|D:\Users\a.faure\Desktop\Project Verdict\Main project\|
+>>>>>>> 3cd30c8dea08a92c91727794fd4799f80ee9eeb0

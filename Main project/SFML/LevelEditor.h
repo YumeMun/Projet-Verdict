@@ -15,6 +15,7 @@ public:
 
 	void ControllerManager();
 	void CheckIfCaseIsFree();
+	sf::Vector2f CheckPointManager(sf::Vector2f _LastCheckPos);
 
 	void Sauvegarde();
 	void SaveIt();
@@ -28,7 +29,7 @@ private:
 
 	float CurrentTime, LastFrameTime, ElapsedTime;
 
-	int Tableau[34][1200];
+	int Tableau[17][1200];
 
 	int Size_X;
 	int Size_Y;

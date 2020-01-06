@@ -117,14 +117,14 @@ void HudEditor::Display()
 
 void HudEditor::EventManager(sf::Event p_pollingEvent)
 {
-	if (sf::Joystick::isButtonPressed(0, 4) && SelectionTimer.getElapsedTime().asMilliseconds() > 200)
+	if (sf::Joystick::isButtonPressed(0, 4) && SelectionTimer.getElapsedTime().asMilliseconds() > 100)
 	{
 		if (Selection > 1)
 			Selection--;
 
 		SelectionTimer.restart();
 	}
-	if (sf::Joystick::isButtonPressed(0, 5) && SelectionTimer.getElapsedTime().asMilliseconds() > 00)
+	if (sf::Joystick::isButtonPressed(0, 5) && SelectionTimer.getElapsedTime().asMilliseconds() > 100)
 	{
 		if (Selection < 26)
 			Selection++;

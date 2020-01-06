@@ -22,11 +22,11 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 	ViewRect.left = 0, ViewRect.top = 0, ViewRect.width = 1920, ViewRect.height = 1080;
 	View.reset(ViewRect);
 	View.setCenter(960, 540);
-	View.zoom(2);
+	View.zoom(1.5);
 
 	spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));
 	spSelecterTarget.setOrigin(spSelecterTarget.getGlobalBounds().width / 2, spSelecterTarget.getGlobalBounds().height / 2);
-	spSelecterTarget.setPosition(m_actualWindow->getSize().x / 2, m_actualWindow->getSize().y / 2);
+	spSelecterTarget.setPosition(View.getCenter());
 
 	spFlèches[0].setTexture(*ResourceManager::Instance()->GetTexture("Flèche gauche"));
 	spFlèches[1].setTexture(*ResourceManager::Instance()->GetTexture("Flèche droite"));
@@ -957,6 +957,21 @@ void LevelEditor::CheckIfCaseIsFree()
 	}
 
 	m_actualWindow->draw(CaseFreeOrNot);
+}
+
+sf::Vector2f LevelEditor::CheckPointManager(sf::Vector2f _LastCheckPos)
+{
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = (_LastCheckPos.x + 1920) / 64; x < (_LastCheckPos.x + 3840) / 64; x++)
+		{
+			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+			{
+				return sf::Vector2f(x * 64, y * 64);
+			}
+		}
+	}
+	return sf::Vector2f();
 }
 
 void LevelEditor::Sauvegarde()
