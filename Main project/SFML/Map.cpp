@@ -135,9 +135,9 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	for (int i = 1; i < 4; i++)
 	{
-		Plan[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
+		//Plan[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
 
-		Plan2[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
+		//Plan2[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
 	}
 
 	//std::cout << Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width << std::endl;
@@ -470,6 +470,22 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 			}
 		}
 	}*/
+}
+
+sf::Vector2f Map::GetEndFlag()
+{
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x-2] == 25)
+			{
+				CasePos.x = (float)x * 64;
+				CasePos.y = (float)y * 64;
+				return CasePos;
+			}
+		}
+	}
 }
 
 sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)

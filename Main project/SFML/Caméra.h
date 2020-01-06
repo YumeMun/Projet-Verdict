@@ -28,7 +28,7 @@ public:
 	Caméra(class Player* _player1);
 	~Caméra();
 
-	void Update(float _dTime, class TimerStart* _timer, class Player* _player1, class Player* _player2);
+	void Update(float _dTime, class TimerStart* _timer, class Player* _player1, class Player* _player2, class Map* _map);
 	void Display();
 
 	sf::View* GetCamera();
@@ -59,6 +59,7 @@ private:
 
 	bool isGameStart = false;
 	bool isStarting = true;
+	bool isEnding = false;
 
 	bool isCurrentSpawnPointFind = false;
 	sf::Vector2f respawnPoint;
