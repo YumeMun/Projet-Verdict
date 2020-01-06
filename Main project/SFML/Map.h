@@ -21,6 +21,7 @@ public:
 	sf::Vector2f GetPos();
 
 	sf::Vector2f GetCheckPoint(sf::Vector2f _Pos);
+	sf::Vector2f GetEndFlag();
 
 	sf::Vector2f GetNextTile(int _Type, sf::Vector2f _Pos);
 	int GetIsLazerOn();

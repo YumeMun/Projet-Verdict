@@ -490,6 +490,22 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	}*/
 }
 
+sf::Vector2f Map::GetEndFlag()
+{
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x-2] == 25)
+			{
+				CasePos.x = (float)x * 64;
+				CasePos.y = (float)y * 64;
+				return CasePos;
+			}
+		}
+	}
+}
+
 sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
 {
 	for (int y = (_Pos.y) / 64; y < Size_Y; y++)

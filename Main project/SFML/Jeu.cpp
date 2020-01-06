@@ -143,7 +143,11 @@ void Jeu::Update()
 		CollectiblesManager();
 
 		if (Player1->Hasfinished == false && Player2->Hasfinished == false)
-			caméra->Update(ElapsedTime, timerStart, Player1, Player2);
+			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
+		else if (Player1->Hasfinished == true || Player2->Hasfinished == true)
+			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
+
+
 
 		hud->Update(caméra->GetCameraCenter(), caméra->GetSizeCamera(), Player1->GetPos(), Player2->GetPos());
 
