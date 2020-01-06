@@ -14,6 +14,8 @@ public:
 
 	int GetTile(int _X, int _Y);
 	void SetTile(int _X, int _Y, int _Tile);
+	int GetSizeX();
+	int GetSizeY();
 	sf::Vector2f GetStartPos();
 
 	sf::Vector2f GetPos();

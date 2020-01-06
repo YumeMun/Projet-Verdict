@@ -60,7 +60,7 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
-	if (spPlayer.getPosition().x < 12000 * 64 && spPlayer.getPosition().y < 34 * 64 &&
+	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 &&
 		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
@@ -74,7 +74,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	}
 	else if (Alive == true)
 	{
-		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+		//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 		Player_Movement.x = 0;
 		Player_Movement.y = 0;
 		Player_Vector.x = 0;
@@ -84,7 +84,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	else if (Alive == false && _Pos.x >= GetPos().x)
 		Alive = true;
 
-	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
+	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 1.5)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 		Player_Movement.y = 0;
@@ -225,50 +225,6 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 	if (Player_Direction == NONE)
 	{
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
-			/*|| (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))*/
-		{
-			Player_Movement.x = 0;
-		}
-		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
-		{
-			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 17)
-				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 35);
-
-			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 18)
-				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 36);
-
-			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 19)
-				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 37);
-
-			timerTrapFactor.restart();
-			SetHitTrap();
-			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
-		}
-		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 20 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 22)
-		{
-			if (_Map->GetIsLazerOn())
-			{
-				timerTrapFactor.restart();
-				SetHitLazer();
-				//Player_Movement.x = Player_Movement.x / trapSpeedFactor;
-			}
-		}
-		else
-		{
-			if (Player_Movement.x < SPEED && Oiled == false)
-				Player_Movement.x += 10;
-			else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
-				Player_Movement.x = SPEED;
-			else if (Boost == true)
-				Player_Movement.x = SPEED * 1.5;
-			else if (Oiled == true)
-			{
-				if (Player_Movement.x >= SPEED / 2)
-					Player_Movement.x = SPEED / 2;
-			}
-		}
-
 		if (_Map->GetTile(GetPos().x + 50, GetPos().y) == 7 || _Map->GetTile(GetPos().x + 50, GetPos().y) == 12)
 		{
 			Player_Direction = UP;
@@ -329,10 +285,25 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 {
 	if (Player_Direction == NONE)
 	{
-
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
+			/*|| (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))*/
 		{
 			Player_Movement.x = 0;
+		}
+		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19)
+		{
+			if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 17)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 35);
+
+			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 18)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 36);
+
+			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 19)
+				_Map->SetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y, 37);
+
+			timerTrapFactor.restart();
+			SetHitTrap();
+			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
 		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
 		{
@@ -341,7 +312,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 29)
 		{
-			spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+			//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 			Player_Movement.x = 0;
 			Player_Movement.y = 0;
 			Alive = false;
@@ -360,6 +331,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					Player_Movement.x = SPEED / 2;
 			}
 		}
+
 	}
 }
 

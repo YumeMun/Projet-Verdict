@@ -28,7 +28,7 @@ private:
 
 	float CurrentTime, LastFrameTime, ElapsedTime;
 
-	int Tableau[34][1200];
+	int Tableau[17][1200];
 
 	int Size_X;
 	int Size_Y;

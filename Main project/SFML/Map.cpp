@@ -374,6 +374,16 @@ void Map::SetTile(int _X, int _Y, int _Tile)
 	Tableau[_Y / 64][_X / 64] = _Tile;
 }
 
+int Map::GetSizeX()
+{
+	return Size_X;
+}
+
+int Map::GetSizeY()
+{
+	return Size_Y;
+}
+
 sf::Vector2f Map::GetStartPos()
 {
 	for (int y = 0; y < Size_Y; y++)
