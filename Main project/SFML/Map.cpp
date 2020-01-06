@@ -102,6 +102,14 @@ Map::Map(std::string _LevelName)
 		}
 	}
 
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			
+		}
+	}
+
 	LoadFile.close();
 
 	timerLazer.restart();
@@ -127,9 +135,9 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	for (int i = 1; i < 4; i++)
 	{
-		Plan[i].move((320 + (190 * (i - 1))) * _Elapsed, 0);
+		Plan[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
 
-		Plan2[i].move((320 + (190 * (i - 1))) * _Elapsed, 0);
+		Plan2[i].move(((_Cam->SpeedVari * 0.45) + ((_Cam->SpeedVari * 0.27) * (i - 1))) * _Elapsed, 0);
 	}
 
 	//std::cout << Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width << std::endl;
@@ -159,16 +167,16 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 void Map::Display()
 {
-	/*for (int i = 3; i > -1; i--)
+	for (int i = 3; i > -1; i--)
 	{
 		m_actualWindow->draw(Plan[i]);
 		m_actualWindow->draw(Plan2[i]);
-	}*/
+	}
 
-	/*for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(Plan1[i]);
-	}*/
+	}
 
 	AnimTiles();
 
