@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Transition.h"
 
-#define NB_SKIN 2
+#define NB_SKIN 4
 
 class PlayerSelector : public Scene
 {
@@ -19,7 +19,15 @@ public:
 	int GetSkinNumberJ2();
 
 private:
-	sf::RectangleShape rectPlay;
+	//sf::RectangleShape rectPlay;
+	sf::Sprite spReady;
+	sf::Vector2f buttonOrigin;
+	sf::Vector2f textOrigin;
+	sf::Text textSkinSelect[3];
+	sf::String strSkinSelect[3];
+	sf::Clock timerAlreadyUse;
+	bool isAlreadyUseDrawable = false;
+
 	sf::RectangleShape player;
 	sf::Sprite spPlayer;
 	sf::Sprite spFader;

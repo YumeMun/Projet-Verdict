@@ -12,10 +12,6 @@ PlayerSelector::PlayerSelector(std::string _LevelName)
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
-	rectPlay.setPosition(sf::Vector2f(1920 / 2, 1080 / 2 + 200));
-	rectPlay.setSize(sf::Vector2f(300, 100));
-	rectPlay.setFillColor(sf::Color::Yellow);
-
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
 
@@ -34,12 +30,14 @@ void PlayerSelector::Setup()
 
 		newSelector->rectPlayer = { 0, 0, 372, 150 };
 		newSelector->spPlayer.setTextureRect(newSelector->rectPlayer);
-		//newSelector->originPlayer = { spPlayer.getGlobalBounds().width / 2, spPlayer.getGlobalBounds().height / 2 };
-		//newSelector->spPlayer.setOrigin(newSelector->originPlayer);
-		newSelector->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player_Colo1"));
+		newSelector->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player" + std::to_string(i+1) + "_Colo1"));
 
-		//newSelector->spFader.setTextureRect(newSelector->rectPlayer);
-		//newSelector->spFader.setOrigin(newSelector->originPlayer);
+
+		newSelector->player.setSize(sf::Vector2f(350, 200));
+		newSelector->player.setFillColor(sf::Color(250, 194, 73));
+		newSelector->player.setOutlineColor(sf::Color(80, 80, 80));
+		newSelector->player.setOutlineThickness(7);
+
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
@@ -48,24 +46,47 @@ void PlayerSelector::Setup()
 		listSelector.push_back(newSelector);
 	}
 
-	listSelector[0]->player.setPosition(sf::Vector2f(1920 / 2 - 300, 1080 / 2));
-	listSelector[0]->player.setSize(sf::Vector2f(200, 100));
-	listSelector[0]->player.setFillColor(sf::Color::Green);
-	listSelector[0]->player.setOutlineColor(sf::Color::Black);
-	listSelector[0]->player.setOutlineThickness(5);
+	listSelector[0]->player.setPosition(sf::Vector2f(1920 / 2 - 500, 1080 / 2 - 150));
+	listSelector[0]->spPlayer.setPosition(listSelector[0]->player.getPosition());
+	listSelector[0]->spFader.setPosition(listSelector[0]->player.getPosition());
 
-	listSelector[1]->player.setPosition(sf::Vector2f(1920 / 2 + 300, 1080 / 2));
-	listSelector[1]->player.setSize(sf::Vector2f(200, 100));
-	listSelector[1]->player.setFillColor(sf::Color::Red);
-	listSelector[1]->player.setOutlineColor(sf::Color::Black);
-	listSelector[1]->player.setOutlineThickness(5);
+	listSelector[1]->player.setFillColor(sf::Color(201, 65, 65));
+	listSelector[1]->player.setPosition(sf::Vector2f(1920 / 2 + 150, 1080 / 2 - 150));
+	listSelector[1]->spPlayer.setPosition(listSelector[1]->player.getPosition());
+	listSelector[1]->spFader.setPosition(listSelector[1]->player.getPosition());
 
-	//listSelector[0]->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player_Colo1"));
-	listSelector[0]->spPlayer.setPosition(sf::Vector2f(1920 / 2 - 300, 1080 / 2));
-	listSelector[0]->spFader.setPosition(sf::Vector2f(1920 / 2 - 300, 1080 / 2));
+	spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
+	spReady.setPosition((1920 / 2), 800);
+	spReady.setOrigin(spReady.getGlobalBounds().width / 2, spReady.getGlobalBounds().height / 2);
+	spReady.setScale(sf::Vector2f(1.5, 1.5));
 
-	listSelector[1]->spPlayer.setPosition(sf::Vector2f(1920 / 2 + 300, 1080 / 2));
-	listSelector[1]->spFader.setPosition(sf::Vector2f(1920 / 2 + 300, 1080 / 2));
+	strSkinSelect[0] = "Les pates sont cuites";
+	strSkinSelect[1] = "Choisissez la couleur de votre vehicule";
+	strSkinSelect[2] = "Cette couleur est déjà prise";
+
+	for (int i = 0; i < 3; i++)
+	{
+		textSkinSelect[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
+		textSkinSelect[i].setString(strSkinSelect[i]);
+		textSkinSelect[i].setCharacterSize(40);
+		textSkinSelect[i].setFillColor(sf::Color::White);
+		textSkinSelect[i].setOrigin(textSkinSelect[i].getGlobalBounds().width / 2, textSkinSelect[i].getGlobalBounds().height / 2);
+
+	}
+
+	//textReady.setFont(*ResourceManager::Instance()->GetFont("Font"));
+	//textReady.setString(strSkinSelect[0]);
+	//textReady.setCharacterSize(40);
+
+	//textReady.setOrigin(textReady.getGlobalBounds().width / 2, textReady.getGlobalBounds().height / 2);
+	//textSkinSelect[0].setOrigin(textSkinSelect[0].getGlobalBounds().width / 2, textSkinSelect[0].getGlobalBounds().height / 2);
+
+	//textReady.setFillColor(sf::Color::White);
+	//textReady.setPosition(spReady.getPosition());
+
+	textSkinSelect[0].setPosition(spReady.getPosition());
+	textSkinSelect[1].setPosition(spReady.getPosition().x, spReady.getPosition().y - 550);
+	textSkinSelect[2].setPosition(spReady.getPosition().x, spReady.getPosition().y - 150);
 
 	transition = new Transition();
 }
@@ -93,26 +114,10 @@ void PlayerSelector::Update()
 
 	for (int i = 0; i < 2; i++)
 	{
-		/*if (listSelector[i]->SkinSelector == 1)
-		{
-			listSelector[i]->player.setFillColor(sf::Color::Magenta);
-		}
-		else if (listSelector[i]->SkinSelector == 2)
-		{
-			listSelector[i]->player.setFillColor(sf::Color::Cyan);
-		}
-		else if (listSelector[i]->SkinSelector == 3)
-		{
-			listSelector[i]->player.setFillColor(sf::Color::Yellow);
-		}*/
-
 		if (listSelector[i]->isSkinValidate)
-		{
 			listSelector[i]->player.setOutlineColor(sf::Color::Green);
-		}
 		else
 			listSelector[i]->player.setOutlineColor(sf::Color::Black);
-
 	}
 
 	if (listSelector[0]->isSkinValidate)
@@ -135,6 +140,11 @@ void PlayerSelector::Update()
 		listSelector[1]->isFadeDrawable = false;
 	}
 
+	if (timerAlreadyUse.getElapsedTime().asSeconds() > 2.5)
+	{
+		isAlreadyUseDrawable = false;
+	}
+
 	if (isGameStart)
 	{
 		transition->Update();
@@ -144,22 +154,31 @@ void PlayerSelector::Update()
 void PlayerSelector::Display()
 {
 	m_actualWindow->draw(spBackground);
-	//m_actualWindow->draw(rectPlay);
 	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(listSelector[i]->player);
 		m_actualWindow->draw(listSelector[i]->spPlayer);
 
 		if (listSelector[i]->isFadeDrawable)
-		{
 			m_actualWindow->draw(listSelector[i]->spFader);
-		}
 	}
 
-	if (isGameStart)
+	m_actualWindow->draw(spReady);
+	//m_actualWindow->draw(textReady);
+
+	/*for (int i = 0; i == 2;)
 	{
+		m_actualWindow->draw(textSkinSelect[i]);
+	}*/
+
+	m_actualWindow->draw(textSkinSelect[0]);
+	m_actualWindow->draw(textSkinSelect[1]);
+
+	if (isAlreadyUseDrawable)
+		m_actualWindow->draw(textSkinSelect[2]);
+
+	if (isGameStart)
 		transition->DrawTransition();
-	}
 
 	m_actualWindow->draw(spBoutonRetour);
 }
@@ -196,7 +215,13 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 				if (sf::Joystick::isButtonPressed(i, 0))
 				{
-					listSelector[i]->isSkinValidate = true;
+					if (!listSelector[i]->isFadeDrawable)
+						listSelector[i]->isSkinValidate = true;
+					else
+					{
+						timerAlreadyUse.restart();
+						isAlreadyUseDrawable = true;
+					}
 				}
 			}
 			else
@@ -213,6 +238,13 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 						GameManager::Instance()->LoadScene(e_Enum::JEU);
 					}
 				}
+
+				if (listSelector[0]->isSkinValidate)
+				{
+					spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton sélectionné"));
+				}
+				else
+					spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 			}
 
 			/*if (sf::Joystick::isButtonPressed(0, 1))
