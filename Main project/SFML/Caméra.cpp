@@ -74,10 +74,7 @@ void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* 
 				if (centerCam.x >= _map->GetEndFlag().x)
 				{
 					isEnding = true;
-<<<<<<< HEAD
-=======
 					cameraSpeed = 0;
->>>>>>> 952d040d1c6c45cd715939e74d51972192a2e130
 				}
 			}
 		}
