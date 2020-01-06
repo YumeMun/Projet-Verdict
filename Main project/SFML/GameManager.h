@@ -18,6 +18,7 @@
 #include "Credits.h"
 #include "Commandes.h"
 #include "Options.h"
+#include "Intro.h"
 
 class GameManager : public Singleton<GameManager>
 {

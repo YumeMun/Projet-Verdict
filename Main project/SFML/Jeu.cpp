@@ -27,7 +27,7 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 	Player1 = new Player(1, sf::Vector2f(600, 800), map, skinJ1);
 	Player2 = new Player(2, sf::Vector2f(200, 800), map, skinJ2);
 
-	caméra = new Caméra(Player1);
+	caméra = new Caméra(Player2);
 	hud = new HUD();
 
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
@@ -118,7 +118,7 @@ void Jeu::Update()
 				timerStart->UpdateRect();
 				if (caméra->GetSizeCamera().x < 1920 * 1.8)
 				{
-					caméra->UpdateZoom(ElapsedTime, map);
+					caméra->UpdateZoom(ElapsedTime, map, Player1, Player2);
 				}
 
 				if (isPlayerAnimStart)
@@ -315,6 +315,11 @@ void Jeu::CollectiblesManager()
 		if (Collectibles[i]->IsAlive() == false)
 			Collectibles.erase(Collectibles.begin() + i);
 	}
+}
+
+float Jeu::GetElapsed()
+{
+	return ElapsedTime;
 }
 
 void Jeu::MenuIG(int ID)

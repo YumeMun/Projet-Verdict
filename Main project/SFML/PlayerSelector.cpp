@@ -34,8 +34,15 @@ void PlayerSelector::Setup()
 
 		newSelector->rectPlayer = { 0, 0, 372, 150 };
 		newSelector->spPlayer.setTextureRect(newSelector->rectPlayer);
-		newSelector->spPlayer.setOrigin(spPlayer.getGlobalBounds().width / 2, spPlayer.getGlobalBounds().height / 2);
-		newSelector->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1"));
+		//newSelector->originPlayer = { spPlayer.getGlobalBounds().width / 2, spPlayer.getGlobalBounds().height / 2 };
+		//newSelector->spPlayer.setOrigin(newSelector->originPlayer);
+		newSelector->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player_Colo1"));
+
+		//newSelector->spFader.setTextureRect(newSelector->rectPlayer);
+		//newSelector->spFader.setOrigin(newSelector->originPlayer);
+		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
+		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
+
 		newSelector->timerSwitchSkin.restart();
 
 		listSelector.push_back(newSelector);
@@ -53,9 +60,12 @@ void PlayerSelector::Setup()
 	listSelector[1]->player.setOutlineColor(sf::Color::Black);
 	listSelector[1]->player.setOutlineThickness(5);
 
+	//listSelector[0]->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player_Colo1"));
 	listSelector[0]->spPlayer.setPosition(sf::Vector2f(1920 / 2 - 300, 1080 / 2));
+	listSelector[0]->spFader.setPosition(sf::Vector2f(1920 / 2 - 300, 1080 / 2));
 
 	listSelector[1]->spPlayer.setPosition(sf::Vector2f(1920 / 2 + 300, 1080 / 2));
+	listSelector[1]->spFader.setPosition(sf::Vector2f(1920 / 2 + 300, 1080 / 2));
 
 	transition = new Transition();
 }
@@ -69,7 +79,7 @@ void PlayerSelector::Update()
 		isSetup = true;
 	}
 
-	for (int y = 0; y < 2; y++)
+	for (int y = 0; y < NB_SKIN; y++)
 	{
 		if (listSelector[0]->SkinSelector == y + 1)
 		{
@@ -83,7 +93,7 @@ void PlayerSelector::Update()
 
 	for (int i = 0; i < 2; i++)
 	{
-		if (listSelector[i]->SkinSelector == 1)
+		/*if (listSelector[i]->SkinSelector == 1)
 		{
 			listSelector[i]->player.setFillColor(sf::Color::Magenta);
 		}
@@ -94,7 +104,7 @@ void PlayerSelector::Update()
 		else if (listSelector[i]->SkinSelector == 3)
 		{
 			listSelector[i]->player.setFillColor(sf::Color::Yellow);
-		}
+		}*/
 
 		if (listSelector[i]->isSkinValidate)
 		{
@@ -102,6 +112,27 @@ void PlayerSelector::Update()
 		}
 		else
 			listSelector[i]->player.setOutlineColor(sf::Color::Black);
+
+	}
+
+	if (listSelector[0]->isSkinValidate)
+	{
+		if (listSelector[1]->SkinSelector == listSelector[0]->SkinSelector)
+			listSelector[1]->isFadeDrawable = true;
+		else
+			listSelector[1]->isFadeDrawable = false;
+	}
+	else if (listSelector[1]->isSkinValidate)
+	{
+		if (listSelector[0]->SkinSelector == listSelector[1]->SkinSelector)
+			listSelector[0]->isFadeDrawable = true;
+		else
+			listSelector[0]->isFadeDrawable = false;
+	}
+	else
+	{
+		listSelector[0]->isFadeDrawable = false;
+		listSelector[1]->isFadeDrawable = false;
 	}
 
 	if (isGameStart)
@@ -118,6 +149,11 @@ void PlayerSelector::Display()
 	{
 		m_actualWindow->draw(listSelector[i]->player);
 		m_actualWindow->draw(listSelector[i]->spPlayer);
+
+		if (listSelector[i]->isFadeDrawable)
+		{
+			m_actualWindow->draw(listSelector[i]->spFader);
+		}
 	}
 
 	if (isGameStart)
@@ -136,23 +172,23 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			if (listSelector[i]->isSkinValidate == false)
 			{
-				if (listSelector[i]->timerSwitchSkin.getElapsedTime().asMilliseconds() > 150)
+				if (listSelector[i]->timerSwitchSkin.getElapsedTime().asMilliseconds() > 125)
 				{
 					if (sf::Joystick::getAxisPosition(i, sf::Joystick::X) > 66.f)
 					{
-						if (listSelector[i]->SkinSelector != 3)
+						if (listSelector[i]->SkinSelector != NB_SKIN+1)
 							listSelector[i]->SkinSelector += 1;
 						else
-							listSelector[i]->SkinSelector = 3;
+							listSelector[i]->SkinSelector = 1;
 
 						listSelector[i]->timerSwitchSkin.restart();
 					}
 					else if (sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f)
 					{
-						if (listSelector[i]->SkinSelector != 1)
+						if (listSelector[i]->SkinSelector != 0)
 							listSelector[i]->SkinSelector -= 1;
 						else
-							listSelector[i]->SkinSelector = 1;
+							listSelector[i]->SkinSelector = NB_SKIN + 1;
 
 						listSelector[i]->timerSwitchSkin.restart();
 					}
@@ -179,10 +215,10 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				}
 			}
 
-			if (sf::Joystick::isButtonPressed(0, 1))
+			/*if (sf::Joystick::isButtonPressed(0, 1))
 			{
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
-			}
+			}*/
 		}
 
 		if (sf::Joystick::isButtonPressed(0, 7))
