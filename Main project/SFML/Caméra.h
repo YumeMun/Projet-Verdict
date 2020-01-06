@@ -21,7 +21,7 @@
 #define CAMERA_SPEED_MAX 1200
 #define CAMERA_ZOOM 2
 //#define CAMERA_ZOOM_SPEED 550
-#define CAMERA_ZOOM_SPEED 500
+#define CAMERA_ZOOM_SPEED 325
 
 class Caméra
 {

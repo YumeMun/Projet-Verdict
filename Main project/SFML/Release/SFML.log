@@ -1,294 +1,633 @@
 ﻿  Caméra.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.cpp(15): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   Chargement.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Chargement.cpp(54): warning C4305: 'argument' : troncation de 'double' à 'T'
-          with
-          [
-              T=float
-          ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.cpp(134,42): warning C4244:  '+=' : conversion de 'double' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.cpp(134,42): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.cpp(134,42): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.cpp(134,42): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.cpp(134,42): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   ChooseLevelEditor.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\ChooseLevelEditor.cpp(16): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\ChooseLevelEditor.cpp(21): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Chargement.cpp(54,40): warning C4305:  'argument' : troncation de 'double' à 'T'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Chargement.cpp(54,40): warning C4305:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Chargement.cpp(54,40): warning C4305:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Chargement.cpp(54,40): warning C4305:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Chargement.cpp(54,40): warning C4305:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\ChooseLevelEditor.cpp(16,35): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Collects.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\ChooseLevelEditor.cpp(21,33): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Commandes.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   Credits.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   GameManager.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   HUD.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   HudEditor.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(21): warning C4305: 'argument' : troncation de 'double' à 'T'
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(35): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(57): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(60): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(63): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(87): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(89): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(91): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(92): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(93): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(99): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\HudEditor.cpp(101): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(21,50): warning C4305:  'argument' : troncation de 'double' à 'T'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(21,50): warning C4305:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(21,50): warning C4305:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(21,50): warning C4305:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(21,50): warning C4305:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(35,30): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(58,31): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(61,31): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(64,33): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(89,35): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(91,42): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(93,35): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(94,35): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(95,35): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(101,53): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+  Intro.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\HudEditor.cpp(103,54): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Intro.cpp(29,43): warning C4244:  'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Intro.cpp(77,46): warning C4244:  'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
   LevelEditor.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(29): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
-          with
-          [
-              T=unsigned int
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(116): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(117): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(569): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(573): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(606): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(815): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(821): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(830): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(836): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(845): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(851): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(860): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(866): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(875): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(881): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(890): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(896): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(905): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(911): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(920): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelEditor.cpp(926): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Intro.cpp(83,46): warning C4244:  'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(122,36): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(123,36): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(579,17): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(583,17): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(618,18): warning C4244:  'initialisation' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(618,18): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(618,18): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(618,18): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(618,18): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(850,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(850,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(856,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(856,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(865,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(865,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(871,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(871,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(880,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(880,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(886,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(886,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(895,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(895,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(901,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(901,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(910,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(910,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(916,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(916,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(925,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(925,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(931,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(931,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(940,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(940,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(946,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(946,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(955,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(955,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(961,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   LevelSelector.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelSelector.cpp(62): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelSelector.cpp(95): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\LevelSelector.cpp(98): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelEditor.cpp(961,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelSelector.cpp(62,20): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelSelector.cpp(95,36): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Level_Finished.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Level_Finished.cpp(79): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\LevelSelector.cpp(98,40): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   main.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Level_Finished.cpp(79,32): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Jeu.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(147): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(282): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Jeu.cpp(178,20): warning C4018:  '<' : incompatibilité signed/unsigned
   Map.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(352): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(354): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(382): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(384): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Jeu.cpp(315,20): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,46): warning C4244:  'argument' : conversion de 'int' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,46): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,46): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,46): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,46): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,32): warning C4244:  'argument' : conversion de 'int' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(136,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(156,90): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(158,91): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(511,13): warning C4244:  'initialisation' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(511,13): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(511,13): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(511,13): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(511,13): warning C4244:         ]
   Menu.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Menu.cpp(56): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(513,14): warning C4244:  'initialisation' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(513,14): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(513,14): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(513,14): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(513,14): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   Oilflake.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Menu.cpp(56,35): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   OpenLevelEditor.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\OpenLevelEditor.cpp(97): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\OpenLevelEditor.cpp(162): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\OpenLevelEditor.cpp(165): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\OpenLevelEditor.cpp(97,21): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\OpenLevelEditor.cpp(162,36): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Options.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Options.cpp(20): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Options.cpp(27): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Options.cpp(31): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  Player.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(19): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(22): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(23): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(39): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(40): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(102): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(147): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(153): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(158): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(163): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(164): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(166): warning C4305: '+=' : troncation de 'double' à 'T'
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(169): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(180): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(190): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(203): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(208): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(212): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(221): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(245): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(249): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(261): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(267): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(277): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(283): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(128): warning C4390: ';' : une instruction contrôlée a été trouvée vide ; est-ce ce que vous souhaitiez ?
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(305): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(309): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(311): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(317): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(457): warning C4244: '=' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(506): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(508): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(510): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Player.cpp(558): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\OpenLevelEditor.cpp(165,40): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Options.cpp(20,39): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Options.cpp(27,36): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Compilation en cours...
+  Player.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Options.cpp(31,36): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(19,62): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(19,39): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(22,51): warning C4244:  '=' : conversion de 'double' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(22,51): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(22,51): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(22,51): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(22,51): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(23,51): warning C4244:  '=' : conversion de 'double' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(23,51): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(23,51): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(23,51): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(23,51): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(37,62): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(37,39): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(40,51): warning C4244:  '=' : conversion de 'double' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(40,51): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(40,51): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(40,51): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(40,51): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(41,51): warning C4244:  '=' : conversion de 'double' en 'T', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(41,51): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(41,51): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(41,51): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(41,51): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(49,28): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,65): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,65): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,65): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,65): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,65): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,31): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,31): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,31): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,31): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(110,31): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,70): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,70): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,70): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,70): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,70): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,36): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,36): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,36): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,36): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(112,36): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(125,32): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(127,33): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(134,33): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(141,32): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,89): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,89): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,89): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,89): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,89): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,74): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,74): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,74): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,74): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(200,74): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,88): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,88): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,88): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,88): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,88): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,73): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,73): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,73): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,73): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(206,73): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,43): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,43): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,43): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,43): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,43): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,28): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,28): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,28): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,28): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,114): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,114): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,114): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,114): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,114): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,99): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,99): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,99): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,99): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(211,99): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,44): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,44): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,44): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,44): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,44): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,29): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,29): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,29): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,29): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,29): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,115): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,115): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,115): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,115): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,115): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,100): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,100): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,100): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,100): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(216,100): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,40): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,40): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,40): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,40): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,40): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,25): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,25): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,25): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,25): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(217,25): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(219,47): warning C4305:  '+=' : troncation de 'double' à 'T'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(219,47): warning C4305:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(219,47): warning C4305:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(219,47): warning C4305:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(219,47): warning C4305:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,49): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,49): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,49): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,49): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,49): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,34): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,34): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,34): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,34): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,34): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,120): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,120): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,120): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,120): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,120): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,105): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,105): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,105): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,105): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,105): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,192): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,192): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,192): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,192): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,192): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,177): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,177): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,177): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,177): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(222,177): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,44): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,44): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,44): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,44): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,44): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,29): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,29): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,29): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,29): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(233,29): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,43): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,43): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,43): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,43): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,43): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,28): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,28): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,28): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(243,28): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,46): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,46): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,46): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,46): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,46): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,97): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,97): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,97): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,97): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,97): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,83): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,83): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,83): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,83): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(254,83): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,49): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,49): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,49): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,49): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,49): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,34): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,34): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,34): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,34): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,34): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,124): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,124): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,124): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,124): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,124): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,109): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,109): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,109): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,109): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(258,109): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,49): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,49): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,49): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,49): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,49): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(272,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,49): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,49): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,49): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,49): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,49): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(278,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,69): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,69): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,69): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,69): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,69): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(294,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,69): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,69): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,69): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,69): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,69): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,165): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,165): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,165): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,165): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,165): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,128): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,128): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,128): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,128): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(300,128): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(171,40): warning C4390:  ';' : une instruction contrôlée a été trouvée vide ; est-ce ce que vous souhaitiez ?
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,66): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,66): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,66): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,66): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,66): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,137): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,137): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,137): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,137): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,137): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,103): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,103): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,103): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,103): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(320,103): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,71): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,71): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,71): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,71): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,71): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,37): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,37): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,37): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,37): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,37): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,143): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,143): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,143): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,143): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,143): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,109): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,109): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,109): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,109): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(325,109): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,67): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,67): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,67): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,67): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,67): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,33): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,33): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,33): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,33): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(327,33): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,64): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,64): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,64): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,64): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,64): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,30): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,30): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,30): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,30): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(328,30): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,72): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,72): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,72): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,72): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,72): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,38): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,38): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,38): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,38): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(330,38): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,64): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,64): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,64): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,64): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,64): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,30): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,30): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,30): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,30): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(331,30): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,72): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,72): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,72): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,72): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,72): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,38): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,38): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,38): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,38): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(333,38): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,64): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,64): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,64): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,64): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,64): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,30): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,30): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,30): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,30): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(334,30): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,71): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,71): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,71): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,71): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,71): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,37): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,37): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,37): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,37): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,37): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,143): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,143): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,143): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,143): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,143): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,109): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,109): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,109): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,109): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(340,109): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,66): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,66): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,66): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,66): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,66): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,32): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,32): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,32): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,32): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,32): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,138): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,138): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,138): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,138): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,138): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,104): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,104): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,104): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,104): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(362,104): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(497,34): warning C4244:  '=' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(497,34): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(497,34): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(497,34): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(497,34): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(562,12): warning C4244:  'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,65): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,65): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,65): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,65): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,65): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,31): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,31): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,31): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,31): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(564,31): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,62): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,62): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,62): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,62): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,62): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,28): warning C4244:  'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,28): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,28): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,28): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(566,28): warning C4244:         ]
   PlayerSelector.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Player.cpp(614,21): warning C4244:  '=' : conversion de 'double' en 'float', perte possible de données
   ResourceManager.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\ResourceManager.cpp(348): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\ResourceManager.cpp(362): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\ResourceManager.cpp(382): warning C4244: 'return' : conversion de 'unsigned int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(373,20): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(387,20): warning C4018:  '<' : incompatibilité signed/unsigned
   Rocket.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Rocket.cpp(48): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Rocket.cpp(73): warning C4244: 'argument' : conversion de 'const T' en 'int', perte possible de données
-          with
-          [
-              T=float
-          ]
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Rocket.cpp(79): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(407,23): warning C4244:  'return' : conversion de 'unsigned int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(48,20): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,68): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,68): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,68): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,68): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,68): warning C4244:         ]
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,42): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,42): warning C4244:         with
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,42): warning C4244:         [
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,42): warning C4244:             T=float
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(73,42): warning C4244:         ]
   SaveEditor.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\SaveEditor.cpp(75): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Rocket.cpp(79,20): warning C4018:  '<' : incompatibilité signed/unsigned
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   Scene.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\SaveEditor.cpp(75,38): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Shockwave.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   SizeEditor.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\SizeEditor.cpp(20): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\SizeEditor.cpp(42): warning C4305: 'argument' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\SizeEditor.cpp(43): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\SizeEditor.cpp(51): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\SizeEditor.cpp(20,26): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\SizeEditor.cpp(42,35): warning C4305:  'argument' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\SizeEditor.cpp(43,34): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Smoke.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Smoke.cpp(21): warning C4244: '-=' : conversion de 'float' en 'sf::Uint8', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\SizeEditor.cpp(51,34): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   TimerStart.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Smoke.cpp(21,33): warning C4244:  '-=' : conversion de 'float' en 'sf::Uint8', perte possible de données
   Transition.cpp
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   Génération de code en cours
-  Previous IPDB not found, fall back to full compilation.
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(395): warning C4715: 'Map::GetNextTile' : les chemins de contrôle ne retournent pas tous une valeur
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(332): warning C4715: 'Map::GetStartPos' : les chemins de contrôle ne retournent pas tous une valeur
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(378): warning C4715: 'Map::GetCheckPoint' : les chemins de contrôle ne retournent pas tous une valeur
-  All 950 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(507): warning C4715: 'Map::GetEndFlag' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(524): warning C4715: 'Map::GetNextTile' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(491): warning C4715: 'Map::GetCheckPoint' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Users\Bastien-PC\Desktop\Verdict\Main project\SFML\Map.cpp(438): warning C4715: 'Map::GetStartPos' : les chemins de contrôle ne retournent pas tous une valeur
+  822 of 822 functions (100.0%) were compiled.
+    54 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
-  SFML.vcxproj -> C:\Users\celia\Desktop\Github\Verdict\Main project\Release\SFML.exe
+  SFML.vcxproj -> C:\Users\Bastien-PC\Desktop\Verdict\Main project\Release\SFML.exe

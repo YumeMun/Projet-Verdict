@@ -17,7 +17,7 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 
 		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinNumber)));
 		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
-		spPlayer.setPosition(_Map->GetStartPos().x + 500, _Map->GetStartPos().y);
+		spPlayer.setPosition(_Map->GetStartPos().x + 450, _Map->GetStartPos().y);
 
 		Player_ColliderLimit.x = spPlayer.getOrigin().x * 0.8;
 		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.6;
