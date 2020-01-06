@@ -50,6 +50,13 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 
 	Player_Movement.x = SPEED;
 
+	rectAnimElec = { 0, 0, 351, 168 };
+	animElec.setTextureRect(rectAnimElec);
+	animElec.setTexture(*ResourceManager::Instance()->GetTexture("Effet_Elec"));
+	animElec.setOrigin(sf::Vector2f(animElec.getGlobalBounds().width / 2, animElec.getGlobalBounds().height / 2));
+	animElec.setPosition(GetPos());
+	timerAnimElec.restart();
+
 	HasCollectible = false;
 	Hasfinished = false;
 }
@@ -61,7 +68,7 @@ Player::~Player()
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 &&
-		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
+		spPlayer.getPosition().x > 0 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
 		Traps(_Map, _Cam);
@@ -102,6 +109,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 
 	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
 		Hasfinished = true;
+	else if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
 
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
 		Invincible = false;
@@ -145,7 +153,9 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 void Player::Display(sf::RenderWindow* _Window)
 {
 	_Window->draw(spPlayer);
-	//_Window->draw(ColliderCircle);
+
+	if (isCollideCE)
+		_Window->draw(animElec);
 
 	if (DisplayNumeroTimer.getElapsedTime().asSeconds() < 15)
 	{
@@ -327,11 +337,6 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			SetHitTrap();
 			Player_Movement.x = Player_Movement.x / trapSpeedFactor;
 		}
-		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
-		{
-			timerTrapFactor.restart();
-			SetHitLazer();
-		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 29)
 		{
 			spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
@@ -353,6 +358,15 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					Player_Movement.x = SPEED / 2;
 			}
 		}
+
+		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
+		{
+			timerTrapFactor.restart();
+			isCollideCE = true;
+			SetHitLazer();
+		}
+		else
+			isCollideCE = false;
 
 	}
 }
@@ -479,7 +493,24 @@ void Player::Animations()
 			AnimClock.restart();
 		}
 	}
+
 	lastFrameSpeed = Player_Movement.x;
+
+	if (isCollideCE)
+	{
+		animElec.setPosition(GetPos());
+
+		if(timerAnimElec.getElapsedTime().asMilliseconds() > 60)
+		{
+			rectAnimElec.left += 351;
+			if (rectAnimElec.left == 3 * 351)
+				rectAnimElec.left = 0;
+
+			animElec.setTextureRect(rectAnimElec);
+			timerAnimElec.restart();
+
+		}
+	}
 
 	if (AnimNumero.getElapsedTime().asMilliseconds() > 30)
 	{
@@ -599,6 +630,7 @@ void Player::SetHitLazer()
 {
 	//trapSpeedFactor = 5;
 	Player_Movement.x = 200;
+
 
 }
 
