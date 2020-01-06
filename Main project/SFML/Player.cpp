@@ -19,8 +19,8 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
 		spPlayer.setPosition(_Map->GetStartPos().x + 300, _Map->GetStartPos().y);
 
-		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
-		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
+		Player_ColliderLimit.x = spPlayer.getOrigin().x * 0.8;
+		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.6;
 
 		spNumeroJoueur.setTexture(*ResourceManager::Instance()->GetTexture("Numero joueur"));
 		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 0, 101, 105 });
@@ -37,8 +37,8 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 		spPlayer.setOrigin(PlayerRect.width / 2, PlayerRect.height / 2);
 		spPlayer.setPosition(_Map->GetStartPos().x - 100, _Map->GetStartPos().y);
 
-		Player_ColliderLimit.x = spPlayer.getOrigin().x * 1.5;
-		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.8;
+		Player_ColliderLimit.x = spPlayer.getOrigin().x * 0.8;
+		Player_ColliderLimit.y = spPlayer.getOrigin().y * 0.6;
 
 		spNumeroJoueur.setTexture(*ResourceManager::Instance()->GetTexture("Numero joueur"));
 		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 105, 101, 105 });
@@ -58,12 +58,12 @@ Player::~Player()
 {
 }
 
-void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos)
+void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
 	if (spPlayer.getPosition().x < 12000 * 64 && spPlayer.getPosition().y < 34 * 64 &&
 		spPlayer.getPosition().x > 0 && spPlayer.getPosition().y > 0 && Alive == true)
 	{
-		Controls(_Map);
+		Controls(_Map, _Elapsed);
 		Traps(_Map, _Cam);
 
 		if (isNumeroDisplay == false)
@@ -111,6 +111,14 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 	else if (CollectID == 0)
 		HasCollectible = false;
 
+	if (Player_Direction == NONE)
+	{
+		if (spPlayer.getRotation() >= 315)
+			spPlayer.rotate(SPEED * _Elapsed);
+		else if (spPlayer.getRotation() >= 0 && spPlayer.getRotation() < 45)
+			spPlayer.setRotation(0);
+	}
+
 	CollectibleCollide(_Map);
 	LauchCollectible();
 
@@ -118,9 +126,10 @@ void Player::Update(float _Elapsed, Map * _Map, Caméra * _Cam, sf::Vector2f _Pos
 
 }
 
-void Player::Display(sf::RenderWindow * _Window)
+void Player::Display(sf::RenderWindow* _Window)
 {
 	_Window->draw(spPlayer);
+	//_Window->draw(ColliderCircle);
 
 	if (DisplayNumeroTimer.getElapsedTime().asSeconds() < 15)
 	{
@@ -129,8 +138,10 @@ void Player::Display(sf::RenderWindow * _Window)
 	}
 }
 
-void Player::Controls(Map * _Map)
+void Player::Controls(Map* _Map, float _Elapsed)
 {
+	//ColliderCircle.setPosition(GetPos().x + 50, GetPos().y + 50);
+
 	if (sf::Joystick::isConnected(ID - 1));
 	{
 		if (sf::Joystick::isButtonPressed(ID - 1, 0) && KeyPress == false && Jump == false && Oiled == false)
@@ -214,8 +225,6 @@ void Player::Controls(Map * _Map)
 
 	if (Player_Direction == NONE)
 	{
-		spPlayer.setRotation(0);
-
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
 			/*|| (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 17 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 19))*/
 		{
@@ -260,7 +269,7 @@ void Player::Controls(Map * _Map)
 			}
 		}
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 7 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 12)
+		if (_Map->GetTile(GetPos().x + 50, GetPos().y) == 7 || _Map->GetTile(GetPos().x + 50, GetPos().y) == 12)
 		{
 			Player_Direction = UP;
 		}
@@ -282,8 +291,10 @@ void Player::Controls(Map * _Map)
 			BoostClock.restart();
 		}
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 0)
-			Player_Direction = NONE;
+		if (_Map->GetTile(GetPos().x + 50, GetPos().y + 50) == 0)
+		{
+				Player_Direction = NONE;
+		}
 	}
 	else if (Player_Direction == DOWN)
 	{
@@ -314,11 +325,10 @@ void Player::Controls(Map * _Map)
 	}
 }
 
-void Player::Traps(Map * _Map, Caméra * _Cam)
+void Player::Traps(Map* _Map, Caméra* _Cam)
 {
 	if (Player_Direction == NONE)
 	{
-		spPlayer.setRotation(0);
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) <= 6)
 		{
@@ -522,7 +532,7 @@ sf::Vector2f Player::GetPos()
 //	}
 //}
 
-bool Player::CollectibleCollide(Map * _Map)
+bool Player::CollectibleCollide(Map* _Map)
 {
 	srand(time(NULL));
 
