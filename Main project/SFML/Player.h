@@ -59,6 +59,7 @@ private:
 	bool isSwitchingBack = false;
 	bool isHitLazer = false;
 	bool isStartJumpSpeedMax = false;
+	bool isCollideCE = false;
 
 	int trapHitCount = 1;
 	float trapSpeedFactor = 1; 
@@ -71,6 +72,10 @@ private:
 
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;
+
+	sf::Sprite animElec;
+	sf::IntRect rectAnimElec;
+	sf::Clock timerAnimElec;
 
 	sf::Sprite spNumeroJoueur;
 	sf::Clock DisplayNumeroTimer;
