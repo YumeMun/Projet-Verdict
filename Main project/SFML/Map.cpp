@@ -13,6 +13,8 @@ Map::Map(std::string _LevelName)
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	CheckPos = sf::Vector2f(0, 0);
+
 	for (int i = 0; i < 4; i++)
 	{
 		Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i + 1)));
@@ -102,6 +104,15 @@ Map::Map(std::string _LevelName)
 		}
 	}
 
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x] == 26)
+				Tableau[y][x] = 0;
+		}
+	}
+
 	LoadFile.close();
 
 	timerLazer.restart();
@@ -113,6 +124,21 @@ Map::~Map()
 
 void Map::Update(float _Elapsed, Caméra* _Cam)
 {
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+			{
+				if (x >= (CheckPos.x + 1920) / 64 && x <= (CheckPos.x + 4800) / 64)
+				{
+					Tableau[y - 1][x] = 26;
+					CheckPos = sf::Vector2f(x * 64, (y - 1) * 64);
+				}
+			}
+		}
+	}
+
 	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
 		if (isLazerOn == 3)
@@ -127,9 +153,9 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	for (int i = 1; i < 4; i++)
 	{
-		Plan[i].move((320 + (190 * (i - 1))) * _Elapsed, 0);
+		Plan[i].move(((_Cam->GetCamSpeed() * 0.45) + ((_Cam->GetCamSpeed() * 0.27) * (i - 1))) * _Elapsed, 0);
 
-		Plan2[i].move((320 + (190 * (i - 1))) * _Elapsed, 0);
+		Plan2[i].move(((_Cam->GetCamSpeed() * 0.45) + ((_Cam->GetCamSpeed() * 0.27) * (i - 1))) * _Elapsed, 0);
 	}
 
 	//std::cout << Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width << std::endl;
@@ -159,16 +185,16 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 void Map::Display()
 {
-	/*for (int i = 3; i > -1; i--)
+	for (int i = 3; i > -1; i--)
 	{
 		m_actualWindow->draw(Plan[i]);
 		m_actualWindow->draw(Plan2[i]);
-	}*/
+	}
 
-	/*for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(Plan1[i]);
-	}*/
+	}
 
 	AnimTiles();
 
@@ -462,6 +488,22 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 			}
 		}
 	}*/
+}
+
+sf::Vector2f Map::GetEndFlag()
+{
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x-2] == 25)
+			{
+				CasePos.x = (float)x * 64;
+				CasePos.y = (float)y * 64;
+				return CasePos;
+			}
+		}
+	}
 }
 
 sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)
