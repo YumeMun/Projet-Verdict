@@ -17,6 +17,10 @@ Commandes::Commandes()
 	spTouches[0].setPosition(520, 250);
 	spTouches[1].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
 	spTouches[1].setPosition(1220, 250);
+
+	ControlsText.setFont(*ResourceManager::Instance()->GetFont("Font"));
+	ControlsText.setCharacterSize(45);
+	ControlsText.setFillColor(sf::Color::White);
 }
 
 Commandes::~Commandes()
@@ -59,11 +63,18 @@ void Commandes::Update()
 
 	if (Selection == 1)
 	{
+		ControlsText.setString("Commandes en jeu : ");
+		ControlsText.setOrigin(ControlsText.getGlobalBounds().width / 2, ControlsText.getGlobalBounds().height / 2);
+		ControlsText.setPosition(960, 150);
+
 		spCommandes.setTexture(*ResourceManager::Instance()->GetTexture("Commandes jeu"));
 		spCommandes.setPosition(930, 600);
 	}
 	else if (Selection == 2)
 	{
+		ControlsText.setString("Commandes dans l'éditeur : ");
+		ControlsText.setOrigin(ControlsText.getGlobalBounds().width / 2, ControlsText.getGlobalBounds().height / 2);
+		ControlsText.setPosition(960, 150);
 		spCommandes.setTexture(*ResourceManager::Instance()->GetTexture("Commandes éditeur"));
 		spCommandes.setPosition(998, 590);
 	}
@@ -73,6 +84,8 @@ void Commandes::Display()
 {
 	m_actualWindow->draw(spBackground);
 	m_actualWindow->draw(spCommandes);
+
+	m_actualWindow->draw(ControlsText);
 
 	m_actualWindow->draw(spTouches[0]);
 	m_actualWindow->draw(spTouches[1]);

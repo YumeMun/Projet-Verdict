@@ -13,6 +13,8 @@ public:
 	virtual void EventManager(sf::Event p_pollingEvent);
 
 private:
+	sf::Text ControlsText;
+
 	sf::Sprite spBackground;
 	sf::Sprite spCommandes;
 

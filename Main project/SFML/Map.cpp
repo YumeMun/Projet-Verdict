@@ -115,13 +115,14 @@ void Map::Update(float _Elapsed, Caméra * _Cam)
 {
 	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
-		timerLazer.restart();
-		if (isLazerOn)
+		if (isLazerOn == 3)
 		{
 			isLazerOn = 0;
 		}
 		else
 			isLazerOn = 1;
+
+		timerLazer.restart();
 	}
 
 	for (int i = 1; i < 4; i++)
@@ -272,6 +273,7 @@ void Map::Display()
 				m_actualWindow->draw(spTile[20]);
 				break;
 			case 22:
+				spTile[21].setTextureRect(sf::IntRect{ FrameIndexLaser * 64, 18 * 64, 64, 3 * 64 });
 				spTile[21].setPosition(CasePos);
 				m_actualWindow->draw(spTile[21]);
 				break;

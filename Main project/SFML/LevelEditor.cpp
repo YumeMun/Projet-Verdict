@@ -21,12 +21,12 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 
 	ViewRect.left = 0, ViewRect.top = 0, ViewRect.width = 1920, ViewRect.height = 1080;
 	View.reset(ViewRect);
-	View.setCenter(960, 1620);
-	View.zoom(2);
+	View.setCenter(960, 540);
+	View.zoom(1.5);
 
 	spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));
 	spSelecterTarget.setOrigin(spSelecterTarget.getGlobalBounds().width / 2, spSelecterTarget.getGlobalBounds().height / 2);
-	spSelecterTarget.setPosition(m_actualWindow->getSize().x / 2, m_actualWindow->getSize().y / 2);
+	spSelecterTarget.setPosition(View.getCenter());
 
 	spFlèches[0].setTexture(*ResourceManager::Instance()->GetTexture("Flèche gauche"));
 	spFlèches[1].setTexture(*ResourceManager::Instance()->GetTexture("Flèche droite"));
