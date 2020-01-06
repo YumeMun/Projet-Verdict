@@ -46,6 +46,8 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
 	}
 
+	spPlayer.setScale(0.7, 0.7);
+
 	Player_Movement.x = SPEED;
 
 	HasCollectible = false;

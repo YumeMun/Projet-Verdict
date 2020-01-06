@@ -21,7 +21,7 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 
 	ViewRect.left = 0, ViewRect.top = 0, ViewRect.width = 1920, ViewRect.height = 1080;
 	View.reset(ViewRect);
-	View.setCenter(960, 540);
+	View.setCenter(960, 1620);
 	View.zoom(2);
 
 	spSelecterTarget.setTexture(*ResourceManager::Instance()->GetTexture("Curseur pose"));

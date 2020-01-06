@@ -108,15 +108,15 @@ void SizeEditor::Update()
 	{
 		if (LevelSelected == 1)
 		{
-			GameManager::Instance()->m_ActualScene = new LevelEditor((38400 / 64) + 1, (2160 / 64) + 1, "", false);
+			GameManager::Instance()->m_ActualScene = new LevelEditor(600, 34, "", false);
 		}
 		else if (LevelSelected == 2)
 		{
-			GameManager::Instance()->m_ActualScene = new LevelEditor((57600 / 64) + 1, (2160 / 64) + 1, "", false);
+			GameManager::Instance()->m_ActualScene = new LevelEditor(900, 34, "", false);
 		}
 		else if (LevelSelected == 3)
 		{
-			GameManager::Instance()->m_ActualScene = new LevelEditor((76800 / 64) + 1, (2160 / 64) + 1, "", false);
+			GameManager::Instance()->m_ActualScene = new LevelEditor(1200, 34, "", false);
 		}
 	}
 	else if (sf::Joystick::isButtonPressed(0, 1) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
