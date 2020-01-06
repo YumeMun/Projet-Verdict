@@ -78,7 +78,7 @@ Map::Map(std::string _LevelName)
 
 			spTile[27].setTextureRect(sf::IntRect{ 0 * 64, 21 * 64, 318, 318 });
 			spTile[28].setTextureRect(sf::IntRect{ 0 * 64, (21 * 64) + (1 * 318), 318, 318 });
-			spTile[29].setTextureRect(sf::IntRect{ 0 * 64, (21 * 64) + ( 2 * 318), 318, 318 });
+			spTile[29].setTextureRect(sf::IntRect{ 0 * 64, (21 * 64) + (2 * 318), 318, 318 });
 		}
 	}
 
@@ -111,7 +111,7 @@ Map::~Map()
 {
 }
 
-void Map::Update(float _Elapsed, Caméra * _Cam)
+void Map::Update(float _Elapsed, Caméra* _Cam)
 {
 	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
@@ -422,28 +422,35 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if (Tableau[y][x] == 26 && x > (_Pos.x / 64))
+			if (Tableau[y][x] == 26 && x > (_Pos.x / 64) && x <= ((_Pos.x + 1920) / 64))
 			{
-				XListCheckpoint.push_back(x);
+				CasePos.x = (float)x * 64;
+				CasePos.y = (float)y * 64;
+				return CasePos;
 			}
 		}
 	}
 
-	for (int i = 0; i < XListCheckpoint.size(); i++)
+	/*for (int i = 0; i < XListCheckpoint.size() - 1; i++)
 	{
-		for (int y = 0; y < XListCheckpoint.size(); y++)
+		for (int y = 0; y < XListCheckpoint.size() - 1; y++)
 		{
 			if (XListCheckpoint.size() >= 2)
 			{
-				if (XListCheckpoint[i] < XListCheckpoint[y])
+				if (XListCheckpoint[i] <= XListCheckpoint[y])
 					XListCheckpoint.erase(XListCheckpoint.begin() + y);
 				else
 					XListCheckpoint.erase(XListCheckpoint.begin() + i);
 			}
 		}
-	}
+	}*/
 
-	for (int y = 0; y < Size_Y; y++)
+	/*for (int i = 0; i < XListCheckpoint.size(); i++)
+	{
+		std::cout << XListCheckpoint[i] << std::endl;
+	}*/
+
+	/*for (int y = 0; y < Size_Y; y++)
 	{
 		for (int x = 0; x < XListCheckpoint[0] + 1; x++)
 		{
@@ -454,7 +461,7 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 				return CasePos;
 			}
 		}
-	}
+	}*/
 }
 
 sf::Vector2f Map::GetNextTile(int _Type, sf::Vector2f _Pos)

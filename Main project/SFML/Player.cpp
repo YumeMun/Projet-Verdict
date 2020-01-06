@@ -74,7 +74,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	}
 	else if (Alive == true)
 	{
-		//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 		Player_Movement.x = 0;
 		Player_Movement.y = 0;
 		Player_Vector.x = 0;
@@ -328,7 +328,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 		}
 		else if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 29)
 		{
-			//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+			spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 			Player_Movement.x = 0;
 			Player_Movement.y = 0;
 			Alive = false;

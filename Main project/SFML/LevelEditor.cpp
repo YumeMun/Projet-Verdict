@@ -959,6 +959,21 @@ void LevelEditor::CheckIfCaseIsFree()
 	m_actualWindow->draw(CaseFreeOrNot);
 }
 
+sf::Vector2f LevelEditor::CheckPointManager(sf::Vector2f _LastCheckPos)
+{
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = (_LastCheckPos.x + 1920) / 64; x < (_LastCheckPos.x + 3840) / 64; x++)
+		{
+			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+			{
+				return sf::Vector2f(x * 64, y * 64);
+			}
+		}
+	}
+	return sf::Vector2f();
+}
+
 void LevelEditor::Sauvegarde()
 {
 	for (int y = 0; y < Size_Y; y++)

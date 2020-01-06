@@ -15,6 +15,7 @@ public:
 
 	void ControllerManager();
 	void CheckIfCaseIsFree();
+	sf::Vector2f CheckPointManager(sf::Vector2f _LastCheckPos);
 
 	void Sauvegarde();
 	void SaveIt();
