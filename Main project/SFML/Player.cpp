@@ -113,10 +113,26 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 
 	if (Player_Direction == NONE)
 	{
-		if (spPlayer.getRotation() >= 315)
-			spPlayer.rotate(SPEED * _Elapsed);
-		else if (spPlayer.getRotation() >= 0 && spPlayer.getRotation() < 45)
+		if (spPlayer.getRotation() >= 315 && spPlayer.getRotation() < 355)
+			spPlayer.rotate(SPEED / 1.5 * _Elapsed);
+		else if (spPlayer.getRotation() <= 45 && spPlayer.getRotation() > 5)
+			spPlayer.rotate(-SPEED / 1.5 * _Elapsed);
+		else if (spPlayer.getRotation() >= 355 && spPlayer.getRotation() <= 5)
 			spPlayer.setRotation(0);
+	}
+	else if (Player_Direction == UP)
+	{
+		if (spPlayer.getRotation() <= 310 || spPlayer.getRotation() >= 320)
+			spPlayer.rotate(-SPEED / 1.5 * _Elapsed);
+		else if (spPlayer.getRotation() <= 320 && spPlayer.getRotation() >= 310)
+			spPlayer.setRotation(315);
+	}
+	else if (Player_Direction == DOWN)
+	{
+		if (spPlayer.getRotation() <= 40 || spPlayer.getRotation() >= 355)
+			spPlayer.rotate(SPEED / 1.5 * _Elapsed);
+		else if (spPlayer.getRotation() <= 50 && spPlayer.getRotation() >= 40)
+			spPlayer.setRotation(45);
 	}
 
 	CollectibleCollide(_Map);
@@ -236,7 +252,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	}
 	else if (Player_Direction == UP)
 	{
-		spPlayer.setRotation(315);
+		//spPlayer.setRotation(315); 
 
 		//Player_Movement.x = SPEED;
 		Player_SlopVector.y = -Player_Movement.x;
@@ -254,7 +270,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	}
 	else if (Player_Direction == DOWN)
 	{
-		spPlayer.setRotation(45);
+		//spPlayer.setRotation(45);
 
 		Player_Movement.x = SPEED;
 		Player_SlopVector.y = Player_Movement.x;
