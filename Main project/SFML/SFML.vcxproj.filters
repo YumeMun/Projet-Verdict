@@ -89,6 +89,7 @@
     <ClCompile Include="Smoke.cpp">
       <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
     </ClCompile>
+    <ClCompile Include="Intro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -187,6 +188,7 @@
     <ClInclude Include="Collects.h">
       <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
     </ClInclude>
+    <ClInclude Include="Intro.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Fichiers sources">

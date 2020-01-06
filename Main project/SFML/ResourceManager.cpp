@@ -64,6 +64,15 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
+
+	for (int i = 0; i < 2; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("Skin/skinLocked" + std::to_string(i + 1) + ".png", "Player_Cache" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
+
 	/*newTexture = new Textures();
 
 	if (newTexture->Create("Player1.png", "Player1"))

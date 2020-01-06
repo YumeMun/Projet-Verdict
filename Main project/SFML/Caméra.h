@@ -20,7 +20,7 @@
 #define CAMERA_SPEED 800
 #define CAMERA_SPEED_MAX 1200
 #define CAMERA_ZOOM 2
-#define CAMERA_ZOOM_SPEED 310
+#define CAMERA_ZOOM_SPEED 300 //ancien : 310
 
 class Caméra
 {
@@ -43,7 +43,7 @@ public:
 
 	bool GetIsZoomEnd();
 	//float ResetZoom();
-	void UpdateZoom(float _Elapsed, class Map* _map);
+	void UpdateZoom(float _Elapsed, class Map* _map, class Player* _player1, class Player* _player2);
 
 private:
 	sf::RenderWindow* m_actualWindow;
@@ -58,10 +58,15 @@ private:
 	bool isPlayer1Upper;
 
 	bool isGameStart = false;
+	bool isStarting = true;
+
 	bool isCurrentSpawnPointFind = false;
 	sf::Vector2f respawnPoint;
 	sf::Vector2f listRespawnPoint[NOMBRE_POINT_SPAWN];
 	sf::View camera;
+	sf::Vector2f centerCam;
+	sf::Vector2f startCenterCam;
+	float cameraSpeed;
 
 	sf::Clock clock;
 	class Player* player;
@@ -69,5 +74,4 @@ private:
 	//bool isZoomStart = true;
 	bool isZoomEnd = false;
 	float zoom = 1.0075;
-	sf::Vector2f centerCam;
 };

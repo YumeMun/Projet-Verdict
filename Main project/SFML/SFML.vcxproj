@@ -174,6 +174,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HudEditor.cpp" />
+    <ClCompile Include="Intro.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="LevelSelector.cpp" />
     <ClCompile Include="Level_Finished.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HudEditor.h" />
+    <ClInclude Include="Intro.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelSelector.h" />

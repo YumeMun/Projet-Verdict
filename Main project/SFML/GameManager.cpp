@@ -48,6 +48,9 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 {
 	switch (sceneEnum)
 	{
+	/*case e_Enum::e_Scene::INTRO:
+		m_ActualScene = new Intro();
+		break;*/
 	case e_Enum::e_Scene::CHARGEMENT:
 		m_ActualScene = new Chargement();
 		break;
