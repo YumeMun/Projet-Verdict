@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\vc142.pdb
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\vc142.idb
-d:\users\a.faure\desktop\project verdict\main project\sfml\debug\playerselector.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\player.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\options.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\openleveleditor.obj
@@ -13,6 +10,7 @@ d:\users\a.faure\desktop\project verdict\main project\sfml\debug\level_finished.
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\levelselector.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\leveleditor.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\jeu.obj
+d:\users\a.faure\desktop\project verdict\main project\sfml\debug\intro.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\hudeditor.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\hud.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\gamemanager.obj
@@ -32,6 +30,7 @@ d:\users\a.faure\desktop\project verdict\main project\sfml\debug\scene.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\saveeditor.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\rocket.obj
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\resourcemanager.obj
+d:\users\a.faure\desktop\project verdict\main project\sfml\debug\playerselector.obj
 d:\users\a.faure\desktop\project verdict\main project\debug\sfml.exe
 d:\users\a.faure\desktop\project verdict\main project\debug\sfml.ilk
 d:\users\a.faure\desktop\project verdict\main project\debug\sfml.pdb
@@ -41,4 +40,3 @@ d:\users\a.faure\desktop\project verdict\main project\sfml\debug\sfml.tlog\cl.wr
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\sfml.tlog\link.command.1.tlog
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\sfml.tlog\link.read.1.tlog
 d:\users\a.faure\desktop\project verdict\main project\sfml\debug\sfml.tlog\link.write.1.tlog
->>>>>>> 3cd30c8dea08a92c91727794fd4799f80ee9eeb0
