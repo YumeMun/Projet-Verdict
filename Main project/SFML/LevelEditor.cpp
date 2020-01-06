@@ -615,7 +615,7 @@ void LevelEditor::ControllerManager()
 					if (hud->Selection == 16)
 					{
 						Tableau[(int)CasePos.y][(int)CasePos.x] = 16;
-						for (int i = CasePos.y; i < 33; i++)
+						for (int i = CasePos.y; i < 16; i++)
 						{
 							Tableau[(int)i + 1][(int)CasePos.x] = 27;
 						}
