@@ -73,16 +73,6 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	/*newTexture = new Textures();
-
-	if (newTexture->Create("Player1.png", "Player1"))
-		_textures.push_back(newTexture);
-
-	newTexture = new Textures();
-
-	if (newTexture->Create("Player2.png", "Player2"))
-		_textures.push_back(newTexture);*/
-
 	for (int i = 0; i < 4; i++)
 	{
 		newTexture = new Textures();
@@ -90,6 +80,11 @@ void ResourceManager::Load()
 		if (newTexture->Create("Key" + std::to_string(i + 1) + ".jpg", "Key" + std::to_string(i + 1)))
 			_textures.push_back(newTexture);
 	}
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("effet_elec_voiture.png", "Effet_Elec"))
+		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
 
