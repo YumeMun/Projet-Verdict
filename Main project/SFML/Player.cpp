@@ -26,6 +26,10 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 		spNumeroJoueur.setTextureRect(sf::IntRect{ 0, 0, 101, 105 });
 		spNumeroJoueur.setOrigin(101 / 2, 105 / 2);
 		spNumeroJoueur.setPosition(spPlayer.getPosition().x, spPlayer.getPosition().y - 100);
+
+		ColliderCircle.setRadius(15);
+		ColliderCircle.setFillColor(sf::Color::Black);
+		ColliderCircle.setOrigin(15, 15);
 	}
 	else if (ID == 2)
 	{
@@ -153,6 +157,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 void Player::Display(sf::RenderWindow* _Window)
 {
 	_Window->draw(spPlayer);
+	//_Window->draw(ColliderCircle);
 
 	if (isCollideCE)
 		_Window->draw(animElec);
@@ -166,7 +171,7 @@ void Player::Display(sf::RenderWindow* _Window)
 
 void Player::Controls(Map* _Map, float _Elapsed)
 {
-	//ColliderCircle.setPosition(GetPos().x + 50, GetPos().y + 50);
+	//ColliderCircle.setPosition(GetPos().x + 75, GetPos().y + Player_ColliderLimit.y + 50);
 
 	if (sf::Joystick::isConnected(ID - 1));
 	{
@@ -297,7 +302,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 			BoostClock.restart();
 		}
 
-		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y + Player_ColliderLimit.y) <= 6)
+		if (_Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit.y + 50) >= 1 && _Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit.y + 50) <= 6)
 		{
 			Player_Direction = NONE;
 		}
