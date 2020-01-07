@@ -265,13 +265,10 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				{
 					if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) > 66.f ||*/ sf::Joystick::isButtonPressed(i, 5))
 					{
-<<<<<<< HEAD
 						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
 						sound.play();
-						if (listSelector[i]->SkinSelector != NB_SKIN+1)
-=======
+
 						if (listSelector[i]->SkinSelector < NB_SKIN)
->>>>>>> ee39b16fe90f5563e5ec8b9443bfd8deeab97457
 							listSelector[i]->SkinSelector += 1;
 						else
 							listSelector[i]->SkinSelector = 1;
@@ -282,13 +279,10 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					}
 					else if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f ||*/ sf::Joystick::isButtonPressed(i, 4))
 					{
-<<<<<<< HEAD
 						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
 						sound.play();
-						if (listSelector[i]->SkinSelector != 0)
-=======
+
 						if (listSelector[i]->SkinSelector > 1)
->>>>>>> ee39b16fe90f5563e5ec8b9443bfd8deeab97457
 							listSelector[i]->SkinSelector -= 1;
 						else
 							listSelector[i]->SkinSelector = NB_SKIN;
