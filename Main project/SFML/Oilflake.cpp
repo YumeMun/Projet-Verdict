@@ -64,3 +64,7 @@ bool Oilflake::IsAlive()
 {
 	return Alive;
 }
+
+void Oilflake::AddFxs(std::vector<Fx*> &_List)
+{
+}

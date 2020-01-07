@@ -31,7 +31,7 @@ void Bumper::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 {
 	if (Grounded == false)
 	{
-		Bumper_Movement.y += GRAVITY * GRAVITYFACTOR;
+		Bumper_Movement.y += GRAVITY * GRAVITYFACTOR * _Elapsed;
 
 		spBumper.move(Bumper_Movement * _Elapsed);
 
@@ -99,4 +99,8 @@ void Bumper::Display(sf::RenderWindow* _Window)
 bool Bumper::IsAlive()
 {
 	return Alive;
+}
+
+void Bumper::AddFxs(std::vector<Fx*> &_List)
+{
 }

@@ -180,6 +180,11 @@ void Jeu::Display()
 		Collectibles[i]->Display(m_actualWindow);
 	}
 
+	for (int i = 0; i < FXs.size(); i++)
+	{
+		FXs[i]->Display(m_actualWindow);
+	}
+
 	map->FirstPlanDisplay();
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
@@ -320,9 +325,20 @@ void Jeu::CollectiblesManager()
 	for (int i = 0; i < Collectibles.size(); i++)
 	{
 		Collectibles[i]->Update(Player1, Player2, map, ElapsedTime, caméra);
+		Collectibles[i]->AddFxs(FXs);
 
 		if (Collectibles[i]->IsAlive() == false)
+		{
 			Collectibles.erase(Collectibles.begin() + i);
+		}
+	}
+
+	for (int i = 0; i < FXs.size(); i++)
+	{
+		FXs[i]->Update(ElapsedTime);
+
+		if (FXs[i]->IsAlive() == false)
+			FXs.erase(FXs.begin() + i);
 	}
 }
 
