@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 ﻿
+=======
+﻿  Jeu.cpp
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Caméra.h(71,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Jeu.cpp(174,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Jeu.cpp(311,20): warning C4018:  '<' : incompatibilité signed/unsigned
+  SFML.vcxproj -> D:\Users\g.collignon\Documents\Verdict\Main project\Debug\SFML.exe
+>>>>>>> bf4752b76f84d4d3c791318108a32005b6d9c17a

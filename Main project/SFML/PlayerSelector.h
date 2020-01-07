@@ -49,7 +49,7 @@ private:
 	sf::Clock timerSwitchSkin;
 	class Transition* transition;
 	bool isGameStart = false;
-
+	sf::Sound Retour;
 	sf::Sprite spBackground;
 
 	std::string LevelName;

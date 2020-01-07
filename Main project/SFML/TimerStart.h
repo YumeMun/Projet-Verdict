@@ -23,6 +23,8 @@ public :
 	void ResetPosPoint();
 	void ResetNumberCount();
 
+	void TimerSound();
+
 private:
 	sf::ConvexShape shape[4];
 	float posPointX[4]; //facteur load en x
@@ -32,11 +34,13 @@ private:
 	bool rect1IsDone = false;
 	bool rect2IsDone = false;
 	bool rect3IsDone = false;
-
+	sf::Sound Countdown;
+	sf::Sound Depart;
+	sf::Clock m_Clock;
 	int numberCount = 3;
 	bool isTimerEnd = false;
 	sf::Text textCountdown;
-
+	int i = 3;
 	sf::RenderWindow* m_actualWindow;
 };
 
