@@ -361,14 +361,6 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	for (int i = 0; i < 2; i++)
-	{
-		newTexture = new Textures();
-
-		if (newTexture->Create("Background_Chargement" + std::to_string(i + 1) + ".png", "Background Chargement" + std::to_string(i + 1)))
-			_textures.push_back(newTexture);
-	}
-
 	//Au dessus y a 87 ressources (marre de recompter à chaque fois)
 }
 
