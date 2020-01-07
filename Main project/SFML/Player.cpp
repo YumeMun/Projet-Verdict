@@ -12,7 +12,7 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 
 	if (ID == 1)
 	{
-		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 372, PlayerRect.height = 150;
+		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 360, PlayerRect.height = 135;
 		spPlayer.setTextureRect(PlayerRect);
 
 		spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinNumber)));
