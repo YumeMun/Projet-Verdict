@@ -52,4 +52,6 @@ public:
 	virtual void EventManager(sf::Event p_pollingEvent);
 
 	void CollectiblesManager();
+
+	float GetElapsed();
 };

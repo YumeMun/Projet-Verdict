@@ -11,6 +11,7 @@ public:
 
 	void Update(float _Elapsed, class Caméra* _Cam);
 	void Display();
+	void FirstPlanDisplay();
 
 	int GetTile(int _X, int _Y);
 	void SetTile(int _X, int _Y, int _Tile);
@@ -21,6 +22,7 @@ public:
 	sf::Vector2f GetPos();
 
 	sf::Vector2f GetCheckPoint(sf::Vector2f _Pos);
+	sf::Vector2f GetEndFlag();
 
 	sf::Vector2f GetNextTile(int _Type, sf::Vector2f _Pos);
 	int GetIsLazerOn();
@@ -32,8 +34,8 @@ private:
 	int Size_Y;
 	int SelectionBackground;
 	int Tableau[34][1200];
-	sf::Vector2f CasePos;
-	sf::Sprite Plan[4], Plan2[4], Plan1[2];
+	sf::Vector2f CasePos, CheckPos;
+	sf::Sprite Plan[5], Plan2[5], Plan1[2];
 
 	sf::Sprite spTile[30];
 

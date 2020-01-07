@@ -133,6 +133,10 @@ void ResourceManager::Load()
 
 	if (newSoundBuffer->Create("Collecte_Objet.ogg", "Collecte Objet"))
 		_soundBuffers.push_back(newSoundBuffer);
+	newFont = new Fonts();
+
+	if (newFont->Create("arial.ttf", "arial"))
+		_fonts.push_back(newFont);
 
 	Textures* newTexture = new Textures();
 
@@ -140,14 +144,6 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("logoAnim.png", "Logo"))
 		_textures.push_back(newTexture);
-
-	for (int i = 0; i < 8; i++)
-	{
-		newTexture = new Textures();
-
-		if (newTexture->Create("Tile" + std::to_string(i + 1) + ".png", "Case" + std::to_string(i + 1)))
-			_textures.push_back(newTexture);
-	}
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -165,7 +161,7 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		newTexture = new Textures();
 
@@ -173,7 +169,7 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		newTexture = new Textures();
 
@@ -181,15 +177,14 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	/*newTexture = new Textures();
 
-	if (newTexture->Create("Player1.png", "Player1"))
-		_textures.push_back(newTexture);
+	for (int i = 0; i < 2; i++)
+	{
+		newTexture = new Textures();
 
-	newTexture = new Textures();
-
-	if (newTexture->Create("Player2.png", "Player2"))
-		_textures.push_back(newTexture);*/
+		if (newTexture->Create("Skin/skinLocked" + std::to_string(i + 1) + ".png", "Player_Cache" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -198,6 +193,11 @@ void ResourceManager::Load()
 		if (newTexture->Create("Key" + std::to_string(i + 1) + ".jpg", "Key" + std::to_string(i + 1)))
 			_textures.push_back(newTexture);
 	}
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("effet_elec_voiture.png", "Effet_Elec"))
+		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
 
@@ -474,6 +474,14 @@ void ResourceManager::Load()
 		newTexture = new Textures();
 
 		if (newTexture->Create("Collect" + std::to_string(i + 1) + ".png", "Collect" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("Background_Chargement" + std::to_string(i + 1) + ".png", "Background Chargement" + std::to_string(i + 1)))
 			_textures.push_back(newTexture);
 	}
 

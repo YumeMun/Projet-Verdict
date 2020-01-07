@@ -17,6 +17,12 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 	LevelName = _LevelName;
 	isNewLevel = _isNewLevel;
 
+	if (isNewLevel == true)
+	{
+		StartIsPut = true;
+		EndIsPut = true;
+	}
+
 	spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur"));
 
 	ViewRect.left = 0, ViewRect.top = 0, ViewRect.width = 1920, ViewRect.height = 1080;
@@ -431,7 +437,7 @@ void LevelEditor::Display()
 					m_actualWindow->draw(spTile[18]);
 					break;
 				case 20:
-					spTile[19].setTextureRect(sf::IntRect{ FrameIndexElect *  (4 * 64), 13 * 64, 4 * 64, 64 });
+					spTile[19].setTextureRect(sf::IntRect{ FrameIndexElect * (4 * 64), 13 * 64, 4 * 64, 64 });
 					spTile[19].setPosition(CasePos);
 					m_actualWindow->draw(spTile[19]);
 					break;
@@ -546,16 +552,37 @@ void LevelEditor::ControllerManager()
 			spSelecterTarget.move(0, 600 * ElapsedTime);
 	}
 
-	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -50)
+	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -80)
 	{
-		View.move(-600 * ElapsedTime, 0);
+		View.move(-1300 * ElapsedTime, 0);
+		spSelecterTarget.move(-600 * ElapsedTime, 0);
+	}
+	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) >= 80)
+	{
+		View.move(1300 * ElapsedTime, 0);
+		spSelecterTarget.move(600 * ElapsedTime, 0);
+	}
+	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -50)
+	{
+		View.move(-1000 * ElapsedTime, 0);
 		spSelecterTarget.move(-600 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) >= 50)
 	{
-		View.move(600 * ElapsedTime, 0);
+		View.move(1000 * ElapsedTime, 0);
 		spSelecterTarget.move(600 * ElapsedTime, 0);
 	}
+	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -20)
+	{
+		View.move(-400 * ElapsedTime, 0);
+		spSelecterTarget.move(-600 * ElapsedTime, 0);
+	}
+	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) >= 20)
+	{
+		View.move(400 * ElapsedTime, 0);
+		spSelecterTarget.move(600 * ElapsedTime, 0);
+	}
+
 
 	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V) <= -50)
 	{
@@ -609,9 +636,10 @@ void LevelEditor::ControllerManager()
 					if (hud->Selection == 16)
 					{
 						Tableau[(int)CasePos.y][(int)CasePos.x] = 16;
-						for (int i = CasePos.y; i < 33; i++)
+						for (int i = CasePos.y; i < 16; i++)
 						{
-							Tableau[(int)i + 1][(int)CasePos.x] = 27;
+							if (Tableau[(int)i + 1][(int)CasePos.x] == 0)
+								Tableau[(int)i + 1][(int)CasePos.x] = 27;
 						}
 					}
 					else if (hud->Selection == 20)
@@ -959,20 +987,20 @@ void LevelEditor::CheckIfCaseIsFree()
 	m_actualWindow->draw(CaseFreeOrNot);
 }
 
-sf::Vector2f LevelEditor::CheckPointManager(sf::Vector2f _LastCheckPos)
-{
-	for (int y = 0; y < Size_Y; y++)
-	{
-		for (int x = (_LastCheckPos.x + 1920) / 64; x < (_LastCheckPos.x + 3840) / 64; x++)
-		{
-			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
-			{
-				return sf::Vector2f(x * 64, y * 64);
-			}
-		}
-	}
-	return sf::Vector2f();
-}
+//sf::Vector2f LevelEditor::CheckPointManager()
+//{
+//	for (int y = 0; y < Size_Y; y++)
+//	{
+//		for (int x = (_LastCheckPos.x + 1920) / 64; x < (_LastCheckPos.x + 3840) / 64; x++)
+//		{
+//			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+//			{
+//				return sf::Vector2f(x * 64, y * 64);
+//			}
+//		}
+//	}
+//	return sf::Vector2f();
+//}
 
 void LevelEditor::Sauvegarde()
 {

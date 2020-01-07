@@ -2,29 +2,32 @@
 #include "GameManager.h"
 #include "Jeu.h"
 
-Caméra::Caméra(Player* _player1)
+Caméra::Caméra(Player* _player1, Player* _player2)
 {
 	std::cout << "Camera constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
-	sizeCamera = { (1920*1.8)/2.4, (1080*1.8)/2.4 };
+	sizeCamera = { 1920 / 2, 1080 / 2 };
+	X = sizeCamera.x;
 	camera.setViewport({ 0, 0, 1, 1 });
-	centerCam = _player1->GetPos();
-	camera.setCenter(_player1->GetPos());
+	startCenterCam.x = _player1->GetPos().x - ((_player1->GetPos().x - _player2->GetPos().x) / 2);
+	startCenterCam.y = 1080 / 2; //_player1->GetPos().y;
+	centerCam = startCenterCam;
+	camera.setCenter(centerCam);
 	camera.setSize(sizeCamera);
-	//camera.zoom(1.8);
-	std::cout << "center cam y start: " << centerCam.y << std::endl;
-	std::cout << "center cam x start: " << centerCam.x << std::endl;
+	std::cout << "size X 1 : " << sizeCamera.x << std::endl;
 }
 
 Caméra::~Caméra()
 {
 }
 
-void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* _player2)
+void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* _player2, Map* _map)
 {
-	//std::cout << "player 1 speed : " << _player1->Player_Movement.x << std::endl;
+	//std::cout << "flag pos : " << _map->GetEndFlag().x << std::endl;
+	//std::cout << "size cam x : " << X << std::endl;
+	//std::cout << "size cam y : " << sizeCamera.y << std::endl;
 
 	if (clock.getElapsedTime().asSeconds() >= 3)
 	{
@@ -34,26 +37,48 @@ void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* 
 
 	if (_timer->GetIsTimerEnd())
 	{
-		if (_player1->GetPos().x > GetCameraCenter().x + (sizeCamera.x/4))
+		if (isStarting)
 		{
-			if (_player1->Player_Movement.x > 800)
+			if (_player1->GetPos().x > GetCameraCenter().x || _player2->GetPos().x > GetCameraCenter().x)
 			{
-				camera.move(_player1->Player_Movement.x * _dTime, 0);
+				isStarting = false;
 			}
-			else
-				camera.move(CAMERA_SPEED * _dTime, 0);
-		}
-		else if (_player2->GetPos().x > GetCameraCenter().x + (sizeCamera.x / 4))
-		{
-			if (_player2->Player_Movement.x > 800)
-			{
-				camera.move(_player2->Player_Movement.x * _dTime, 0);
-			}
-			else
-				camera.move(CAMERA_SPEED * _dTime, 0);
 		}
 		else
-			camera.move(CAMERA_SPEED * _dTime, 0);
+		{
+			if (!isEnding)
+			{
+				if (_player1->GetPos().x > GetCameraCenter().x + (sizeCamera.x / 4))
+				{
+					if (_player1->Player_Movement.x > 800)
+					{
+						cameraSpeed = _player1->Player_Movement.x;
+					}
+					else
+						cameraSpeed = CAMERA_SPEED;
+				}
+				else if (_player2->GetPos().x > GetCameraCenter().x + (sizeCamera.x / 4))
+				{
+					if (_player2->Player_Movement.x > 800)
+					{
+						cameraSpeed = _player2->Player_Movement.x;
+					}
+					else
+						cameraSpeed = CAMERA_SPEED;
+				}
+				else
+					cameraSpeed = CAMERA_SPEED;
+
+				camera.move(cameraSpeed * _dTime, 0);
+
+				centerCam.x += cameraSpeed * _dTime;
+				if (centerCam.x >= _map->GetEndFlag().x)
+				{
+					isEnding = true;
+					cameraSpeed = 0;
+				}
+			}
+		}
 	}
 }
 
@@ -77,6 +102,11 @@ float Caméra::GetDistancePlayer()
 	return distancePlayerX;
 }
 
+float Caméra::GetCamSpeed()
+{
+	return cameraSpeed;
+}
+
 sf::Vector2f Caméra::GetSizeCamera()
 {
 	return camera.getSize();
@@ -97,27 +127,42 @@ bool Caméra::GetIsZoomEnd()
 	return isZoomEnd;
 }
 
-void Caméra::UpdateZoom(float _Elapsed, Map* _map)
+void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _player2)
 {
-	if (sizeCamera.x < 1920*1.8)
+	if (sizeCamera.x < 2880)
 	{
-		camera.zoom(zoom);
+		sizeCamera.x += (400 * 1.77) * _Elapsed;
+		sizeCamera.y += 400 * _Elapsed;
+		camera.setSize(sizeCamera);
+
+		std::cout << "size X : " << sizeCamera.x << std::endl;
+		std::cout << "size Y : " << sizeCamera.y << std::endl;
+		//camera.zoom(zoom);
+		//X *= zoom;
+	}
+	else
+	{
+		std::cout << "zoooooooom" << std::endl;
+		sizeCamera.x = 2880;
+		sizeCamera.y = 1620;
 	}
 
-	if (centerCam.y > _map->GetStartPos().y - 520)
+	if (centerCam.x < _player2->GetPos().x + (2880 / 2) - 150) //((1920/2)+620))
 	{
-		centerCam.y -= CAMERA_ZOOM_SPEED * _Elapsed;
-		camera.setCenter(centerCam);
-	}
-
-	if (centerCam.x < _map->GetStartPos().x + 1300)
-	{
-		centerCam.x += (CAMERA_ZOOM_SPEED*(16/9)) * _Elapsed;
+		centerCam.x += (CAMERA_ZOOM_SPEED * (16 / 9)) * _Elapsed;
 		camera.setCenter(centerCam);
 	}
 	else
 	{
-		centerCam = { _map->GetStartPos().x + 1300, _map->GetStartPos().y - 520 };
+		centerCam.x = _player2->GetPos().x + ((2880 / 2) - 150); //((1920 / 2)+620);
+		centerCam.y = 1080 / 2;
+		camera.setCenter(centerCam);
+		camera.setSize(sf::Vector2f(2880, 1620));
+	}
+
+	if (centerCam.y > 270)
+	{
+		centerCam.y -= (CAMERA_ZOOM_SPEED)* _Elapsed;
 		camera.setCenter(centerCam);
 	}
 }

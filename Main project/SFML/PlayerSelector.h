@@ -19,16 +19,27 @@ public:
 	int GetSkinNumberJ2();
 
 private:
-	sf::RectangleShape rectPlay;
+	//sf::RectangleShape rectPlay;
+	sf::Sprite spReady;
+	sf::Vector2f buttonOrigin;
+	sf::Vector2f textOrigin;
+	sf::Text textSkinSelect[3];
+	sf::String strSkinSelect[3];
+	sf::Clock timerAlreadyUse;
+	bool isAlreadyUseDrawable = false;
+
 	sf::RectangleShape player;
 	sf::Sprite spPlayer;
+	sf::Sprite spFader;
 	sf::IntRect rectPlayer;
+	sf::Vector2f originPlayer;
 	std::vector<PlayerSelector*> listSelector;
 
 	bool isSetup = false;
 	bool isSelectSkin = false;
 	bool isPlayerReady = false;
 	bool isSkinValidate = false;
+	bool isFadeDrawable = false;
 	int SkinSelector = 1;
 
 	sf::Clock SelectionTimer;
