@@ -45,6 +45,7 @@ Menu::Menu()
 	m_Credits.setPosition(1598, 895);
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+
 	spFlèche.setTexture(*ResourceManager::Instance()->GetTexture("Flèche menu"));
 	spCreditsButton.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 	spCreditsButton.setPosition(1593, 900);

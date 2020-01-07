@@ -18,12 +18,19 @@ private:
 	std::thread LoadThread;
 	bool isLoaded;
 
-	sf::Text LoadingTxt;
 	sf::RectangleShape LoadingBar, LoadingBack;
 
-	sf::Sprite spLogo;
 	sf::IntRect rectLogo;
 	sf::Clock timerAnimLogo;
 	int animCount = 0;
 	bool isLogoRestart = false;
+
+	sf::Texture BackgroundTexture[2];
+	sf::Sprite spBackground[2];
+
+	sf::Texture LogoTexture[2];
+	sf::Sprite spLogo[2];
+	float Scale[2];
+
+	sf::Clock AnimLogo;
 };
