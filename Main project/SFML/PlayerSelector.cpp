@@ -297,6 +297,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				{
 					Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
 					Valider.play();
+
 					if (!listSelector[i]->isFadeDrawable)
 					{
 						listSelector[i]->isSkinValidate = true;
@@ -311,46 +312,67 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			}
 			else
 			{
+
 				if (sf::Joystick::isButtonPressed(i, 1))
 				{
 					listSelector[i]->isSkinValidate = false;
 				}
-
-				if (listSelector[0]->isSkinValidate && listSelector[1]->isSkinValidate)
-				{
-					if (sf::Joystick::isButtonPressed(i, 7))
-					{
-						GameManager::Instance()->LoadScene(e_Enum::JEU);
-					}
-				}
-
-				if (listSelector[0]->isSkinValidate)
-				{
-					spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton sélectionné"));
-				}
-				else
-					spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 			}
 
-			/*if (sf::Joystick::isButtonPressed(0, 1))
+			/*for (int i = 0; i < 2; i++)
+			{
+				if (listSelector[i]->isSkinValidate)
+				{
+					
+				}
+				else
+					
+			}*/
+
+			if (listSelector[0]->isSkinValidate && listSelector[1]->isSkinValidate)
+			{
+				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton sélectionné"));
+
+				/*if (sf::Joystick::isButtonPressed(i, 7))
+				{
+					GameManager::Instance()->LoadScene(e_Enum::JEU);
+				}*/
+				if (sf::Joystick::isButtonPressed(i, 7))
+					isGameStart = true;
+
+				if (isGameStart && transition->GetIsTransitionDone())
+				{
+					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
+					isGameStart = false;
+				}
+			}
+			else
+				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
+
+			if (sf::Joystick::isButtonPressed(0, 1))
 			{
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
 				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
 				Retour.play();
+			
 			}
-			}*/
 		}
 
-		if (sf::Joystick::isButtonPressed(0, 7))
+		///a retirer pour presentation
+		/*for (int i = 0; i < 2; i++)
 		{
-			isGameStart = true;
+			if (sf::Joystick::isButtonPressed(i, 7))
+			{
+				isGameStart = true;
+			}
 		}
 
 		if (isGameStart && transition->GetIsTransitionDone())
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
-		}
+		}*/
+		////
 	}
 }
 

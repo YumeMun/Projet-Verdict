@@ -28,8 +28,8 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 
 	GetScoreValue(_player1, _player2);
 
-	posElement[0] = { (1920 / 2) - 200, (1080 / 2) + 200 };
-	posElement[1] = { (1920 / 2) + 200, (1080 / 2) + 200 };
+	posElement[0] = { (1920 / 2) - 200, (1080 / 2) + 1000 };
+	posElement[1] = { (1920 / 2) + 200, (1080 / 2) + 1000 };
 
 	spPlayer[0].setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinJ1)));
 	spPlayer[1].setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinJ2)));
@@ -173,14 +173,12 @@ void Level_Finished::UpdatePodium()
 			{
 				scoreFinal[i] += SPEED_PODIUM;
 				scoreTimeFirst[i] -= SPEED_PODIUM;
-				std::cout << "score time first :" << scoreTimeFirst[0] << std::endl;
-				std::cout << "score j1 :" << scoreFinal[0] << std::endl;
 			}
 		}
 		if (scoreTimeFirst[0] <= 0 && scoreTimeFirst[1] <= 0)
 			isScoreStep[1] = true;
 	}
-	if (isScoreStep[1])
+	else if (isScoreStep[1])
 	{
 		for (int i = 0; i < 2; i++)
 		{
@@ -188,6 +186,7 @@ void Level_Finished::UpdatePodium()
 			{
 				scoreFinal[i] += SPEED_PODIUM;
 				scoreIsArrivedFirst[i] -= SPEED_PODIUM;
+				std::cout << "test 1" << scoreFinal[0] << std::endl;
 			}
 		}
 		if (scoreIsArrivedFirst[0] <= 0 && scoreIsArrivedFirst[1] <= 0)
@@ -201,6 +200,7 @@ void Level_Finished::UpdatePodium()
 			{
 				scoreFinal[i] -= SPEED_PODIUM;
 				scoreFall[i] -= SPEED_PODIUM;
+				std::cout << "test 2" << scoreFinal[0] << std::endl;
 			}
 		}
 		if (scoreFall[0] <= 0 && scoreFall[1] <= 0)
@@ -224,7 +224,9 @@ void Level_Finished::UpdatePodium()
 
 	for (int i = 0; i < 2; i++)
 	{
-		spPodium[i].setPosition((posElement[i].x), (posElement[i].y - scoreFinal[i]));
+		posElement[i].y = scoreFinal[i];
+
+		spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 1000 /*- scoreFinal[i]*/));
 		spPlayer[i].setPosition(spPodium[i].getPosition());
 	}
 }

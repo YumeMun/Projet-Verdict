@@ -30,6 +30,9 @@ private:
 	sf::ConvexShape shape[2];
 	sf::Vector2f posShape[2];
 
+	sf::Sprite spTransition;
+	sf::Vector2f posTransition;
+
 	bool isTransitionDone = false;
 	bool isTransitionBackDone = false;
 	bool isMovementEnd = false;

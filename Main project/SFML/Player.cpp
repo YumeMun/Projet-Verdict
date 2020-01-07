@@ -405,35 +405,37 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				}
 			}
 
-
-			if (_Map->GetTile(GetPos().x + Player_ColliderLimit[0].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[0].x, GetPos().y) == 28)
+			for (int i = 0; i < 2; i++)
 			{
-				if (isCollideCE == false)
+				if (_Map->GetTile(GetPos().x + Player_ColliderLimit[i].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[i].x, GetPos().y) == 28)
 				{
-					/*Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-					Alteration.setVolume(50);
-					Alteration.play();*/
+					if (isCollideCE == false)
+					{
+						/*Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+						Alteration.setVolume(50);
+						Alteration.play();*/
 
-					m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
-					m_ElecHit.play();
-				}
+						m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
+						m_ElecHit.play();
+					}
 
-				timerTrapFactor.restart();
-				isCollideCE = true;
-				SetHitLazer();
-
-				//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
-
-
-				if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
-				{
 					timerTrapFactor.restart();
 					isCollideCE = true;
 					SetHitLazer();
-				}
-				else
-					isCollideCE = false;
 
+					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
+
+
+					if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
+					{
+						timerTrapFactor.restart();
+						isCollideCE = true;
+						SetHitLazer();
+					}
+					else
+						isCollideCE = false;
+
+				}
 			}
 		}
 	}

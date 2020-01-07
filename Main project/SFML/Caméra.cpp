@@ -54,6 +54,10 @@ void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* 
 					{
 						cameraSpeed = _player1->Player_Movement.x;
 					}
+					else if (_player2->Player_Movement.x > 800)
+					{
+						cameraSpeed = _player2->Player_Movement.x;
+					}
 					else
 						cameraSpeed = CAMERA_SPEED;
 				}
