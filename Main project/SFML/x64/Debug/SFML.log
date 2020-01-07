@@ -1,1 +1,71 @@
-﻿sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'
+﻿  Bumper.cpp
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(34,47): warning C4305:  '+=' : troncation de 'double' à 'T'
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(34,47): warning C4305:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(34,47): warning C4305:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(34,47): warning C4305:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(34,47): warning C4305:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,70): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,70): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,70): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,70): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,70): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,44): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,44): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,44): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,44): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(40,44): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,69): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,69): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,69): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,69): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,69): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,43): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,43): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,43): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,43): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(47,43): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,74): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,74): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,74): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,74): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,74): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,48): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,48): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,48): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,48): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,48): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,148): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,148): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,148): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,148): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,148): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,122): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,122): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,122): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,122): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(52,122): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,74): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,74): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,74): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,74): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,74): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,48): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,48): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,48): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,48): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,48): warning C4244:         ]
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,148): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,148): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,148): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,148): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,148): warning C4244:         ]
+  Intro.cpp
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,122): warning C4244:  'argument' : conversion de 'const T' en 'int', perte possible de données
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,122): warning C4244:         with
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,122): warning C4244:         [
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,122): warning C4244:             T=float
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Bumper.cpp(56,122): warning C4244:         ]
+  Génération de code en cours...
+D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'

@@ -474,6 +474,11 @@ void ResourceManager::Load()
 	if (newTexture->Create("NumeroJoueur.png", "Numero joueur"))
 		_textures.push_back(newTexture);
 
+	newTexture = new Textures();
+
+	if (newTexture->Create("ExploRouge.png", "ExploRocket"))
+		_textures.push_back(newTexture);
+
 	for (int i = 0; i < 6; i++)
 	{
 		newTexture = new Textures();

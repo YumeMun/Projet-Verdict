@@ -172,6 +172,8 @@
     <ClCompile Include="Collects.cpp" />
     <ClCompile Include="Commandes.cpp" />
     <ClCompile Include="Credits.cpp" />
+    <ClCompile Include="ExploRocket.cpp" />
+    <ClCompile Include="Fx.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HudEditor.cpp" />
@@ -208,6 +210,8 @@
     <ClInclude Include="dirent.h" />
     <ClInclude Include="Collects.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="ExploRocket.h" />
+    <ClInclude Include="Fx.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HudEditor.h" />

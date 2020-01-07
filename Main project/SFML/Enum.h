@@ -2,7 +2,7 @@
 
 #define SPEED 800
 #define GRAVITY 9.81
-#define GRAVITYFACTOR 7
+#define GRAVITYFACTOR 500
 
 namespace e_Enum
 {
