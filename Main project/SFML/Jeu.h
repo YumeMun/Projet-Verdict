@@ -7,6 +7,7 @@
 #include "Shockwave.h"
 #include "Oilflake.h"
 #include "Rocket.h"
+#include "Bumper.h"
 #include "PlayerSelector.h"
 
 class Jeu :public Scene

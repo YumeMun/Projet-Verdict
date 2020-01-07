@@ -8,7 +8,7 @@ class Rocket :
 public:
 	Rocket(int _ID, int _Dir, sf::Vector2f _Pos);
 	~Rocket();
-	virtual void Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed);
+	virtual void Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed, Caméra* _Cam);
 	virtual void Display(sf::RenderWindow* _Window);
 	virtual bool IsAlive();
 

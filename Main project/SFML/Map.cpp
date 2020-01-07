@@ -17,11 +17,8 @@ Map::Map(std::string _LevelName)
 
 	for (int i = 0; i < 5; i++)
 	{
-		if (i >= 1)
-		{
-			Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
-			Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
-		}
+		Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+		Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
 
 		Plan[i].setPosition(0, -550);
 		Plan2[i].setPosition(Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);

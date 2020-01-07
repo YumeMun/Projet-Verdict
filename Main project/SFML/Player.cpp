@@ -71,8 +71,7 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 {
-	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 &&
-		spPlayer.getPosition().x > 0 && Alive == true)
+	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
 		Traps(_Map, _Cam);
@@ -88,6 +87,8 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 		Player_Movement.x = 0;
 		Player_Movement.y = 0;
+		Player_SlopVector.x = 0;
+		Player_SlopVector.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
 		Alive = false;
@@ -95,10 +96,13 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	else if (Alive == false && _Pos.x >= GetPos().x)
 		Alive = true;
 
-	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 1.5)
+	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+		Player_Movement.x = 0;
 		Player_Movement.y = 0;
+		Player_SlopVector.x = 0;
+		Player_SlopVector.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
 		DisplayNumeroTimer.restart();
@@ -200,7 +204,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 			KeyPress = false;
 	}
 
-	for (int i = 1; i < 6; i++)
+	for (int i = 1; i < 7; i++)
 	{
 		if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == i)
 		{
@@ -572,7 +576,7 @@ bool Player::CollectibleCollide(Map* _Map)
 
 		if (HasCollectible == false)
 		{
-			CollectID = e_Enum::SHOCKWAVE;/*rand() % 6 + 1;*/
+			CollectID = e_Enum::BUMPER;/*rand() % 6 + 1;*/
 		}
 
 		return true;

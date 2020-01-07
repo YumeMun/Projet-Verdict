@@ -90,6 +90,9 @@
       <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="Bumper.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -189,6 +192,9 @@
       <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
     </ClInclude>
     <ClInclude Include="Intro.h" />
+    <ClInclude Include="Bumper.h">
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Fichiers sources">
