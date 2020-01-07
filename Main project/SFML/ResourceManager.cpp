@@ -211,12 +211,12 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Interface_éditeur1.jpg", "Interface éditeur1"))
+	if (newTexture->Create("Selection_niveau1.jpg", "Selection niveau1"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Interface_éditeur2.jpg", "Interface éditeur2"))
+	if (newTexture->Create("Selection_niveau2.jpg", "Selection niveau2"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
@@ -530,6 +530,16 @@ void ResourceManager::Load()
 	newTexture = new Textures();
 
 	if (newTexture->Create("Menu_Panneau.png", "Panneau Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Interface_éditeur1.jpg", "Interface éditeur1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Interface_éditeur2.jpg", "Interface éditeur2"))
 		_textures.push_back(newTexture);
 }
 

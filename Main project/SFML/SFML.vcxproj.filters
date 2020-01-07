@@ -31,9 +31,6 @@
     <ClCompile Include="Chargement.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="ChooseLevelEditor.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="Commandes.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
@@ -49,16 +46,10 @@
     <ClCompile Include="Level_Finished.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="LevelEditor.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="LevelSelector.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenLevelEditor.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Options.cpp">
@@ -67,13 +58,7 @@
     <ClCompile Include="PlayerSelector.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="SaveEditor.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="SizeEditor.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Caméra.cpp">
@@ -103,6 +88,21 @@
     <ClCompile Include="ExploRocket.cpp">
       <Filter>Fichiers sources\Scenes\Jeu\FXs</Filter>
     </ClCompile>
+    <ClCompile Include="LevelEditor.cpp">
+      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveEditor.cpp">
+      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="SizeEditor.cpp">
+      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenLevelEditor.cpp">
+      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseLevelEditor.cpp">
+      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transition.h">
@@ -126,9 +126,6 @@
     <ClInclude Include="Smoke.h">
       <Filter>Fichiers d%27en-tête\Scenes\Jeu\FXs</Filter>
     </ClInclude>
-    <ClInclude Include="ChooseLevelEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="Chargement.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
@@ -147,16 +144,10 @@
     <ClInclude Include="Level_Finished.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="LevelEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="LevelSelector.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenLevelEditor.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Options.h">
@@ -165,13 +156,7 @@
     <ClInclude Include="PlayerSelector.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="SaveEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="SizeEditor.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Caméra.h">
@@ -212,6 +197,21 @@
     </ClInclude>
     <ClInclude Include="Fx.h">
       <Filter>Fichiers d%27en-tête\Scenes\Jeu\FXs</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseLevelEditor.h">
+      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelEditor.h">
+      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenLevelEditor.h">
+      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="SizeEditor.h">
+      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveEditor.h">
+      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
