@@ -17,6 +17,122 @@ void ResourceManager::Load()
 	if (newFont->Create("Font.ttf", "Font"))
 		_fonts.push_back(newFont);
 
+	SoundBuffers* newSoundBuffer = new SoundBuffers();
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Curseur_2.ogg", "Curseur menu"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Alteration.ogg", "Alteration"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Barre_de_SFX.ogg", "SFX"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Boost.ogg", "Boost"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("BumperEffect.ogg", "BumperEffect"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Countdown.ogg", "Countdown"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("DepartCourse.ogg", "Depart Course"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("EngineOff.ogg", "EngineOff"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("EngineOn.ogg", "EngineOn"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Flaque_dHuile.ogg", "Flaque d'huile"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Impact_Laser.ogg", "Impact Laser"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Impact_Missile.ogg", "Impact Missile"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Laser_Actif_Ver_2.ogg", "Laser Actif"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Laser_Impact.ogg", "Laser Impact"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Laser_Off_Ver_2.ogg", "Laser Off"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Laser_On_Ver2.ogg", "Laser On"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Magnetisme.ogg", "Magnetisme"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("MissileLancer.ogg", "Missile Lancer"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Onde_de_Choc.ogg", "Onde de Choc"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Piege_Electrique.ogg", "Piege Electrique"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Ralentissement_electrique.ogg", "Ralentissement Electrique"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Retour.ogg", "Retour"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Collecte_Objet.ogg", "Collecte Objet"))
+		_soundBuffers.push_back(newSoundBuffer);
 	newFont = new Fonts();
 
 	if (newFont->Create("arial.ttf", "arial"))
@@ -28,14 +144,6 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("logoAnim.png", "Logo"))
 		_textures.push_back(newTexture);
-
-	for (int i = 0; i < 8; i++)
-	{
-		newTexture = new Textures();
-
-		if (newTexture->Create("Tile" + std::to_string(i + 1) + ".png", "Case" + std::to_string(i + 1)))
-			_textures.push_back(newTexture);
-	}
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -404,6 +512,18 @@ sf::Font* ResourceManager::GetFont(std::string _FileName)
 
 	return NULL;
 }
+sf::SoundBuffer* ResourceManager::GetSoundBuffer(std::string _FileName)
+{
+	for (int i = 0; i < _soundBuffers.size(); i++)
+	{
+		if (_soundBuffers[i]->GetName() == _FileName)
+		{
+			return _soundBuffers[i]->GetSoundBuffer();
+		}
+	}
+
+	return NULL;
+}
 std::vector<Textures*> ResourceManager::GetTextureVector()
 {
 	return _textures;
@@ -411,6 +531,10 @@ std::vector<Textures*> ResourceManager::GetTextureVector()
 std::vector<Fonts*> ResourceManager::GetFontVector()
 {
 	return _fonts;
+}
+std::vector<SoundBuffers*> ResourceManager::GetSoundBufferVector()
+{
+	return _soundBuffers;
 }
 float ResourceManager::GetVectorsSize()
 {
@@ -485,5 +609,40 @@ std::string Fonts::GetName()
 sf::Font* Fonts::GetFont()
 {
 	return &_font;
+}
+#pragma endregion
+
+#pragma region SoundBuffers
+SoundBuffers::SoundBuffers()
+{
+}
+
+SoundBuffers::~SoundBuffers()
+{
+}
+
+//Création d'un son selon son nom
+bool SoundBuffers::Create(std::string pFileName, std::string pName)
+{
+	if (!pFileName.empty())
+	{
+		_name = pName;
+
+		return _SoundBuffer.loadFromFile("Ressources/SoundBuffer/" + pFileName);
+	}
+
+	return false;
+}
+
+//Fonction permettant de connaître le nom d'un son
+std::string SoundBuffers::GetName()
+{
+	return _name;
+}
+
+//Fonction retournant le son
+sf::SoundBuffer* SoundBuffers::GetSoundBuffer()
+{
+	return &_SoundBuffer;
 }
 #pragma endregion

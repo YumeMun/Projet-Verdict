@@ -24,7 +24,7 @@ private:
 	sf::Sprite spBackground;
 	sf::Sprite spButton;
 	sf::Sprite spFlèches[2];
-
+	sf::Sound Retour;
 	sf::Text LevelNameText[100];
 	std::string LevelName[100];
 

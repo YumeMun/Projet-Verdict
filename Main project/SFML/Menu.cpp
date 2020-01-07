@@ -11,7 +11,6 @@ Menu::Menu()
 	m_NewGame.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	m_NewGame.setCharacterSize(50);
 	m_NewGame.setFillColor(sf::Color::White);
-	m_NewGame.setString("Nouvelle Partie");
 	m_NewGame.setString("Jouer");
 	m_NewGame.setPosition(45, 345);
 
@@ -46,6 +45,7 @@ Menu::Menu()
 	m_Credits.setPosition(1598, 895);
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+
 	spFlèche.setTexture(*ResourceManager::Instance()->GetTexture("Flèche menu"));
 	spCreditsButton.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 	spCreditsButton.setPosition(1593, 900);
@@ -228,6 +228,8 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -50.f)
 		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			if (m_MenuChoice != 1)
 				m_MenuChoice = m_MenuChoice - 1;
 			else
@@ -236,6 +238,8 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 		}
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 50.f)
 		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			if (m_MenuChoice != 6)
 				m_MenuChoice = m_MenuChoice + 1;
 			else

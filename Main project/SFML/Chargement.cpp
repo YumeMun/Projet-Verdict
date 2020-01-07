@@ -11,26 +11,40 @@ Chargement::Chargement()
 	isLoaded = false;
 	LoadThread = std::thread(&Chargement::Load, this);
 
-	LoadingTxt.setFont(*ResourceManager::Instance()->GetFont("Font"));
-	LoadingTxt.setCharacterSize(100);
-	LoadingTxt.setFillColor(sf::Color::White);
-	LoadingTxt.setString("Chargement..");
-	LoadingTxt.setOrigin(LoadingTxt.getGlobalBounds().width / 2, 50);
-	LoadingTxt.setPosition(960, 290);
-
-	LoadingBack.setSize(sf::Vector2f(1000, 50));
+	LoadingBack.setSize(sf::Vector2f(1000, 30));
 	LoadingBack.setFillColor(sf::Color(50,50,50,255));
 	LoadingBack.setOrigin(LoadingBack.getSize().x / 2, LoadingBack.getSize().y / 2);
-	LoadingBack.setPosition(960, 490);
+	LoadingBack.setPosition(960, 900);
 
-	LoadingBar.setSize(sf::Vector2f(0, 50));
-	LoadingBar.setFillColor(sf::Color::White);
+	LoadingBar.setSize(sf::Vector2f(0, 30));
+	LoadingBar.setFillColor(sf::Color{159, 60, 61, 255});
 	LoadingBar.setPosition(LoadingBack.getGlobalBounds().left, LoadingBack.getGlobalBounds().top);
 
-	rectLogo = { 0, 0, 872, 396 };
-	spLogo.setTextureRect(rectLogo);
-	spLogo.setTexture(*ResourceManager::Instance()->GetTexture("Logo"));
-	timerAnimLogo.restart();
+	BackgroundTexture[0].loadFromFile("Ressources/Textures/Background_Chargement1.png");
+	BackgroundTexture[1].loadFromFile("Ressources/Textures/Background_Chargement2.png");
+
+	spBackground[0].setTexture(BackgroundTexture[0]);
+	spBackground[1].setTexture(BackgroundTexture[1]);
+
+	spBackground[1].setPosition(-1920, 0);
+
+	LogoTexture[0].loadFromFile(("Ressources/Textures/Logo1.png"));
+	LogoTexture[1].loadFromFile(("Ressources/Textures/Logo2.png"));
+
+	spLogo[0].setTexture(LogoTexture[0]);
+	spLogo[1].setTexture(LogoTexture[1]);
+
+	for (int i = 0; i < 2; i++)
+	{
+		spLogo[i].setOrigin(spLogo[i].getGlobalBounds().width / 2, spLogo[i].getGlobalBounds().height / 2);
+		spLogo[i].setPosition(960, 700);
+	}
+
+	spLogo[0].setScale(0, 1);
+	spLogo[1].setScale(1, 1);
+
+	Scale[0] = 1;
+	Scale[1] = 0;
 }
 
 Chargement::~Chargement()
@@ -39,6 +53,33 @@ Chargement::~Chargement()
 
 void Chargement::Update()
 {
+	spBackground[1].move(50, 0);
+
+	if (spBackground[1].getPosition().x >= 1920)
+		spBackground[1].setPosition(-1920, 0);
+
+	if (AnimLogo.getElapsedTime().asSeconds() > 1 && AnimLogo.getElapsedTime().asSeconds() < 4)
+	{
+		if (Scale[0] > 0)
+			Scale[0] -= 0.05;
+
+		if (Scale[1] < 1 && Scale[0] <= 0.1)
+			Scale[1] += 0.05;
+	}
+	else if (AnimLogo.getElapsedTime().asSeconds() > 4 && AnimLogo.getElapsedTime().asSeconds() < 6)
+	{
+		if (Scale[1] > 0)
+			Scale[1] -= 0.05;
+
+		if (Scale[0] < 1 && Scale[1] <= 0.1)
+			Scale[0] += 0.05;
+	}
+	else if (AnimLogo.getElapsedTime().asSeconds() > 6)
+		AnimLogo.restart();
+
+	spLogo[0].setScale(Scale[0], 1);
+	spLogo[1].setScale(Scale[1], 1);
+
 	if (isLoaded == true)
 	{
 		std::cout << "Ressources chargees" << std::endl;
@@ -46,43 +87,24 @@ void Chargement::Update()
 	}
 	else if (isLoaded == false)
 	{
-		LoadingTxt.setFont(*ResourceManager::Instance()->GetFont("Font"));
-		LoadingTxt.setOrigin(LoadingTxt.getGlobalBounds().width / 2, 50);
-
-		spLogo.setTexture(*ResourceManager::Instance()->GetTexture("Logo"));
-		spLogo.setPosition(sf::Vector2f((1920 / 2) - (spLogo.getGlobalBounds().width / 2), ((1080 / 2) - (spLogo.getGlobalBounds().height / 2)) + 250));
-		spLogo.setScale(sf::Vector2f(0.6, 0.6));
-
-		if (!isLogoRestart)
-		{
-			if (timerAnimLogo.getElapsedTime().asSeconds() >= 0.04)
-			{
-				rectLogo.left += 872;
-				spLogo.setTextureRect(rectLogo);
-				animCount++;
-				timerAnimLogo.restart();
-			}
-
-			if (animCount == 16)
-			{
-				rectLogo.left = 0;
-				rectLogo.top = 396;
-				spLogo.setTextureRect(rectLogo);
-				isLogoRestart = true;
-			}
-		}
-
 		// 24 is font + texture vectors final size
-		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 86) * LoadingBack.getSize().x, 50));
+		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 86) * LoadingBack.getSize().x, 30));
 	}
 }
 
 void Chargement::Display()
 {
+	m_actualWindow->clear(sf::Color{ 49, 69, 85, 255 });
+	m_actualWindow->draw(spBackground[1]);
+	m_actualWindow->draw(spBackground[0]);
+
 	m_actualWindow->draw(LoadingBack);
 	m_actualWindow->draw(LoadingBar);
-	m_actualWindow->draw(LoadingTxt);
-	m_actualWindow->draw(spLogo);
+
+	for (int i = 0; i < 2; i++)
+	{
+		m_actualWindow->draw(spLogo[i]);
+	}
 }
 
 void Chargement::EventManager(sf::Event p_pollingEvent)

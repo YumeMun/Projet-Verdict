@@ -17,7 +17,7 @@ private:
 
 	sf::Sprite spBackground;
 	sf::Sprite spCommandes;
-
+	sf::Sound Retour;
 	sf::Sprite spTouches[2];
 	bool KeyPress = false;
 	int Selection = 1;

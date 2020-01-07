@@ -41,7 +41,7 @@ void TimerStart::SetupRect()
 	shape[1].setPoint(2, { 1920, (1080 / 2) });
 	shape[1].setPoint(3, { 1920, (1080 / 2) });
 
-	shape[2].setPoint(1, {( 1920 / 2), 1080 });
+	shape[2].setPoint(1, { (1920 / 2), 1080 });
 	shape[2].setPoint(2, { (1920 / 2), 1080 });
 	shape[2].setPoint(3, { (1920 / 2), 1080 });
 
@@ -107,7 +107,7 @@ void TimerStart::UpdateRect()
 
 	if (!rect2IsDone && rect1IsDone) //remplis le rect bas gauche
 	{
-		if (posPointX[2] < 1920/2)
+		if (posPointX[2] < 1920 / 2)
 			posPointX[2] += RECT_SPEED_X;
 		else
 		{
@@ -119,8 +119,8 @@ void TimerStart::UpdateRect()
 				rect2IsDone = true;
 			}
 		}
-		shape[2].setPoint(2, { (1920/2) - posPointX[2], 1080});
-		shape[2].setPoint(1, { (1920/2) - posPointX[2], 1080 - posPointY[2] });
+		shape[2].setPoint(2, { (1920 / 2) - posPointX[2], 1080 });
+		shape[2].setPoint(1, { (1920 / 2) - posPointX[2], 1080 - posPointY[2] });
 	}
 
 	if (!rect3IsDone && rect2IsDone) //remplis le rect haut gauche
@@ -134,8 +134,8 @@ void TimerStart::UpdateRect()
 			else
 				rect3IsDone = true;
 		}
-		shape[3].setPoint(2, { 0, (1080/2) - posPointY[3] });
-		shape[3].setPoint(1, { 0 + posPointX[3], (1080/2) - posPointY[3] });
+		shape[3].setPoint(2, { 0, (1080 / 2) - posPointY[3] });
+		shape[3].setPoint(1, { 0 + posPointX[3], (1080 / 2) - posPointY[3] });
 	}
 
 	if (rect3IsDone)
@@ -153,6 +153,10 @@ void TimerStart::UpdateRect()
 		std::cout << "timer end lancement partie" << std::endl;
 		isTimerEnd = true;
 		numberCount = 3;
+	}
+	if (numberCount <= 3)
+	{
+		TimerSound();
 	}
 }
 
@@ -200,4 +204,24 @@ bool TimerStart::GetIsTimerEnd()
 void TimerStart::ResetNumberCount()
 {
 	numberCount = 3;
+}
+
+void TimerStart::TimerSound()
+{
+	if (i >= numberCount)
+	{
+		Countdown.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Countdown"));
+		Countdown.play();
+		i--;
+	}
+	if (m_Clock.getElapsedTime().asSeconds() >= 1.7)
+	{
+		if (i == 0)
+		{
+			Countdown.stop();
+			Depart.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Depart Course"));
+			Depart.play();
+		}
+		m_Clock.restart();
+	}
 }

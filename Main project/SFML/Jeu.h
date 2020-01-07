@@ -39,7 +39,8 @@ private:
 	int ID;
 	int skinJ1;
 	int skinJ2;
-
+	sf::Sound sound;
+	sf::Sound Retour;
 	std::vector<Collects*> Collectibles;
 
 	bool isPlayerAnimStart = true;

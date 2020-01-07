@@ -180,6 +180,8 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 				{
 					if (m_MenuChoice != 1)
 					{
+						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.play();
 						m_MenuChoice = m_MenuChoice - 1;
 						LeftPressed = true;
 					}
@@ -190,6 +192,8 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 				{
 					if (m_MenuChoice != FilesNumber)
 					{
+						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.play();
 						m_MenuChoice = m_MenuChoice + 1;
 						RightPressed = true;
 					}
@@ -214,6 +218,8 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 
 	if (sf::Joystick::isButtonPressed(0, 1))
 	{
+		retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+		retour.play();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
 	}
 }
