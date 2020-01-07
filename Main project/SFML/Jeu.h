@@ -44,6 +44,7 @@ private:
 	sf::Sound sound;
 	sf::Sound Retour;
 	std::vector<Collects*> Collectibles;
+	std::vector<Fx*> FXs;
 
 	bool isPlayerAnimStart = true;
 public:

@@ -59,3 +59,7 @@ bool Shockwave::IsAlive()
 {
 	return Alive;
 }
+
+void Shockwave::AddFxs(std::vector<Fx*> &_List)
+{
+}

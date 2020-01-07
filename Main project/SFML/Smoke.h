@@ -1,18 +1,20 @@
 #pragma once
-#include "Scene.h"
+#include "Fx.h"
 
-class Smoke
+class Smoke : public Fx
 {
 public :
-	Smoke(sf::Vector2f _Pos);
+	Smoke(sf::Vector2f _Pos, float _Angle);
 	~Smoke();
-	void Update(float _Elapsed);
-	void Display(sf::RenderWindow* _Window);
+	virtual void Update(float _Elapsed);
+	virtual void Display(sf::RenderWindow* _Window);
+	virtual bool IsAlive();
 
-	sf::Color SmokeAlpha;
 private:
+	bool Alive = true;
 
 	sf::Sprite spSmoke;
-
+	
+	sf::Color SmokeAlpha;
 };
 

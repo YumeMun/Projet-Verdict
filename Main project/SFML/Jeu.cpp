@@ -194,6 +194,11 @@ void Jeu::Display()
 		Collectibles[i]->Display(m_actualWindow);
 	}
 
+	for (int i = 0; i < FXs.size(); i++)
+	{
+		FXs[i]->Display(m_actualWindow);
+	}
+
 	map->FirstPlanDisplay();
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
@@ -269,6 +274,7 @@ void Jeu::CollectiblesManager()
 		{
 			Player1->InvincibleTime.restart();
 			Player1->Invincible = true;
+			Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
@@ -277,8 +283,6 @@ void Jeu::CollectiblesManager()
 				Player1->SetCollectID(Player2->GetCollectID());
 				Player2->SetCollectID(0);
 			}
-			else
-				Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::BUMPER)
 		{
@@ -312,6 +316,7 @@ void Jeu::CollectiblesManager()
 		{
 			Player2->InvincibleTime.restart();
 			Player2->Invincible = true;
+			Player2->SetCollectID(0);
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
@@ -334,9 +339,20 @@ void Jeu::CollectiblesManager()
 	for (int i = 0; i < Collectibles.size(); i++)
 	{
 		Collectibles[i]->Update(Player1, Player2, map, ElapsedTime, caméra);
+		Collectibles[i]->AddFxs(FXs);
 
 		if (Collectibles[i]->IsAlive() == false)
+		{
 			Collectibles.erase(Collectibles.begin() + i);
+		}
+	}
+
+	for (int i = 0; i < FXs.size(); i++)
+	{
+		FXs[i]->Update(ElapsedTime);
+
+		if (FXs[i]->IsAlive() == false)
+			FXs.erase(FXs.begin() + i);
 	}
 }
 

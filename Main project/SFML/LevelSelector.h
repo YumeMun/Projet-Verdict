@@ -13,7 +13,7 @@ public:
 
 private:
 	sf::Sprite spLevelSelection;
-	sf::RectangleShape rectImg;
+	sf::Sprite spVignette;
 
 	std::vector<sf::Sprite> m_LevelSelector;
 	int FilesNumber;

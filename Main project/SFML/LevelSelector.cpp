@@ -57,15 +57,18 @@ void LevelSelector::Update()
 void LevelSelector::Display()
 {
 	m_actualWindow->draw(spBackground);
-	m_actualWindow->draw(spButton);
+
+	if (RightPressed == false && LeftPressed == false)
+	{
+		m_actualWindow->draw(spButton);
+	}
 
 	for (int i = 0; i < m_LevelSelector.size(); i++)
 	{
 		m_actualWindow->draw(m_LevelSelector[i]);
-		m_actualWindow->draw(rectImg);
 
-		if(LevelName[i] == "0Niveau1" || LevelName[i] == "0Niveau2")
-		LevelName[i] = LevelName[i].substr(LevelName[i].find_first_not_of('0'));
+		if (LevelName[i] == "0Niveau1" || LevelName[i] == "0Niveau2")
+			LevelName[i] = LevelName[i].substr(LevelName[i].find_first_not_of('0'));
 
 		LevelNameText[i].setString(LevelName[i]);
 		m_actualWindow->draw(LevelNameText[i]);
@@ -83,6 +86,11 @@ void LevelSelector::Display()
 		}
 	}
 
+	if (RightPressed == false && LeftPressed == false)
+	{
+		m_actualWindow->draw(spVignette);
+	}
+
 	m_actualWindow->draw(spBoutonRetour);
 }
 
@@ -94,16 +102,13 @@ void LevelSelector::Setup()
 		spLevelSelection.setTexture(*ResourceManager::Instance()->GetTexture("Background sélection niveau"));
 		spLevelSelection.setOrigin(spLevelSelection.getGlobalBounds().width / 2, spLevelSelection.getGlobalBounds().height / 2);
 		spLevelSelection.setPosition(960 + x, 540);
+
 		m_LevelSelector.push_back(spLevelSelection);
 
 		LevelNameText[i - 1].setPosition(540 + x, 120);
 
 		x = 1360;
 	}
-
-	rectImg.setSize(sf::Vector2f(700, 375));
-	rectImg.setFillColor(sf::Color::Green);
-	rectImg.setPosition(spLevelSelection.getGlobalBounds().width / 2 + 185, spLevelSelection.getGlobalBounds().height / 2 + 75);
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });
@@ -117,6 +122,10 @@ void LevelSelector::Setup()
 
 	spFlèches[0].setPosition(1500, 500);
 	spFlèches[1].setPosition(350, 500);
+
+	spVignette.setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau1"));
+	spVignette.setOrigin(spVignette.getGlobalBounds().width / 2, spVignette.getGlobalBounds().height / 2);
+	spVignette.setPosition(960, 540);
 }
 
 void LevelSelector::EventManager(sf::Event p_pollingEvent)
