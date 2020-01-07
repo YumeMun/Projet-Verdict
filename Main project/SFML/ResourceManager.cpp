@@ -477,7 +477,45 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	//Au dessus y a 87 ressources (marre de recompter à chaque fois)
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Background.jpg", "Background Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Poster.png", "Poster Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Bordure_Panneau.png", "Bordure Panneau Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Lumières.png", "Lumières Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Rampe.png", "Rampe Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Tram.png", "Tram Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Bras.png", "Bras Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Panneau.png", "Panneau Menu"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé
