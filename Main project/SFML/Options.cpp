@@ -69,6 +69,8 @@ void Options::Update()
 {
 	if (sf::Joystick::isButtonPressed(0, 1))
 	{
+		Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+		Retour.play();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 	}
 

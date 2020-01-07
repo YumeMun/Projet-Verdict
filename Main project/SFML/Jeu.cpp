@@ -373,19 +373,23 @@ void Jeu::MenuIG(int ID)
 			{
 				if (SelectionMenuIG < 3)
 					SelectionMenuIG++;
-
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				Clock.restart();
 			}
 			else if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) <= -50 || sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::Y) <= -50)
 			{
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
-
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				Clock.restart();
 			}
 
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
+				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+				Retour.play();
 				if (SelectionMenuIG == 1)
 				{
 					MenuIG_Activated = false;
@@ -430,19 +434,23 @@ void Jeu::MenuIG(int ID)
 			{
 				if (SelectionMenuIG < 2)
 					SelectionMenuIG++;
-
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				Clock.restart();
 			}
 			else if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) <= -50)
 			{
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
-
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				Clock.restart();
 			}
 
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
+				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+				Retour.play();
 				if (SelectionMenuIG == 1)
 				{
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, skinJ1, skinJ2);
@@ -450,6 +458,7 @@ void Jeu::MenuIG(int ID)
 				}
 				else if (SelectionMenuIG == 2)
 				{
+					
 					StateMenuIG = 0;
 					SelectionMenuIG = 1;
 					Clock.restart();
@@ -481,19 +490,23 @@ void Jeu::MenuIG(int ID)
 			{
 				if (SelectionMenuIG < 2)
 					SelectionMenuIG++;
-
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				Clock.restart();
 			}
 			else if (sf::Joystick::getAxisPosition(ID, sf::Joystick::Axis::X) <= -50)
 			{
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
-
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				Clock.restart();
 			}
 
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
+				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+				Retour.play();
 				if (SelectionMenuIG == 1)
 				{
 					GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
