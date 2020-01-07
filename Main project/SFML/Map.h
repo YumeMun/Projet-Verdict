@@ -10,12 +10,8 @@ public:
 	~Map();
 
 	void Update(float _Elapsed, class Caméra* _Cam);
-<<<<<<< HEAD
-	void Display(Caméra _Cam);
-=======
 	void Display();
 	void FirstPlanDisplay();
->>>>>>> 91b5297fcd21363bfae2c1fb62fb097bf0e3145d
 
 	int GetTile(int _X, int _Y);
 	void SetTile(int _X, int _Y, int _Tile);

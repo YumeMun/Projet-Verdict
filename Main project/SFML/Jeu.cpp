@@ -170,7 +170,7 @@ void Jeu::Display()
 {
 	m_actualWindow->clear(sf::Color::White);
 	m_actualWindow->setView(*caméra->GetCamera());
-	map->Display(*caméra);
+	map->Display();
 
 	Player2->Display(m_actualWindow);
 	Player1->Display(m_actualWindow);

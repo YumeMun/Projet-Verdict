@@ -23,10 +23,11 @@ Map::Map(std::string _LevelName)
 			Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
 		}
 
-		Plan2[i].setPosition(Plan[i].getGlobalBounds().width, 0);
+		Plan[i].setPosition(0, -550);
+		Plan2[i].setPosition(Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
 
-		//Plan[i].setScale(2, 2);
-		//Plan2[i].setScale(2, 2);
+		Plan[i].setScale(1.6, 1.6);
+		Plan2[i].setScale(1.6, 1.6);
 	}
 
 	for (int i = 0; i < 8; i++)
@@ -182,17 +183,17 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 	{
 		if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
 		{
-			Plan[i].setPosition(Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width, 0);
+			Plan[i].setPosition(Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width, Plan2[i].getPosition().y);
 		}
 
 		if (Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
 		{
-			Plan2[i].setPosition(Plan[i].getPosition().x + Plan[i].getGlobalBounds().width, 0);
+			Plan2[i].setPosition(Plan[i].getPosition().x + Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
 		}
 	}
 }
 
-void Map::Display(Caméra _Cam)
+void Map::Display()
 {
 	m_actualWindow->draw(Plan[5]);
 
