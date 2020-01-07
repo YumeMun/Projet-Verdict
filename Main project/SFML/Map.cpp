@@ -15,15 +15,18 @@ Map::Map(std::string _LevelName)
 
 	CheckPos = sf::Vector2f(0, 0);
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i + 1)));
-		Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i + 1)));
+		if (i >= 1)
+		{
+			Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+			Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+		}
 
-		Plan2[i].setPosition(1920 * 2, 0);
+		Plan2[i].setPosition(Plan[i].getGlobalBounds().width, 0);
 
-		Plan[i].setScale(2, 2);
-		Plan2[i].setScale(2, 2);
+		//Plan[i].setScale(2, 2);
+		//Plan2[i].setScale(2, 2);
 	}
 
 	for (int i = 0; i < 8; i++)
@@ -31,12 +34,12 @@ Map::Map(std::string _LevelName)
 		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Case" + std::to_string(i + 1)));
 	}
 
-	for (int i = 0; i < 2; i++)
-	{
-		Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(i)));
-		Plan1[i].setScale(2, 2);
-		Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, 0);
-	}
+	//for (int i = 0; i < 2; i++)
+	//{
+	//	Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(i)));
+	//	//Plan1[i].setScale(2, 2);
+	//	Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, 0);
+	//}
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -151,25 +154,31 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 		timerLazer.restart();
 	}
 
-	for (int i = 1; i < 4; i++)
-	{
-		Plan[i].move(((_Cam->GetCamSpeed() * 0.45) + ((_Cam->GetCamSpeed() * 0.27) * (i - 1))) * _Elapsed, 0);
-
-		Plan2[i].move(((_Cam->GetCamSpeed() * 0.45) + ((_Cam->GetCamSpeed() * 0.27) * (i - 1))) * _Elapsed, 0);
-	}
-
-	//std::cout << Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width << std::endl;
-
-	for (int i = 0; i < 2; i++)
+	/*for (int i = 0; i < 2; i++)
 	{
 		if (Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width <= _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
 		{
 			Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width)));
 			Plan1[i].setPosition(Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width * 2, 0);
 		}
-	}
+	}*/
 
-	for (int i = 0; i < 4; i++)
+	Plan[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
+	Plan2[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
+
+	Plan[1].move(_Cam->GetCamSpeed() * 0.1 * _Elapsed, 0);
+	Plan2[1].move(_Cam->GetCamSpeed() * 0.1 * _Elapsed, 0);
+
+	Plan[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
+	Plan2[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
+
+	Plan[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
+	Plan2[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
+
+	Plan[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
+	Plan2[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
+
+	for (int i = 0; i < 5; i++)
 	{
 		if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
 		{
@@ -185,16 +194,18 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 void Map::Display(Caméra _Cam)
 {
-	for (int i = 3; i > -1; i--)
+	m_actualWindow->draw(Plan[5]);
+
+	for (int i = 4; i > 0; i--)
 	{
 		m_actualWindow->draw(Plan[i]);
 		m_actualWindow->draw(Plan2[i]);
 	}
 
-	for (int i = 0; i < 2; i++)
+	/*for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(Plan1[i]);
-	}
+	}*/
 
 	AnimTiles();
 
@@ -390,6 +401,12 @@ void Map::Display(Caméra _Cam)
 	}
 }
 
+void Map::FirstPlanDisplay()
+{
+	m_actualWindow->draw(Plan[0]);
+	m_actualWindow->draw(Plan2[0]);
+}
+
 int Map::GetTile(int _X, int _Y)
 {
 	return Tableau[_Y / 64][_X / 64];
@@ -496,7 +513,7 @@ sf::Vector2f Map::GetEndFlag()
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if (Tableau[y][x-2] == 25)
+			if (Tableau[y][x - 2] == 25)
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;

@@ -180,6 +180,7 @@ void Jeu::Display()
 		Collectibles[i]->Display(m_actualWindow);
 	}
 
+	map->FirstPlanDisplay();
 
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	hud->Display(Player1, Player2);
