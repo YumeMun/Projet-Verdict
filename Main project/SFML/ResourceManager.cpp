@@ -29,14 +29,6 @@ void ResourceManager::Load()
 	if (newTexture->Create("logoAnim.png", "Logo"))
 		_textures.push_back(newTexture);
 
-	for (int i = 0; i < 8; i++)
-	{
-		newTexture = new Textures();
-
-		if (newTexture->Create("Tile" + std::to_string(i + 1) + ".png", "Case" + std::to_string(i + 1)))
-			_textures.push_back(newTexture);
-	}
-
 	for (int i = 0; i < 10; i++)
 	{
 		newTexture = new Textures();
@@ -366,6 +358,14 @@ void ResourceManager::Load()
 		newTexture = new Textures();
 
 		if (newTexture->Create("Collect" + std::to_string(i + 1) + ".png", "Collect" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("Background_Chargement" + std::to_string(i + 1) + ".png", "Background Chargement" + std::to_string(i + 1)))
 			_textures.push_back(newTexture);
 	}
 
