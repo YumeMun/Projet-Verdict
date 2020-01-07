@@ -1,7 +1,1 @@
-﻿  Intro.cpp
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(79): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Intro.cpp(29): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Intro.cpp(77): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Intro.cpp(83): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-LINK : fatal error C1900: incompatibilité de IL entre 'P1' version '20181108' et 'P2' version '20181107'
-LINK : fatal error LNK1257: échec de la génération du code
+﻿
