@@ -23,7 +23,7 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 		EndIsPut = true;
 	}
 
-	spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur"));
+	spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur1"));
 
 	ViewRect.left = 0, ViewRect.top = 0, ViewRect.width = 1920, ViewRect.height = 1080;
 	View.reset(ViewRect);
@@ -1043,6 +1043,11 @@ void LevelEditor::BackgroundChoice()
 		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème1"));
 	else if (SelectionBackground == 2)
 		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème2"));
+
+	if (SelectionBackground == 1)
+		spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur1"));
+	else if (SelectionBackground == 2)
+		spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur2"));
 
 	spFlèches[0].setPosition(70, 230);
 	spFlèches[1].setPosition(310, 230);

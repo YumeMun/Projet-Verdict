@@ -211,7 +211,12 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Interface_éditeur.jpg", "Interface éditeur"))
+	if (newTexture->Create("Interface_éditeur1.jpg", "Interface éditeur1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Interface_éditeur2.jpg", "Interface éditeur2"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
