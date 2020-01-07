@@ -22,37 +22,13 @@ Rocket::~Rocket()
 
 void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed, Caméra* _Cam)
 {
-	srand(time(NULL));
-
 	if (Direction == 0)
 	{
 		spRocket.move((SPEED * 2) * _Elapsed, 0);
-
-		if (SmokeAppear.getElapsedTime().asSeconds() >= 0.005)
-		{
-			Smoke* newSmoke = new Smoke(sf::Vector2f(spRocket.getPosition().x - 75, spRocket.getPosition().y), rand() % 350 + 1);
-			SmokeList.push_back(newSmoke);
-			SmokeAppear.restart();
-		}
 	}
 	else if (Direction == 1)
 	{
 		spRocket.move(-(SPEED * 2) * _Elapsed, 0);
-
-		if (SmokeAppear.getElapsedTime().asSeconds() >= 0.02)
-		{
-			Smoke* newSmoke = new Smoke(sf::Vector2f(spRocket.getPosition().x + 100, spRocket.getPosition().y), rand() % 350 + 1);
-			SmokeList.push_back(newSmoke);
-			SmokeAppear.restart();
-		}
-	}
-
-	for (int i = 0; i < SmokeList.size(); i++)
-	{
-		SmokeList[i]->Update(_Elapsed);
-
-		if (SmokeList[i]->SmokeAlpha.a <= 0)
-			SmokeList.erase(SmokeList.begin() + i);
 	}
 
 	if (ID == 1)
@@ -78,11 +54,6 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 
 void Rocket::Display(sf::RenderWindow* _Window)
 {
-	for (int i = 0; i < SmokeList.size(); i++)
-	{
-		SmokeList[i]->Display(_Window);
-	}
-
 	_Window->draw(spRocket);
 }
 
@@ -93,6 +64,25 @@ bool Rocket::IsAlive()
 
 void Rocket::AddFxs(std::vector<Fx*> &_List)
 {
+	if (Direction == 0)
+	{
+		if (SmokeAppear.getElapsedTime().asSeconds() >= 0.02)
+		{
+			Smoke* newSmoke = new Smoke(sf::Vector2f(spRocket.getPosition().x - 75, spRocket.getPosition().y), rand() % 350 + 1);
+			_List.push_back(newSmoke);
+			SmokeAppear.restart();
+		}
+	}
+	else if (Direction == 1)
+	{
+		if (SmokeAppear.getElapsedTime().asSeconds() >= 0.02)
+		{
+			Smoke* newSmoke = new Smoke(sf::Vector2f(spRocket.getPosition().x + 100, spRocket.getPosition().y), rand() % 350 + 1);
+			_List.push_back(newSmoke);
+			SmokeAppear.restart();
+		}
+	}
+
 	if (Alive == false)
 	{
 		ExploRocket* newFx = new ExploRocket(spRocket.getPosition());
