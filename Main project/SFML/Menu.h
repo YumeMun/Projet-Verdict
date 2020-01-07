@@ -22,10 +22,24 @@ private:
 	sf::Clock m_Clock;
 	sf::Sound Valider;
 	sf::Sound sound;
-	sf::Sprite spBackground;
 	sf::Sprite spButton[5];
 	sf::Sprite spFlèche;
 	sf::Sprite spCreditsButton;
+
+	sf::Sprite spBackground;
+	sf::Sprite spPoster;
+	sf::Sprite spBordurePanneau;
+	sf::Sprite spLumières;
+	sf::Sprite spRampe;
+	sf::Sprite spTram;
+	sf::Sprite spBras;
+	sf::Sprite spPanneau;
+
+	float RotationBras = 0;
+
+	sf::Clock AnimLights;
+	sf::Clock AnimBras;
+	sf::Clock AnimPanneau;
 
 	sf::Sprite spLogo;
 	sf::IntRect rectLogo;

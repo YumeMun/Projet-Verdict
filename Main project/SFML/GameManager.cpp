@@ -8,7 +8,7 @@ GameManager::GameManager()
 void GameManager::Start()
 {
 	m_Window.create(sf::VideoMode(1920, 1080), "Projet Runner", sf::Style::Fullscreen);
-	LoadScene(e_Enum::CHARGEMENT);
+	LoadScene(e_Enum::INTRO);
 }
 
 //Boucle de jeu
@@ -48,9 +48,9 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 {
 	switch (sceneEnum)
 	{
-	/*case e_Enum::e_Scene::INTRO:
+	case e_Enum::e_Scene::INTRO:
 		m_ActualScene = new Intro();
-		break;*/
+		break;
 	case e_Enum::e_Scene::CHARGEMENT:
 		m_ActualScene = new Chargement();
 		break;

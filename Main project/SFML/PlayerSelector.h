@@ -29,8 +29,11 @@ private:
 	bool isAlreadyUseDrawable = false;
 
 	sf::RectangleShape player;
+	sf::Sprite spBc;
 	sf::Sprite spPlayer;
 	sf::Sprite spFader;
+	sf::Sprite spArrow[2];
+
 	sf::IntRect rectPlayer;
 	sf::Vector2f originPlayer;
 	std::vector<PlayerSelector*> listSelector;
@@ -40,10 +43,14 @@ private:
 	bool isPlayerReady = false;
 	bool isSkinValidate = false;
 	bool isFadeDrawable = false;
+	bool isTaunt = false;
 	int SkinSelector = 1;
+	int FrameIndex = 0;
+	sf::Clock timerAnim;
 
 	sf::Clock SelectionTimer;
 	sf::Clock timerSwitchSkin;
+	sf::Clock timerArrow;
 	class Transition* transition;
 	bool isGameStart = false;
 	sf::Sound Retour;

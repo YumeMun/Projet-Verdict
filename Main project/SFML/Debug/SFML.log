@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Jeu.cpp
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Caméra.h(79,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Jeu.cpp(178,20): warning C4018:  '<' : incompatibilité signed/unsigned
@@ -418,3 +419,6 @@ D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Player.cpp(585,28): war
   Génération de code en cours...
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Player.cpp(639,21): warning C4244:  '=' : conversion de 'double' en 'float', perte possible de données
   SFML.vcxproj -> D:\Users\g.collignon\Documents\Verdict\Main project\Debug\SFML.exe
+=======
+﻿
+>>>>>>> ee39b16fe90f5563e5ec8b9443bfd8deeab97457

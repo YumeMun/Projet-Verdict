@@ -204,11 +204,11 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		newTexture = new Textures();
 
-		if (newTexture->Create("P" + std::to_string(i + 1) + ".png", "Plan" + std::to_string(i + 1)))
+		if (newTexture->Create("P" + std::to_string(i) + ".png", "Plan" + std::to_string(i)))
 			_textures.push_back(newTexture);
 	}
 
@@ -262,7 +262,12 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Interface_éditeur.jpg", "Interface éditeur"))
+	if (newTexture->Create("Selection_niveau1.jpg", "Selection niveau1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Selection_niveau2.jpg", "Selection niveau2"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
@@ -497,6 +502,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("Bumper_Mine.png", "Bumper"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("sprite_onde_de_choc.png", "Shock"))
 		_textures.push_back(newTexture);
 
@@ -520,6 +530,11 @@ void ResourceManager::Load()
 	if (newTexture->Create("NumeroJoueur.png", "Numero joueur"))
 		_textures.push_back(newTexture);
 
+	newTexture = new Textures();
+
+	if (newTexture->Create("ExploRouge.png", "ExploRocket"))
+		_textures.push_back(newTexture);
+
 	for (int i = 0; i < 6; i++)
 	{
 		newTexture = new Textures();
@@ -528,15 +543,55 @@ void ResourceManager::Load()
 			_textures.push_back(newTexture);
 	}
 
-	for (int i = 0; i < 2; i++)
-	{
-		newTexture = new Textures();
+	newTexture = new Textures();
 
-		if (newTexture->Create("Background_Chargement" + std::to_string(i + 1) + ".png", "Background Chargement" + std::to_string(i + 1)))
-			_textures.push_back(newTexture);
-	}
+	if (newTexture->Create("Menu_Background.jpg", "Background Menu"))
+		_textures.push_back(newTexture);
 
-	//Au dessus y a 87 ressources (marre de recompter à chaque fois)
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Poster.png", "Poster Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Bordure_Panneau.png", "Bordure Panneau Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Lumières.png", "Lumières Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Rampe.png", "Rampe Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Tram.png", "Tram Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Bras.png", "Bras Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Menu_Panneau.png", "Panneau Menu"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Interface_éditeur1.jpg", "Interface éditeur1"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Interface_éditeur2.jpg", "Interface éditeur2"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé

@@ -23,7 +23,8 @@ LevelEditor::LevelEditor(int _SizeX, int _SizeY, std::string _LevelName, bool _i
 		EndIsPut = true;
 	}
 
-	spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur"));
+	spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur1"));
+	spInterface.setColor(sf::Color{ 100, 100 ,100, 255 });
 
 	ViewRect.left = 0, ViewRect.top = 0, ViewRect.width = 1920, ViewRect.height = 1080;
 	View.reset(ViewRect);
@@ -587,32 +588,32 @@ void LevelEditor::ControllerManager()
 	if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -80)
 	{
 		View.move(-1300 * ElapsedTime, 0);
-		spSelecterTarget.move(-600 * ElapsedTime, 0);
+		spSelecterTarget.move(-1300 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) >= 80)
 	{
 		View.move(1300 * ElapsedTime, 0);
-		spSelecterTarget.move(600 * ElapsedTime, 0);
+		spSelecterTarget.move(1300 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -50)
 	{
 		View.move(-1000 * ElapsedTime, 0);
-		spSelecterTarget.move(-600 * ElapsedTime, 0);
+		spSelecterTarget.move(-1000 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) >= 50)
 	{
 		View.move(1000 * ElapsedTime, 0);
-		spSelecterTarget.move(600 * ElapsedTime, 0);
+		spSelecterTarget.move(1000 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) <= -20)
 	{
 		View.move(-400 * ElapsedTime, 0);
-		spSelecterTarget.move(-600 * ElapsedTime, 0);
+		spSelecterTarget.move(-400 * ElapsedTime, 0);
 	}
 	else if (sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U) >= 20)
 	{
 		View.move(400 * ElapsedTime, 0);
-		spSelecterTarget.move(600 * ElapsedTime, 0);
+		spSelecterTarget.move(400 * ElapsedTime, 0);
 	}
 
 
@@ -1075,6 +1076,11 @@ void LevelEditor::BackgroundChoice()
 		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème1"));
 	else if (SelectionBackground == 2)
 		spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Thème2"));
+
+	if (SelectionBackground == 1)
+		spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur1"));
+	else if (SelectionBackground == 2)
+		spInterface.setTexture(*ResourceManager::Instance()->GetTexture("Interface éditeur2"));
 
 	spFlèches[0].setPosition(70, 230);
 	spFlèches[1].setPosition(310, 230);

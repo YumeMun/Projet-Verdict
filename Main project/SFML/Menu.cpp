@@ -44,7 +44,23 @@ Menu::Menu()
 	m_Credits.setString("Crédits");
 	m_Credits.setPosition(1598, 895);
 
-	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background Menu"));
+	spPoster.setTexture(*ResourceManager::Instance()->GetTexture("Poster Menu"));
+	spPoster.setPosition(862, 113);
+	spBordurePanneau.setTexture(*ResourceManager::Instance()->GetTexture("Bordure Panneau Menu"));
+	spBordurePanneau.setPosition(815, 40);
+	spLumières.setTexture(*ResourceManager::Instance()->GetTexture("Lumières Menu"));
+	spLumières.setPosition(807, 48);
+	spRampe.setTexture(*ResourceManager::Instance()->GetTexture("Rampe Menu"));
+	spRampe.setPosition(0, 520);
+	spTram.setTexture(*ResourceManager::Instance()->GetTexture("Tram Menu"));
+	spTram.setPosition(-5000, 522);
+	spBras.setTexture(*ResourceManager::Instance()->GetTexture("Bras Menu"));
+	spBras.setPosition(1283, 800);
+	spBras.setOrigin(50, spBras.getGlobalBounds().height - 50);
+	spPanneau.setTexture(*ResourceManager::Instance()->GetTexture("Panneau Menu"));
+	spPanneau.setPosition(423, 243);
+
 	spFlèche.setTexture(*ResourceManager::Instance()->GetTexture("Flèche menu"));
 	spCreditsButton.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 	spCreditsButton.setPosition(1593, 900);
@@ -58,7 +74,7 @@ Menu::Menu()
 	rectLogo = { 0, 0, 872, 396 };
 	spLogo.setTextureRect(rectLogo);
 	spLogo.setTexture(*ResourceManager::Instance()->GetTexture("Logo"));
-	spLogo.setPosition(sf::Vector2f(1450, 50));
+	spLogo.setPosition(sf::Vector2f(1470, 150));
 	spLogo.setScale(sf::Vector2f(0.5, 0.5));
 
 	timerAnimLogo.restart();
@@ -70,6 +86,39 @@ Menu::~Menu()
 
 void Menu::Update()
 {
+	spTram.move(50, 0);
+
+	if(spTram.getPosition().x >= 20000)
+		spTram.setPosition(-1000, 522);
+
+	if (AnimPanneau.getElapsedTime().asSeconds() > 0 && AnimPanneau.getElapsedTime().asSeconds() < 1.5)
+	{
+		spPanneau.move(0, 0.3);
+	}
+	else if (AnimPanneau.getElapsedTime().asSeconds() > 1.5 && AnimPanneau.getElapsedTime().asSeconds() < 3)
+	{
+		spPanneau.move(0, -0.3);
+	}
+	else if (AnimPanneau.getElapsedTime().asSeconds() > 3)
+		AnimPanneau.restart();
+
+
+	if (AnimBras.getElapsedTime().asSeconds() > 0 && AnimBras.getElapsedTime().asSeconds() < 1.5)
+	{
+		if (RotationBras < 12)
+			RotationBras += 0.1;
+	}
+	else if (AnimBras.getElapsedTime().asSeconds() > 1.5)
+	{
+		if (RotationBras > 0)
+			RotationBras -= 0.1;
+		else
+			AnimBras.restart();
+	}
+
+
+	spBras.setRotation(RotationBras);
+
 	for (int i = 0; i < 5; i++)
 	{
 		if (i == m_MenuChoice - 1)
@@ -186,6 +235,21 @@ void Menu::Update()
 void Menu::Display()
 {
 	m_actualWindow->draw(spBackground);
+	m_actualWindow->draw(spPoster);
+	m_actualWindow->draw(spLogo);
+	m_actualWindow->draw(spBras);
+	m_actualWindow->draw(spBordurePanneau);
+	m_actualWindow->draw(spPanneau);
+
+	if (AnimLights.getElapsedTime().asSeconds() > 1 && AnimLights.getElapsedTime().asSeconds() < 1.5)
+	{
+		m_actualWindow->draw(spLumières);
+	}
+	else if (AnimLights.getElapsedTime().asSeconds() > 1.5)
+		AnimLights.restart();
+
+	m_actualWindow->draw(spRampe);
+	m_actualWindow->draw(spTram);
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -200,8 +264,6 @@ void Menu::Display()
 	m_actualWindow->draw(m_Quit);
 	m_actualWindow->draw(m_Commande);
 	m_actualWindow->draw(m_Credits);
-
-	m_actualWindow->draw(spLogo);
 }
 
 void Menu::EventManager(sf::Event p_pollingEvent)

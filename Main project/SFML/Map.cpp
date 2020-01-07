@@ -17,11 +17,8 @@ Map::Map(std::string _LevelName)
 
 	for (int i = 0; i < 5; i++)
 	{
-		if (i >= 1)
-		{
-			Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
-			Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
-		}
+		Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+		Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
 
 		Plan[i].setPosition(0, -550);
 		Plan2[i].setPosition(Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
@@ -30,6 +27,14 @@ Map::Map(std::string _LevelName)
 		Plan2[i].setScale(1.6, 1.6);
 	}
 
+<<<<<<< HEAD
+=======
+	/*for (int i = 0; i < 8; i++)
+	{
+		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Case" + std::to_string(i + 1)));
+	}*/
+
+>>>>>>> ee39b16fe90f5563e5ec8b9443bfd8deeab97457
 	//for (int i = 0; i < 2; i++)
 	//{
 	//	Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(i)));

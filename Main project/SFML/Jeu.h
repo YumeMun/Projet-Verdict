@@ -7,6 +7,7 @@
 #include "Shockwave.h"
 #include "Oilflake.h"
 #include "Rocket.h"
+#include "Bumper.h"
 #include "PlayerSelector.h"
 
 class Jeu :public Scene
@@ -47,6 +48,7 @@ private:
 	sf::Sound m_magnet;
 
 	std::vector<Collects*> Collectibles;
+	std::vector<Fx*> FXs;
 
 	bool isPlayerAnimStart = true;
 public:

@@ -86,10 +86,11 @@ private:
 	sf::Clock AnimNumero;
 	int FrameIndexNumero = 0;
 	bool isNumeroDisplay;
+	float accelerationPlayer = 10;
 
 	sf::Vector2f Player_Vector;
 	sf::Vector2f Player_SlopVector;
-	sf::Vector2f Player_ColliderLimit;
+	sf::Vector2f Player_ColliderLimit[3];
 
 	enum _eDirection
 	{

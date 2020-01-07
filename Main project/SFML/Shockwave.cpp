@@ -15,7 +15,7 @@ Shockwave::~Shockwave()
 {
 }
 
-void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed)
+void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed, Caméra* _Cam)
 {
 	if (ID == 1)
 	{
@@ -58,4 +58,8 @@ void Shockwave::Display(sf::RenderWindow* _Window)
 bool Shockwave::IsAlive()
 {
 	return Alive;
+}
+
+void Shockwave::AddFxs(std::vector<Fx*> &_List)
+{
 }

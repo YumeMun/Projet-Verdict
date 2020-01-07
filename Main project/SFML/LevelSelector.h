@@ -13,6 +13,8 @@ public:
 
 private:
 	sf::Sprite spLevelSelection;
+	sf::Sprite spVignette;
+
 	std::vector<sf::Sprite> m_LevelSelector;
 	int FilesNumber;
 	int m_MenuChoice = 1;
