@@ -24,7 +24,10 @@ void Smoke::Update(float _Elapsed)
 		SmokeAlpha.a = 0;
 
 	if (SmokeAlpha.a <= 0)
+	{
 		SmokeAlpha.a = 0;
+		Alive = false;
+	}
 
 	spSmoke.setScale(spSmoke.getScale().x + 5 * _Elapsed, spSmoke.getScale().y + 5 * _Elapsed);
 
@@ -34,4 +37,9 @@ void Smoke::Update(float _Elapsed)
 void Smoke::Display(sf::RenderWindow* _Window)
 {
 	_Window->draw(spSmoke);
+}
+
+bool Smoke::IsAlive()
+{
+	return Alive;
 }

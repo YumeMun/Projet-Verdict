@@ -608,7 +608,7 @@ bool Player::CollectibleCollide(Map* _Map)
 
 		if (HasCollectible == false)
 		{
-			CollectID = e_Enum::ROCKET;/*rand() % 6 + 1;*/
+			CollectID = rand() % 6 + 1;
 		}
 
 		return true;
