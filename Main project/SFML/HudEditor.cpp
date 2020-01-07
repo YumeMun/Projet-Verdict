@@ -121,6 +121,8 @@ void HudEditor::EventManager(sf::Event p_pollingEvent)
 	{
 		if (Selection > 1)
 			Selection--;
+		else
+			Selection = 26;
 
 		SelectionTimer.restart();
 	}
@@ -128,6 +130,8 @@ void HudEditor::EventManager(sf::Event p_pollingEvent)
 	{
 		if (Selection < 26)
 			Selection++;
+		else
+			Selection = 1;
 
 		SelectionTimer.restart();
 	}

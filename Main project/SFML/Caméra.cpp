@@ -8,10 +8,10 @@ Caméra::Caméra(Player* _player1, Player* _player2)
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
-	sizeCamera = { 1920/2, 1080/2 };
+	sizeCamera = { 1920 / 2, 1080 / 2 };
 	X = sizeCamera.x;
 	camera.setViewport({ 0, 0, 1, 1 });
-	startCenterCam.x = _player1->GetPos().x - ((_player1->GetPos().x - _player2->GetPos().x)/2);
+	startCenterCam.x = _player1->GetPos().x - ((_player1->GetPos().x - _player2->GetPos().x) / 2);
 	startCenterCam.y = 1080 / 2; //_player1->GetPos().y;
 	centerCam = startCenterCam;
 	camera.setCenter(centerCam);
@@ -129,7 +129,7 @@ bool Caméra::GetIsZoomEnd()
 
 void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _player2)
 {
-	if (sizeCamera.x < 1920)
+	if (sizeCamera.x < 2880)
 	{
 		sizeCamera.x += (400 * 1.77) * _Elapsed;
 		sizeCamera.y += 400 * _Elapsed;
@@ -143,26 +143,26 @@ void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _pl
 	else
 	{
 		std::cout << "zoooooooom" << std::endl;
-		sizeCamera.x = 1920;
-		sizeCamera.y = 1080;
+		sizeCamera.x = 2880;
+		sizeCamera.y = 1620;
 	}
 
-	if (centerCam.x < _player2->GetPos().x + (1920 / 2) - 150) //((1920/2)+620))
+	if (centerCam.x < _player2->GetPos().x + (2880 / 2) - 150) //((1920/2)+620))
 	{
 		centerCam.x += (CAMERA_ZOOM_SPEED * (16 / 9)) * _Elapsed;
 		camera.setCenter(centerCam);
 	}
 	else
 	{
-		centerCam.x = _player2->GetPos().x + ((1920 / 2) - 150); //((1920 / 2)+620);
+		centerCam.x = _player2->GetPos().x + ((2880 / 2) - 150); //((1920 / 2)+620);
 		centerCam.y = 1080 / 2;
 		camera.setCenter(centerCam);
-		camera.setSize(sf::Vector2f(1920, 1080));
+		camera.setSize(sf::Vector2f(2880, 1620));
 	}
 
-	/*else if (centerCam.y < 1080/2)
-{
-	centerCam.y += (CAMERA_ZOOM_SPEED) * _Elapsed;
-	camera.setCenter(centerCam);
-}*/
+	if (centerCam.y > 270)
+	{
+		centerCam.y -= (CAMERA_ZOOM_SPEED)* _Elapsed;
+		camera.setCenter(centerCam);
+	}
 }

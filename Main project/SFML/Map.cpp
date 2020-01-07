@@ -183,7 +183,7 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 	}
 }
 
-void Map::Display()
+void Map::Display(Caméra _Cam)
 {
 	for (int i = 3; i > -1; i--)
 	{

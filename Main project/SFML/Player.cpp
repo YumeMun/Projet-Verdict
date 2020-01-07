@@ -107,9 +107,9 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		spPlayer.move(Player_Vector * _Elapsed);
 	}
 
-	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
+	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
 		Hasfinished = true;
-	else if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 25)
+
 
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
 		Invincible = false;
