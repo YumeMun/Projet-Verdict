@@ -89,8 +89,14 @@
     <ClCompile Include="Smoke.cpp">
       <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="Bumper.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+=======
     <ClCompile Include="Intro.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
+>>>>>>> f46823acd6eb404201946cc3b3253aa85999f76c
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,8 +196,14 @@
     <ClInclude Include="Collects.h">
       <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Intro.h" />
+    <ClInclude Include="Bumper.h">
+      <Filter>Fichiers d%27en tête\Scenes\Collectibles</Filter>
+=======
     <ClInclude Include="Intro.h">
       <Filter>Fichiers d%27en tête\Scenes</Filter>
+>>>>>>> f46823acd6eb404201946cc3b3253aa85999f76c
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

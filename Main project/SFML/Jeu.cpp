@@ -268,7 +268,9 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::BUMPER)
 		{
-
+			Bumper* newCollect = new Bumper(1, Player1->GetAimDir(), Player1->GetPos());
+			Collectibles.push_back(newCollect);
+			Player1->SetCollectID(0);
 		}
 	}
 
@@ -309,13 +311,15 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::BUMPER)
 		{
-
+			Bumper* newCollect = new Bumper(2, Player2->GetAimDir(), Player2->GetPos());
+			Collectibles.push_back(newCollect);
+			Player1->SetCollectID(0);
 		}
 	}
 
 	for (int i = 0; i < Collectibles.size(); i++)
 	{
-		Collectibles[i]->Update(Player1, Player2, map,ElapsedTime);
+		Collectibles[i]->Update(Player1, Player2, map, ElapsedTime, caméra);
 
 		if (Collectibles[i]->IsAlive() == false)
 			Collectibles.erase(Collectibles.begin() + i);

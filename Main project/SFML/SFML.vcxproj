@@ -165,6 +165,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bumper.cpp" />
     <ClCompile Include="Caméra.cpp" />
     <ClCompile Include="Chargement.cpp" />
     <ClCompile Include="ChooseLevelEditor.cpp" />
@@ -198,6 +199,7 @@
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bumper.h" />
     <ClInclude Include="Caméra.h" />
     <ClInclude Include="Chargement.h" />
     <ClInclude Include="ChooseLevelEditor.h" />

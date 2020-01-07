@@ -20,7 +20,7 @@ Rocket::~Rocket()
 {
 }
 
-void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed)
+void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed, Caméra* _Cam)
 {
 	if (Direction == 0)
 	{

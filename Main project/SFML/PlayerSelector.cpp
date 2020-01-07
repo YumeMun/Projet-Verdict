@@ -24,6 +24,9 @@ PlayerSelector::~PlayerSelector()
 
 void PlayerSelector::Setup()
 {
+
+
+
 	for (int i = 0; i < 2; i++)
 	{
 		PlayerSelector* newSelector = new PlayerSelector();
@@ -32,8 +35,10 @@ void PlayerSelector::Setup()
 		newSelector->spPlayer.setTextureRect(newSelector->rectPlayer);
 		newSelector->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player" + std::to_string(i+1) + "_Colo1"));
 
+		newSelector->spBc.setTexture(*ResourceManager::Instance()->GetTexture("Background sélection niveau"));
+		newSelector->spBc.setScale(sf::Vector2f(0.45, 0.45));
 
-		newSelector->player.setSize(sf::Vector2f(350, 200));
+		newSelector->player.setSize(sf::Vector2f(375, 200));
 		newSelector->player.setFillColor(sf::Color(250, 194, 73));
 		newSelector->player.setOutlineColor(sf::Color(80, 80, 80));
 		newSelector->player.setOutlineThickness(7);
@@ -41,27 +46,43 @@ void PlayerSelector::Setup()
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
+		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
+		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche droite"));
+		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
+		//newSelector->spArrow[1].setOrigin(spArrow[1].getGlobalBounds().width / 2, spArrow[1].getGlobalBounds().height / 2);
+
 		newSelector->timerSwitchSkin.restart();
 
 		listSelector.push_back(newSelector);
 	}
 
-	listSelector[0]->player.setPosition(sf::Vector2f(1920 / 2 - 500, 1080 / 2 - 150));
-	listSelector[0]->spPlayer.setPosition(listSelector[0]->player.getPosition());
-	listSelector[0]->spFader.setPosition(listSelector[0]->player.getPosition());
+	listSelector[0]->rectPlayer = { 0, 0, 360, 135 };
+	listSelector[0]->spPlayer.setTextureRect(listSelector[0]->rectPlayer);
+	listSelector[0]->player.setPosition(sf::Vector2f(1920 / 2 - 525, 1080 / 2 - 150));
+
+	listSelector[0]->spBc.setPosition(sf::Vector2f(1920 / 2 - 550, 1080 / 2 - 150));
+	listSelector[0]->spPlayer.setPosition(listSelector[0]->spBc.getPosition().x + 30, listSelector[0]->spBc.getPosition().y + 30);
+	listSelector[0]->spFader.setPosition(listSelector[0]->spBc.getPosition().x + 30, listSelector[0]->spBc.getPosition().y + 30);
 
 	listSelector[1]->player.setFillColor(sf::Color(201, 65, 65));
 	listSelector[1]->player.setPosition(sf::Vector2f(1920 / 2 + 150, 1080 / 2 - 150));
-	listSelector[1]->spPlayer.setPosition(listSelector[1]->player.getPosition());
-	listSelector[1]->spFader.setPosition(listSelector[1]->player.getPosition());
+
+	listSelector[1]->spBc.setPosition(sf::Vector2f(1920 / 2 + 125, 1080 / 2 - 150));
+	listSelector[1]->spPlayer.setPosition(listSelector[1]->spBc.getPosition().x + 25, listSelector[1]->spBc.getPosition().y + 25);
+	listSelector[1]->spFader.setPosition(listSelector[1]->spBc.getPosition().x + 25, listSelector[1]->spBc.getPosition().y + 25);
+
+	listSelector[0]->spArrow[0].setPosition(listSelector[0]->spBc.getPosition().x - 65, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
+	listSelector[0]->spArrow[1].setPosition(listSelector[0]->spBc.getPosition().x + 435, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
+	listSelector[1]->spArrow[0].setPosition(listSelector[1]->spBc.getPosition().x - 65, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
+	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 435, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
 
 	spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 	spReady.setPosition((1920 / 2), 800);
 	spReady.setOrigin(spReady.getGlobalBounds().width / 2, spReady.getGlobalBounds().height / 2);
 	spReady.setScale(sf::Vector2f(1.5, 1.5));
 
-	strSkinSelect[0] = "Les pates sont cuites";
-	strSkinSelect[1] = "Choisissez la couleur de votre vehicule";
+	strSkinSelect[0] = "Lancer le verdict (lol)";
+	strSkinSelect[1] = "Choisissez votre vehicule";
 	strSkinSelect[2] = "Cette couleur est déjà prise";
 
 	for (int i = 0; i < 3; i++)
@@ -79,6 +100,8 @@ void PlayerSelector::Setup()
 	textSkinSelect[2].setPosition(spReady.getPosition().x, spReady.getPosition().y - 150);
 
 	timerAnim.restart();
+	listSelector[0]->timerArrow.restart();
+	listSelector[1]->timerArrow.restart();
 
 	transition = new Transition();
 }
@@ -142,7 +165,6 @@ void PlayerSelector::Update()
 		if (listSelector[i]->isTaunt)
 		{
 			listSelector[i]->rectPlayer.top = 4 * listSelector[i]->rectPlayer.height;
-			std::cout << "is taunt" << std::endl;
 
 			if (timerAnim.getElapsedTime().asMilliseconds() > 60)
 			{
@@ -153,7 +175,6 @@ void PlayerSelector::Update()
 					FrameIndex = 0;
 					listSelector[i]->rectPlayer.top = 0;
 					listSelector[i]->isTaunt = false;
-					std::cout << "is no longer taunt" << std::endl;
 				}
 
 				listSelector[i]->rectPlayer.left = FrameIndex * listSelector[i]->rectPlayer.width;
@@ -162,8 +183,22 @@ void PlayerSelector::Update()
 				timerAnim.restart();
 			}
 		}
-		/*else
-			FrameIndex = 0;*/
+
+		if (sf::Joystick::isButtonPressed(i, 4))
+		{
+			listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
+			std::cout << "AAA" << std::endl;
+		}
+		else if (sf::Joystick::isButtonPressed(i, 5))
+		{
+			listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
+			std::cout << "BBB" << std::endl;
+		}
+		else
+		{
+			listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.75, 0.75));
+			listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.75, 0.75));
+		}
 	}
 
 	if (isGameStart)
@@ -178,10 +213,19 @@ void PlayerSelector::Display()
 	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(listSelector[i]->player);
+		//m_actualWindow->draw(listSelector[i]->spBc);
 		m_actualWindow->draw(listSelector[i]->spPlayer);
 
 		if (listSelector[i]->isFadeDrawable)
 			m_actualWindow->draw(listSelector[i]->spFader);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			m_actualWindow->draw(listSelector[i]->spArrow[y]);
+		}
 	}
 
 	m_actualWindow->draw(spReady);
@@ -214,23 +258,27 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			{
 				if (listSelector[i]->timerSwitchSkin.getElapsedTime().asMilliseconds() > 125)
 				{
-					if (sf::Joystick::getAxisPosition(i, sf::Joystick::X) > 66.f)
+					if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) > 66.f ||*/ sf::Joystick::isButtonPressed(i, 5))
 					{
-						if (listSelector[i]->SkinSelector != NB_SKIN+1)
+						if (listSelector[i]->SkinSelector < NB_SKIN)
 							listSelector[i]->SkinSelector += 1;
 						else
 							listSelector[i]->SkinSelector = 1;
 
 						listSelector[i]->timerSwitchSkin.restart();
+
+						std::cout << "nb = " << listSelector[0]->SkinSelector << std::endl;
 					}
-					else if (sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f)
+					else if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f ||*/ sf::Joystick::isButtonPressed(i, 4))
 					{
-						if (listSelector[i]->SkinSelector != 0)
+						if (listSelector[i]->SkinSelector > 1)
 							listSelector[i]->SkinSelector -= 1;
 						else
-							listSelector[i]->SkinSelector = NB_SKIN + 1;
+							listSelector[i]->SkinSelector = NB_SKIN;
 
 						listSelector[i]->timerSwitchSkin.restart();
+
+						std::cout << "nb = " << listSelector[0]->SkinSelector << std::endl;
 					}
 				}
 
