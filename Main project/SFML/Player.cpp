@@ -319,7 +319,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 				BoostClock.restart();
 			}
 
-			if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y + Player_ColliderLimit[nbPts].y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y + Player_ColliderLimit[nbPts].y) <= 6)
+			if (_Map->GetTile(GetPos().x + Player_ColliderLimit[0].x, GetPos().y + Player_ColliderLimit[0].y) >= 1 && _Map->GetTile(GetPos().x + Player_ColliderLimit[0].x, GetPos().y + Player_ColliderLimit[0].y) <= 6)
 			{
 				Player_Direction = NONE;
 			}
@@ -327,7 +327,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 		if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
 		{
-			if (_Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[nbPts].y + 50) >= 1 && _Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[nbPts].y + 50) <= 6)
+			if (_Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) >= 1 && _Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) <= 6)
 			{
 				Rocket_Direction = 0;
 			}
