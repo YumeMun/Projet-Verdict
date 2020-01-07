@@ -62,6 +62,7 @@ void LevelSelector::Display()
 	for (int i = 0; i < m_LevelSelector.size(); i++)
 	{
 		m_actualWindow->draw(m_LevelSelector[i]);
+		m_actualWindow->draw(rectImg);
 
 		if(LevelName[i] == "0Niveau1" || LevelName[i] == "0Niveau2")
 		LevelName[i] = LevelName[i].substr(LevelName[i].find_first_not_of('0'));
@@ -99,6 +100,10 @@ void LevelSelector::Setup()
 
 		x = 1360;
 	}
+
+	rectImg.setSize(sf::Vector2f(700, 375));
+	rectImg.setFillColor(sf::Color::Green);
+	rectImg.setPosition(spLevelSelection.getGlobalBounds().width / 2 + 185, spLevelSelection.getGlobalBounds().height / 2 + 75);
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));
 	spBackground.setColor(sf::Color{ 100, 100, 100, 255 });

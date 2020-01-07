@@ -94,7 +94,7 @@ void Chargement::Update()
 
 void Chargement::Display()
 {
-	m_actualWindow->clear(sf::Color{ 49, 69, 85, 255 });
+	m_actualWindow->clear(sf::Color::Black);
 	m_actualWindow->draw(spBackground[1]);
 	m_actualWindow->draw(spBackground[0]);
 

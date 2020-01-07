@@ -13,6 +13,8 @@ public:
 
 private:
 	sf::Sprite spLevelSelection;
+	sf::RectangleShape rectImg;
+
 	std::vector<sf::Sprite> m_LevelSelector;
 	int FilesNumber;
 	int m_MenuChoice = 1;
