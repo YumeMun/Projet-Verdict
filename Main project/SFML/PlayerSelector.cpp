@@ -74,19 +74,11 @@ void PlayerSelector::Setup()
 
 	}
 
-	//textReady.setFont(*ResourceManager::Instance()->GetFont("Font"));
-	//textReady.setString(strSkinSelect[0]);
-	//textReady.setCharacterSize(40);
-
-	//textReady.setOrigin(textReady.getGlobalBounds().width / 2, textReady.getGlobalBounds().height / 2);
-	//textSkinSelect[0].setOrigin(textSkinSelect[0].getGlobalBounds().width / 2, textSkinSelect[0].getGlobalBounds().height / 2);
-
-	//textReady.setFillColor(sf::Color::White);
-	//textReady.setPosition(spReady.getPosition());
-
 	textSkinSelect[0].setPosition(spReady.getPosition());
 	textSkinSelect[1].setPosition(spReady.getPosition().x, spReady.getPosition().y - 550);
 	textSkinSelect[2].setPosition(spReady.getPosition().x, spReady.getPosition().y - 150);
+
+	timerAnim.restart();
 
 	transition = new Transition();
 }
@@ -143,6 +135,35 @@ void PlayerSelector::Update()
 	if (timerAlreadyUse.getElapsedTime().asSeconds() > 2.5)
 	{
 		isAlreadyUseDrawable = false;
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		if (listSelector[i]->isTaunt)
+		{
+			listSelector[i]->rectPlayer.top = 4 * listSelector[i]->rectPlayer.height;
+			std::cout << "is taunt" << std::endl;
+
+			if (timerAnim.getElapsedTime().asMilliseconds() > 60)
+			{
+				if (FrameIndex < 11)
+					FrameIndex++;
+				else
+				{
+					FrameIndex = 0;
+					listSelector[i]->rectPlayer.top = 0;
+					listSelector[i]->isTaunt = false;
+					std::cout << "is no longer taunt" << std::endl;
+				}
+
+				listSelector[i]->rectPlayer.left = FrameIndex * listSelector[i]->rectPlayer.width;
+				listSelector[i]->spPlayer.setTextureRect(listSelector[i]->rectPlayer);
+
+				timerAnim.restart();
+			}
+		}
+		/*else
+			FrameIndex = 0;*/
 	}
 
 	if (isGameStart)
@@ -216,7 +237,10 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				if (sf::Joystick::isButtonPressed(i, 0))
 				{
 					if (!listSelector[i]->isFadeDrawable)
+					{
 						listSelector[i]->isSkinValidate = true;
+						listSelector[i]->isTaunt = true;
+					}
 					else
 					{
 						timerAlreadyUse.restart();

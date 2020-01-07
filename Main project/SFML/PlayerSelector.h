@@ -40,7 +40,10 @@ private:
 	bool isPlayerReady = false;
 	bool isSkinValidate = false;
 	bool isFadeDrawable = false;
+	bool isTaunt = false;
 	int SkinSelector = 1;
+	int FrameIndex = 0;
+	sf::Clock timerAnim;
 
 	sf::Clock SelectionTimer;
 	sf::Clock timerSwitchSkin;

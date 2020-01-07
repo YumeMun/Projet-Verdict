@@ -131,38 +131,29 @@ void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _pl
 {
 	if (sizeCamera.x < 1920)
 	{
-		sizeCamera.x += (400 * 1.77) * _Elapsed;
-		sizeCamera.y += 400 * _Elapsed;
+		sizeCamera.x += (ZOOM_SPEED * 1.77) * _Elapsed;
+		sizeCamera.y += ZOOM_SPEED * _Elapsed;
 		camera.setSize(sizeCamera);
 
-		std::cout << "size X : " << sizeCamera.x << std::endl;
-		std::cout << "size Y : " << sizeCamera.y << std::endl;
-		//camera.zoom(zoom);
-		//X *= zoom;
+		//std::cout << "size X : " << sizeCamera.x << std::endl;
+		//std::cout << "size Y : " << sizeCamera.y << std::endl;
 	}
 	else
 	{
-		std::cout << "zoooooooom" << std::endl;
 		sizeCamera.x = 1920;
 		sizeCamera.y = 1080;
 	}
 
-	if (centerCam.x < _player2->GetPos().x + (1920 / 2) - 150) //((1920/2)+620))
+	if (centerCam.x < _player2->GetPos().x + (1920 / 2) - 200) //((1920/2)+620))
 	{
 		centerCam.x += (CAMERA_ZOOM_SPEED * (16 / 9)) * _Elapsed;
 		camera.setCenter(centerCam);
 	}
 	else
 	{
-		centerCam.x = _player2->GetPos().x + ((1920 / 2) - 150); //((1920 / 2)+620);
+		centerCam.x = _player2->GetPos().x + ((1920 / 2) - 200); //((1920 / 2)+620);
 		centerCam.y = 1080 / 2;
 		camera.setCenter(centerCam);
 		camera.setSize(sf::Vector2f(1920, 1080));
 	}
-
-	/*else if (centerCam.y < 1080/2)
-{
-	centerCam.y += (CAMERA_ZOOM_SPEED) * _Elapsed;
-	camera.setCenter(centerCam);
-}*/
 }
