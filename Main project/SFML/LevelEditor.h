@@ -69,7 +69,8 @@ private:
 	sf::Sprite spTouches;
 	sf::Sprite spToucheSelect;
 	sf::Sprite spTouchesZoom[4];
-
+	sf::Sound sound;
+	sf::Sound Valider;
 	sf::RectangleShape BandeauGaucheRect;
 
 	void AnimTiles();

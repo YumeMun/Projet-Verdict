@@ -210,6 +210,8 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 	{
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
+			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.play();
 			if (m_MenuChoice == 1)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
 			else if (m_MenuChoice == 2)

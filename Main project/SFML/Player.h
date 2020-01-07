@@ -70,9 +70,13 @@ private:
 	//Provisoire
 	sf::CircleShape ColliderCircle;
 
+	sf::Sound Collectible;
+	sf::Sound Alteration;
+	sf::Sound m_Boost;
+	sf::Sound m_ElecHit;
+
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;
-
 	sf::Sprite animElec;
 	sf::IntRect rectAnimElec;
 	sf::Clock timerAnimElec;

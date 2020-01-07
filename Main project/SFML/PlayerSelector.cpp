@@ -195,6 +195,8 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				{
 					if (sf::Joystick::getAxisPosition(i, sf::Joystick::X) > 66.f)
 					{
+						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.play();
 						if (listSelector[i]->SkinSelector != NB_SKIN+1)
 							listSelector[i]->SkinSelector += 1;
 						else
@@ -204,6 +206,8 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					}
 					else if (sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f)
 					{
+						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.play();
 						if (listSelector[i]->SkinSelector != 0)
 							listSelector[i]->SkinSelector -= 1;
 						else
@@ -215,6 +219,8 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 				if (sf::Joystick::isButtonPressed(i, 0))
 				{
+					Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+					Valider.play();
 					if (!listSelector[i]->isFadeDrawable)
 						listSelector[i]->isSkinValidate = true;
 					else

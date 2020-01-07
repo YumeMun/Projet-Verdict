@@ -21,6 +21,7 @@ private:
 	sf::Sprite spButton;
 	sf::Sprite spLevelIcon[3];
 	sf::Sound sound;
+	sf::Sound Valider;
 	sf::Sound retour;
 	sf::Text LevelNumero[3];
 

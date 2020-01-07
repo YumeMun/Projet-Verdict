@@ -108,6 +108,8 @@ void SizeEditor::Update()
 
 	if (sf::Joystick::isButtonPressed(0, 0) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 	{
+		Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+		Valider.play();
 		if (LevelSelected == 1)
 		{
 			GameManager::Instance()->m_ActualScene = new LevelEditor(600, 17, "", false);

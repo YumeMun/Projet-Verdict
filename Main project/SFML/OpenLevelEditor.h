@@ -23,6 +23,7 @@ private:
 	bool RightPressed = false;
 	sf::Text m_Level;
 	sf::Sound sound;
+	sf::Sound Valider;
 	sf::Sound retour;
 	sf::Sprite spBackground;
 	sf::Sprite spButton;

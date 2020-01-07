@@ -122,6 +122,8 @@ void LevelSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			if (m_MenuChoice != 1)
 			{
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				m_MenuChoice = m_MenuChoice - 1;
 				LeftPressed = true;
 			}
@@ -132,6 +134,8 @@ void LevelSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			if (m_MenuChoice != FilesNumber)
 			{
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.play();
 				m_MenuChoice = m_MenuChoice + 1;
 				RightPressed = true;
 			}
@@ -140,6 +144,8 @@ void LevelSelector::EventManager(sf::Event p_pollingEvent)
 
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
+			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.play();
 			GameManager::Instance()->m_ActualScene = new PlayerSelector(LevelName[m_MenuChoice - 1]);
 		}
 		else if (sf::Joystick::isButtonPressed(0, 1))

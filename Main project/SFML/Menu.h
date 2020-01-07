@@ -20,7 +20,7 @@ private:
 	sf::Text m_Credits;
 	int m_MenuChoice = 1;
 	sf::Clock m_Clock;
-
+	sf::Sound Valider;
 	sf::Sound sound;
 	sf::Sprite spBackground;
 	sf::Sprite spButton[5];

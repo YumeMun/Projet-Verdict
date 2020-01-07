@@ -76,11 +76,6 @@ void ResourceManager::Load()
 
 	newSoundBuffer = new SoundBuffers();
 
-	if (newSoundBuffer->Create("Impact_Missile.ogg", "Impact Missile"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
 	if (newSoundBuffer->Create("Laser_Actif_Ver_2.ogg", "Laser Actif"))
 		_soundBuffers.push_back(newSoundBuffer);
 
@@ -133,6 +128,62 @@ void ResourceManager::Load()
 
 	if (newSoundBuffer->Create("Collecte_Objet.ogg", "Collecte Objet"))
 		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Voiture2.ogg", "Voiture"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Foule_Acclame_Debut.ogg", "Foule acclame debut"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Foule_Acclame.ogg", "Foule acclame"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("ScoreEnMoins.ogg", "ScoreEnMoins"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Mort_Joueur_Hors_Ecran_et_Chute.ogg", "Mort Hors Ecran"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Score.ogg", "ScoreEnPlus"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Victoire_3.ogg", "Victoire"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Impact_Missile_3.ogg.ogg", "Impact Missile"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Iddle_Bumper.ogg", "IddleBumper"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Valider_1.ogg", "Valider"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Test_Invincibilite_2.ogg", "Invincibilite"))
+		_soundBuffers.push_back(newSoundBuffer);
+
 	newFont = new Fonts();
 
 	if (newFont->Create("arial.ttf", "arial"))

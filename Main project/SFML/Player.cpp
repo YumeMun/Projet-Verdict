@@ -237,6 +237,10 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit.y) == 11 && Boost == false)
 		{
+			m_Boost.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Boost"));
+			m_Boost.setVolume(25);
+			m_Boost.play();
+
 			Boost = true;
 			BoostClock.restart();
 		}
@@ -366,6 +370,16 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 
 		if (_Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit.x, GetPos().y) == 28)
 		{
+			if (isCollideCE == false)
+			{
+				/*Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+				Alteration.setVolume(50);
+				Alteration.play();*/
+
+				m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
+				m_ElecHit.play();
+			}
+
 			timerTrapFactor.restart();
 			isCollideCE = true;
 			SetHitLazer();
@@ -572,6 +586,9 @@ bool Player::CollectibleCollide(Map* _Map)
 
 		if (HasCollectible == false)
 		{
+			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
+			Collectible.play();
+
 			CollectID = e_Enum::SHOCKWAVE;/*rand() % 6 + 1;*/
 		}
 
@@ -614,6 +631,9 @@ void Player::SetCollectID(int _CollectID)
 
 void Player::SetHitTrap()
 {
+	Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+	Alteration.setVolume(25);
+	Alteration.play();
 	if (timerTrapFactor.getElapsedTime().asSeconds() < 3)  //courbe active dans un delai de :3s
 	{
 		trapSpeedFactor = -(-(0.1 * trapHitCount) * ((-3) * log(trapHitCount)) - 3.5); // -3 = a (amplitude courbe en x),   3.5 = ymax quand x = 1

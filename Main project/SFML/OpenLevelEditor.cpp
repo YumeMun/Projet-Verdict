@@ -202,6 +202,8 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 
 				if (sf::Joystick::isButtonPressed(0, 0))
 				{
+					Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+					Valider.play();
 					GameManager::Instance()->m_ActualScene = new LevelEditor(0, 0, LevelName[m_MenuChoice + 1], true);
 				}
 				else if (sf::Joystick::isButtonPressed(0, 2))

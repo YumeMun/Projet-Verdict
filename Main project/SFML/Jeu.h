@@ -40,6 +40,12 @@ private:
 	int skinJ2;
 	sf::Sound sound;
 	sf::Sound Retour;
+	sf::Sound Valider;
+	sf::Sound Alteration;
+	sf::Sound m_Shockwave;
+	sf::Sound m_levitation;
+	sf::Sound m_magnet;
+
 	std::vector<Collects*> Collectibles;
 
 	bool isPlayerAnimStart = true;

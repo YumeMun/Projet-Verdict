@@ -61,7 +61,7 @@ void TimerStart::SetupRect()
 
 void TimerStart::SetupText()
 {
-	textCountdown.setFont(*ResourceManager::Instance()->GetFont("arial"));
+	textCountdown.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	textCountdown.setCharacterSize(400);
 	textCountdown.setString(std::to_string(numberCount));
 	textCountdown.setFillColor(sf::Color::Black);

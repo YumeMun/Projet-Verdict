@@ -65,6 +65,8 @@ void ChooseLevelEditor::Update()
 
 	if (sf::Joystick::isButtonPressed(0, 0) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 	{
+		Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+		Valider.play();
 		if (ChoiceSelected == 1)
 		{
 			GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPENLEVELEDITOR);

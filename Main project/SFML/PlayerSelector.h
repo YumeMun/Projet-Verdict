@@ -47,6 +47,8 @@ private:
 	class Transition* transition;
 	bool isGameStart = false;
 	sf::Sound Retour;
+	sf::Sound Valider;
+	sf::Sound sound;
 	sf::Sprite spBackground;
 
 	std::string LevelName;

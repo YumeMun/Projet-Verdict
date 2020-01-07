@@ -241,23 +241,40 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
 		{
+			m_Shockwave.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Onde de Choc"));
+			m_Shockwave.play();
+
 			Shockwave* newCollect = new Shockwave(1, Player1->GetPos());
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
+
 			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1, Player1->GetPos()));
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::LEVITATION)
 		{
+			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
+			m_levitation.play();
+
 			Player1->InvincibleTime.restart();
 			Player1->Invincible = true;
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
+
+			m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
+			m_magnet.play();
+
 			if (Player2->GetCollectID() != 0)
 			{
 				Player1->SetCollectID(Player2->GetCollectID());
@@ -282,23 +299,37 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
 		{
+			m_Shockwave.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Onde de Choc"));
+			m_Shockwave.play();
+
 			Shockwave* newCollect = new Shockwave(2, Player2->GetPos());
 			Collectibles.push_back(newCollect);
 			Player2->SetCollectID(0);
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(25);
+			Alteration.play();
+
 			Oilflake* newCollect = new Oilflake(2, Player2->GetPos());
 			Collectibles.push_back(newCollect);
 			Player2->SetCollectID(0);
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::LEVITATION)
 		{
+			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
+			m_levitation.play();
+
 			Player2->InvincibleTime.restart();
 			Player2->Invincible = true;
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(25);
+			Alteration.play();
+
 			if (Player1->GetCollectID() != 0)
 			{
 				Player2->SetCollectID(Player1->GetCollectID());
@@ -388,8 +419,8 @@ void Jeu::MenuIG(int ID)
 
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
-				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
-				Retour.play();
+				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
 					MenuIG_Activated = false;
@@ -449,8 +480,8 @@ void Jeu::MenuIG(int ID)
 
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
-				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
-				Retour.play();
+				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, skinJ1, skinJ2);
@@ -505,8 +536,8 @@ void Jeu::MenuIG(int ID)
 
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
-				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
-				Retour.play();
+				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
 					GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);

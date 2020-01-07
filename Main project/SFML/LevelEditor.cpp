@@ -226,12 +226,22 @@ void LevelEditor::Update()
 		}
 
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 50)
+		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			SelectionPopUp = 2;
+		}
 		else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
+		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			SelectionPopUp = 1;
+		}
 
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
+			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.play();
 			if (SelectionPopUp == 1)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
 			else if (SelectionPopUp == 2)
@@ -258,12 +268,22 @@ void LevelEditor::Update()
 		}
 
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 50)
+		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			SelectionPopUp = 2;
+		}
 		else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
+		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			SelectionPopUp = 1;
+		}
 
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
+			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.play();
 			if (SelectionPopUp == 1)
 			{
 				for (int y = 0; y < Size_Y; y++)
@@ -300,12 +320,22 @@ void LevelEditor::Update()
 		}
 
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) >= 50)
+		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			SelectionPopUp = 2;
+		}
 		else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
+		{
+			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.play();
 			SelectionPopUp = 1;
+		}
 
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
+			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.play();
 			if (SelectionPopUp == 1)
 			{
 				SaveIt();
@@ -325,6 +355,8 @@ void LevelEditor::Update()
 
 		if (sf::Joystick::isButtonPressed(0, 0) || sf::Joystick::isButtonPressed(0, 1))
 		{
+			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.play();
 			PopUpActivated = 0;
 			SelectionTimer.restart();
 		}
