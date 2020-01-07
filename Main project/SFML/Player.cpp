@@ -105,6 +105,8 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
 		Alive = false;
+
+		scoreFall += 50;
 	}
 	else if (Alive == false && _Pos.x >= GetPos().x)
 		Alive = true;
@@ -370,6 +372,8 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 
 				else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 19)
 					_Map->SetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y, 37);
+
+				scoreHitTrap += 30;
 
 				timerTrapFactor.restart();
 				SetHitTrap();

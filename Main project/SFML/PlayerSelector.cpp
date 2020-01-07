@@ -51,6 +51,9 @@ void PlayerSelector::Setup()
 		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
 		//newSelector->spArrow[1].setOrigin(spArrow[1].getGlobalBounds().width / 2, spArrow[1].getGlobalBounds().height / 2);
 
+		newSelector->spCadre.setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
+		newSelector->spCadre.setPosition(1920 / 2 + 150, 1080 / 2 - 150 );
+
 		newSelector->timerSwitchSkin.restart();
 
 		listSelector.push_back(newSelector);
@@ -81,7 +84,7 @@ void PlayerSelector::Setup()
 	spReady.setOrigin(spReady.getGlobalBounds().width / 2, spReady.getGlobalBounds().height / 2);
 	spReady.setScale(sf::Vector2f(1.5, 1.5));
 
-	strSkinSelect[0] = "Lancer le verdict (lol)";
+	strSkinSelect[0] = "Lancer la course";
 	strSkinSelect[1] = "Choisissez votre vehicule";
 	strSkinSelect[2] = "Cette couleur est déjà prise";
 
@@ -214,7 +217,9 @@ void PlayerSelector::Display()
 	{
 		m_actualWindow->draw(listSelector[i]->player);
 		//m_actualWindow->draw(listSelector[i]->spBc);
+		m_actualWindow->draw(listSelector[i]->spCadre);
 		m_actualWindow->draw(listSelector[i]->spPlayer);
+
 
 		if (listSelector[i]->isFadeDrawable)
 			m_actualWindow->draw(listSelector[i]->spFader);

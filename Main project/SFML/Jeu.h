@@ -9,6 +9,7 @@
 #include "Rocket.h"
 #include "Bumper.h"
 #include "PlayerSelector.h"
+#include "Level_Finished.h"
 
 class Jeu :public Scene
 {
@@ -23,6 +24,7 @@ private:
 	Player* Player1, * Player2;
 	class Transition* transition;
 	class TimerStart* timerStart;
+	class Level_Finished* scoreScreen;
 
 	//Missile* missile;
 	//Collects* collects;

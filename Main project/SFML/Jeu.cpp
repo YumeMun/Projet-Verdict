@@ -32,6 +32,7 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
 	timerStart = new TimerStart();
+	scoreScreen = new Level_Finished();
 
 	for (int i = 0; i < 6; i++)
 	{
@@ -91,9 +92,9 @@ void Jeu::Update()
 
 				if (Player1->GetPos().x > Player2->GetPos().x)
 				{
-					if (Player1->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player1->IsAlive() == true)
+					if (Player1->PlayerFirstTimer.getElapsedTime().asMilliseconds() > 500 && Player1->IsAlive() == true)
 					{
-						Player1->Score++;
+						Player1->Score += 3;
 						Player1->PlayerFirstTimer.restart();
 					}
 
@@ -104,7 +105,7 @@ void Jeu::Update()
 				{
 					if (Player2->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player2->IsAlive() == true)
 					{
-						Player2->Score++;
+						Player2->Score += 3;
 						Player2->PlayerFirstTimer.restart();
 					}
 					spFirstOrSecond[0].setPosition(1400, 70);
@@ -144,8 +145,20 @@ void Jeu::Update()
 
 		if (Player1->Hasfinished == false && Player2->Hasfinished == false)
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-		else if (Player1->Hasfinished == true || Player2->Hasfinished == true)
+		else if (Player1->Hasfinished == true || Player2->Hasfinished == false)
+		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
+			Player1->scoreIsArrivedFirst = 200;
+			Player2->scoreIsArrivedFirst = 0;
+		}
+		else if (Player1->Hasfinished == false || Player2->Hasfinished == true)
+		{
+			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
+			Player2->scoreIsArrivedFirst = 200;
+			Player1->scoreIsArrivedFirst = 0;
+		}
+		/*else if (Player1->Hasfinished == true || Player2->Hasfinished == true)
+			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);*/
 
 
 
@@ -159,6 +172,7 @@ void Jeu::Update()
 			{
 				transition->ResetTransition();
 				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score);
+				scoreScreen->GetScoreValue(Player1, Player2);
 			}
 		}
 	}

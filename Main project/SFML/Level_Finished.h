@@ -12,12 +12,22 @@ public:
 	virtual void Display();
 	virtual void EventManager(sf::Event p_pollingEvent);
 
+	void GetScoreValue(class Player* _player1, class Player* _player2);
+
 private:
 	int J1Score;
 	int J2Score;
 
 	sf::Text WinText;
 	sf::Text ScoreText[2];
+
+	sf::Sprite spPodium[2];
+	sf::Vector2f posElement;
+
+	float scoreTimeFirst[2];
+	float scoreIsArrivedFirst[2];
+	float scoreFall[2];
+	float scoreHitTrap[2];
 
 	class Transition* transition;
 };

@@ -30,7 +30,7 @@ void TimerStart::SetupRect()
 	{
 		shape[i].setPointCount(4);
 		shape[i].setPoint(0, { (1920 / 2), (1080 / 2) });
-		shape[i].setFillColor(sf::Color(122, 122, 122, 122));
+		shape[i].setFillColor(sf::Color(122, 122, 122, 180));
 	}
 
 	shape[0].setPoint(1, { (1920 / 2), 0 }); //point qui bouge en x puis en y
