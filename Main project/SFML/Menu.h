@@ -21,6 +21,7 @@ private:
 	int m_MenuChoice = 1;
 	sf::Clock m_Clock;
 
+	sf::Sound sound;
 	sf::Sprite spBackground;
 	sf::Sprite spButton[5];
 	sf::Sprite spFlèche;

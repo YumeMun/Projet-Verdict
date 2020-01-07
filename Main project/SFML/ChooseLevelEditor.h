@@ -14,7 +14,8 @@ public:
 private:
 	int ChoiceSelected;
 	sf::Clock SelectionTimer;
-
+	sf::Sound sound;
+	sf::Sound retour;
 	sf::Sprite spChoiceIcon[2];
 	sf::Text ChoiceText[2];
 
