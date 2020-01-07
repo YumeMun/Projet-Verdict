@@ -25,6 +25,17 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score)
 		ScoreText[i].setCharacterSize(40);
 		ScoreText[i].setFillColor(sf::Color::White);
 	}
+
+	posElement = { 1920 / 2, 1080 / 2 };
+
+	for (int i = 0; i < 2; i++)
+	{
+		spPodium[i].setTexture(*ResourceManager::Instance()->GetTexture("RT")); //sample
+	}
+
+	spPodium[0].setPosition(posElement.x - 200, posElement.y);
+	spPodium[0].setPosition(posElement.x + 200, posElement.y + 300);
+
 }
 
 Level_Finished::~Level_Finished()
@@ -84,8 +95,38 @@ void Level_Finished::Display()
 	{
 		transition->DrawTransition();
 	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		m_actualWindow->draw(spPodium[i]);
+	}
 }
 
 void Level_Finished::EventManager(sf::Event p_pollingEvent)
 {
+}
+
+void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
+{
+	scoreTimeFirst[0] = _player1->Score;
+	scoreTimeFirst[1] = _player2->Score;
+
+	scoreIsArrivedFirst[0] = _player1->scoreIsArrivedFirst;
+	scoreIsArrivedFirst[1] = _player2->scoreIsArrivedFirst;
+
+	scoreHitTrap[0] = _player1->scoreHitTrap;
+	scoreHitTrap[1] = _player2->scoreHitTrap;
+
+	scoreFall[0] = _player1->scoreFall;
+	scoreFall[1] = _player2->scoreFall;
+
+	std::cout << "score temps passé 1er j1 :" << scoreTimeFirst[0] << std::endl;
+	std::cout << "score arrivé 1er j1 :" << scoreIsArrivedFirst[0] << std::endl;
+	std::cout << "score hit pieges j1 :" << scoreHitTrap[0] << std::endl;
+	std::cout << "score chutes j1 :" << scoreFall[0] << std::endl;
+
+	std::cout << "score temps passé 1er j2 :" << scoreTimeFirst[1] << std::endl;
+	std::cout << "score arrivé 1er j2 :" << scoreIsArrivedFirst[1] << std::endl;
+	std::cout << "score hit pieges j2 :" << scoreHitTrap[1] << std::endl;
+	std::cout << "score chutes j2 :" << scoreFall[1] << std::endl;
 }

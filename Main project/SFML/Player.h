@@ -22,7 +22,12 @@ public:
 
 	bool Hasfinished;
 	sf::Clock PlayerFirstTimer;
-	int Score;
+	int Score = 0;
+
+	float scoreTimeFirst = 0;
+	float scoreIsArrivedFirst = 0;
+	float scoreFall = 0;
+	float scoreHitTrap = 0;
 
 	//void MissileCollide();
 
