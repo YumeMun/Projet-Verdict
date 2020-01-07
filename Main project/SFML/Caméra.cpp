@@ -140,42 +140,34 @@ void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _pl
 	}
 	else
 	{
-<<<<<<< HEAD
 		sizeCamera.x = 1920;
 		sizeCamera.y = 1080;
 	}
 
 	if (centerCam.x < _player2->GetPos().x + (1920 / 2) - 200) //((1920/2)+620))
-=======
+	{
 		std::cout << "zoooooooom" << std::endl;
 		sizeCamera.x = 2880;
 		sizeCamera.y = 1620;
 	}
 
 	if (centerCam.x < _player2->GetPos().x + (2880 / 2) - 150) //((1920/2)+620))
->>>>>>> bf4752b76f84d4d3c791318108a32005b6d9c17a
 	{
 		centerCam.x += (CAMERA_ZOOM_SPEED * (16 / 9)) * _Elapsed;
 		camera.setCenter(centerCam);
 	}
 	else
 	{
-<<<<<<< HEAD
 		centerCam.x = _player2->GetPos().x + ((1920 / 2) - 200); //((1920 / 2)+620);
-=======
 		centerCam.x = _player2->GetPos().x + ((2880 / 2) - 150); //((1920 / 2)+620);
->>>>>>> bf4752b76f84d4d3c791318108a32005b6d9c17a
 		centerCam.y = 1080 / 2;
 		camera.setCenter(centerCam);
 		camera.setSize(sf::Vector2f(2880, 1620));
 	}
-<<<<<<< HEAD
-=======
 
 	if (centerCam.y > 270)
 	{
 		centerCam.y -= (CAMERA_ZOOM_SPEED)* _Elapsed;
 		camera.setCenter(centerCam);
 	}
->>>>>>> bf4752b76f84d4d3c791318108a32005b6d9c17a
 }

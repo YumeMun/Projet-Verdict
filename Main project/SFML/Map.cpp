@@ -30,10 +30,10 @@ Map::Map(std::string _LevelName)
 		Plan2[i].setScale(1.6, 1.6);
 	}
 
-	for (int i = 0; i < 8; i++)
+	/*for (int i = 0; i < 8; i++)
 	{
 		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Case" + std::to_string(i + 1)));
-	}
+	}*/
 
 	//for (int i = 0; i < 2; i++)
 	//{
