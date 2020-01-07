@@ -11,6 +11,7 @@ public:
 
 	void Update(float _Elapsed, class Caméra* _Cam);
 	void Display();
+	void FirstPlanDisplay();
 
 	int GetTile(int _X, int _Y);
 	void SetTile(int _X, int _Y, int _Tile);
@@ -34,7 +35,7 @@ private:
 	int SelectionBackground;
 	int Tableau[34][1200];
 	sf::Vector2f CasePos, CheckPos;
-	sf::Sprite Plan[4], Plan2[4], Plan1[2];
+	sf::Sprite Plan[5], Plan2[5], Plan1[2];
 
 	sf::Sprite spTile[30];
 
