@@ -142,15 +142,19 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
-		if (isLazerOn == 3)
+		isLazerActive = true;
+
+		/*if (isLazerOn == 3)
 		{
 			isLazerOn = 0;
 		}
 		else
-			isLazerOn = 1;
+			isLazerOn = 1;*/
 
 		timerLazer.restart();
 	}
+	else
+		isLazerActive = true;
 
 	/*for (int i = 0; i < 2; i++)
 	{
@@ -581,30 +585,42 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
-	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
+	if (isLazerActive)
 	{
-		if (isLazerOn == 0)
+		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
-			if (FrameIndexLaser < 14)
+			//if (isLazerOn == 0)
+			//{
+			if (FrameIndexLaser < 12)
 			{
 				FrameIndexLaser++;
 			}
 			else
-				FrameIndexLaser = 14;
-		}
-		else if (isLazerOn == 1)
-		{
-			if (FrameIndexLaser < 16)
-			{
-				FrameIndexLaser++;
-			}
-			else
+				isLazerOn = 1;
+
+			if (FrameIndexLaser >= 16)
 			{
 				FrameIndexLaser = 0;
-				isLazerOn = 3;
+				isLazerOn = 0;
+				isLazerActive = false;
+				timerLazer.restart();
 			}
-		}
 
-		AnimLaserClock.restart();
+			//}
+			//else if (isLazerOn == 1)
+			//{
+				/*if (FrameIndexLaser < 16)
+				{
+					FrameIndexLaser++;
+				}
+				else
+				{
+					FrameIndexLaser = 0;
+					isLazerOn = 3;
+				}*/
+			//}
+
+			AnimLaserClock.restart();
+		}
 	}
 }

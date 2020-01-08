@@ -443,17 +443,17 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 
 					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
 
-
-					if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
+					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
 						timerTrapFactor.restart();
 						isCollideCE = true;
 						SetHitLazer();
 					}
 					else
-						isCollideCE = false;
-
+						isCollideCE = false;*/
 				}
+				else
+					isCollideCE = false;
 			}
 		}
 	}
