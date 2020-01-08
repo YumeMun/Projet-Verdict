@@ -25,8 +25,6 @@ PlayerSelector::~PlayerSelector()
 void PlayerSelector::Setup()
 {
 
-
-
 	for (int i = 0; i < 2; i++)
 	{
 		PlayerSelector* newSelector = new PlayerSelector();
@@ -46,10 +44,9 @@ void PlayerSelector::Setup()
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache1"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
+
 		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
 		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
-		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
-		//newSelector->spArrow[1].setOrigin(spArrow[1].getGlobalBounds().width / 2, spArrow[1].getGlobalBounds().height / 2);
 
 		newSelector->spCadre[0].setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
 		newSelector->spCadre[0].setPosition(1920 / 2 + 150, 1080 / 2 - 150 );
@@ -384,8 +381,12 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
+<<<<<<< HEAD
 		}*/
 		////
+=======
+		}
+>>>>>>> 092590fbc42249673a80eeb8a8ce73a01b0d27ac
 	}
 }
 

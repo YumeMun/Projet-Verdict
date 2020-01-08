@@ -12,8 +12,12 @@ public:
 	virtual void Update();
 	virtual void Display();
 	virtual void EventManager(sf::Event p_pollingEvent);
+	
+	void LoadBackground();
 
 private:
+	int SelectionBackground = 0;
+
 	sf::Sprite spLevelSelection;
 	std::vector<sf::Sprite> m_LevelSelector;
 	int FilesNumber;
@@ -44,4 +48,6 @@ private:
 	sf::Clock SelectionTimer;
 
 	sf::Text NoFileText;
+
+	sf::Sprite spVignette;
 };

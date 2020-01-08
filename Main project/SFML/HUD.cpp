@@ -90,34 +90,45 @@ void HUD::SetProgressionPlayer(sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer
 
 void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 {
-	if (_Player1->GetCollectID() == 1)
-		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
-	else if (_Player1->GetCollectID() == 2)
-		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
-	else if (_Player1->GetCollectID() == 3)
-		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
-	else if (_Player1->GetCollectID() == 4)
-		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
-	else if (_Player1->GetCollectID() == 5)
-		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
-	else if (_Player1->GetCollectID() == 6)
-		spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
+	if (_Player1->HasCollectible == true && SetTexture[0] == false)
+	{
+		if (_Player1->GetCollectID() == 1)
+			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
+		else if (_Player1->GetCollectID() == 2)
+			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
+		else if (_Player1->GetCollectID() == 3)
+			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
+		else if (_Player1->GetCollectID() == 4)
+			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
+		else if (_Player1->GetCollectID() == 5)
+			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
+		else if (_Player1->GetCollectID() == 6)
+			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
 
-	if (_Player2->GetCollectID() == 1)
-		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
-	else if (_Player2->GetCollectID() == 2)
-		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
-	else if (_Player2->GetCollectID() == 3)
-		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
-	else if (_Player2->GetCollectID() == 4)
-		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
-	else if (_Player2->GetCollectID() == 5)
-		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
-	else if (_Player2->GetCollectID() == 6)
-		spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
+		spIconCollect[0].setOrigin(spIconCollect[0].getGlobalBounds().width / 2, spIconCollect[0].getGlobalBounds().height / 2);
+		spIconCollect[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		SetTexture[0] = true;
+	}
+	if (_Player2->HasCollectible == true && SetTexture[1] == false)
+	{
+		if (_Player2->GetCollectID() == 1)
+			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
+		else if (_Player2->GetCollectID() == 2)
+			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
+		else if (_Player2->GetCollectID() == 3)
+			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
+		else if (_Player2->GetCollectID() == 4)
+			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
+		else if (_Player2->GetCollectID() == 5)
+			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
+		else if (_Player2->GetCollectID() == 6)
+			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
 
-	spIconCollect[0].setOrigin(spIconCollect[0].getGlobalBounds().width / 2, spIconCollect[0].getGlobalBounds().height / 2);
-	spIconCollect[1].setOrigin(spIconCollect[1].getGlobalBounds().width / 2, spIconCollect[1].getGlobalBounds().height / 2);
+		spIconCollect[1].setOrigin(spIconCollect[1].getGlobalBounds().width / 2, spIconCollect[1].getGlobalBounds().height / 2);
+		spIconCollect[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+		SetTexture[1] = true;
+	}
+
 
 	if (_Player1->HasCollectible == true)
 	{
@@ -136,7 +147,6 @@ void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 		if (FrameIndex[0] == 15)
 		{
 			HudDisplay[0] = true;
-			spIconCollect[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
 			m_actualWindow->draw(spIconCollect[0]);
 
 			if (sf::Joystick::isButtonPressed(0, 1))
@@ -152,6 +162,7 @@ void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 			else if (FrameIndex[0] == 17)
 			{
 				FrameIndex[0] = 17;
+				SetTexture[0] = false;
 				HudDisplay[0] = false;
 			}
 
@@ -179,7 +190,6 @@ void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 		if (FrameIndex[1] == 15)
 		{
 			HudDisplay[1] = true;
-			spIconCollect[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
 			m_actualWindow->draw(spIconCollect[1]);
 
 			if (sf::Joystick::isButtonPressed(1, 1))
@@ -195,6 +205,7 @@ void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 			else if (FrameIndex[1] == 17)
 			{
 				FrameIndex[1] = 17;
+				SetTexture[1] = false;
 				HudDisplay[1] = false;
 			}
 
