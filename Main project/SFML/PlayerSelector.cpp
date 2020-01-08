@@ -221,6 +221,12 @@ void PlayerSelector::Update()
 	{
 		transition->Update();
 	}
+
+	if (isGameStart && transition->GetIsTransitionDone())
+	{
+		GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
+		isGameStart = false;
+	}
 }
 
 void PlayerSelector::Display()
@@ -347,11 +353,11 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				if (sf::Joystick::isButtonPressed(i, 7))
 					isGameStart = true;
 
-				if (isGameStart && transition->GetIsTransitionDone())
+				/*if (isGameStart && transition->GetIsTransitionDone())
 				{
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 					isGameStart = false;
-				}
+				}*/
 			}
 			else
 				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
@@ -374,11 +380,11 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			}
 		}
 
-		if (isGameStart && transition->GetIsTransitionDone())
+		/*if (isGameStart && transition->GetIsTransitionDone())
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
-		}
+		}*/
 		////
 	}
 }

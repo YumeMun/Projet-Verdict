@@ -103,6 +103,7 @@
     <ClCompile Include="ChooseLevelEditor.cpp">
       <Filter>Fichiers sources\Scenes\Editeur</Filter>
     </ClCompile>
+    <ClCompile Include="ActualSong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transition.h">
@@ -213,6 +214,7 @@
     <ClInclude Include="SaveEditor.h">
       <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
     </ClInclude>
+    <ClInclude Include="ActualSong.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Fichiers d%27en-tête">

@@ -206,6 +206,11 @@ void ResourceManager::Load()
 	if (newTexture->Create("cadre_skin.png", "cadre_skin"))
 		_textures.push_back(newTexture);
 
+	newTexture = new Textures();
+
+	if (newTexture->Create("bouton_petit_retour.png", "petit_bouton_retour"))
+		_textures.push_back(newTexture);
+
 	for (int i = 0; i < 10; i++)
 	{
 		newTexture = new Textures();
