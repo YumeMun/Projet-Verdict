@@ -86,19 +86,16 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < (_Map->GetSizeY() * 64) - 2 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
-<<<<<<< HEAD
 
 		if (Invincible == false)
 		{
 			Traps(_Map, _Cam);
 		}
-=======
 		CollectibleCollide(_Map);
 		LauchCollectible();
 
 		if (Invincible == false)
 			Traps(_Map, _Cam);
->>>>>>> 6a92175ab0e75833d4191c2c56a4734f656a0a06
 
 		if (isNumeroDisplay == false)
 		{
