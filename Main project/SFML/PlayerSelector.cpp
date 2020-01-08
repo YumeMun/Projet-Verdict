@@ -46,8 +46,8 @@ void PlayerSelector::Setup()
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache1"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
-		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
-		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche droite"));
+		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
+		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
 		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
 		//newSelector->spArrow[1].setOrigin(spArrow[1].getGlobalBounds().width / 2, spArrow[1].getGlobalBounds().height / 2);
 
@@ -82,10 +82,10 @@ void PlayerSelector::Setup()
 	listSelector[1]->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
 	listSelector[1]->spFader.setPosition(listSelector[1]->spBc.getPosition().x + 25, listSelector[1]->spBc.getPosition().y + 25);
 
-	listSelector[0]->spArrow[0].setPosition(listSelector[0]->spBc.getPosition().x - 65, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
-	listSelector[0]->spArrow[1].setPosition(listSelector[0]->spBc.getPosition().x + 435, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
-	listSelector[1]->spArrow[0].setPosition(listSelector[1]->spBc.getPosition().x - 65, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
-	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 435, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
+	listSelector[0]->spArrow[0].setPosition(listSelector[0]->spBc.getPosition().x, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
+	listSelector[0]->spArrow[1].setPosition(listSelector[0]->spBc.getPosition().x + 320, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
+	listSelector[1]->spArrow[0].setPosition(listSelector[1]->spBc.getPosition().x, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
+	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 320, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
 
 	spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 	spReady.setPosition((1920 / 2), 800);
@@ -197,18 +197,23 @@ void PlayerSelector::Update()
 
 		if (sf::Joystick::isButtonPressed(i, 4))
 		{
-			listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
+			//listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
+			listSelector[i]->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("LB Press"));
 			std::cout << "AAA" << std::endl;
 		}
 		else if (sf::Joystick::isButtonPressed(i, 5))
 		{
-			listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
+			//listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
+			listSelector[i]->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("RB Press"));
 			std::cout << "BBB" << std::endl;
 		}
 		else
 		{
 			listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.75, 0.75));
 			listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.75, 0.75));
+
+			listSelector[i]->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
+			listSelector[i]->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
 		}
 	}
 
@@ -319,33 +324,26 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					}
 				}
 			}
-			else
-			{
 
+			if (sf::Event::JoystickButtonPressed) 
+			{
 				if (sf::Joystick::isButtonPressed(i, 1))
 				{
-					listSelector[i]->isSkinValidate = false;
+					if (listSelector[i]->isSkinValidate)
+						listSelector[i]->isSkinValidate = false;
+					else
+					{
+						GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
+						Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+						Retour.play();
+					}
 				}
 			}
-
-			/*for (int i = 0; i < 2; i++)
-			{
-				if (listSelector[i]->isSkinValidate)
-				{
-					
-				}
-				else
-					
-			}*/
 
 			if (listSelector[0]->isSkinValidate && listSelector[1]->isSkinValidate)
 			{
 				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton sélectionné"));
 
-				/*if (sf::Joystick::isButtonPressed(i, 7))
-				{
-					GameManager::Instance()->LoadScene(e_Enum::JEU);
-				}*/
 				if (sf::Joystick::isButtonPressed(i, 7))
 					isGameStart = true;
 
@@ -358,13 +356,13 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			else
 				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 
-			if (sf::Joystick::isButtonPressed(0, 1))
+			/*if (sf::Joystick::isButtonPressed(0, 1))
 			{
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
 				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
 				Retour.play();
 			
-			}
+			}*/
 		}
 
 		///a retirer pour presentation
@@ -381,6 +379,10 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
 		}
+<<<<<<< HEAD
+=======
+		////
+>>>>>>> 772d0382c19577201163c1e9748dae211565bcc5
 	}
 }
 
