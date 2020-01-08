@@ -39,6 +39,7 @@ private:
 	sf::Clock AnimClock[2];
 	int FrameIndex[2];
 	bool HudDisplay[2];
+	bool SetTexture[2];
 
 	sf::Sprite spIconCollect[2];
 	

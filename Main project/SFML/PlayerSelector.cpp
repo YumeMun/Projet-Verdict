@@ -368,7 +368,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		}
 
 		///a retirer pour presentation
-		/*for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			if (sf::Joystick::isButtonPressed(i, 7))
 			{
@@ -380,8 +380,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
-		}*/
-		////
+		}
 	}
 }
 

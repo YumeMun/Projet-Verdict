@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include "ResourceManager.h"
 #include "dirent.h"
+#include <fstream>
 
 OpenLevelEditor::OpenLevelEditor()
 {
@@ -38,6 +39,12 @@ OpenLevelEditor::OpenLevelEditor()
 	NoFileText.setOrigin(NoFileText.getGlobalBounds().width / 2, NoFileText.getGlobalBounds().height / 2);
 	NoFileText.setPosition(960, 540);
 
+	spVignette.setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau1"));
+	spVignette.setOrigin(spVignette.getGlobalBounds().width / 2, spVignette.getGlobalBounds().height / 2);
+	spVignette.setPosition(960, 540);
+
+	LoadBackground();
+
 	Setup();
 }
 
@@ -59,6 +66,7 @@ void OpenLevelEditor::Update()
 
 			if (m_LevelSelector[m_MenuChoice - 1].getPosition().x >= 960)
 			{
+				LoadBackground();
 				m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
 				LevelNameText[m_MenuChoice + 1].setPosition(540, 120);
 				LeftPressed = false;
@@ -75,6 +83,7 @@ void OpenLevelEditor::Update()
 
 			if (m_LevelSelector[m_MenuChoice - 1].getPosition().x <= 960)
 			{
+				LoadBackground();
 				m_LevelSelector[m_MenuChoice - 1].setPosition(960, 540);
 				LevelNameText[m_MenuChoice + 1].setPosition(540, 120);
 				RightPressed = false;
@@ -103,6 +112,8 @@ void OpenLevelEditor::Display()
 
 		if (RightPressed == false && LeftPressed == false)
 		{
+			m_actualWindow->draw(spVignette);
+
 			for (int i = 0; i < 2; i++)
 			{
 				if (m_MenuChoice != FilesNumber)
@@ -152,7 +163,7 @@ void OpenLevelEditor::Setup()
 
 	spTouches.setTexture(*ResourceManager::Instance()->GetTexture("Touches sélection"));
 	spTouches.setOrigin(spTouches.getGlobalBounds().width / 2, spTouches.getGlobalBounds().height / 2);
-	spTouches.setPosition(720, 650);
+	spTouches.setPosition(960, 900);
 
 	int x = 0;
 	for (int i = 1; i <= FilesNumber; i++)
@@ -311,4 +322,28 @@ void OpenLevelEditor::PopUp()
 			GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPENLEVELEDITOR);
 		}
 	}
+}
+
+void OpenLevelEditor::LoadBackground()
+{
+	int Size_X = 0;
+	int Size_Y = 0;
+
+	std::ifstream LoadFile;
+
+	if (LevelName[m_MenuChoice - 1] == "Niveau1" || LevelName[m_MenuChoice - 1] == "Niveau2")
+		LoadFile.open("Ressources/Sauvegardes/0" + LevelName[m_MenuChoice - 1] + ".txt", std::ios_base::in);
+	else
+		LoadFile.open("Ressources/Sauvegardes/" + LevelName[m_MenuChoice - 1] + ".txt", std::ios_base::in);
+
+	LoadFile >> Size_X;
+	LoadFile >> Size_Y;
+	LoadFile >> SelectionBackground;
+
+	LoadFile.close();
+
+	if (SelectionBackground == 1)
+		spVignette.setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau1"));
+	else if (SelectionBackground == 2)
+		spVignette.setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau2"));
 }

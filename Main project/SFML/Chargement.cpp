@@ -88,13 +88,13 @@ void Chargement::Update()
 	else if (isLoaded == false)
 	{
 		// 24 is font + texture vectors final size
-		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 86) * LoadingBack.getSize().x, 30));
+		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 100) * LoadingBack.getSize().x, 30));
 	}
 }
 
 void Chargement::Display()
 {
-	m_actualWindow->clear(sf::Color{ 20, 20, 20, 255 });
+	m_actualWindow->clear(sf::Color{ 200, 119, 57, 255 });
 	m_actualWindow->draw(spBackground[1]);
 	m_actualWindow->draw(spBackground[0]);
 
