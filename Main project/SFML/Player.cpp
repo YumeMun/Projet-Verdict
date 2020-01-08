@@ -116,9 +116,9 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_Vector.y = 0;
 		Alive = false;
 
-<<<<<<< HEAD
+
 		scoreFall += 45 / FACTOR_DIVIDE;
-=======
+
 		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
 		m_engineoff.play();
 		
@@ -126,7 +126,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		m_death.play();
 
 		scoreFall += 50 / FACTOR_DIVIDE;
->>>>>>> 9c6c4858a74b0bd77970dbc3e5781de33d96712f
+
 	}
 	else if (Alive == false && _PosJ2.x >= GetPos().x)
 	{		Alive = true;
