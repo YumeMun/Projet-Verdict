@@ -10,6 +10,9 @@ Rocket::Rocket(int _ID, int _Dir, sf::Vector2f _Pos)
 	spRocket.setOrigin(spRocket.getGlobalBounds().width / 2, spRocket.getGlobalBounds().height / 2);
 	spRocket.setPosition(_Pos);
 
+	m_missile.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Missile Lancer"));
+	m_missile.play();
+
 	if (Direction == 0)
 		spRocket.setScale(1, 1);
 	else if (Direction == 1)
@@ -35,6 +38,16 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 	{
 		if (_Player2->GetSprite().getGlobalBounds().contains(spRocket.getPosition()) && _Player2->Invincible == false)
 		{
+			m_missile.stop();
+			m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
+			m_rocket.play();
+
+			m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
+			m_engineoff.play();
+
+			m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+			m_engineon.play();
+
 			Alive = false;
 			_Player2->Player_Movement.x = 0;
 		}
@@ -43,15 +56,33 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 	{
 		if (_Player1->GetSprite().getGlobalBounds().contains(spRocket.getPosition()) && _Player1->Invincible == false)
 		{
+			m_missile.stop();
+			m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
+			m_rocket.play();
+
+			m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
+			m_engineoff.play();
+
+			m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+			m_engineon.play();
+
 			Alive = false;
 			_Player1->Player_Movement.x = 0;
 		}
 	}
 
+<<<<<<< HEAD
+	if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) != 0)
+	{
+		m_missile.stop();
+		m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
+		m_rocket.play();
+=======
 	if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) > 0 && _Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) < 23)
 	{
 		if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) >= 17 && _Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) <= 19)
 			_Map->SetTile(spRocket.getPosition().x, spRocket.getPosition().y, 0);
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 
 		Alive = false;
 	}

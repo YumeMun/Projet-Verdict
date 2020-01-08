@@ -19,7 +19,7 @@ private:
 	sf::Clock AnimTime;
 
 	sf::Vector2f Bumper_Movement;
-
+	sf::Sound m_bumper;
 	sf::Sprite spBumper;
 };
 

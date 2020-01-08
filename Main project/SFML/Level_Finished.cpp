@@ -28,8 +28,8 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 
 	GetScoreValue(_player1, _player2);
 
-	posElement[0] = { (1920 / 2) - 200, 400 };
-	posElement[1] = { (1920 / 2) + 200, 400 };
+	posElement[0] = { (1920 / 2) - 200, 800 };
+	posElement[1] = { (1920 / 2) + 200, 800 };
 
 	spPlayer[0].setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinJ1)));
 	spPlayer[1].setTexture(*ResourceManager::Instance()->GetTexture("Player2_Colo" + std::to_string(_skinJ2)));
@@ -39,21 +39,23 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 	for (int i = 0; i < 2; i++)
 	{
 		spPodium[i].setTexture(*ResourceManager::Instance()->GetTexture("Bras Menu")); //sample
-		originElement = { spPodium[0].getGlobalBounds().width / 2,  spPodium[0].getGlobalBounds().top };
+		originElement = { spPodium[0].getGlobalBounds().width / 2,  0 };
 		spPodium[i].setPosition(posElement[i]);
 		spPodium[i].setOrigin(originElement);
 
 		spPlayer[i].setTextureRect(rectPlayer[i]);
+		spPlayer[i].setOrigin(spPlayer[i].getGlobalBounds().width / 2, spPlayer[i].getGlobalBounds().height);
 		spPlayer[i].setPosition(spPodium[i].getPosition());
 		scoreFinal[i] = 0;
 	}
 
 	for (int i = 0; i < 4; i++)
-	{
 		isScoreStep[i] = false;
-	}
+
+	isScoreStep[0] = true;
 
 	countdownStart.restart();
+	timerPause.restart();
 }
 
 Level_Finished::~Level_Finished()
@@ -68,9 +70,12 @@ void Level_Finished::Update()
 	}
 
 	if (countdownStart.getElapsedTime().asSeconds() > 2)
-		isScoreStep[0] = true;
-	if (isScoreStep[0])
+		isUpdatable = true;
+	if (isUpdatable)
 		UpdatePodium();
+
+	ScoreText[0].setPosition(200, 700);
+	ScoreText[1].setPosition(1920 - 200, 700);
 
 	if (J1Score > J2Score)
 	{
@@ -91,10 +96,10 @@ void Level_Finished::Update()
 		WinText.setPosition(960, 200);
 	}
 
-	ScoreText[0].setString("Score du joueur 1 : " + std::to_string(J1Score));
+	ScoreText[0].setString("Score joueur 1 : " + std::to_string(-scoreFinal[0]));
 	ScoreText[0].setOrigin(ScoreText[0].getGlobalBounds().width / 2, 0);
 
-	ScoreText[1].setString("Score du joueur 2 : " + std::to_string(J2Score));
+	ScoreText[1].setString("Score joueur 2 : " + std::to_string(-scoreFinal[1]));
 	ScoreText[1].setOrigin(ScoreText[1].getGlobalBounds().width / 2, 0);
 
 	if (sf::Joystick::isButtonPressed(0, 1))
@@ -106,24 +111,20 @@ void Level_Finished::Update()
 
 void Level_Finished::Display()
 {
-	m_actualWindow->draw(WinText);
+	if(isScoreEnd)
+		m_actualWindow->draw(WinText);
 
 	for (int i = 0; i < 2; i++)
-	{
-		ScoreText[i].setPosition(700 + i * 550, 540);
 		m_actualWindow->draw(ScoreText[i]);
-	}
-
-	if (!transition->GetIsTransitionBackDone())
-	{
-		transition->DrawTransition();
-	}
 
 	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(spPodium[i]);
 		m_actualWindow->draw(spPlayer[i]);
 	}
+
+	if (!transition->GetIsTransitionBackDone())
+		transition->DrawTransition();
 }
 
 void Level_Finished::EventManager(sf::Event p_pollingEvent)
@@ -132,17 +133,17 @@ void Level_Finished::EventManager(sf::Event p_pollingEvent)
 
 void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
 {
-	scoreTimeFirst[0] = _player1->Score;
-	scoreTimeFirst[1] = _player2->Score;
+	scoreTimeFirst[0] = _player1->Score + 300;
+	scoreTimeFirst[1] = _player2->Score + 100;
 
 	scoreIsArrivedFirst[0] = _player1->scoreIsArrivedFirst;
 	scoreIsArrivedFirst[1] = _player2->scoreIsArrivedFirst;
 
-	scoreHitTrap[0] = _player1->scoreHitTrap;
-	scoreHitTrap[1] = _player2->scoreHitTrap;
+	scoreHitTrap[0] = _player1->scoreHitTrap + 100;
+	scoreHitTrap[1] = _player2->scoreHitTrap + 50;
 
-	scoreFall[0] = _player1->scoreFall;
-	scoreFall[1] = _player2->scoreFall;
+	scoreFall[0] = _player1->scoreFall + 40;
+	scoreFall[1] = _player2->scoreFall + 60;
 
 	std::cout << "score temps passe 1er j1 :" << scoreTimeFirst[0] << std::endl;
 	std::cout << "score arrive 1er j1 :" << scoreIsArrivedFirst[0] << std::endl;
@@ -165,68 +166,113 @@ void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
 
 void Level_Finished::UpdatePodium()
 {
-	if (isScoreStep[0])
+	if (timerPause.getElapsedTime().asMilliseconds() > 800)
 	{
-		for (int i = 0; i < 2; i++)
+		if (isScoreStep[0])
 		{
-			if (scoreTimeFirst[i] > 0)
+			if (scoreTimeFirst[0] <= 0 && scoreTimeFirst[1] <= 0)
 			{
-				scoreFinal[i] += SPEED_PODIUM;
-				scoreTimeFirst[i] -= SPEED_PODIUM;
+				isScoreStep[0] = false;
+				isScoreStep[1] = true;
+				timerPause.restart();
+			}
+			else
+			{
+				std::cout << "test 0 " << std::endl;
+				for (int i = 0; i < 2; i++)
+				{
+					if (scoreTimeFirst[i] > 0)
+					{
+						scoreFinal[i] += SPEED_PODIUM;
+						scoreTimeFirst[i] -= SPEED_PODIUM;
+					}
+				}
 			}
 		}
-		if (scoreTimeFirst[0] <= 0 && scoreTimeFirst[1] <= 0)
-			isScoreStep[1] = true;
-	}
-	else if (isScoreStep[1])
-	{
-		for (int i = 0; i < 2; i++)
+	
+		if (isScoreStep[1])
 		{
-			if (scoreIsArrivedFirst[i] > 0)
+			if (scoreIsArrivedFirst[0] <= 0 && scoreIsArrivedFirst[1] <= 0)
 			{
-				scoreFinal[i] += SPEED_PODIUM;
-				scoreIsArrivedFirst[i] -= SPEED_PODIUM;
-				std::cout << "test 1" << scoreFinal[0] << std::endl;
+				isScoreStep[2] = true;
+				isScoreStep[1] = false;
+				timerPause.restart();
+			}
+			else
+			{
+				std::cout << "test 1" << std::endl;
+				for (int i = 0; i < 2; i++)
+				{
+					if (scoreIsArrivedFirst[i] > 0)
+					{
+						scoreFinal[i] += SPEED_PODIUM;
+						scoreIsArrivedFirst[i] -= SPEED_PODIUM;
+					}
+				}
 			}
 		}
-		if (scoreIsArrivedFirst[0] <= 0 && scoreIsArrivedFirst[1] <= 0)
-			isScoreStep[2] = true;
-	}
-	else if (isScoreStep[2])
-	{
-		for (int i = 0; i < 2; i++)
-		{
-			if (scoreFall[i] > 0)
-			{
-				scoreFinal[i] -= SPEED_PODIUM;
-				scoreFall[i] -= SPEED_PODIUM;
-				std::cout << "test 2" << scoreFinal[0] << std::endl;
-			}
-		}
-		if (scoreFall[0] <= 0 && scoreFall[1] <= 0)
-			isScoreStep[3] = true;
-	}
-	else if (isScoreStep[3])
-	{
-		for (int i = 0; i < 2; i++)
-		{
-			if (scoreHitTrap[i] > 0)
-			{
-				scoreFinal[i] -= SPEED_PODIUM;
-				scoreFall[i] -= SPEED_PODIUM;
-			}
-		}
-		/*if (scoreHitTrap[0] <= 0 && scoreHitTrap[1] <= 0)
-		{
 
-		}*/
+		if (isScoreStep[2])
+		{
+			if (scoreFall[0] <= 0 && scoreFall[1] <= 0)
+			{
+				isScoreStep[3] = true;
+				isScoreStep[2] = false;
+				timerPause.restart();
+			}
+			else
+			{
+				std::cout << "test 2" << std::endl;
+				for (int i = 0; i < 2; i++)
+				{
+					if (scoreFall[i] > 0)
+					{
+						scoreFinal[i] -= SPEED_PODIUM;
+						scoreFall[i] -= SPEED_PODIUM;
+
+					}
+				}
+			}
+		}
+
+		if (!isScoreEnd)
+		{
+			if (isScoreStep[3])
+			{
+				if (scoreHitTrap[0] <= 0 && scoreHitTrap[1] <= 0)
+				{
+					isScoreEnd = true;
+					isScoreStep[3] = false;
+					timerPause.restart();
+				}
+				else
+				{
+					std::cout << "test 3" << scoreFinal[0] << std::endl;
+					for (int i = 0; i < 2; i++)
+					{
+						if (scoreHitTrap[i] > 0)
+						{
+							scoreFinal[i] -= SPEED_PODIUM;
+							scoreHitTrap[i] -= SPEED_PODIUM;
+
+						}
+					}
+				}
+			}
+		}
+	
+
+	if (!isScoreEnd)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			posElement[i].y = -scoreFinal[i];
+
+			spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 800));
+			spPlayer[i].setPosition(spPodium[i].getPosition());
+			std::cout << i << " : pos : " << spPodium[i].getPosition().y << std::endl;
+		}
 	}
 
-	for (int i = 0; i < 2; i++)
-	{
-		posElement[i].y = -scoreFinal[i];
-
-		spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 400 /*- scoreFinal[i]*/));
-		spPlayer[i].setPosition(spPodium[i].getPosition());
 	}
 }

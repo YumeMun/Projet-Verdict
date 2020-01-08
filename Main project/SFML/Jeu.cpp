@@ -24,6 +24,10 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 	//collects = new Collects();
 	///missile = new Missile();
 
+	voiture.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Voiture"));
+	voiture.play();
+	voiture.setLoop(true);
+
 	Player1 = new Player(1, sf::Vector2f(600, 800), map, skinJ1);
 	Player2 = new Player(2, sf::Vector2f(200, 800), map, skinJ2);
 
@@ -167,7 +171,7 @@ void Jeu::Update()
 		else if (Player1->Hasfinished == false || Player2->Hasfinished == true)
 		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-			Player2->scoreIsArrivedFirst = 200/FACTOR_DIVIDE;
+			Player2->scoreIsArrivedFirst = 200 / FACTOR_DIVIDE;
 			Player1->scoreIsArrivedFirst = 0;
 		}
 		/*else if (Player1->Hasfinished == true || Player2->Hasfinished == true)
@@ -183,6 +187,7 @@ void Jeu::Update()
 
 			if (transition->GetIsTransitionDone())
 			{
+				voiture.stop();
 				transition->ResetTransition();
 				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score, Player1, Player2, skinJ1, skinJ2);
 			}
@@ -281,11 +286,15 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
+<<<<<<< HEAD
+			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1, Player1->GetPos()));
+=======
 			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
 			Alteration.setVolume(50);
 			Alteration.play();
 
 			Oilflake* newCollect = new Oilflake(1, Player1->GetPos());
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}
@@ -302,16 +311,20 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
-			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-			Alteration.setVolume(50);
-			Alteration.play();
-
-			m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
-			m_magnet.play();
 
 			if (Player2->GetCollectID() != 0)
 			{
+<<<<<<< HEAD
+				Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+				Alteration.setVolume(50);
+				Alteration.play();
+
+				m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
+				m_magnet.play();
+
+=======
 				Player1->HasCollectible = false;
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 				Player1->SetCollectID(Player2->GetCollectID());
 				Player2->SetCollectID(0);
 			}
@@ -366,13 +379,20 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SWAP)
 		{
-			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-			Alteration.setVolume(25);
-			Alteration.play();
 
 			if (Player1->GetCollectID() != 0)
 			{
+<<<<<<< HEAD
+				Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+				Alteration.setVolume(25);
+				Alteration.play();
+
+				m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
+				m_magnet.play();
+
+=======
 				Player2->HasCollectible = false;
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 				Player2->SetCollectID(Player1->GetCollectID());
 				Player1->SetCollectID(0);
 			}
@@ -415,13 +435,15 @@ float Jeu::GetElapsed()
 void Jeu::MenuIG(int ID)
 {
 	if (ID == 0)
-	{
+	{	
+		voiture.stop();
 		spMenuIG.setTexture(*ResourceManager::Instance()->GetTexture("MenuIG J1"));
 		spMenuIG.setOrigin(spMenuIG.getGlobalBounds().width / 2, spMenuIG.getGlobalBounds().height / 2);
 		spMenuIG.setPosition(960, 540);
 	}
 	else if (ID == 1)
-	{
+	{	
+		voiture.stop();
 		spMenuIG.setTexture(*ResourceManager::Instance()->GetTexture("MenuIG J1"));
 		spMenuIG.setOrigin(spMenuIG.getGlobalBounds().width / 2, spMenuIG.getGlobalBounds().height / 2);
 		spMenuIG.setPosition(960, 540);
@@ -477,6 +499,7 @@ void Jeu::MenuIG(int ID)
 				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
+					voiture.play();
 					MenuIG_Activated = false;
 					Clock.restart();
 				}
@@ -543,7 +566,7 @@ void Jeu::MenuIG(int ID)
 				}
 				else if (SelectionMenuIG == 2)
 				{
-					
+
 					StateMenuIG = 0;
 					SelectionMenuIG = 1;
 					Clock.restart();
@@ -594,6 +617,7 @@ void Jeu::MenuIG(int ID)
 				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
+					voiture.stop();
 					GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 					Clock.restart();
 				}

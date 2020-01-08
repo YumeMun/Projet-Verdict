@@ -116,10 +116,28 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_Vector.y = 0;
 		Alive = false;
 
-		//scoreFall += 50 / FACTOR_DIVIDE;
+		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
+		m_engineoff.play();
+		
+		m_death.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Mort Hors Ecran"));
+		m_death.play();
+
+		scoreFall += 50 / FACTOR_DIVIDE;
 	}
+<<<<<<< HEAD
+	else if (Alive == false && _Pos.x >= GetPos().x)
+	{
+=======
 	else if (Alive == false && _PosJ2.x >= GetPos().x)
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 		Alive = true;
+
+		m_respawn.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Respawn"));
+		m_respawn.play();
+		
+		m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+		m_engineon.play();
+	}
 
 	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
 	{
@@ -132,6 +150,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
 		DisplayNumeroTimer.restart();
+
 		Alive = false;
 	}
 
@@ -446,24 +465,38 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			{
 				if (_Map->GetTile(GetPos().x + Player_ColliderLimit[i].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[i].x, GetPos().y) == 28)
 				{
-					if (isCollideCE == false)
-					{
-						/*Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-						Alteration.setVolume(50);
-						Alteration.play();*/
-
-						m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
-						m_ElecHit.play();
-					}
-
 					timerTrapFactor.restart();
 					isCollideCE = true;
+
 					SetHitLazer();
 
 					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
 
 					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
+						if (Test == true)
+						{
+							if (m_Clock2.getElapsedTime().asSeconds() >= 1)
+							{
+								Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+								Alteration.setVolume(50);
+								Alteration.play();
+								m_Clock2.restart();
+							}
+
+							m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
+							m_ElecHit.setVolume(50);
+							m_ElecHit.play();
+
+							Test = false;
+						}
+
+						if (m_Clock.getElapsedTime().asSeconds() >= 1)
+						{
+							Test = true;
+							m_Clock.restart();
+						}
+
 						timerTrapFactor.restart();
 						isCollideCE = true;
 						SetHitLazer();
@@ -677,7 +710,11 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
 
+<<<<<<< HEAD
+			CollectID = e_Enum::ROCKET;
+=======
 			//CollectID = e_Enum::LEVITATION;/*rand() % 6 + 1;*/
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 
 			RandomCollect = rand() % 100 + 1;
 
