@@ -31,7 +31,7 @@ public:
 
 	//void MissileCollide();
 
-	bool CollectibleCollide(class Map* _Map);
+	bool CollectibleCollide(class Map* _Map, sf::Vector2f _PosJ2);
 	bool CollectibleUsed();
 	bool HasCollectible, Oiled = false, Invincible = false;
 	int GetCollectID();
@@ -53,7 +53,7 @@ public:
 private:
 	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
 
-	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0;
+	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0, RandomCollect = 0;
 
 	sf::Clock AnimClock;
 	bool StartAnim = false;

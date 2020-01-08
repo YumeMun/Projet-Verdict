@@ -463,7 +463,7 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if (Tableau[y][x] == 26 && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64))
+			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64))
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;
