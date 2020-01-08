@@ -273,7 +273,15 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
+<<<<<<< HEAD
 			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1, Player1->GetPos()));
+=======
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
+
+			Oilflake* newCollect = new Oilflake(1, Player1->GetPos());
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}
@@ -282,6 +290,8 @@ void Jeu::CollectiblesManager()
 			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
 			m_levitation.play();
 
+			Invicibility* newCollect = new Invicibility(1, Player1->GetPos());
+			Collectibles.push_back(newCollect);
 			Player1->InvincibleTime.restart();
 			Player1->Invincible = true;
 			Player1->SetCollectID(0);
@@ -291,6 +301,7 @@ void Jeu::CollectiblesManager()
 
 			if (Player2->GetCollectID() != 0)
 			{
+<<<<<<< HEAD
 				Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
 				Alteration.setVolume(50);
 				Alteration.play();
@@ -298,9 +309,14 @@ void Jeu::CollectiblesManager()
 				m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
 				m_magnet.play();
 
+=======
+				Player1->HasCollectible = false;
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 				Player1->SetCollectID(Player2->GetCollectID());
 				Player2->SetCollectID(0);
 			}
+			else
+				Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::BUMPER)
 		{
@@ -342,6 +358,8 @@ void Jeu::CollectiblesManager()
 			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
 			m_levitation.play();
 
+			Invicibility* newCollect = new Invicibility(1, Player2->GetPos());
+			Collectibles.push_back(newCollect);
 			Player2->InvincibleTime.restart();
 			Player2->Invincible = true;
 			Player2->SetCollectID(0);
@@ -351,6 +369,7 @@ void Jeu::CollectiblesManager()
 
 			if (Player1->GetCollectID() != 0)
 			{
+<<<<<<< HEAD
 				Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
 				Alteration.setVolume(25);
 				Alteration.play();
@@ -358,6 +377,9 @@ void Jeu::CollectiblesManager()
 				m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
 				m_magnet.play();
 
+=======
+				Player2->HasCollectible = false;
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 				Player2->SetCollectID(Player1->GetCollectID());
 				Player1->SetCollectID(0);
 			}

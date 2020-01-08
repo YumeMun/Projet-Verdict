@@ -23,8 +23,9 @@ void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Ela
 
 		if (spShockwave.getGlobalBounds().contains(_Player2->GetPos()) && AnimFrameIndex >= 10 && _Player2->Invincible == false)
 		{
-			_Player2->Player_Movement.x = cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * 4;
-			_Player2->Player_Movement.y = sin(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * 4;
+			_Player2->Shocked = true;
+			_Player2->Shocked_Move.x = -cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
+			_Player2->Shocked_Move.y = -sin(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
 		}
 	}
 	else if (ID == 2)
@@ -33,8 +34,9 @@ void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Ela
 
 		if (spShockwave.getGlobalBounds().contains(_Player1->GetPos()) && AnimFrameIndex >= 10 && _Player1->Invincible == false)
 		{
-			_Player1->Player_Movement.x = cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * 4;
-			_Player1->Player_Movement.y = sin(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * 4;
+			_Player1->Shocked = true;
+			_Player1->Shocked_Move.x = -cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
+			_Player1->Shocked_Move.y = -sin(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
 		}
 	}
 
@@ -47,7 +49,13 @@ void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Ela
 	spShockwave.setTextureRect(sf::IntRect(803 * AnimFrameIndex, 0, 803, 803));
 
 	if (AnimFrameIndex >= 16)
+	{
+		if (ID == 1)
+			_Player2->Shocked = false;
+		else if (ID == 2)
+			_Player1->Shocked = false;
 		Alive = false;
+	}
 }
 
 void Shockwave::Display(sf::RenderWindow* _Window)

@@ -71,11 +71,18 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 		}
 	}
 
+<<<<<<< HEAD
 	if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) != 0)
 	{
 		m_missile.stop();
 		m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
 		m_rocket.play();
+=======
+	if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) > 0 && _Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) < 23)
+	{
+		if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) >= 17 && _Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) <= 19)
+			_Map->SetTile(spRocket.getPosition().x, spRocket.getPosition().y, 0);
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 
 		Alive = false;
 	}

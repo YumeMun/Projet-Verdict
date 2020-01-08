@@ -81,12 +81,22 @@ Player::~Player()
 {
 }
 
-void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
+void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2)
 {
-	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 && Alive == true)
+	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < (_Map->GetSizeY() * 64) - 2 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
-		Traps(_Map, _Cam);
+
+		if (Invincible == false)
+		{
+			Traps(_Map, _Cam);
+		}
+
+		CollectibleCollide(_Map, _PosJ2);
+		LauchCollectible();
+
+		if (Invincible == false)
+			Traps(_Map, _Cam);
 
 		if (isNumeroDisplay == false)
 		{
@@ -94,7 +104,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 			isNumeroDisplay = true;
 		}
 	}
-	else if (Alive == true)
+	else if (Alive == true /*&& spPlayer.getPosition().x >= _Map->GetSizeX() * 64 && spPlayer.getPosition().y >= _Map->GetSizeY() * 64*/)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 		Player_Direction = NONE;
@@ -114,8 +124,12 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 
 		scoreFall += 50 / FACTOR_DIVIDE;
 	}
+<<<<<<< HEAD
 	else if (Alive == false && _Pos.x >= GetPos().x)
 	{
+=======
+	else if (Alive == false && _PosJ2.x >= GetPos().x)
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 		Alive = true;
 
 		m_respawn.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Respawn"));
@@ -143,15 +157,23 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
+
+		if (Shocked == false)
 		spPlayer.move(Player_Vector * _Elapsed);
+		else if (Shocked == true)
+			spPlayer.move(Shocked_Move * _Elapsed);
 	}
 
 	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
 		Hasfinished = true;
 
-
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
 		Invincible = false;
+	else if (Invincible == true)
+	{
+		Oiled = false;
+		Shocked = false;
+	}
 
 	if (CollectID != 0)
 		HasCollectible = true;
@@ -181,9 +203,6 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		else if (spPlayer.getRotation() <= 50 && spPlayer.getRotation() >= 40)
 			spPlayer.setRotation(45);
 	}
-
-	CollectibleCollide(_Map);
-	LauchCollectible();
 
 	Animations();
 
@@ -353,6 +372,22 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		}
 	}
 
+	if (Player_Movement.x < SPEED && Oiled == false)
+	{
+		//accelerationPlayer = (0.004 * pow(Player_Movement.x, 4)) - pow(Player_Movement.x, 1.85); // a inverser
+		//Player_Movement.x = (0.004 * pow(accelerationPlayer, 4)) - pow(accelerationPlayer, 1.85);
+		Player_Movement.x += 10;
+	}
+	else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
+		Player_Movement.x = SPEED;
+	else if (Boost == true)
+		Player_Movement.x = SPEED * 1.5;
+	else if (Oiled == true)
+	{
+		if (Player_Movement.x >= SPEED / 2)
+			Player_Movement.x = SPEED / 2;
+	}
+
 	if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
 	{
 		if (_Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) >= 1 && _Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) <= 6)
@@ -388,7 +423,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 19)
 					_Map->SetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y, 37);
 
-				scoreHitTrap += 30 / FACTOR_DIVIDE;
+				scoreHitTrap += 20 / FACTOR_DIVIDE;
 
 				timerTrapFactor.restart();
 				SetHitTrap();
@@ -396,29 +431,32 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			}
 			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 29)
 			{
-				spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
-				Player_Movement.x = 0;
-				Player_Movement.y = 0;
-				Alive = false;
-			}
-			else
-			{
-				if (Player_Movement.x < SPEED && Oiled == false)
+				if (_Map->GetIsLazerOn())
 				{
-					//accelerationPlayer = (0.004 * pow(Player_Movement.x, 4)) - pow(Player_Movement.x, 1.85); // a inverser
-					//Player_Movement.x = (0.004 * pow(accelerationPlayer, 4)) - pow(accelerationPlayer, 1.85);
-					Player_Movement.x += 10;
-				}
-				else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
-					Player_Movement.x = SPEED;
-				else if (Boost == true)
-					Player_Movement.x = SPEED * 1.5;
-				else if (Oiled == true)
-				{
-					if (Player_Movement.x >= SPEED / 2)
-						Player_Movement.x = SPEED / 2;
+					spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+					Player_Movement.x = 0;
+					Player_Movement.y = 0;
+					Alive = false;
 				}
 			}
+			//else
+			//{
+			//	if (Player_Movement.x < SPEED && Oiled == false)
+			//	{
+			//		//accelerationPlayer = (0.004 * pow(Player_Movement.x, 4)) - pow(Player_Movement.x, 1.85); // a inverser
+			//		//Player_Movement.x = (0.004 * pow(accelerationPlayer, 4)) - pow(accelerationPlayer, 1.85);
+			//		Player_Movement.x += 10;
+			//	}
+			//	else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
+			//		Player_Movement.x = SPEED;
+			//	else if (Boost == true)
+			//		Player_Movement.x = SPEED * 1.5;
+			//	else if (Oiled == true)
+			//	{
+			//		if (Player_Movement.x >= SPEED / 2)
+			//			Player_Movement.x = SPEED / 2;
+			//	}
+			//}
 
 			for (int i = 0; i < 2; i++)
 			{
@@ -431,8 +469,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 
 					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
 
-
-					if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
+					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
 						if (Test == true)
 						{
@@ -462,9 +499,10 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 						SetHitLazer();
 					}
 					else
-						isCollideCE = false;
-
+						isCollideCE = false;*/
 				}
+				else
+					isCollideCE = false;
 			}
 		}
 	}
@@ -656,7 +694,7 @@ sf::Vector2f Player::GetPos()
 //	}
 //}
 
-bool Player::CollectibleCollide(Map* _Map)
+bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 {
 	srand(time(NULL));
 
@@ -669,9 +707,40 @@ bool Player::CollectibleCollide(Map* _Map)
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
 
+<<<<<<< HEAD
 			CollectID = e_Enum::ROCKET;
+=======
+			//CollectID = e_Enum::LEVITATION;/*rand() % 6 + 1;*/
+>>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 
-			CollectID = rand() % 6 + 1;
+			RandomCollect = rand() % 100 + 1;
+
+			if (spPlayer.getPosition().x > _PosJ2.x)
+			{
+				if (RandomCollect <= 30)
+					CollectID = e_Enum::e_Collects::ROCKET;
+				else if (RandomCollect > 30 && RandomCollect <= 50)
+					CollectID = e_Enum::e_Collects::OILFLAKE;
+				else if (RandomCollect > 50 && RandomCollect <= 70)
+					CollectID = e_Enum::e_Collects::SHOCKWAVE;
+				else if (RandomCollect > 70 && RandomCollect <= 85)
+					CollectID = e_Enum::e_Collects::SWAP;
+				else if (RandomCollect > 85)
+					CollectID = e_Enum::e_Collects::BUMPER;
+			}
+			else if (spPlayer.getPosition().x < _PosJ2.x)
+			{
+				if (RandomCollect <= 30)
+					CollectID = e_Enum::e_Collects::ROCKET;
+				else if (RandomCollect > 30 && RandomCollect <= 50)
+					CollectID = e_Enum::e_Collects::LEVITATION;
+				else if (RandomCollect > 50 && RandomCollect <= 70)
+					CollectID = e_Enum::e_Collects::SWAP;
+				else if (RandomCollect > 70 && RandomCollect <= 90)
+					CollectID = e_Enum::e_Collects::BUMPER;
+				else if (RandomCollect > 90)
+					CollectID = e_Enum::e_Collects::SHOCKWAVE;
+			}
 
 		}
 
@@ -695,11 +764,14 @@ void Player::LauchCollectible()
 {
 	if (HasCollectible == true)
 	{
-		if (sf::Joystick::isButtonPressed(ID - 1, 1))
+		if (sf::Joystick::isButtonPressed(ID - 1, 1) && ItemPress == false)
 		{
 			UseIt = true;
 			HasCollectible = false;
+			ItemPress = true;
 		}
+		else if (!sf::Joystick::isButtonPressed(ID - 1, 1))
+			ItemPress = false;
 	}
 	else
 	{

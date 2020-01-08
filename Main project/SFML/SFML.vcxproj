@@ -165,6 +165,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActualSong.cpp" />
     <ClCompile Include="Bumper.cpp" />
     <ClCompile Include="Caméra.cpp" />
     <ClCompile Include="Chargement.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HudEditor.cpp" />
     <ClCompile Include="Intro.cpp" />
+    <ClCompile Include="Invicibility.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="LevelSelector.cpp" />
     <ClCompile Include="Level_Finished.cpp" />
@@ -201,6 +203,7 @@
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActualSong.h" />
     <ClInclude Include="Bumper.h" />
     <ClInclude Include="Caméra.h" />
     <ClInclude Include="Chargement.h" />
@@ -216,6 +219,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HudEditor.h" />
     <ClInclude Include="Intro.h" />
+    <ClInclude Include="Invicibility.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelSelector.h" />

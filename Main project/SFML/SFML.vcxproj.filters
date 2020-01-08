@@ -4,258 +4,270 @@
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Transition.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Bumper.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
-    </ClCompile>
-    <ClCompile Include="Collects.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
-    </ClCompile>
-    <ClCompile Include="Oilflake.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
-    </ClCompile>
-    <ClCompile Include="Rocket.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
-    </ClCompile>
-    <ClCompile Include="Shockwave.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
-    </ClCompile>
-    <ClCompile Include="Smoke.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\FXs</Filter>
-    </ClCompile>
-    <ClCompile Include="HudEditor.cpp">
-      <Filter>Fichiers sources\Scenes\Editeur</Filter>
-    </ClCompile>
-    <ClCompile Include="Chargement.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Commandes.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Credits.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Intro.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Jeu.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Level_Finished.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelSelector.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Options.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerSelector.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Caméra.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
-    <ClCompile Include="TimerStart.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Fx.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\FXs</Filter>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="ExploRocket.cpp">
-      <Filter>Fichiers sources\Scenes\Jeu\FXs</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelEditor.cpp">
-      <Filter>Fichiers sources\Scenes\Editeur</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveEditor.cpp">
-      <Filter>Fichiers sources\Scenes\Editeur</Filter>
-    </ClCompile>
-    <ClCompile Include="SizeEditor.cpp">
-      <Filter>Fichiers sources\Scenes\Editeur</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenLevelEditor.cpp">
-      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+    <ClCompile Include="TimerStart.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
     <ClCompile Include="ChooseLevelEditor.cpp">
-      <Filter>Fichiers sources\Scenes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="HudEditor.cpp">
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelEditor.cpp">
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenLevelEditor.cpp">
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveEditor.cpp">
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="SizeEditor.cpp">
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
+    </ClCompile>
+    <ClCompile Include="Caméra.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
+    </ClCompile>
+    <ClCompile Include="Bumper.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Collects.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Invicibility.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Oilflake.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Rocket.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Shockwave.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="ExploRocket.cpp">
+      <Filter>Fichiers sources\Scènes\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx.cpp">
+      <Filter>Fichiers sources\Scènes\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Smoke.cpp">
+      <Filter>Fichiers sources\Scènes\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSelector.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSelector.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Level_Finished.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Jeu.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Commandes.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="Chargement.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
+    </ClCompile>
+    <ClCompile Include="ActualSong.cpp">
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>Fichier d%27en tête\Managers</Filter>
+    </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Bumper.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
-    </ClInclude>
-    <ClInclude Include="Collects.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
-    </ClInclude>
-    <ClInclude Include="Oilflake.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
-    </ClInclude>
-    <ClInclude Include="Rocket.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
-    </ClInclude>
-    <ClInclude Include="Shockwave.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
-    </ClInclude>
-    <ClInclude Include="Smoke.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\FXs</Filter>
-    </ClInclude>
-    <ClInclude Include="Chargement.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Commandes.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Credits.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Intro.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Jeu.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Level_Finished.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelSelector.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Options.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerSelector.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Caméra.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu</Filter>
+      <Filter>Fichier d%27en tête\Managers</Filter>
     </ClInclude>
     <ClInclude Include="TimerStart.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu</Filter>
-    </ClInclude>
-    <ClInclude Include="HudEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Fichiers d%27en-tête\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Fichiers d%27en-tête\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="dirent.h">
-      <Filter>Fichiers d%27en-tête\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Enum.h">
-      <Filter>Fichiers d%27en-tête\Managers</Filter>
+      <Filter>Fichier d%27en tête\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>Fichiers d%27en-tête\Managers</Filter>
+      <Filter>Fichier d%27en tête\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="ExploRocket.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\FXs</Filter>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Fichier d%27en tête\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Fx.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Jeu\FXs</Filter>
+    <ClInclude Include="Enum.h">
+      <Filter>Fichier d%27en tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="dirent.h">
+      <Filter>Fichier d%27en tête\Managers</Filter>
     </ClInclude>
     <ClInclude Include="ChooseLevelEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+      <Filter>Fichier d%27en tête\Scènes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="HudEditor.h">
+      <Filter>Fichier d%27en tête\Scènes\Editeur</Filter>
     </ClInclude>
     <ClInclude Include="LevelEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+      <Filter>Fichier d%27en tête\Scènes\Editeur</Filter>
     </ClInclude>
     <ClInclude Include="OpenLevelEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
-    </ClInclude>
-    <ClInclude Include="SizeEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+      <Filter>Fichier d%27en tête\Scènes\Editeur</Filter>
     </ClInclude>
     <ClInclude Include="SaveEditor.h">
-      <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+      <Filter>Fichier d%27en tête\Scènes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="SizeEditor.h">
+      <Filter>Fichier d%27en tête\Scènes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="Caméra.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu</Filter>
+    </ClInclude>
+    <ClInclude Include="Bumper.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Collects.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Invicibility.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Oilflake.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Shockwave.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Fx.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="ExploRocket.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Smoke.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSelector.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Options.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSelector.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Level_Finished.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Jeu.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Intro.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="ActualSong.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Chargement.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
+    </ClInclude>
+    <ClInclude Include="Commandes.h">
+      <Filter>Fichier d%27en tête\Scènes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Fichiers d%27en-tête">
-      <UniqueIdentifier>{270140cf-7790-444c-b873-a563b74b5cb4}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête">
+      <UniqueIdentifier>{a1cbfbce-c91f-4455-bda1-012ddd77efc2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources">
-      <UniqueIdentifier>{9b354376-5257-46ab-8854-bff1d0f5075a}</UniqueIdentifier>
+      <UniqueIdentifier>{829d89bc-bb96-46fa-a396-0e9a3d360b7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Managers">
-      <UniqueIdentifier>{feaa329a-7eb8-4833-b4fd-0f5ef98388d7}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête\Managers">
+      <UniqueIdentifier>{eca9ac04-9360-433b-a0f6-6e450595f474}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources\Managers">
-      <UniqueIdentifier>{65afd49b-584f-42cb-87c6-3a387bd962a1}</UniqueIdentifier>
+      <UniqueIdentifier>{d559b00e-a35d-42ce-a838-02202c7d7b46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Scenes">
-      <UniqueIdentifier>{d4f0285a-b908-486b-b9ac-533d6c35c881}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête\Scènes">
+      <UniqueIdentifier>{6a20153c-816c-4a74-a688-bc5c144abb91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Scenes">
-      <UniqueIdentifier>{09b2523e-c9be-46ea-8e62-5930f70e06d9}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête\Scènes\Editeur">
+      <UniqueIdentifier>{c479dfd5-1b0f-470b-a0db-a12afa969f8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Scenes\Jeu">
-      <UniqueIdentifier>{736d039a-4a62-4ed5-bc65-1ba2dddafd6b}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête\Scènes\Jeu">
+      <UniqueIdentifier>{71de077e-1ef4-4d13-91a8-e9999bf15893}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Scenes\Jeu">
-      <UniqueIdentifier>{e153a562-6ed9-47d0-aeff-d787b43cb601}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête\Scènes\Jeu\Collectibles">
+      <UniqueIdentifier>{48d0a941-0711-468d-a7a4-04fefc40cd77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Scenes\Jeu\Collectibles">
-      <UniqueIdentifier>{451eceb3-2570-46c8-9fc0-2749da3b3211}</UniqueIdentifier>
+    <Filter Include="Fichier d%27en tête\Scènes\Jeu\Fx">
+      <UniqueIdentifier>{56904342-4b59-4fad-a0b0-45f7c2035acd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Scenes\Jeu\Collectibles">
-      <UniqueIdentifier>{4c5fcbf8-cc0f-4eea-8e41-18408af68b24}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Scènes">
+      <UniqueIdentifier>{3c3028f8-761c-417d-9b5e-6266fe72b0a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Scenes\Jeu\FXs">
-      <UniqueIdentifier>{a67c503c-5182-4dcc-a5d2-bdc78be8141b}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Scènes\Editeur">
+      <UniqueIdentifier>{5f2a8b7e-1716-42f7-90b9-81ea12d4cd68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Scenes\Jeu\FXs">
-      <UniqueIdentifier>{0a9b0801-5e2d-4470-9037-2f053bb40bfb}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Scènes\Jeu">
+      <UniqueIdentifier>{7b6e2905-6f60-4aa2-b35f-d6d6aa29ff8a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Scenes\Editeur">
-      <UniqueIdentifier>{429f6f46-f010-4d8b-b1cf-f2ae030f8622}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Scènes\Jeu\Collectibles">
+      <UniqueIdentifier>{5721b783-e56f-4687-8370-19fb66a5b141}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Scenes\Editeur">
-      <UniqueIdentifier>{c7457d6e-4ac5-4797-9457-08b30326fb4b}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Scènes\Fx">
+      <UniqueIdentifier>{892ae7a5-a0ff-4f3a-a8b0-0236572def41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

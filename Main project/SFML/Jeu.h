@@ -8,6 +8,7 @@
 #include "Oilflake.h"
 #include "Rocket.h"
 #include "Bumper.h"
+#include "Invicibility.h"
 #include "PlayerSelector.h"
 #include "Level_Finished.h"
 

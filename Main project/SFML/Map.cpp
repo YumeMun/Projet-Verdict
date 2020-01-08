@@ -142,15 +142,19 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
-		if (isLazerOn == 3)
+		isLazerActive = true;
+
+		/*if (isLazerOn == 3)
 		{
 			isLazerOn = 0;
 		}
 		else
-			isLazerOn = 1;
+			isLazerOn = 1;*/
 
 		timerLazer.restart();
 	}
+	else
+		isLazerActive = true;
 
 	/*for (int i = 0; i < 2; i++)
 	{
@@ -463,7 +467,7 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if (Tableau[y][x] == 26 && x > (_Pos.x / 64) && x <= ((_Pos.x + 1920) / 64))
+			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64))
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;
@@ -581,30 +585,42 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
-	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
+	if (isLazerActive)
 	{
-		if (isLazerOn == 0)
+		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
-			if (FrameIndexLaser < 14)
+			//if (isLazerOn == 0)
+			//{
+			if (FrameIndexLaser < 12)
 			{
 				FrameIndexLaser++;
 			}
 			else
-				FrameIndexLaser = 14;
-		}
-		else if (isLazerOn == 1)
-		{
-			if (FrameIndexLaser < 16)
-			{
-				FrameIndexLaser++;
-			}
-			else
+				isLazerOn = 1;
+
+			if (FrameIndexLaser >= 16)
 			{
 				FrameIndexLaser = 0;
-				isLazerOn = 3;
+				isLazerOn = 0;
+				isLazerActive = false;
+				timerLazer.restart();
 			}
-		}
 
-		AnimLaserClock.restart();
+			//}
+			//else if (isLazerOn == 1)
+			//{
+				/*if (FrameIndexLaser < 16)
+				{
+					FrameIndexLaser++;
+				}
+				else
+				{
+					FrameIndexLaser = 0;
+					isLazerOn = 3;
+				}*/
+			//}
+
+			AnimLaserClock.restart();
+		}
 	}
 }

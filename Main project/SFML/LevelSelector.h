@@ -11,7 +11,11 @@ public:
 	virtual void Setup();
 	virtual void EventManager(sf::Event p_pollingEvent);
 
+	void LoadBackground();
+
 private:
+	int SelectionBackground = 0;
+
 	sf::Sprite spLevelSelection;
 	sf::Sprite spVignette;
 

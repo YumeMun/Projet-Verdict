@@ -216,6 +216,16 @@ void ResourceManager::Load()
 	if (newTexture->Create("cadre_skin.png", "cadre_skin"))
 		_textures.push_back(newTexture);
 
+	newTexture = new Textures();
+
+	if (newTexture->Create("cadre_anim.png", "cadre_anim"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("bouton_petit_retour.png", "petit_bouton_retour"))
+		_textures.push_back(newTexture);
+
 	for (int i = 0; i < 10; i++)
 	{
 		newTexture = new Textures();
@@ -352,7 +362,7 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Background_credits.jpg", "Background credits"))
+	if (newTexture->Create("Background_credits.png", "Background credits"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
@@ -528,6 +538,11 @@ void ResourceManager::Load()
 	newTexture = new Textures();
 
 	if (newTexture->Create("sprite_onde_de_choc.png", "Shock"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Shield.png", "Shield"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();

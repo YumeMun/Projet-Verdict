@@ -25,14 +25,15 @@ PlayerSelector::~PlayerSelector()
 void PlayerSelector::Setup()
 {
 
-
-
 	for (int i = 0; i < 2; i++)
 	{
 		PlayerSelector* newSelector = new PlayerSelector();
 
 		newSelector->rectPlayer = { 0, 0, 372, 150 };
+		newSelector->rectCadre = { 0, 0, 375, 200 };
 		newSelector->spPlayer.setTextureRect(newSelector->rectPlayer);
+		newSelector->spCadre[0].setTextureRect(newSelector->rectCadre);
+		newSelector->spCadre[1].setTextureRect(newSelector->rectCadre);
 		newSelector->spPlayer.setTexture(*ResourceManager::Instance()->GetTexture("Player" + std::to_string(i+1) + "_Colo1"));
 
 		newSelector->spBc.setTexture(*ResourceManager::Instance()->GetTexture("Background sélection niveau"));
@@ -46,15 +47,14 @@ void PlayerSelector::Setup()
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache1"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
-		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
-		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche droite"));
-		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
-		//newSelector->spArrow[1].setOrigin(spArrow[1].getGlobalBounds().width / 2, spArrow[1].getGlobalBounds().height / 2);
 
-		newSelector->spCadre[0].setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
-		newSelector->spCadre[0].setPosition(1920 / 2 + 150, 1080 / 2 - 150 );
-		newSelector->spCadre[1].setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
-		newSelector->spCadre[1].setPosition(((1920 / 2) - 150) - newSelector->spCadre[0].getGlobalBounds().width, 1080 / 2 - 150);
+		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
+		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
+
+		newSelector->spCadre[0].setTexture(*ResourceManager::Instance()->GetTexture("cadre_anim"));
+		newSelector->spCadre[1].setPosition(1920 / 2 + 150, 1080 / 2 - 150 );
+		newSelector->spCadre[1].setTexture(*ResourceManager::Instance()->GetTexture("cadre_anim"));
+		newSelector->spCadre[0].setPosition(((1920 / 2) - 150) - newSelector->spCadre[0].getGlobalBounds().width, 1080 / 2 - 150);
 
 		newSelector->timerSwitchSkin.restart();
 
@@ -82,10 +82,10 @@ void PlayerSelector::Setup()
 	listSelector[1]->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
 	listSelector[1]->spFader.setPosition(listSelector[1]->spBc.getPosition().x + 25, listSelector[1]->spBc.getPosition().y + 25);
 
-	listSelector[0]->spArrow[0].setPosition(listSelector[0]->spBc.getPosition().x - 65, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
-	listSelector[0]->spArrow[1].setPosition(listSelector[0]->spBc.getPosition().x + 435, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
-	listSelector[1]->spArrow[0].setPosition(listSelector[1]->spBc.getPosition().x - 65, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
-	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 435, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
+	listSelector[0]->spArrow[0].setPosition(listSelector[0]->spBc.getPosition().x, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
+	listSelector[0]->spArrow[1].setPosition(listSelector[0]->spBc.getPosition().x + 320, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
+	listSelector[1]->spArrow[0].setPosition(listSelector[1]->spBc.getPosition().x, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
+	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 320, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
 
 	spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 	spReady.setPosition((1920 / 2), 800);
@@ -111,6 +111,7 @@ void PlayerSelector::Setup()
 	textSkinSelect[2].setPosition(spReady.getPosition().x, spReady.getPosition().y - 150);
 
 	timerAnim.restart();
+	timerAnimCadre.restart();
 	listSelector[0]->timerArrow.restart();
 	listSelector[1]->timerArrow.restart();
 
@@ -195,26 +196,60 @@ void PlayerSelector::Update()
 			}
 		}
 
+		if (listSelector[i]->isCadreAnim)
+		{
+			if (timerAnimCadre.getElapsedTime().asMilliseconds() > 60)
+			{
+				listSelector[i]->rectCadre.top = 0;
+
+				if (FrameIndexC < 7)
+					FrameIndexC++;
+				else
+				{
+					FrameIndexC = 0;
+					listSelector[i]->rectCadre.top = listSelector[i]->rectCadre.height;
+					listSelector[i]->rectCadre.left = 0;
+					listSelector[i]->isCadreAnim = false;
+				}
+
+				listSelector[i]->rectCadre.left = FrameIndexC * listSelector[i]->rectCadre.width;
+				listSelector[0]->spCadre[i].setTextureRect(listSelector[i]->rectCadre);
+
+				timerAnimCadre.restart();
+			}
+		}
+
 		if (sf::Joystick::isButtonPressed(i, 4))
 		{
-			listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
+			//listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
+			listSelector[i]->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("LB Press"));
 			std::cout << "AAA" << std::endl;
 		}
 		else if (sf::Joystick::isButtonPressed(i, 5))
 		{
-			listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
+			//listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
+			listSelector[i]->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("RB Press"));
 			std::cout << "BBB" << std::endl;
 		}
 		else
 		{
 			listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.75, 0.75));
 			listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.75, 0.75));
+
+			listSelector[i]->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
+			listSelector[i]->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
 		}
 	}
 
 	if (isGameStart)
 	{
 		transition->Update();
+	}
+
+	if (isGameStart && transition->GetIsTransitionDone())
+	{
+		GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
+		isGameStart = false;
 	}
 }
 
@@ -279,7 +314,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						if (listSelector[i]->SkinSelector < NB_SKIN)
 							listSelector[i]->SkinSelector += 1;
-						else if(listSelector[i]->SkinSelector >= NB_SKIN)
+						else if (listSelector[i]->SkinSelector >= NB_SKIN)
 							listSelector[i]->SkinSelector = 1;
 
 						listSelector[i]->timerSwitchSkin.restart();
@@ -293,7 +328,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						if (listSelector[i]->SkinSelector > 1)
 							listSelector[i]->SkinSelector -= 1;
-						else if(listSelector[i]->SkinSelector <= 1)
+						else if (listSelector[i]->SkinSelector <= 1)
 							listSelector[i]->SkinSelector = NB_SKIN;
 
 						listSelector[i]->timerSwitchSkin.restart();
@@ -311,6 +346,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					{
 						listSelector[i]->isSkinValidate = true;
 						listSelector[i]->isTaunt = true;
+						listSelector[i]->isCadreAnim = true;
 					}
 					else
 					{
@@ -319,52 +355,49 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					}
 				}
 			}
-			else
-			{
 
+			if (sf::Event::JoystickButtonPressed)
+			{
 				if (sf::Joystick::isButtonPressed(i, 1))
 				{
-					listSelector[i]->isSkinValidate = false;
+					if (listSelector[i]->isSkinValidate)
+					{
+						listSelector[i]->isSkinValidate = false;
+						listSelector[i]->rectCadre.top = 0;
+						listSelector[0]->spCadre[i].setTextureRect(listSelector[i]->rectCadre);
+					}
+					else
+					{
+						GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
+						Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+						Retour.play();
+					}
 				}
 			}
-
-			/*for (int i = 0; i < 2; i++)
-			{
-				if (listSelector[i]->isSkinValidate)
-				{
-					
-				}
-				else
-					
-			}*/
 
 			if (listSelector[0]->isSkinValidate && listSelector[1]->isSkinValidate)
 			{
 				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton sélectionné"));
 
-				/*if (sf::Joystick::isButtonPressed(i, 7))
-				{
-					GameManager::Instance()->LoadScene(e_Enum::JEU);
-				}*/
 				if (sf::Joystick::isButtonPressed(i, 7))
 					isGameStart = true;
 
-				if (isGameStart && transition->GetIsTransitionDone())
+				/*if (isGameStart && transition->GetIsTransitionDone())
 				{
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 					isGameStart = false;
-				}
+				}*/
 			}
 			else
 				spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
 
-			if (sf::Joystick::isButtonPressed(0, 1))
+			/*if (sf::Joystick::isButtonPressed(0, 1))
 			{
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
 				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
 				Retour.play();
-			
-			}
+
+			}*/
 		}
 
 		///a retirer pour presentation
@@ -376,13 +409,14 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			}
 		}
 
-		if (isGameStart && transition->GetIsTransitionDone())
+		/*if (isGameStart && transition->GetIsTransitionDone())
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
 		}
 		////
 	}
+
 }
 
 int PlayerSelector::GetSkinNumberJ1()
