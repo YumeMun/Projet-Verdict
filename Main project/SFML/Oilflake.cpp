@@ -7,7 +7,9 @@ Oilflake::Oilflake(int _ID, sf::Vector2f _Pos)
 
 	spOil.setTexture(*ResourceManager::Instance()->GetTexture("OilFlake"));
 
-	spOil.setTextureRect(sf::IntRect(0, 0, 200, 40));
+	spOil.setTextureRect(sf::IntRect(0, 0, 192, 64));
+
+	spOil.setOrigin(spOil.getGlobalBounds().width / 2, spOil.getGlobalBounds().height);
 
 	spOil.setPosition(_Pos);
 }
@@ -18,41 +20,96 @@ Oilflake::~Oilflake()
 
 void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapsed, Caméra* _Cam)
 {
-	if (ID == 1)
+	if (Grounded == false)
 	{
-		if (_Player2->GetPos().x >= spOil.getGlobalBounds().left &&
-			_Player2->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
-			_Player2->GetPos().y >= spOil.getGlobalBounds().top - 200 &&
-			_Player2->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height && _Player2->Invincible == false)
+		Oil_Movement.y += GRAVITY * GRAVITYFACTOR * _Elapsed;
+
+		spOil.move(Oil_Movement * _Elapsed);
+
+		if ((_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) >= 1 && _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) <= 6) || _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 11)
 		{
-			_Player2->Oiled = true;
+			for (int i = 1; i < 7; i++)
+			{
+				if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == i)
+				{
+					spOil.setPosition(sf::Vector2f(spOil.getPosition().x, _Map->GetNextTile(i, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y));
+				}
+			}
+
+			if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 11)
+			{
+				spOil.setPosition(sf::Vector2f(spOil.getPosition().x, _Map->GetNextTile(11, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y));
+			}
+
+			Grounded = true;
 		}
-		else
-			_Player2->Oiled = false;
+		else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7 || _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 12)
+		{
+			if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7)
+			{
+				spOil.setPosition(sf::Vector2f(spOil.getPosition().x + 10, _Map->GetNextTile(7, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y + 10));
+			}
+			else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 12)
+			{
+				spOil.setPosition(sf::Vector2f(spOil.getPosition().x + 10, _Map->GetNextTile(12, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y + 10));
+			}
+
+			spOil.setRotation(315);
+			Grounded = true;
+		}
+		else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 8 || _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 13)
+		{
+			if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 8)
+			{
+				spOil.setPosition(sf::Vector2f(spOil.getPosition().x - 15, _Map->GetNextTile(8, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y));
+			}
+			else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 13)
+			{
+				spOil.setPosition(sf::Vector2f(spOil.getPosition().x - 15, _Map->GetNextTile(13, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y));
+			}
+
+			spOil.setRotation(45);
+			Grounded = true;
+		}
 	}
-	else if (ID == 2)
+	else if (Grounded == true)
 	{
-		if (_Player1->GetPos().x >= spOil.getGlobalBounds().left &&
-			_Player1->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
-			_Player1->GetPos().y >= spOil.getGlobalBounds().top - 200 &&
-			_Player1->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height && _Player1->Invincible == false)
+		if (ID == 1)
 		{
-			_Player1->Oiled = true;
+			if (_Player2->GetPos().x >= spOil.getGlobalBounds().left &&
+				_Player2->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
+				_Player2->GetPos().y >= spOil.getGlobalBounds().top - 100 &&
+				_Player2->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height + 100 && _Player2->Invincible == false)
+			{
+				_Player2->Oiled = true;
+			}
+			else
+				_Player2->Oiled = false;
 		}
-		else 
-			_Player1->Oiled = false;
+		else if (ID == 2)
+		{
+			if (_Player1->GetPos().x >= spOil.getGlobalBounds().left &&
+				_Player1->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
+				_Player1->GetPos().y >= spOil.getGlobalBounds().top - 100 &&
+				_Player1->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height + 100 && _Player1->Invincible == false)
+			{
+				_Player1->Oiled = true;
+			}
+			else
+				_Player1->Oiled = false;
+		}
+
+		if (AnimFrameIndex < 24)
+		{
+			if (AnimTime.getElapsedTime().asSeconds() >= 0.05)
+			{
+				AnimFrameIndex++;
+				AnimTime.restart();
+			}
+		}
 	}
 
-	if (AnimFrameIndex < 7)
-	{
-		if (AnimTime.getElapsedTime().asSeconds() >= 0.05)
-		{
-			AnimFrameIndex++;
-			AnimTime.restart();
-		}
-	}
-
-	spOil.setTextureRect(sf::IntRect(200 * AnimFrameIndex, 0, 200, 40));
+	spOil.setTextureRect(sf::IntRect(192 * AnimFrameIndex, 0, 192, 64));
 }
 
 void Oilflake::Display(sf::RenderWindow* _Window)

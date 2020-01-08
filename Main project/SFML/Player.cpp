@@ -138,7 +138,11 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
+
+		if (Shocked == false)
 		spPlayer.move(Player_Vector * _Elapsed);
+		else if (Shocked == true)
+			spPlayer.move(Shocked_Move * _Elapsed);
 	}
 
 	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
@@ -147,7 +151,10 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
 		Invincible = false;
 	else if (Invincible == true)
+	{
 		Oiled = false;
+		Shocked = false;
+	}
 
 	if (CollectID != 0)
 		HasCollectible = true;
@@ -651,10 +658,9 @@ bool Player::CollectibleCollide(Map* _Map)
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
 
-			CollectID = e_Enum::LEVITATION;/*rand() % 6 + 1;*/
-
+			CollectID = e_Enum::OILFLAKE;/*rand() % 6 + 1;*/
+			
 			//CollectID = rand() % 6 + 1;
-
 		}
 
 		return true;
@@ -677,11 +683,14 @@ void Player::LauchCollectible()
 {
 	if (HasCollectible == true)
 	{
-		if (sf::Joystick::isButtonPressed(ID - 1, 1))
+		if (sf::Joystick::isButtonPressed(ID - 1, 1) && ItemPress == false)
 		{
 			UseIt = true;
 			HasCollectible = false;
+			ItemPress = true;
 		}
+		else if (!sf::Joystick::isButtonPressed(ID - 1, 1))
+			ItemPress = false;
 	}
 	else
 	{

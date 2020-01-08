@@ -13,11 +13,13 @@ public:
 	virtual void AddFxs(std::vector<Fx*> &_List);
 
 private:
-	bool Alive = true;
+	bool Alive = true, Grounded = false;
 
 	int ID = 0, AnimFrameIndex = 0;
 
 	sf::Clock AnimTime;
+
+	sf::Vector2f Oil_Movement;
 
 	sf::Sprite spOil;
 };
