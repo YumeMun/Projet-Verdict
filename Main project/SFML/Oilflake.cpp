@@ -110,6 +110,12 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 	}
 
 	spOil.setTextureRect(sf::IntRect(192 * AnimFrameIndex, 0, 192, 64));
+
+	if (spOil.getPosition().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2 ||
+		spOil.getPosition().y > _Cam->GetCameraCenter().y + _Cam->GetSizeCamera().y / 2)
+	{
+		Alive = false;
+	}
 }
 
 void Oilflake::Display(sf::RenderWindow* _Window)

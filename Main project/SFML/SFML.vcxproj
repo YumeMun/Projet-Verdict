@@ -166,6 +166,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActualSong.cpp" />
+    <ClCompile Include="BoostEffect.cpp" />
     <ClCompile Include="Bumper.cpp" />
     <ClCompile Include="Caméra.cpp" />
     <ClCompile Include="Chargement.cpp" />
@@ -204,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActualSong.h" />
+    <ClInclude Include="BoostEffect.h" />
     <ClInclude Include="Bumper.h" />
     <ClInclude Include="Caméra.h" />
     <ClInclude Include="Chargement.h" />

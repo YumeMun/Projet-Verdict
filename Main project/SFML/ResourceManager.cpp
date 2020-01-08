@@ -265,6 +265,19 @@ void ResourceManager::Load()
 	if (newTexture->Create("effet_elec_voiture.png", "Effet_Elec"))
 		_textures.push_back(newTexture);
 
+	for (int i = 0; i < 2; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("BoostFx" + std::to_string(i + 1) + ".png", "BoostFx" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+
+		newTexture = new Textures();
+
+		if (newTexture->Create("BumpFx" + std::to_string(i + 1) + ".png", "BumpFx" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
+
 	newTexture = new Textures();
 
 	if (newTexture->Create("Tileset.png", "Tileset"))

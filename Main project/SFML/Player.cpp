@@ -140,7 +140,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_Vector = Player_Movement + Player_SlopVector;
 
 		if (Shocked == false)
-		spPlayer.move(Player_Vector * _Elapsed);
+			spPlayer.move(Player_Vector * _Elapsed);
 		else if (Shocked == true)
 			spPlayer.move(Shocked_Move * _Elapsed);
 	}
@@ -282,7 +282,10 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	}
 
 	if (BoostClock.getElapsedTime().asSeconds() >= 2)
+	{
 		Boost = false;
+		Boosted = false;
+	}
 
 	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && GetPos().y > 0)
 	{

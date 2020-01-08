@@ -9,6 +9,7 @@
 #include "Rocket.h"
 #include "Bumper.h"
 #include "Invicibility.h"
+#include "BoostEffect.h"
 #include "PlayerSelector.h"
 #include "Level_Finished.h"
 

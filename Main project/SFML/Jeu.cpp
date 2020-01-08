@@ -90,6 +90,19 @@ void Jeu::Update()
 				Player1->Update(ElapsedTime, map, caméra, Player2->GetPos());
 				Player2->Update(ElapsedTime, map, caméra, Player1->GetPos());
 
+				if (Player1->Boost == true && Player1->Boosted == false)
+				{
+					BoostEffect* newFx = new BoostEffect(1, Player1->GetPos());
+					FXs.push_back(newFx);
+					Player1->Boosted = true;
+				}
+				if (Player2->Boost == true && Player2->Boosted == false)
+				{
+					BoostEffect* newFx = new BoostEffect(2, Player2->GetPos());
+					FXs.push_back(newFx);
+					Player2->Boosted = true;
+				}
+
 				if (Player1->GetPos().x > Player2->GetPos().x)
 				{
 					if (Player1->PlayerFirstTimer.getElapsedTime().asMilliseconds() > 500 && Player1->IsAlive() == true)
@@ -387,7 +400,7 @@ void Jeu::CollectiblesManager()
 
 	for (int i = 0; i < FXs.size(); i++)
 	{
-		FXs[i]->Update(ElapsedTime);
+		FXs[i]->Update(ElapsedTime, Player1, Player2);
 
 		if (FXs[i]->IsAlive() == false)
 			FXs.erase(FXs.begin() + i);
