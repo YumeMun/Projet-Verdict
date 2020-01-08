@@ -281,6 +281,8 @@ void Jeu::CollectiblesManager()
 			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
 			m_levitation.play();
 
+			Invicibility* newCollect = new Invicibility(1, Player1->GetPos());
+			Collectibles.push_back(newCollect);
 			Player1->InvincibleTime.restart();
 			Player1->Invincible = true;
 			Player1->SetCollectID(0);
@@ -340,6 +342,8 @@ void Jeu::CollectiblesManager()
 			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
 			m_levitation.play();
 
+			Invicibility* newCollect = new Invicibility(1, Player2->GetPos());
+			Collectibles.push_back(newCollect);
 			Player2->InvincibleTime.restart();
 			Player2->Invincible = true;
 			Player2->SetCollectID(0);

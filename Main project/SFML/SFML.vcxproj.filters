@@ -103,6 +103,9 @@
     <ClCompile Include="ChooseLevelEditor.cpp">
       <Filter>Fichiers sources\Scenes\Editeur</Filter>
     </ClCompile>
+    <ClCompile Include="Invicibility.cpp">
+      <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transition.h">
@@ -212,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="SaveEditor.h">
       <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
+    </ClInclude>
+    <ClInclude Include="Invicibility.h">
+      <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
