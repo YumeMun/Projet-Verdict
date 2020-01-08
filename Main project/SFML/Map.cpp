@@ -154,7 +154,7 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 		timerLazer.restart();
 	}
 	else
-		isLazerActive = true;
+		isLazerActive = false;
 
 	/*for (int i = 0; i < 2; i++)
 	{
@@ -593,6 +593,7 @@ void Map::AnimTiles()
 			//{
 			if (FrameIndexLaser < 12)
 			{
+				isLazerOn = 0;
 				FrameIndexLaser++;
 			}
 			else

@@ -116,7 +116,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_Vector.y = 0;
 		Alive = false;
 
-		scoreFall += 50 / FACTOR_DIVIDE;
+		scoreFall += 45 / FACTOR_DIVIDE;
 	}
 	else if (Alive == false && _PosJ2.x >= GetPos().x)
 		Alive = true;
@@ -404,7 +404,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 19)
 					_Map->SetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y, 37);
 
-				scoreHitTrap += 20 / FACTOR_DIVIDE;
+				scoreHitTrap += 15 / FACTOR_DIVIDE;
 
 				timerTrapFactor.restart();
 				SetHitTrap();
@@ -412,12 +412,13 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			}
 			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 29)
 			{
-				if (_Map->GetIsLazerOn())
+				if (_Map->GetIsLazerOn() == 1)
 				{
 					spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
 					Alive = false;
+					scoreHitTrap += 15 / FACTOR_DIVIDE;
 				}
 			}
 			//else
