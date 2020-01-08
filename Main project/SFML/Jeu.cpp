@@ -272,13 +272,7 @@ void Jeu::CollectiblesManager()
 			Alteration.setVolume(50);
 			Alteration.play();
 
-<<<<<<< HEAD
-
-
-			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1, Player1->GetPos()));
-=======
 			Oilflake* newCollect = new Oilflake(1, Player1->GetPos());
->>>>>>> ff4a64a31f4cb884db802e49bdd475206e150505
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}

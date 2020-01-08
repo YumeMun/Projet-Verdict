@@ -674,7 +674,6 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
 
-<<<<<<< HEAD
 			//CollectID = e_Enum::LEVITATION;/*rand() % 6 + 1;*/
 
 			RandomCollect = rand() % 100 + 1;
@@ -705,11 +704,7 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 				else if (RandomCollect > 90)
 					CollectID = e_Enum::e_Collects::SHOCKWAVE;
 			}
-=======
-			CollectID = e_Enum::OILFLAKE;/*rand() % 6 + 1;*/
-			
-			//CollectID = rand() % 6 + 1;
->>>>>>> ff4a64a31f4cb884db802e49bdd475206e150505
+
 		}
 
 		return true;
