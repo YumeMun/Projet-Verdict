@@ -29,7 +29,7 @@ private:
 	bool isAlreadyUseDrawable = false;
 
 	sf::RectangleShape player;
-	sf::Sprite spCadre;
+	sf::Sprite spCadre[2];
 	sf::Sprite spBc;
 	sf::Sprite spPlayer;
 	sf::Sprite spFader;

@@ -28,8 +28,8 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 
 	GetScoreValue(_player1, _player2);
 
-	posElement[0] = { (1920 / 2) - 200, (1080 / 2) + 1000 };
-	posElement[1] = { (1920 / 2) + 200, (1080 / 2) + 1000 };
+	posElement[0] = { (1920 / 2) - 200, (1080 / 2) + 700 };
+	posElement[1] = { (1920 / 2) + 200, (1080 / 2) + 700 };
 
 	spPlayer[0].setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinJ1)));
 	spPlayer[1].setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinJ2)));
@@ -226,7 +226,7 @@ void Level_Finished::UpdatePodium()
 	{
 		posElement[i].y = scoreFinal[i];
 
-		spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 1000 /*- scoreFinal[i]*/));
+		spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 700 /*- scoreFinal[i]*/));
 		spPlayer[i].setPosition(spPodium[i].getPosition());
 	}
 }

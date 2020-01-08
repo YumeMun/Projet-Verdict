@@ -43,7 +43,7 @@ void PlayerSelector::Setup()
 		newSelector->player.setOutlineColor(sf::Color(80, 80, 80));
 		newSelector->player.setOutlineThickness(7);
 
-		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
+		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache1"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
 		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
@@ -51,13 +51,17 @@ void PlayerSelector::Setup()
 		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
 		//newSelector->spArrow[1].setOrigin(spArrow[1].getGlobalBounds().width / 2, spArrow[1].getGlobalBounds().height / 2);
 
-		newSelector->spCadre.setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
-		newSelector->spCadre.setPosition(1920 / 2 + 150, 1080 / 2 - 150 );
+		newSelector->spCadre[0].setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
+		newSelector->spCadre[0].setPosition(1920 / 2 + 150, 1080 / 2 - 150 );
+		newSelector->spCadre[1].setTexture(*ResourceManager::Instance()->GetTexture("cadre_skin"));
+		newSelector->spCadre[1].setPosition(((1920 / 2) - 150) - newSelector->spCadre[0].getGlobalBounds().width, 1080 / 2 - 150);
 
 		newSelector->timerSwitchSkin.restart();
 
 		listSelector.push_back(newSelector);
 	}
+
+	
 
 	listSelector[0]->rectPlayer = { 0, 0, 360, 135 };
 	listSelector[0]->spPlayer.setTextureRect(listSelector[0]->rectPlayer);
@@ -67,11 +71,15 @@ void PlayerSelector::Setup()
 	listSelector[0]->spPlayer.setPosition(listSelector[0]->spBc.getPosition().x + 30, listSelector[0]->spBc.getPosition().y + 30);
 	listSelector[0]->spFader.setPosition(listSelector[0]->spBc.getPosition().x + 30, listSelector[0]->spBc.getPosition().y + 30);
 
+	//listSelector[0]->spCadre.setPosition(1920 / 2 + 150, 1080 / 2 - 150);
+	//listSelector[1]->spCadre.setPosition(1920 / 2 - 150, 1080 / 2 - 150);
+
 	listSelector[1]->player.setFillColor(sf::Color(201, 65, 65));
 	listSelector[1]->player.setPosition(sf::Vector2f(1920 / 2 + 150, 1080 / 2 - 150));
 
 	listSelector[1]->spBc.setPosition(sf::Vector2f(1920 / 2 + 125, 1080 / 2 - 150));
 	listSelector[1]->spPlayer.setPosition(listSelector[1]->spBc.getPosition().x + 25, listSelector[1]->spBc.getPosition().y + 25);
+	listSelector[1]->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache2"));
 	listSelector[1]->spFader.setPosition(listSelector[1]->spBc.getPosition().x + 25, listSelector[1]->spBc.getPosition().y + 25);
 
 	listSelector[0]->spArrow[0].setPosition(listSelector[0]->spBc.getPosition().x - 65, listSelector[0]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) - (listSelector[0]->spArrow[0].getGlobalBounds().height / 2));
@@ -213,13 +221,14 @@ void PlayerSelector::Update()
 void PlayerSelector::Display()
 {
 	m_actualWindow->draw(spBackground);
+	m_actualWindow->draw(listSelector[0]->spCadre[0]);
+	m_actualWindow->draw(listSelector[0]->spCadre[1]);
 	for (int i = 0; i < 2; i++)
 	{
-		m_actualWindow->draw(listSelector[i]->player);
+		//m_actualWindow->draw(listSelector[i]->player);
 		//m_actualWindow->draw(listSelector[i]->spBc);
-		m_actualWindow->draw(listSelector[i]->spCadre);
+		
 		m_actualWindow->draw(listSelector[i]->spPlayer);
-
 
 		if (listSelector[i]->isFadeDrawable)
 			m_actualWindow->draw(listSelector[i]->spFader);
@@ -270,7 +279,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						if (listSelector[i]->SkinSelector < NB_SKIN)
 							listSelector[i]->SkinSelector += 1;
-						else
+						else if(listSelector[i]->SkinSelector >= NB_SKIN)
 							listSelector[i]->SkinSelector = 1;
 
 						listSelector[i]->timerSwitchSkin.restart();
@@ -284,7 +293,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						if (listSelector[i]->SkinSelector > 1)
 							listSelector[i]->SkinSelector -= 1;
-						else
+						else if(listSelector[i]->SkinSelector <= 1)
 							listSelector[i]->SkinSelector = NB_SKIN;
 
 						listSelector[i]->timerSwitchSkin.restart();
