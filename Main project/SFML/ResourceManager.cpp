@@ -347,7 +347,7 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("Background_credits.jpg", "Background credits"))
+	if (newTexture->Create("Background_credits.png", "Background credits"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
