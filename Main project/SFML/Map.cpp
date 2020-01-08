@@ -146,8 +146,7 @@ Map::Map(std::string _LevelName)
 		}
 	}
 
-<<<<<<< HEAD
-	std::ifstream LoadFile;
+	/*std::ifstream LoadFile;
 
 	if (_LevelName == "Niveau1" || _LevelName == "Niveau2")
 		LoadFile.open("Ressources/Sauvegardes/0" + _LevelName + ".txt", std::ios_base::in);
@@ -176,13 +175,11 @@ Map::Map(std::string _LevelName)
 		}
 	}
 
-	LoadFile.close();
+	LoadFile.close();*/
 
 	//timerLazer.restart();
 	AnimLaserClock.restart();
-=======
-	timerLazer.restart();
->>>>>>> 8f0f91252810e41da49df9b57a17a539b9c327d6
+	timerLazer[0].restart();
 }
 
 Map::~Map()
@@ -712,7 +709,7 @@ void Map::AnimTiles()
 			//else
 				//isLazerOn = 1;
 
-			if (FrameIndexLaser = 13)
+			if (FrameIndexLaser == 13)
 			{
 				timerLazer[0].restart();
 				isLazerOn = 1;
@@ -733,15 +730,14 @@ void Map::AnimTiles()
 				if (FrameIndexLaser >= 16)
 				{
 					FrameIndexLaser = 0;
-<<<<<<< HEAD
+
 					isLazerOn = 0;
 				}
 			}
-=======
-					isLazerOn = 3;
-				}*/
+			else
+				isLazerOn = 0;
+				
 				//}
->>>>>>> 8f0f91252810e41da49df9b57a17a539b9c327d6
 
 			AnimLaserClock.restart();
 		}
