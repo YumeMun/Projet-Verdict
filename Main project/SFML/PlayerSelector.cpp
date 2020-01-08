@@ -413,8 +413,8 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
-		}*/
-		////
+		}
+		////*/
 	}
 
 }

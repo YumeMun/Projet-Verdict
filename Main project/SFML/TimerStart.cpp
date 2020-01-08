@@ -214,13 +214,16 @@ void TimerStart::TimerSound()
 		Countdown.play();
 		i--;
 	}
-	if (m_Clock.getElapsedTime().asSeconds() >= 1.7)
+	if (m_Clock.getElapsedTime().asSeconds() >= 1.9)
 	{
 		if (i == 0)
 		{
 			Countdown.stop();
 			Depart.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Depart Course"));
 			Depart.play();
+
+			m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+			m_engineon.play();
 		}
 		m_Clock.restart();
 	}

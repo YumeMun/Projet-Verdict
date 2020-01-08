@@ -16,7 +16,7 @@ Smoke::~Smoke()
 {
 }
 
-void Smoke::Update(float _Elapsed)
+void Smoke::Update(float _Elapsed, Player* _Player1, Player* _Player2)
 {
 	if (SmokeAlpha.a - 500 * _Elapsed >= 0)
 		SmokeAlpha.a -= 500 * _Elapsed;

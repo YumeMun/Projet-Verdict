@@ -65,6 +65,15 @@
       <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="ExploRocket.cpp">
+<<<<<<< HEAD
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Smoke.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
+=======
       <Filter>Fichiers sources\Scènes\Fx</Filter>
     </ClCompile>
     <ClCompile Include="Fx.cpp">
@@ -72,6 +81,7 @@
     </ClCompile>
     <ClCompile Include="Smoke.cpp">
       <Filter>Fichiers sources\Scènes\Fx</Filter>
+>>>>>>> 59a2c31d1af7af68f1cabc282fc21e0876a80662
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Fichiers sources\Scènes</Filter>
@@ -108,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="ActualSong.cpp">
       <Filter>Fichiers sources\Scènes</Filter>
+<<<<<<< HEAD
+    </ClCompile>
+    <ClCompile Include="BoostEffect.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
+=======
+>>>>>>> 59a2c31d1af7af68f1cabc282fc21e0876a80662
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +241,9 @@
     <ClInclude Include="Commandes.h">
       <Filter>Fichier d%27en tête\Scènes</Filter>
     </ClInclude>
+    <ClInclude Include="BoostEffect.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Fx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Fichier d%27en tête">
@@ -266,7 +285,11 @@
     <Filter Include="Fichiers sources\Scènes\Jeu\Collectibles">
       <UniqueIdentifier>{5721b783-e56f-4687-8370-19fb66a5b141}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
+    <Filter Include="Fichiers sources\Scènes\Jeu\Fx">
+=======
     <Filter Include="Fichiers sources\Scènes\Fx">
+>>>>>>> 59a2c31d1af7af68f1cabc282fc21e0876a80662
       <UniqueIdentifier>{892ae7a5-a0ff-4f3a-a8b0-0236572def41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

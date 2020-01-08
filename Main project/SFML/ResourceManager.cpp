@@ -81,7 +81,7 @@ void ResourceManager::Load()
 
 	newSoundBuffer = new SoundBuffers();
 
-	if (newSoundBuffer->Create("Laser_Impact.ogg", "Laser Impact"))
+	if (newSoundBuffer->Create("Impact_Laser.ogg", "Laser Impact"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newSoundBuffer = new SoundBuffers();
@@ -161,12 +161,17 @@ void ResourceManager::Load()
 
 	newSoundBuffer = new SoundBuffers();
 
+	if (newSoundBuffer->Create("Respawn_Joueur.ogg", "Respawn"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
 	if (newSoundBuffer->Create("Victoire_3.ogg", "Victoire"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newSoundBuffer = new SoundBuffers();
 
-	if (newSoundBuffer->Create("Impact_Missile_3.ogg.ogg", "Impact Missile"))
+	if (newSoundBuffer->Create("Impact_Missile_3.ogg", "Impact Missile"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newSoundBuffer = new SoundBuffers();
@@ -176,12 +181,17 @@ void ResourceManager::Load()
 
 	newSoundBuffer = new SoundBuffers();
 
-	if (newSoundBuffer->Create("Valider_1.ogg", "Valider"))
+	if (newSoundBuffer->Create("Valider_3.ogg", "Valider"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newSoundBuffer = new SoundBuffers();
 
 	if (newSoundBuffer->Create("Test_Invincibilite_2.ogg", "Invincibilite"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("BumperEffect.ogg", "BumperEffect"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newFont = new Fonts();
@@ -269,6 +279,14 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("effet_elec_voiture.png", "Effet_Elec"))
 		_textures.push_back(newTexture);
+
+	for (int i = 0; i < 2; i++)
+	{
+		newTexture = new Textures();
+
+		if (newTexture->Create("BoostFx" + std::to_string(i + 1) + ".png", "BoostFx" + std::to_string(i + 1)))
+			_textures.push_back(newTexture);
+	}
 
 	newTexture = new Textures();
 

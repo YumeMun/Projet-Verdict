@@ -16,6 +16,7 @@ private:
 	sf::Sprite spBackground;
 	sf::Sprite spFlèche;
 	sf::Sound Retour;
+	sf::Sound TestSon;
 	sf::Sprite spVolume[2];
 	sf::Sprite spButton[2];
 	sf::Text OptionsText[2];

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Player.cpp
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Player.cpp(19,62): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
@@ -443,3 +444,11 @@ D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Player.cpp(672,28): warning
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Player.cpp(672,28): warning C4244:         ]
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Player.cpp(759,21): warning C4244:  '=' : conversion de 'double' en 'float', perte possible de données
   SFML.vcxproj -> D:\Users\c.bourgues\Desktop\Runner\Main project\Debug\SFML.exe
+=======
+﻿  Options.cpp
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Options.cpp(20,39): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Options.cpp(27,36): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Options.cpp(31,36): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+  SFML.vcxproj -> D:\Users\g.collignon\Documents\Verdict\Main project\Debug\SFML.exe
+>>>>>>> 6aaca6e2b9888feb215130b17984fa71d721038f
