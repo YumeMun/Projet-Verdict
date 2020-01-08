@@ -15,16 +15,83 @@ Map::Map(std::string _LevelName)
 
 	CheckPos = sf::Vector2f(0, 0);
 
-	for (int i = 0; i < 5; i++)
+	std::ifstream LoadFile;
+
+	if (_LevelName == "Niveau1" || _LevelName == "Niveau2")
+		LoadFile.open("Ressources/Sauvegardes/0" + _LevelName + ".txt", std::ios_base::in);
+	else
+		LoadFile.open("Ressources/Sauvegardes/" + _LevelName + ".txt", std::ios_base::in);
+
+	LoadFile >> Size_X;
+	LoadFile >> Size_Y;
+	LoadFile >> SelectionBackground;
+
+
+	for (int y = 0; y < Size_Y; y++)
 	{
-		Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
-		Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+		for (int x = 0; x < Size_X; x++)
+		{
+			LoadFile >> Tableau[y][x];
+		}
+	}
 
-		Plan[i].setPosition(0, -550);
-		Plan2[i].setPosition(Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
+	for (int y = 0; y < Size_Y; y++)
+	{
+		for (int x = 0; x < Size_X; x++)
+		{
+			if (Tableau[y][x] == 26)
+				Tableau[y][x] = 0;
+		}
+	}
 
-		Plan[i].setScale(1.6, 1.6);
-		Plan2[i].setScale(1.6, 1.6);
+	LoadFile.close();
+
+	if (SelectionBackground == 1)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+			Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan" + std::to_string(i)));
+
+			Plan[i].setPosition(0, -550);
+			Plan2[i].setPosition(Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
+
+			Plan[i].setScale(1.6, 1.6);
+			Plan2[i].setScale(1.6, 1.6);
+		}
+	}
+	else if (SelectionBackground == 2)
+	{
+		Plan[0].setTexture(*ResourceManager::Instance()->GetTexture("Plan0"));
+		Plan2[0].setTexture(*ResourceManager::Instance()->GetTexture("Plan0"));
+
+		for (int i = 2; i < 4; i++)
+		{
+			Plan[i].setTexture(*ResourceManager::Instance()->GetTexture("Lvl2" + std::to_string(i + 1)));
+			Plan2[i].setTexture(*ResourceManager::Instance()->GetTexture("Lvl2" + std::to_string(i + 1)));
+
+			Plan[i].setPosition(0, -500);
+			Plan2[i].setPosition(Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
+
+			Plan[i].setScale(1.6, 1.6);
+			Plan2[i].setScale(1.6, 1.6);
+		}
+
+		Plan[4].setTexture(*ResourceManager::Instance()->GetTexture("CielD"));
+		Plan2[4].setTexture(*ResourceManager::Instance()->GetTexture("CielF"));
+
+		Plan[4].setPosition(0, -550);
+		Plan2[4].setPosition(0, Plan[4].getPosition().y);
+
+		Plan[4].setScale(1.8, 1.8);
+		Plan2[4].setScale(1.8, 1.8);
+
+		for (int i = 0; i < 2; i++)
+		{
+			Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(i)));
+			Plan1[i].setScale(1.6, 1.6);
+			Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, -650);
+		}
 	}
 
 	/*for (int i = 0; i < 8; i++)
@@ -32,12 +99,6 @@ Map::Map(std::string _LevelName)
 		spTile[i].setTexture(*ResourceManager::Instance()->GetTexture("Case" + std::to_string(i + 1)));
 	}*/
 
-	//for (int i = 0; i < 2; i++)
-	//{
-	//	Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(i)));
-	//	//Plan1[i].setScale(2, 2);
-	//	Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, 0);
-	//}
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -85,6 +146,7 @@ Map::Map(std::string _LevelName)
 		}
 	}
 
+<<<<<<< HEAD
 	std::ifstream LoadFile;
 
 	if (_LevelName == "Niveau1" || _LevelName == "Niveau2")
@@ -118,6 +180,9 @@ Map::Map(std::string _LevelName)
 
 	//timerLazer.restart();
 	AnimLaserClock.restart();
+=======
+	timerLazer.restart();
+>>>>>>> 8f0f91252810e41da49df9b57a17a539b9c327d6
 }
 
 Map::~Map()
@@ -132,7 +197,7 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 		{
 			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
 			{
-				if (x >= (CheckPos.x + 1920) / 64 && x <= (CheckPos.x + 4800) / 64)
+				if (x >= (CheckPos.x + 1280) / 64 && x <= (CheckPos.x + 4800) / 64)
 				{
 					Tableau[y - 1][x] = 26;
 					CheckPos = sf::Vector2f(x * 64, (y - 1) * 64);
@@ -157,40 +222,71 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 	else
 		isLazerActive = false;*/
 
-	/*for (int i = 0; i < 2; i++)
+	if (SelectionBackground == 1)
 	{
-		if (Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width <= _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
+		Plan[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
+		Plan2[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
+
+		Plan[1].move(_Cam->GetCamSpeed() * 0.1 * _Elapsed, 0);
+		Plan2[1].move(_Cam->GetCamSpeed() * 0.1 * _Elapsed, 0);
+
+		Plan[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
+		Plan2[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
+
+		Plan[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
+		Plan2[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
+
+		Plan[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
+		Plan2[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
+
+		for (int i = 0; i < 5; i++)
 		{
-			Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(Plan1[0].getPosition().x / Plan1[0].getGlobalBounds().width)));
-			Plan1[i].setPosition(Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width * 2, 0);
+			if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
+			{
+				Plan[i].setPosition(Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width, Plan2[i].getPosition().y);
+			}
+
+			if (Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
+			{
+				Plan2[i].setPosition(Plan[i].getPosition().x + Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
+			}
 		}
-	}*/
-
-	Plan[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
-	Plan2[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
-
-	Plan[1].move(_Cam->GetCamSpeed() * 0.1 * _Elapsed, 0);
-	Plan2[1].move(_Cam->GetCamSpeed() * 0.1 * _Elapsed, 0);
-
-	Plan[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
-	Plan2[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
-
-	Plan[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
-	Plan2[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
-
-	Plan[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
-	Plan2[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
-
-	for (int i = 0; i < 5; i++)
+	}
+	else if (SelectionBackground == 2)
 	{
-		if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
+		for (int i = 0; i < 2; i++)
 		{
-			Plan[i].setPosition(Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width, Plan2[i].getPosition().y);
+			if (Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
+			{
+				Plan1[i].setPosition(Plan1[i].getPosition().x + ((9800 * 1.6) * 2), Plan1[i].getPosition().y);
+				Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan1_" + std::to_string(int(Plan1[i].getPosition().x / Plan1[0].getGlobalBounds().width))));
+			}
 		}
 
-		if (Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
+
+		Plan[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
+		Plan2[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
+
+		Plan[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
+		Plan2[2].move(_Cam->GetCamSpeed() * 0.3 * _Elapsed, 0);
+
+		Plan[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
+		Plan2[3].move(_Cam->GetCamSpeed() * 0.55 * _Elapsed, 0);
+
+		Plan[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
+		Plan2[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
+
+		for (int i = 1; i < 4; i++)
 		{
-			Plan2[i].setPosition(Plan[i].getPosition().x + Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
+			if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
+			{
+				Plan[i].setPosition(Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width, Plan2[i].getPosition().y);
+			}
+
+			if (Plan2[i].getPosition().x + Plan2[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
+			{
+				Plan2[i].setPosition(Plan[i].getPosition().x + Plan[i].getGlobalBounds().width, Plan[i].getPosition().y);
+			}
 		}
 	}
 }
@@ -199,10 +295,26 @@ void Map::Display()
 {
 	m_actualWindow->draw(Plan[5]);
 
-	for (int i = 4; i > 0; i--)
+	if (SelectionBackground == 1)
 	{
-		m_actualWindow->draw(Plan[i]);
-		m_actualWindow->draw(Plan2[i]);
+		for (int i = 4; i > 0; i--)
+		{
+			m_actualWindow->draw(Plan[i]);
+			m_actualWindow->draw(Plan2[i]);
+		}
+	}
+	else if (SelectionBackground == 2)
+	{
+		for (int i = 4; i > 0; i--)
+		{
+			m_actualWindow->draw(Plan2[i]);
+			m_actualWindow->draw(Plan[i]);
+		}
+
+		for (int i = 0; i < 2; i++)
+		{
+			m_actualWindow->draw(Plan1[i]);
+		}
 	}
 
 	/*for (int i = 0; i < 2; i++)
@@ -621,9 +733,15 @@ void Map::AnimTiles()
 				if (FrameIndexLaser >= 16)
 				{
 					FrameIndexLaser = 0;
+<<<<<<< HEAD
 					isLazerOn = 0;
 				}
 			}
+=======
+					isLazerOn = 3;
+				}*/
+				//}
+>>>>>>> 8f0f91252810e41da49df9b57a17a539b9c327d6
 
 			AnimLaserClock.restart();
 		}

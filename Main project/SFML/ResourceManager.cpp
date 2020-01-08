@@ -236,7 +236,7 @@ void ResourceManager::Load()
 	if (newTexture->Create("bouton_petit_retour.png", "petit_bouton_retour"))
 		_textures.push_back(newTexture);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		newTexture = new Textures();
 
@@ -251,6 +251,26 @@ void ResourceManager::Load()
 		if (newTexture->Create("P" + std::to_string(i) + ".png", "Plan" + std::to_string(i)))
 			_textures.push_back(newTexture);
 	}
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Ciel_debut.jpg", "CielD"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Ciel_fin.jpg", "CielF"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Plan_3.png", "Lvl23"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Plan_4.png", "Lvl24"))
+		_textures.push_back(newTexture);
 
 	for (int i = 0; i < 4; i++)
 	{

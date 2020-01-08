@@ -45,10 +45,10 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 		}
 		else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7 || _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 12)
 		{
-			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			/*Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
 			Alteration.setVolume(50);
 			Alteration.play();
-			_Player2->Oiled = true;
+			_Player2->Oiled = true;*/
 
 			if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7)
 			{
@@ -81,16 +81,18 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 	{
 		if (ID == 1)
 		{
-			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-			Alteration.setVolume(50);
-			Alteration.play();
-			_Player1->Oiled = true;
-
 			if (_Player2->GetPos().x >= spOil.getGlobalBounds().left &&
 				_Player2->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
 				_Player2->GetPos().y >= spOil.getGlobalBounds().top - 100 &&
 				_Player2->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height + 100 && _Player2->Invincible == false)
 			{
+				if (_Player2->Oiled == false)
+				{
+					Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+					Alteration.setVolume(50);
+					Alteration.play();
+				}
+
 				_Player2->Oiled = true;
 			}
 			else
@@ -103,6 +105,13 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 				_Player1->GetPos().y >= spOil.getGlobalBounds().top - 100 &&
 				_Player1->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height + 100 && _Player1->Invincible == false)
 			{
+				if (_Player1->Oiled == false)
+				{
+					Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+					Alteration.setVolume(50);
+					Alteration.play();
+				}
+
 				_Player1->Oiled = true;
 			}
 			else

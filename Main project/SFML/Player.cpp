@@ -104,9 +104,10 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 			isNumeroDisplay = true;
 		}
 	}
-	else if (Alive == true /*&& spPlayer.getPosition().x >= _Map->GetSizeX() * 64 && spPlayer.getPosition().y >= _Map->GetSizeY() * 64*/)
+	else if (Alive == true && spPlayer.getPosition().x >= _Map->GetSizeX() * 64 && spPlayer.getPosition().y >= _Map->GetSizeY() * 64)
 	{
-		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCameraCenter()));
+		spPlayer.setRotation(0);
 		Player_Direction = NONE;
 		Player_Movement.x = 0;
 		Player_Movement.y = 0;
@@ -138,9 +139,10 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		m_engineon.play();
 	}
 
-	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
+	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2 && Alive == true)
 	{
-		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCameraCenter()));
+		spPlayer.setRotation(0);
 		Player_Direction = NONE;
 		Player_Movement.x = 0;
 		Player_Movement.y = 0;
@@ -148,7 +150,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_SlopVector.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
-		DisplayNumeroTimer.restart();
+		//DisplayNumeroTimer.restart();
 
 		Alive = false;
 	}
@@ -306,7 +308,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		Boosted = false;
 	}
 
-	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && GetPos().y > 0)
+	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && GetPos().y - Player_ColliderLimit[0].y / 2 - 100 > 0)
 	{
 		if (Player_Movement.y < 0)
 			Player_Movement.y = 0;
