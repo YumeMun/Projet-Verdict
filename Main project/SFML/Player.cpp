@@ -91,7 +91,10 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		{
 			Traps(_Map, _Cam);
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0237c6ea45976621c217da694356b5c4ffb1408
 		CollectibleCollide(_Map);
 		LauchCollectible();
 

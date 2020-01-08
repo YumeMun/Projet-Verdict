@@ -46,8 +46,11 @@ void PlayerSelector::Setup()
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache1"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
+<<<<<<< HEAD
 		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
 		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche droite"));
+=======
+>>>>>>> e0237c6ea45976621c217da694356b5c4ffb1408
 		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
 		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
 		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
