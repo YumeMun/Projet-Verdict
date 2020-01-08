@@ -208,7 +208,12 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
-	if (newTexture->Create("transition.png", "transition"))
+	if (newTexture->Create("transition.png", "transitiold"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("transition.jpg", "transition"))
 		_textures.push_back(newTexture);
 
 	newTexture = new Textures();
