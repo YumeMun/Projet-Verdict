@@ -135,7 +135,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Alive = false;
 	}
 
-	if (Hasfinished == false)
+	//if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
 
@@ -147,6 +147,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 
 	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
 		Hasfinished = true;
+
 
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
 		Invincible = false;

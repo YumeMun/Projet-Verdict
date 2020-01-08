@@ -1,9 +1,9 @@
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\vc142.pdb
-d:\users\c.bourgues\desktop\runner\main project\sfml\release\jeu.obj
-d:\users\c.bourgues\desktop\runner\main project\sfml\release\main.obj
+d:\users\c.bourgues\desktop\runner\main project\sfml\release\map.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\level_finished.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\levelselector.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\leveleditor.obj
+d:\users\c.bourgues\desktop\runner\main project\sfml\release\jeu.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\invicibility.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\intro.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\hudeditor.obj
@@ -19,6 +19,7 @@ d:\users\c.bourgues\desktop\runner\main project\sfml\release\chargement.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\caméra.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\bumper.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\actualsong.obj
+d:\users\c.bourgues\desktop\runner\main project\sfml\release\main.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\transition.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\timerstart.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\smoke.obj
@@ -34,7 +35,6 @@ d:\users\c.bourgues\desktop\runner\main project\sfml\release\options.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\openleveleditor.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\oilflake.obj
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\menu.obj
-d:\users\c.bourgues\desktop\runner\main project\sfml\release\map.obj
 d:\users\c.bourgues\desktop\runner\main project\release\sfml.exe
 d:\users\c.bourgues\desktop\runner\main project\release\sfml.pdb
 d:\users\c.bourgues\desktop\runner\main project\release\sfml.ipdb
@@ -43,6 +43,7 @@ d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\cl.comman
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\cl.read.1.tlog
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\cl.write.1.tlog
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\link.command.1.tlog
+d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\link.delete.1.tlog
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\link.read.1.tlog
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\link.write.1.tlog
 d:\users\c.bourgues\desktop\runner\main project\sfml\release\sfml.tlog\sfml.write.1u.tlog
