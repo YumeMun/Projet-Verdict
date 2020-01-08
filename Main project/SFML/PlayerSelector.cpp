@@ -46,8 +46,8 @@ void PlayerSelector::Setup()
 		newSelector->spFader.setTexture(*ResourceManager::Instance()->GetTexture("Player_Cache1"));
 		newSelector->spFader.setColor(sf::Color(0, 0, 0, 200));
 
-		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flï¿½che gauche"));
-		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flï¿½che droite"));
+		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche gauche"));
+		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("Selection niveau flèche droite"));
 		newSelector->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("RB"));
 		newSelector->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("LB"));
 		//newSelector->spArrow[0].setOrigin(spArrow[0].getGlobalBounds().width / 2, spArrow[0].getGlobalBounds().height / 2);
@@ -367,10 +367,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			}*/
 		}
 
-<<<<<<< HEAD
-=======
 		///a retirer pour presentation
->>>>>>> 772d0382c19577201163c1e9748dae211565bcc5
 		for (int i = 0; i < 2; i++)
 		{
 			if (sf::Joystick::isButtonPressed(i, 7))
@@ -384,10 +381,6 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
 		}
-<<<<<<< HEAD
-=======
-		////
->>>>>>> 772d0382c19577201163c1e9748dae211565bcc5
 	}
 }
 

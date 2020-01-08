@@ -1,48 +1,13 @@
-<<<<<<< HEAD
-﻿  HUD.cpp
+﻿  PlayerSelector.cpp
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:  'argument' : troncation de 'double' à 'T'
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:         with
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:         [
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:             T=float
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:         ]
   Génération de code en cours
-  1 of 888 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 889 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     17 functions had inline decision re-evaluated but remain unchanged
-=======
-﻿  Map.cpp
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(26,28): warning C4305:  'argument' : troncation de 'double' à 'float'
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(27,29): warning C4305:  'argument' : troncation de 'double' à 'float'
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,46): warning C4244:  'argument' : conversion de 'int' en 'T', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,46): warning C4244:         with
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,46): warning C4244:         [
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,46): warning C4244:             T=float
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,46): warning C4244:         ]
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,32): warning C4244:  'argument' : conversion de 'int' en 'T', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,32): warning C4244:         with
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,32): warning C4244:         [
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,32): warning C4244:             T=float
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(137,32): warning C4244:         ]
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(164,43): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(165,44): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(167,41): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(168,42): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(170,41): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(171,42): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(173,42): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(174,43): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(526,13): warning C4244:  'initialisation' : conversion de 'T' en 'int', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(526,13): warning C4244:         with
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(526,13): warning C4244:         [
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(526,13): warning C4244:             T=float
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(526,13): warning C4244:         ]
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(528,14): warning C4244:  'initialisation' : conversion de 'T' en 'int', perte possible de données
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(528,14): warning C4244:         with
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(528,14): warning C4244:         [
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(528,14): warning C4244:             T=float
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(528,14): warning C4244:         ]
-  Génération de code en cours
-D:\Users\a.faure\Desktop\Project Verdict\Main project\SFML\Map.cpp(506): warning C4715: 'Map::GetCheckPoint' : les chemins de contrôle ne retournent pas tous une valeur
-  1 of 891 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    18 functions had inline decision re-evaluated but remain unchanged
->>>>>>> 6a92175ab0e75833d4191c2c56a4734f656a0a06
   Fin de la génération du code
-  SFML.vcxproj -> D:\Users\a.faure\Desktop\Project Verdict\Main project\Release\SFML.exe
+  SFML.vcxproj -> D:\Users\c.bourgues\Desktop\Runner\Main project\Release\SFML.exe
