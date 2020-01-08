@@ -19,7 +19,10 @@ private:
 	int ID = 0, Direction = 0;
 
 	sf::Clock SmokeAppear;
-
+	sf::Sound m_rocket;
+	sf::Sound m_missile;
+	sf::Sound m_engineoff;
+	sf::Sound m_engineon;
 	sf::Sprite spRocket;
 
 	std::vector<Smoke*> SmokeList;

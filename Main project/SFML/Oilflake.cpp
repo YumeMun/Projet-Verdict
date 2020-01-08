@@ -25,6 +25,9 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 			_Player2->GetPos().y >= spOil.getGlobalBounds().top - 200 &&
 			_Player2->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height && _Player2->Invincible == false)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
 			_Player2->Oiled = true;
 		}
 		else
@@ -37,6 +40,9 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 			_Player1->GetPos().y >= spOil.getGlobalBounds().top - 200 &&
 			_Player1->GetPos().y <= spOil.getGlobalBounds().top + spOil.getGlobalBounds().height && _Player1->Invincible == false)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
 			_Player1->Oiled = true;
 		}
 		else 

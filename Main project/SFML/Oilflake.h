@@ -16,7 +16,7 @@ private:
 	bool Alive = true;
 
 	int ID = 0, AnimFrameIndex = 0;
-
+	sf::Sound Alteration;
 	sf::Clock AnimTime;
 
 	sf::Sprite spOil;
