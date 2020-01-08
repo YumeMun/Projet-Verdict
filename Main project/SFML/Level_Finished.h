@@ -34,10 +34,13 @@ private:
 	float scoreIsArrivedFirst[2];
 	float scoreFall[2];
 	float scoreHitTrap[2];
-	float scoreFinal[2];
+	int scoreFinal[2];
 
 	bool isScoreStep[4];
+	bool isUpdatable = false;
+	bool isScoreEnd = false;
 	sf::Clock countdownStart;
+	sf::Clock timerPause;
 	//std::vector<float>
 
 	class Transition* transition;

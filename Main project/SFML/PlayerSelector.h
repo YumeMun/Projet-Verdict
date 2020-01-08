@@ -36,6 +36,7 @@ private:
 	sf::Sprite spArrow[2];
 
 	sf::IntRect rectPlayer;
+	sf::IntRect rectCadre;
 	sf::Vector2f originPlayer;
 	std::vector<PlayerSelector*> listSelector;
 
@@ -45,9 +46,12 @@ private:
 	bool isSkinValidate = false;
 	bool isFadeDrawable = false;
 	bool isTaunt = false;
+	bool isCadreAnim = false;
 	int SkinSelector = 1;
 	int FrameIndex = 0;
+	int FrameIndexC = 0;
 	sf::Clock timerAnim;
+	sf::Clock timerAnimCadre;
 
 	sf::Clock SelectionTimer;
 	sf::Clock timerSwitchSkin;

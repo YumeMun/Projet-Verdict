@@ -154,7 +154,7 @@ void Jeu::Update()
 		else if (Player1->Hasfinished == false || Player2->Hasfinished == true)
 		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-			Player2->scoreIsArrivedFirst = 200/FACTOR_DIVIDE;
+			Player2->scoreIsArrivedFirst = 200 / FACTOR_DIVIDE;
 			Player1->scoreIsArrivedFirst = 0;
 		}
 		/*else if (Player1->Hasfinished == true || Player2->Hasfinished == true)
