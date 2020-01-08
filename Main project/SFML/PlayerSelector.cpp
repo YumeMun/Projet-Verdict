@@ -287,7 +287,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						if (listSelector[i]->SkinSelector < NB_SKIN)
 							listSelector[i]->SkinSelector += 1;
-						else if(listSelector[i]->SkinSelector >= NB_SKIN)
+						else if (listSelector[i]->SkinSelector >= NB_SKIN)
 							listSelector[i]->SkinSelector = 1;
 
 						listSelector[i]->timerSwitchSkin.restart();
@@ -301,7 +301,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						if (listSelector[i]->SkinSelector > 1)
 							listSelector[i]->SkinSelector -= 1;
-						else if(listSelector[i]->SkinSelector <= 1)
+						else if (listSelector[i]->SkinSelector <= 1)
 							listSelector[i]->SkinSelector = NB_SKIN;
 
 						listSelector[i]->timerSwitchSkin.restart();
@@ -328,7 +328,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				}
 			}
 
-			if (sf::Event::JoystickButtonPressed) 
+			if (sf::Event::JoystickButtonPressed)
 			{
 				if (sf::Joystick::isButtonPressed(i, 1))
 				{
@@ -364,7 +364,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
 				Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
 				Retour.play();
-			
+
 			}*/
 		}
 
@@ -381,13 +381,10 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 		{
 			GameManager::Instance()->m_ActualScene = new Jeu(LevelName, GetSkinNumberJ1(), GetSkinNumberJ2());
 			isGameStart = false;
-<<<<<<< HEAD
 		}*/
 		////
-=======
-		}
->>>>>>> 092590fbc42249673a80eeb8a8ce73a01b0d27ac
 	}
+
 }
 
 int PlayerSelector::GetSkinNumberJ1()
