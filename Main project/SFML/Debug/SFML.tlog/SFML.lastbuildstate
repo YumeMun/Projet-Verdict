@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v142:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0
+<<<<<<< HEAD:Main project/SFML/Debug/SFML.tlog/SFML.lastbuildstate
 Debug|Win32|D:\Users\a.faure\Desktop\Project Verdict\Main project\|
+=======
+Release|Win32|D:\Users\c.bourgues\Desktop\Runner\Main project\|
+>>>>>>> 0b6ed40820105b77b1cc9d4962568bca196efb10:Main project/SFML/Release/SFML.tlog/SFML.lastbuildstate
