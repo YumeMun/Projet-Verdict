@@ -522,6 +522,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("Shield.png", "Shield"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("HudJ1.png", "HUD J1"))
 		_textures.push_back(newTexture);
 

@@ -86,7 +86,11 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < _Map->GetSizeY() * 64 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
-		Traps(_Map, _Cam);
+		CollectibleCollide(_Map);
+		LauchCollectible();
+
+		if (Invincible == false)
+			Traps(_Map, _Cam);
 
 		if (isNumeroDisplay == false)
 		{
@@ -94,7 +98,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 			isNumeroDisplay = true;
 		}
 	}
-	else if (Alive == true)
+	else if (Alive == true /*&& spPlayer.getPosition().x >= _Map->GetSizeX() * 64 && spPlayer.getPosition().y >= _Map->GetSizeY() * 64*/)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 		Player_Direction = NONE;
@@ -106,7 +110,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		Player_Vector.y = 0;
 		Alive = false;
 
-		scoreFall += 50 / FACTOR_DIVIDE;
+		//scoreFall += 50 / FACTOR_DIVIDE;
 	}
 	else if (Alive == false && _Pos.x >= GetPos().x)
 		Alive = true;
@@ -134,9 +138,10 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
 		Hasfinished = true;
 
-
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
 		Invincible = false;
+	else if (Invincible == true)
+		Oiled = false;
 
 	if (CollectID != 0)
 		HasCollectible = true;
@@ -166,9 +171,6 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		else if (spPlayer.getRotation() <= 50 && spPlayer.getRotation() >= 40)
 			spPlayer.setRotation(45);
 	}
-
-	CollectibleCollide(_Map);
-	LauchCollectible();
 
 	Animations();
 
@@ -631,6 +633,8 @@ bool Player::CollectibleCollide(Map* _Map)
 {
 	srand(time(NULL));
 
+	std::cout << GetPos().x << std::endl;
+
 	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 23)
 	{
 		_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
@@ -640,9 +644,9 @@ bool Player::CollectibleCollide(Map* _Map)
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
 
-			CollectID = e_Enum::SHOCKWAVE;/*rand() % 6 + 1;*/
+			CollectID = e_Enum::LEVITATION;/*rand() % 6 + 1;*/
 
-			CollectID = rand() % 6 + 1;
+			//CollectID = rand() % 6 + 1;
 
 		}
 

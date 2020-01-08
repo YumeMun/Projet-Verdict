@@ -48,7 +48,7 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 		}
 	}
 
-	if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) != 0)
+	if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) > 0 && _Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) < 23)
 		Alive = false;
 }
 
