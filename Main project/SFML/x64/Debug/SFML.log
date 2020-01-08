@@ -1,6 +1,42 @@
 ﻿  ActualSong.cpp
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+  BoostEffect.cpp
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\BoostEffect.cpp(17): warning C4305: 'argument' : troncation de 'double' à 'float'
+  Bumper.cpp
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Bumper.cpp(34): warning C4244: '+=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Bumper.cpp(40): warning C4244: 'argument' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Bumper.cpp(47): warning C4244: 'argument' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Bumper.cpp(52): warning C4244: 'argument' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Bumper.cpp(56): warning C4244: 'argument' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+  ExploRocket.cpp
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+  Fx.cpp
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+  Intro.cpp
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
   Invicibility.cpp
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
   Génération de code en cours...
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
 sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'
