@@ -31,16 +31,16 @@ public:
 
 	//void MissileCollide();
 
-	bool CollectibleCollide(class Map* _Map);
+	bool CollectibleCollide(class Map* _Map, sf::Vector2f _PosJ2);
 	bool CollectibleUsed();
-	bool HasCollectible, Oiled = false, Invincible = false;
+	bool HasCollectible, Oiled = false, Invincible = false, Shocked = false;
 	int GetCollectID();
 	int GetAimDir();
 	void LauchCollectible();
 	void SetCollectID(int _CollectID);
 
 	sf::Clock InvincibleTime;
-	sf::Vector2f Player_Movement;
+	sf::Vector2f Player_Movement, Shocked_Move;
 	//Missile* newMissile;
 
 	void SetHitTrap();
@@ -51,9 +51,9 @@ public:
 	bool isAnimStartEnd = false;
 
 private:
-	bool KeyPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
+	bool KeyPress = false, ItemPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
 
-	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0;
+	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0, RandomCollect = 0;
 
 	sf::Clock AnimClock;
 	bool StartAnim = false;

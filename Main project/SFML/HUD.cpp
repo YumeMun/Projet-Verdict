@@ -41,6 +41,37 @@ void HUD::SetupPlayerHUD()
 
 	IconPlayer[0].setPosition(0, 0);
 	IconPlayer[1].setPosition(1920 - 449, 0);
+
+	for (int i = 0; i < 2; i++)
+	{
+		spRocket[i].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
+		spShockWave[i].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
+		spOilFlake[i].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
+		spInvincible[i].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
+		spSwap[i].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
+		spBumper[i].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
+
+		spRocket[i].setOrigin(spRocket[i].getGlobalBounds().width / 2, spRocket[i].getGlobalBounds().height / 2);
+		spShockWave[i].setOrigin(spShockWave[i].getGlobalBounds().width / 2, spShockWave[i].getGlobalBounds().height / 2);
+		spOilFlake[i].setOrigin(spOilFlake[i].getGlobalBounds().width / 2, spOilFlake[i].getGlobalBounds().height / 2);
+		spInvincible[i].setOrigin(spInvincible[i].getGlobalBounds().width / 2, spInvincible[i].getGlobalBounds().height / 2);
+		spSwap[i].setOrigin(spSwap[i].getGlobalBounds().width / 2, spSwap[i].getGlobalBounds().height / 2);
+		spBumper[i].setOrigin(spBumper[i].getGlobalBounds().width / 2, spBumper[i].getGlobalBounds().height / 2);
+
+
+		spRocket[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		spRocket[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+		spShockWave[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		spShockWave[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+		spOilFlake[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		spOilFlake[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+		spInvincible[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		spInvincible[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+		spSwap[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		spSwap[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+		spBumper[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+		spBumper[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+	}
 }
 
 void HUD::Update(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2f _posP1, sf::Vector2f _posP2)
@@ -48,7 +79,7 @@ void HUD::Update(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2
 	//SetProgressionPlayer(_posP1, _posP2);
 }
 
-void HUD::Display(Player* _Player1, Player* _PLayer2)
+void HUD::Display(Player* _Player1, Player* _Player2)
 {
 	//m_actualWindow->draw(progressionNiveau);
 	//m_actualWindow->draw(Player2);
@@ -59,7 +90,39 @@ void HUD::Display(Player* _Player1, Player* _PLayer2)
 		m_actualWindow->draw(IconPlayer[i]);
 	}
 
-	AnimationHUD(_Player1, _PLayer2);
+	AnimationHUD(_Player1, _Player2);
+
+	if (HudDisplay[0] == true)
+	{
+		if (_Player1->GetCollectID() == e_Enum::e_Collects::ROCKET)
+			m_actualWindow->draw(spRocket[0]);
+		else if (_Player1->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
+			m_actualWindow->draw(spShockWave[0]);
+		else if (_Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
+			m_actualWindow->draw(spOilFlake[0]);
+		else if (_Player1->GetCollectID() == e_Enum::e_Collects::LEVITATION)
+			m_actualWindow->draw(spInvincible[0]);
+		else if (_Player1->GetCollectID() == e_Enum::e_Collects::SWAP)
+			m_actualWindow->draw(spSwap[0]);
+		else if (_Player1->GetCollectID() == e_Enum::e_Collects::BUMPER)
+			m_actualWindow->draw(spBumper[0]);
+	}
+
+	if (HudDisplay[1] == true)
+	{
+		if (_Player2->GetCollectID() == e_Enum::e_Collects::ROCKET)
+			m_actualWindow->draw(spRocket[1]);
+		else if (_Player2->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
+			m_actualWindow->draw(spShockWave[1]);
+		else if (_Player2->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
+			m_actualWindow->draw(spOilFlake[1]);
+		else if (_Player2->GetCollectID() == e_Enum::e_Collects::LEVITATION)
+			m_actualWindow->draw(spInvincible[1]);
+		else if (_Player2->GetCollectID() == e_Enum::e_Collects::SWAP)
+			m_actualWindow->draw(spSwap[1]);
+		else if (_Player2->GetCollectID() == e_Enum::e_Collects::BUMPER)
+			m_actualWindow->draw(spBumper[1]);
+	}
 }
 
 void HUD::SetProgressionLevel(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer2)
@@ -90,46 +153,6 @@ void HUD::SetProgressionPlayer(sf::Vector2f _posPlayer1, sf::Vector2f _posPlayer
 
 void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 {
-	if (_Player1->HasCollectible == true && SetTexture[0] == false)
-	{
-		if (_Player1->GetCollectID() == 1)
-			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
-		else if (_Player1->GetCollectID() == 2)
-			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
-		else if (_Player1->GetCollectID() == 3)
-			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
-		else if (_Player1->GetCollectID() == 4)
-			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
-		else if (_Player1->GetCollectID() == 5)
-			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
-		else if (_Player1->GetCollectID() == 6)
-			spIconCollect[0].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
-
-		spIconCollect[0].setOrigin(spIconCollect[0].getGlobalBounds().width / 2, spIconCollect[0].getGlobalBounds().height / 2);
-		spIconCollect[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		SetTexture[0] = true;
-	}
-	if (_Player2->HasCollectible == true && SetTexture[1] == false)
-	{
-		if (_Player2->GetCollectID() == 1)
-			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect1"));
-		else if (_Player2->GetCollectID() == 2)
-			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect2"));
-		else if (_Player2->GetCollectID() == 3)
-			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect3"));
-		else if (_Player2->GetCollectID() == 4)
-			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect4"));
-		else if (_Player2->GetCollectID() == 5)
-			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect5"));
-		else if (_Player2->GetCollectID() == 6)
-			spIconCollect[1].setTexture(*ResourceManager::Instance()->GetTexture("Collect6"));
-
-		spIconCollect[1].setOrigin(spIconCollect[1].getGlobalBounds().width / 2, spIconCollect[1].getGlobalBounds().height / 2);
-		spIconCollect[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
-		SetTexture[1] = true;
-	}
-
-
 	if (_Player1->HasCollectible == true)
 	{
 		if (AnimClock[0].getElapsedTime().asMilliseconds() > 50)
@@ -162,7 +185,6 @@ void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 			else if (FrameIndex[0] == 17)
 			{
 				FrameIndex[0] = 17;
-				SetTexture[0] = false;
 				HudDisplay[0] = false;
 			}
 
@@ -205,7 +227,6 @@ void HUD::AnimationHUD(Player* _Player1, Player* _Player2)
 			else if (FrameIndex[1] == 17)
 			{
 				FrameIndex[1] = 17;
-				SetTexture[1] = false;
 				HudDisplay[1] = false;
 			}
 

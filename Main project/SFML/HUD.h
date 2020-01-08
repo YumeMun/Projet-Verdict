@@ -39,7 +39,13 @@ private:
 	sf::Clock AnimClock[2];
 	int FrameIndex[2];
 	bool HudDisplay[2];
-	bool SetTexture[2];
+
+	sf::Sprite spRocket[2];
+	sf::Sprite spShockWave[2];
+	sf::Sprite spOilFlake[2];
+	sf::Sprite spInvincible[2];
+	sf::Sprite spSwap[2];
+	sf::Sprite spBumper[2];
 
 	sf::Sprite spIconCollect[2];
 	
