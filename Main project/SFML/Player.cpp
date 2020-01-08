@@ -267,7 +267,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		spPlayer.setPosition(sf::Vector2f(GetPos().x, _Map->GetNextTile(11, GetPos()).y - Player_ColliderLimit[0].y));
 	}
 
-	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) <= 6)//
+	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) >= 1 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) <= 6)
 	{
 		Jump = false;
 	}
@@ -289,7 +289,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		if (Player_SlopVector.y != 0)
 			Player_SlopVector.y = 0;
 
-		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 11 && Boost == false)
+		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) >= 11 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) <= 13 && Boost == false)
 		{
 			m_Boost.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Boost"));
 			m_Boost.setVolume(25);
