@@ -208,6 +208,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("cadre_anim.png", "cadre_anim"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("bouton_petit_retour.png", "petit_bouton_retour"))
 		_textures.push_back(newTexture);
 

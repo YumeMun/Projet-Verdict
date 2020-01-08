@@ -116,7 +116,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _Pos)
 		Player_Vector.y = 0;
 		Alive = false;
 
-		//scoreFall += 50 / FACTOR_DIVIDE;
+		scoreFall += 50 / FACTOR_DIVIDE;
 	}
 	else if (Alive == false && _Pos.x >= GetPos().x)
 		Alive = true;
