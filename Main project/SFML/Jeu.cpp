@@ -393,7 +393,7 @@ void Jeu::CollectiblesManager()
 		{
 			Bumper* newCollect = new Bumper(2, Player2->GetAimDir(), Player2->GetPos());
 			Collectibles.push_back(newCollect);
-			Player1->SetCollectID(0);
+			Player2->SetCollectID(0);
 		}
 	}
 
