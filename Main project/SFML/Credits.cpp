@@ -27,8 +27,13 @@ void Credits::Update()
 
 void Credits::Display()
 {
+	if (spBackground.getPosition().y > -3219)
+		spBackground.move(0, -3);
+
 	m_actualWindow->draw(spBackground);
-	m_actualWindow->draw(spBoutonRetour);
+
+	if (spBackground.getPosition().y <= -3219)
+		m_actualWindow->draw(spBoutonRetour);
 }
 
 void Credits::EventManager(sf::Event p_pollingEvent)

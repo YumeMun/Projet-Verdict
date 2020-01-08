@@ -9,6 +9,7 @@
 #include "Rocket.h"
 #include "Bumper.h"
 #include "Invicibility.h"
+#include "BoostEffect.h"
 #include "PlayerSelector.h"
 #include "Level_Finished.h"
 
@@ -49,6 +50,8 @@ private:
 	sf::Sound m_Shockwave;
 	sf::Sound m_levitation;
 	sf::Sound m_magnet;
+	sf::Sound m_bumper;
+	sf::Sound voiture;
 
 	std::vector<Collects*> Collectibles;
 	std::vector<Fx*> FXs;

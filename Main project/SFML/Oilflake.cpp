@@ -45,6 +45,11 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 		}
 		else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7 || _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 12)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
+			_Player2->Oiled = true;
+
 			if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7)
 			{
 				spOil.setPosition(sf::Vector2f(spOil.getPosition().x + 10, _Map->GetNextTile(7, sf::Vector2f(spOil.getPosition().x, spOil.getPosition().y)).y + 10));
@@ -76,6 +81,11 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 	{
 		if (ID == 1)
 		{
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(50);
+			Alteration.play();
+			_Player1->Oiled = true;
+
 			if (_Player2->GetPos().x >= spOil.getGlobalBounds().left &&
 				_Player2->GetPos().x <= spOil.getGlobalBounds().left + spOil.getGlobalBounds().width &&
 				_Player2->GetPos().y >= spOil.getGlobalBounds().top - 100 &&
@@ -110,6 +120,12 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 	}
 
 	spOil.setTextureRect(sf::IntRect(192 * AnimFrameIndex, 0, 192, 64));
+
+	if (spOil.getPosition().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2 ||
+		spOil.getPosition().y > _Cam->GetCameraCenter().y + _Cam->GetSizeCamera().y / 2)
+	{
+		Alive = false;
+	}
 }
 
 void Oilflake::Display(sf::RenderWindow* _Window)

@@ -62,11 +62,15 @@ void Bumper::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 	{
 		if (spBumper.getGlobalBounds().contains(_Player1->GetPos()))
 		{
+			m_bumper.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("BumperEffect"));
+			m_bumper.play();
 			_Player1->Player_Movement.y = -SPEED * 3;
 			Alive = false;
 		}
 		else if (spBumper.getGlobalBounds().contains(_Player2->GetPos()))
 		{
+			m_bumper.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("BumperEffect"));
+			m_bumper.play();
 			_Player2->Player_Movement.y = -SPEED * 3;
 			Alive = false;
 		}

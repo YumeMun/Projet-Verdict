@@ -33,7 +33,8 @@ public:
 
 	bool CollectibleCollide(class Map* _Map, sf::Vector2f _PosJ2);
 	bool CollectibleUsed();
-	bool HasCollectible, Oiled = false, Invincible = false, Shocked = false;
+	bool HasCollectible, Oiled = false, Invincible = false, Shocked = false, Boost = false, Boosted = false, Jump = true;
+	bool Test = true;
 	int GetCollectID();
 	int GetAimDir();
 	void LauchCollectible();
@@ -51,11 +52,13 @@ public:
 	bool isAnimStartEnd = false;
 
 private:
-	bool KeyPress = false, ItemPress = false, Alive = true, Jump = true, Boost = false, UseIt = false;
+	bool KeyPress = false, ItemPress = false, Alive = true, UseIt = false;
 
 	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0, RandomCollect = 0;
 
 	sf::Clock AnimClock;
+	sf::Clock m_Clock;
+	sf::Clock m_Clock2;
 	bool StartAnim = false;
 
 	bool isJumping = false;
@@ -79,6 +82,10 @@ private:
 	sf::Sound Alteration;
 	sf::Sound m_Boost;
 	sf::Sound m_ElecHit;
+	sf::Sound m_respawn;
+	sf::Sound m_death;
+	sf::Sound m_engineoff;
+	sf::Sound m_engineon;
 
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;
@@ -92,7 +99,6 @@ private:
 	int FrameIndexNumero = 0;
 	bool isNumeroDisplay;
 	float accelerationPlayer = 10;
-
 	sf::Vector2f Player_Vector;
 	sf::Vector2f Player_SlopVector;
 	sf::Vector2f Player_ColliderLimit[3];

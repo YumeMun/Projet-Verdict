@@ -16,7 +16,7 @@ private:
 	bool Alive = true, Grounded = false;
 
 	int ID = 0, AnimFrameIndex = 0;
-
+	sf::Sound Alteration;
 	sf::Clock AnimTime;
 
 	sf::Vector2f Oil_Movement;

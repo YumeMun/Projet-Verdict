@@ -17,97 +17,113 @@
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
     <ClCompile Include="ChooseLevelEditor.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
     </ClCompile>
     <ClCompile Include="HudEditor.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
     </ClCompile>
     <ClCompile Include="LevelEditor.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
     </ClCompile>
     <ClCompile Include="OpenLevelEditor.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
     </ClCompile>
     <ClCompile Include="SaveEditor.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
     </ClCompile>
     <ClCompile Include="SizeEditor.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Editeur</Filter>
+      <Filter>Fichiers sources\Scènes\Editeur</Filter>
     </ClCompile>
     <ClCompile Include="Caméra.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="HUD.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu</Filter>
     </ClCompile>
     <ClCompile Include="Bumper.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="Collects.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="Invicibility.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="Oilflake.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="Rocket.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="Shockwave.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="ExploRocket.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Fx</Filter>
+<<<<<<< HEAD
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
     </ClCompile>
     <ClCompile Include="Fx.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Fx</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
     </ClCompile>
     <ClCompile Include="Smoke.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes\Fx</Filter>
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
+=======
+      <Filter>Fichiers sources\Scènes\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Fx.cpp">
+      <Filter>Fichiers sources\Scènes\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Smoke.cpp">
+      <Filter>Fichiers sources\Scènes\Fx</Filter>
+>>>>>>> 59a2c31d1af7af68f1cabc282fc21e0876a80662
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSelector.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Options.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="LevelSelector.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Level_Finished.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Jeu.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Intro.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Credits.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Commandes.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="Chargement.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
     </ClCompile>
     <ClCompile Include="ActualSong.cpp">
-      <Filter>Fichier d%27en tête\Scènes\Scènes</Filter>
+      <Filter>Fichiers sources\Scènes</Filter>
+<<<<<<< HEAD
+    </ClCompile>
+    <ClCompile Include="BoostEffect.cpp">
+      <Filter>Fichiers sources\Scènes\Jeu\Fx</Filter>
+=======
+>>>>>>> 59a2c31d1af7af68f1cabc282fc21e0876a80662
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +241,9 @@
     <ClInclude Include="Commandes.h">
       <Filter>Fichier d%27en tête\Scènes</Filter>
     </ClInclude>
+    <ClInclude Include="BoostEffect.h">
+      <Filter>Fichier d%27en tête\Scènes\Jeu\Fx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Fichier d%27en tête">
@@ -254,19 +273,23 @@
     <Filter Include="Fichier d%27en tête\Scènes\Jeu\Fx">
       <UniqueIdentifier>{56904342-4b59-4fad-a0b0-45f7c2035acd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichier d%27en tête\Scènes\Scènes">
+    <Filter Include="Fichiers sources\Scènes">
       <UniqueIdentifier>{3c3028f8-761c-417d-9b5e-6266fe72b0a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichier d%27en tête\Scènes\Scènes\Editeur">
+    <Filter Include="Fichiers sources\Scènes\Editeur">
       <UniqueIdentifier>{5f2a8b7e-1716-42f7-90b9-81ea12d4cd68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichier d%27en tête\Scènes\Scènes\Jeu">
+    <Filter Include="Fichiers sources\Scènes\Jeu">
       <UniqueIdentifier>{7b6e2905-6f60-4aa2-b35f-d6d6aa29ff8a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichier d%27en tête\Scènes\Scènes\Jeu\Collectibles">
+    <Filter Include="Fichiers sources\Scènes\Jeu\Collectibles">
       <UniqueIdentifier>{5721b783-e56f-4687-8370-19fb66a5b141}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichier d%27en tête\Scènes\Scènes\Fx">
+<<<<<<< HEAD
+    <Filter Include="Fichiers sources\Scènes\Jeu\Fx">
+=======
+    <Filter Include="Fichiers sources\Scènes\Fx">
+>>>>>>> 59a2c31d1af7af68f1cabc282fc21e0876a80662
       <UniqueIdentifier>{892ae7a5-a0ff-4f3a-a8b0-0236572def41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

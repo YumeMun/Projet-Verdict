@@ -13,7 +13,7 @@ ExploRocket::~ExploRocket()
 {
 }
 
-void ExploRocket::Update(float _Elapsed)
+void ExploRocket::Update(float _Elapsed, Player* _Player1, Player* _Player2)
 {
 	if (AnimTime.getElapsedTime().asSeconds() > 0.06 && AnimFrameIndex < 20)
 	{
