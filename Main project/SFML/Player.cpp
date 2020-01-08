@@ -124,7 +124,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 
 		scoreFall += 50 / FACTOR_DIVIDE;
 	}
-	else if (Alive == false && _PosJ2.x >= GetPos().x)
+	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
 	{		Alive = true;
 
 		m_respawn.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Respawn"));
