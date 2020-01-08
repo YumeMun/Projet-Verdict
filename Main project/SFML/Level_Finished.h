@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 #define SPEED_PODIUM 1
-#define FACTOR_DIVIDE 2
+#define FACTOR_DIVIDE 3
 
 class Level_Finished :
 	public Scene
@@ -23,12 +23,17 @@ private:
 
 	sf::Text WinText;
 	sf::Text ScoreText[2];
+	sf::Text isPlayerText[2];
 
 	sf::Sprite spPlayer[2];
 	sf::IntRect rectPlayer[2];
 	sf::Sprite spPodium[2];
 	sf::Vector2f posElement[2];
 	sf::Vector2f originElement;
+
+	sf::Sprite spLogo;
+	sf::IntRect rectLogo;
+	sf::Vector2f posLogo[3];
 
 	float scoreTimeFirst[2];
 	float scoreIsArrivedFirst[2];
@@ -41,6 +46,8 @@ private:
 	bool isScoreEnd = false;
 	sf::Clock countdownStart;
 	sf::Clock timerPause;
+	sf::Clock timerLogo;
+	int frameIndex = 0;
 	//std::vector<float>
 
 	class Transition* transition;

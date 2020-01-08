@@ -223,6 +223,11 @@ void ResourceManager::Load()
 
 	newTexture = new Textures();
 
+	if (newTexture->Create("sprite_victoire.png", "victoire"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
 	if (newTexture->Create("bouton_petit_retour.png", "petit_bouton_retour"))
 		_textures.push_back(newTexture);
 
