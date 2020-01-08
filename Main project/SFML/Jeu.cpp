@@ -272,9 +272,13 @@ void Jeu::CollectiblesManager()
 			Alteration.setVolume(50);
 			Alteration.play();
 
+<<<<<<< HEAD
 
 
 			Oilflake* newCollect = new Oilflake(1, map->GetNextTile(1, Player1->GetPos()));
+=======
+			Oilflake* newCollect = new Oilflake(1, Player1->GetPos());
+>>>>>>> ff4a64a31f4cb884db802e49bdd475206e150505
 			Collectibles.push_back(newCollect);
 			Player1->SetCollectID(0);
 		}
@@ -300,9 +304,12 @@ void Jeu::CollectiblesManager()
 
 			if (Player2->GetCollectID() != 0)
 			{
+				Player1->HasCollectible = false;
 				Player1->SetCollectID(Player2->GetCollectID());
 				Player2->SetCollectID(0);
 			}
+			else
+				Player1->SetCollectID(0);
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::BUMPER)
 		{
@@ -358,6 +365,7 @@ void Jeu::CollectiblesManager()
 
 			if (Player1->GetCollectID() != 0)
 			{
+				Player2->HasCollectible = false;
 				Player2->SetCollectID(Player1->GetCollectID());
 				Player1->SetCollectID(0);
 			}

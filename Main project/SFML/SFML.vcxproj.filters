@@ -103,9 +103,13 @@
     <ClCompile Include="ChooseLevelEditor.cpp">
       <Filter>Fichiers sources\Scenes\Editeur</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="ActualSong.cpp" />
+=======
     <ClCompile Include="Invicibility.cpp">
       <Filter>Fichiers sources\Scenes\Jeu\Collectibles</Filter>
     </ClCompile>
+>>>>>>> 092590fbc42249673a80eeb8a8ce73a01b0d27ac
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transition.h">
@@ -216,9 +220,13 @@
     <ClInclude Include="SaveEditor.h">
       <Filter>Fichiers d%27en-tête\Scenes\Editeur</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="ActualSong.h" />
+=======
     <ClInclude Include="Invicibility.h">
       <Filter>Fichiers d%27en-tête\Scenes\Jeu\Collectibles</Filter>
     </ClInclude>
+>>>>>>> 092590fbc42249673a80eeb8a8ce73a01b0d27ac
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Fichiers d%27en-tête">
