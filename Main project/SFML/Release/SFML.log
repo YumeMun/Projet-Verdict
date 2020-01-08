@@ -1,8 +1,12 @@
-﻿  Credits.cpp
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+﻿  ResourceManager.cpp
+D:\Users\a.faure\Desktop\Verdict\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
+D:\Users\a.faure\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(643,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\a.faure\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(657,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\a.faure\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(669,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\a.faure\Desktop\Verdict\Main project\SFML\ResourceManager.cpp(693,23): warning C4244:  'return' : conversion de 'unsigned int' en 'float', perte possible de données
   Génération de code en cours
-  2 of 894 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  1 of 898 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
+    31 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
-  SFML.vcxproj -> D:\Users\c.bourgues\Desktop\Runner\Main project\Release\SFML.exe
+  SFML.vcxproj -> D:\Users\a.faure\Desktop\Verdict\Main project\Release\SFML.exe

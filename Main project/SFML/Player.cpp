@@ -124,13 +124,8 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 
 		scoreFall += 50 / FACTOR_DIVIDE;
 	}
-<<<<<<< HEAD
-	else if (Alive == false && _Pos.x >= GetPos().x)
-	{
-=======
 	else if (Alive == false && _PosJ2.x >= GetPos().x)
->>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
-		Alive = true;
+	{		Alive = true;
 
 		m_respawn.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Respawn"));
 		m_respawn.play();
@@ -709,12 +704,6 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 		{
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
-
-<<<<<<< HEAD
-			CollectID = e_Enum::ROCKET;
-=======
-			//CollectID = e_Enum::LEVITATION;/*rand() % 6 + 1;*/
->>>>>>> eb6455fb892fe5d126017bbe538c73d2df09eae8
 
 			RandomCollect = rand() % 100 + 1;
 
