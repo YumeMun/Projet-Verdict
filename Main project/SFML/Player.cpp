@@ -641,8 +641,6 @@ bool Player::CollectibleCollide(Map* _Map)
 {
 	srand(time(NULL));
 
-	std::cout << GetPos().x << std::endl;
-
 	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 23)
 	{
 		_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
