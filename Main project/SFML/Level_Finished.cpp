@@ -157,17 +157,17 @@ void Level_Finished::EventManager(sf::Event p_pollingEvent)
 
 void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
 {
-	scoreTimeFirst[0] = _player1->Score + 300;
-	scoreTimeFirst[1] = _player2->Score + 100;
+	scoreTimeFirst[0] = _player1->Score; //+ 300;
+	scoreTimeFirst[1] = _player2->Score; //+ 100;
 
 	scoreIsArrivedFirst[0] = _player1->scoreIsArrivedFirst;
 	scoreIsArrivedFirst[1] = _player2->scoreIsArrivedFirst;
 
-	scoreHitTrap[0] = _player1->scoreHitTrap + 100;
-	scoreHitTrap[1] = _player2->scoreHitTrap + 50;
+	scoreHitTrap[0] = _player1->scoreHitTrap; //+ 100;
+	scoreHitTrap[1] = _player2->scoreHitTrap; //+ 50;
 
-	scoreFall[0] = _player1->scoreFall + 40;
-	scoreFall[1] = _player2->scoreFall + 60;
+	scoreFall[0] = _player1->scoreFall; //+ 40;
+	scoreFall[1] = _player2->scoreFall; //+ 60;
 
 	std::cout << "score temps passe 1er j1 :" << scoreTimeFirst[0] << std::endl;
 	std::cout << "score arrive 1er j1 :" << scoreIsArrivedFirst[0] << std::endl;
@@ -292,6 +292,10 @@ void Level_Finished::UpdatePodium()
 			{
 				posElement[i].y = -scoreFinal[i];
 
+				if (scoreFinal[i] < 0)
+				{
+					scoreFinal[i] = 0;
+				}
 				spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 800));
 				spPlayer[i].setPosition(spPodium[i].getPosition());
 				std::cout << i << " : pos : " << spPodium[i].getPosition().y << std::endl;

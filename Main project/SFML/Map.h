@@ -44,7 +44,7 @@ private:
 
 	sf::CircleShape Collectible;
 
-	sf::Clock timerLazer;
+	sf::Clock timerLazer[2];
 	bool isLazerActive = false;
 	int isLazerOn = 3;
 	void AnimTiles();

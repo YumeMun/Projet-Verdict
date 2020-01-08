@@ -116,7 +116,8 @@ Map::Map(std::string _LevelName)
 
 	LoadFile.close();
 
-	timerLazer.restart();
+	//timerLazer.restart();
+	AnimLaserClock.restart();
 }
 
 Map::~Map()
@@ -140,7 +141,7 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 		}
 	}
 
-	if (timerLazer.getElapsedTime().asSeconds() > 2)
+	/*if (timerLazer.getElapsedTime().asSeconds() > 2)
 	{
 		isLazerActive = true;
 
@@ -149,12 +150,12 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 			isLazerOn = 0;
 		}
 		else
-			isLazerOn = 1;*/
+			isLazerOn = 1;
 
 		timerLazer.restart();
 	}
 	else
-		isLazerActive = false;
+		isLazerActive = false;*/
 
 	/*for (int i = 0; i < 2; i++)
 	{
@@ -585,43 +586,46 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
-	if (isLazerActive)
-	{
+	//if (isLazerActive)
+	//{
 		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
 			//if (isLazerOn == 0)
 			//{
-			if (FrameIndexLaser < 12)
+			if (FrameIndexLaser <= 12)
 			{
 				isLazerOn = 0;
 				FrameIndexLaser++;
 			}
-			else
-				isLazerOn = 1;
+			//else
+				//isLazerOn = 1;
 
-			if (FrameIndexLaser >= 16)
+			if (FrameIndexLaser = 13)
 			{
-				FrameIndexLaser = 0;
-				isLazerOn = 0;
-				isLazerActive = false;
-				timerLazer.restart();
+				timerLazer[0].restart();
+				isLazerOn = 1;
+				FrameIndexLaser++;
 			}
 
-			//}
-			//else if (isLazerOn == 1)
-			//{
-				/*if (FrameIndexLaser < 16)
+			if (timerLazer[0].getElapsedTime().asSeconds() >= 2)
+			{
+				if (FrameIndexLaser >= 14 && FrameIndexLaser < 16)
 				{
+					//FrameIndexLaser = 0;
+					isLazerOn = 1;
 					FrameIndexLaser++;
+					//isLazerActive = false;
+					//timerLazer.restart();
 				}
-				else
+
+				if (FrameIndexLaser >= 16)
 				{
 					FrameIndexLaser = 0;
-					isLazerOn = 3;
-				}*/
-			//}
+					isLazerOn = 0;
+				}
+			}
 
 			AnimLaserClock.restart();
 		}
-	}
+	//}
 }

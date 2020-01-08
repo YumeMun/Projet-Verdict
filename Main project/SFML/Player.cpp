@@ -117,7 +117,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Alive = false;
 
 
-		scoreFall += 45 / FACTOR_DIVIDE;
+		scoreFall += 30 / FACTOR_DIVIDE;
 
 		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
 		m_engineoff.play();
@@ -125,7 +125,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		m_death.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Mort Hors Ecran"));
 		m_death.play();
 
-		scoreFall += 50 / FACTOR_DIVIDE;
+		//scoreFall += 50 / FACTOR_DIVIDE;
 
 	}
 	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
@@ -440,7 +440,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
 					Alive = false;
-					scoreHitTrap += 15 / FACTOR_DIVIDE;
+					scoreFall += 30 / FACTOR_DIVIDE;
 				}
 			}
 			//else
@@ -462,13 +462,13 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			//	}
 			//}
 
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 3; i++)
 			{
 				if (_Map->GetTile(GetPos().x + Player_ColliderLimit[i].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[i].x, GetPos().y) == 28)
 				{
 					timerTrapFactor.restart();
 					isCollideCE = true;
-
+					scoreHitTrap += 0.05 / FACTOR_DIVIDE;
 					SetHitLazer();
 
 					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //

@@ -89,7 +89,6 @@ void Transition::Update()
 		isTransitionDone = true;
 	}*/
 
-
 	posTransition.y += TRANSITION_SPEED*1.25;
 	spTransition.setPosition(posTransition);
 	if (posTransition.y >= 0)
@@ -117,23 +116,23 @@ void Transition::UpdateBack()
 		//isTransitionBackDone = true;
 	}*/
 
-	/*posTransition.y -= TRANSITION_SPEED * 1.25;
+	posTransition.y -= TRANSITION_SPEED * 1.25;
 	spTransition.setPosition(posTransition);
 	if (posTransition.y <= 0 - spTransition.getGlobalBounds().height)
 	{
 		posTransition.y = spTransition.getGlobalBounds().height;
 		spTransition.setPosition(posTransition);
 		isTransitionBackDone = true;
-	}*/
+	}
 
-	posTransition.y += TRANSITION_SPEED * 1.25;
+	/*posTransition.y += TRANSITION_SPEED * 1.25;
 	spTransition.setPosition(posTransition);
 	if (posTransition.y >= 1080)
 	{
 		posTransition.y = 1080;
 		spTransition.setPosition(posTransition);
 		isTransitionBackDone = true;
-	}
+	}*/
 }
 
 void Transition::ResetTransition()
@@ -141,8 +140,8 @@ void Transition::ResetTransition()
 	isTransitionDone = false;
 	isTransitionBackDone = false;
 
-	posTransition = { 0, 0 - spTransition.getGlobalBounds().height };
-	spTransition.setPosition(posTransition);
+	/*posTransition = { 0, 0 - spTransition.getGlobalBounds().height };
+	spTransition.setPosition(posTransition);*/
 }
 
 void Transition::DrawTransition()
