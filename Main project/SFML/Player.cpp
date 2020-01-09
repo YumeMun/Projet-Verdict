@@ -122,24 +122,25 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 
 		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
 		m_engineoff.play();
-		
+
 		m_death.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Mort Hors Ecran"));
 		m_death.play();
 
 		//scoreFall += 50 / FACTOR_DIVIDE;
 
 	}
-	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
-	{		Alive = true;
+	else if (Alive == false && _Cam->GetCameraCenter().x >= GetPos().x)
+	{
+		Alive = true;
 
 		m_respawn.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Respawn"));
 		m_respawn.play();
-		
+
 		m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
 		m_engineon.play();
 	}
 
-	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2 && Alive == true)
+	if (((GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2) || (GetPos().y > _Cam->GetCameraCenter().y + _Cam->GetSizeCamera().y / 2)) && Alive == true)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCameraCenter()));
 		spPlayer.setRotation(0);
@@ -150,7 +151,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_SlopVector.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
-		//DisplayNumeroTimer.restart();
+		DisplayNumeroTimer.restart();
 
 		Alive = false;
 	}
@@ -256,6 +257,27 @@ void Player::Controls(Map* _Map, float _Elapsed)
 			KeyPress = false;
 	}
 
+	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 8 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 13 && Player_Direction == NONE)
+	{
+		if (Jump == true)
+		{
+			Jump = false;
+		}
+
+		if (Player_Movement.y > 0)
+			Player_Movement.y = 0;
+	}
+	else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 7 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 12 && Player_Direction == NONE)
+	{
+		if (Jump == true)
+		{
+			Jump = false;
+		}
+
+		if (Player_Movement.y > 0)
+			Player_Movement.y = 0;
+	}
+
 	for (int i = 1; i < 7; i++)
 	{
 		if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == i)
@@ -308,7 +330,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		Boosted = false;
 	}
 
-	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && GetPos().y - Player_ColliderLimit[0].y / 2 - 100 > 0)
+	if ((_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && _Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) < 20) && GetPos().y - Player_ColliderLimit[0].y / 2 - 100 > 0)
 	{
 		if (Player_Movement.y < 0)
 			Player_Movement.y = 0;
