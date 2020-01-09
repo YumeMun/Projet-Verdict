@@ -30,6 +30,8 @@ public:
 private:
 	sf::RenderWindow* m_actualWindow;
 
+	sf::Color SkyAlpha;
+
 	int Size_X;
 	int Size_Y;
 	int SelectionBackground;

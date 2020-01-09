@@ -62,6 +62,8 @@ Map::Map(std::string _LevelName)
 	}
 	else if (SelectionBackground == 2)
 	{
+		SkyAlpha = sf::Color(255, 255, 255, 0);
+
 		Plan[0].setTexture(*ResourceManager::Instance()->GetTexture("Plan0"));
 		Plan2[0].setTexture(*ResourceManager::Instance()->GetTexture("Plan0"));
 
@@ -85,6 +87,8 @@ Map::Map(std::string _LevelName)
 
 		Plan[4].setScale(1.8, 1.8);
 		Plan2[4].setScale(1.8, 1.8);
+
+		Plan2[4].setColor(SkyAlpha);
 
 		for (int i = 0; i < 2; i++)
 		{
@@ -273,6 +277,13 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 		Plan[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
 		Plan2[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
 
+		if (SkyAlpha.a < 255)
+			SkyAlpha.a = ((_Cam->GetCameraCenter().x / 45000) * 255);
+		else if (SkyAlpha.a >= 255)
+			SkyAlpha.a = 255;
+
+		Plan2[4].setColor(SkyAlpha);
+
 		for (int i = 1; i < 4; i++)
 		{
 			if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
@@ -304,8 +315,8 @@ void Map::Display()
 	{
 		for (int i = 4; i > 0; i--)
 		{
-			m_actualWindow->draw(Plan2[i]);
 			m_actualWindow->draw(Plan[i]);
+			m_actualWindow->draw(Plan2[i]);
 		}
 
 		for (int i = 0; i < 2; i++)
