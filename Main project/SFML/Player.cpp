@@ -453,14 +453,13 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				SetHitTrap();
 				Player_Movement.x = Player_Movement.x / trapSpeedFactor;
 			}
-			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 29)
+			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 22 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 29)
 			{
 				if (_Map->GetIsLazerOn() == 1)
 				{
 					spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
-					Alive = false;
 					scoreFall += 30 / FACTOR_DIVIDE;
 				}
 			}

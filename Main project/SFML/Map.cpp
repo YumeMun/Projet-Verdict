@@ -196,9 +196,9 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+			if (((Tableau[y][x] >= 1 && Tableau[y][x] <= 6) || Tableau[y][x] == 11) && Tableau[y - 1][x] == 0)
 			{
-				if (x >= (CheckPos.x + 1280) / 64 && x <= (CheckPos.x + 4800) / 64)
+				if (x >= (CheckPos.x + 400) / 64 && x <= (CheckPos.x + 4800) / 64 && x < GetEndFlag().x)
 				{
 					Tableau[y - 1][x] = 26;
 					CheckPos = sf::Vector2f(x * 64, (y - 1) * 64);
@@ -588,7 +588,7 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 	{
 		for (int x = 0; x < Size_X; x++)
 		{
-			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64))
+			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64) && x < GetEndFlag().x)
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;
@@ -712,7 +712,7 @@ void Map::AnimTiles()
 		{
 			//if (isLazerOn == 0)
 			//{
-			if (FrameIndexLaser <= 12)
+			if (FrameIndexLaser <= 2)
 			{
 				isLazerOn = 0;
 				FrameIndexLaser++;
@@ -720,7 +720,7 @@ void Map::AnimTiles()
 			//else
 				//isLazerOn = 1;
 
-			if (FrameIndexLaser == 13)
+			if (FrameIndexLaser == 3)
 			{
 				timerLazer[0].restart();
 				isLazerOn = 1;
@@ -729,7 +729,7 @@ void Map::AnimTiles()
 
 			if (timerLazer[0].getElapsedTime().asSeconds() >= 2)
 			{
-				if (FrameIndexLaser >= 14 && FrameIndexLaser < 16)
+				if (FrameIndexLaser >= 4 && FrameIndexLaser < 16)
 				{
 					//FrameIndexLaser = 0;
 					isLazerOn = 1;
