@@ -20,6 +20,7 @@ public:
 
 	sf::Vector2f GetPos();
 
+	bool Alive = true;
 	bool Hasfinished;
 	sf::Clock PlayerFirstTimer;
 	int Score = 0;
@@ -52,7 +53,7 @@ public:
 	bool isAnimStartEnd = false;
 
 private:
-	bool KeyPress = false, ItemPress = false, Alive = true, UseIt = false;
+	bool KeyPress = false, ItemPress = false, UseIt = false;
 
 	int ID = 0, Player_Direction = 0, Rocket_Direction = 0, CollectID = 0, RandomCollect = 0;
 

@@ -227,30 +227,30 @@ D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(28,48): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(37,48): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(48,43): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(230,20): warning C4018:  '<' : incompatibilité signed/unsigned
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(235,20): warning C4018:  '<' : incompatibilité signed/unsigned
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(302,49): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(312,43): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(322,50): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(337,59): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(341,47): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(370,49): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(386,50): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(401,59): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(405,47): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(423,20): warning C4018:  '<' : incompatibilité signed/unsigned
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(434,20): warning C4018:  '<' : incompatibilité signed/unsigned
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(497,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(506,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(514,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(562,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(571,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(579,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(584,51): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(623,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(632,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(240,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(245,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(312,49): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(322,43): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(332,50): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(347,59): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(351,47): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(380,49): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(396,50): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(411,59): warning C4244:  'argument' : conversion de 'double' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(415,47): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(433,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(444,20): warning C4018:  '<' : incompatibilité signed/unsigned
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(507,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(516,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(524,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(572,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(581,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(589,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(594,51): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(633,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(642,44): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   Map.cpp
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(640,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Jeu.cpp(650,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(58,29): warning C4305:  'argument' : troncation de 'double' à 'float'
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(59,30): warning C4305:  'argument' : troncation de 'double' à 'float'
