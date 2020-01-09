@@ -135,7 +135,6 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		//scoreFall += 50 / FACTOR_DIVIDE;
 
 	}
-	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
 	else if (Alive == false && _Cam->GetCameraCenter().x >= GetPos().x)
 	{
 		Alive = true;
@@ -517,7 +516,6 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					}
 					SetHitLazer();
 
-					if (Test == true)
 					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
 						if (m_Clock2.getElapsedTime().asSeconds() >= 1)
