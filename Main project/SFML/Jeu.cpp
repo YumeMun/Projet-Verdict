@@ -189,7 +189,7 @@ void Jeu::Update()
 			{
 				voiture.stop();
 				transition->ResetTransition();
-				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score, Player1, Player2, skinJ1, skinJ2);
+				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score, Player1, Player2, skinJ1, skinJ2, LevelName);
 			}
 		}
 	}

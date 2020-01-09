@@ -6,7 +6,7 @@ Level_Finished::Level_Finished()
 {
 }
 
-Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Player* _player2, int _skinJ1, int _skinJ2)
+Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Player* _player2, int _skinJ1, int _skinJ2, std::string _LevelName)
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -15,6 +15,11 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 	J1Score = _J1Score;
 	J2Score = _J2Score;
 
+	SkinJ1 = _skinJ1;
+	SkinJ2 = _skinJ2;
+
+	LevelName = _LevelName;
+
 	WinText.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	WinText.setCharacterSize(50);
 	WinText.setFillColor(sf::Color::White);
@@ -22,6 +27,22 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background victoire"));
 	spContour.setTexture(*ResourceManager::Instance()->GetTexture("Contour victoire"));
 	spLight.setTexture(*ResourceManager::Instance()->GetTexture("Lumière victoire"));
+	spFlèche.setTexture(*ResourceManager::Instance()->GetTexture("Flèche menu"));
+
+	for (int i = 0; i < 3; i++)
+	{
+		spButton[i].setTexture(*ResourceManager::Instance()->GetTexture("Menu bouton non sélectionné"));
+		spButton[i].setPosition(1350, 450 + i * 100);
+
+		ButtonText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
+		ButtonText[i].setCharacterSize(35);
+		ButtonText[i].setFillColor(sf::Color::White);
+		ButtonText[i].setPosition(1370, 450 + i * 100);
+
+		ButtonText[0].setString("Rejouer");
+		ButtonText[1].setString("Choisir un autre niveau");
+		ButtonText[2].setString("Retourner au menu");
+	}
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -41,8 +62,8 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 
 	spPlayer[0].setTexture(*ResourceManager::Instance()->GetTexture("Player1_Colo" + std::to_string(_skinJ1)));
 	spPlayer[1].setTexture(*ResourceManager::Instance()->GetTexture("Player2_Colo" + std::to_string(_skinJ2)));
-	rectPlayer[0] = {0, 0, 360, 135};
-	rectPlayer[1] = {0, 0, 372, 150};
+	rectPlayer[0] = { 0, 0, 360, 135 };
+	rectPlayer[1] = { 0, 0, 372, 150 };
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -95,7 +116,7 @@ void Level_Finished::Update()
 	isPlayerText[0].setOrigin(isPlayerText[0].getGlobalBounds().width / 2, isPlayerText[0].getGlobalBounds().height / 2);
 	isPlayerText[1].setOrigin(isPlayerText[1].getGlobalBounds().width / 2, isPlayerText[1].getGlobalBounds().height / 2);
 
-	posLogo[0] = { spPlayer[0].getPosition().x - 600, spPlayer[0].getPosition().y  - 200};
+	posLogo[0] = { spPlayer[0].getPosition().x - 600, spPlayer[0].getPosition().y - 200 };
 	posLogo[1] = { spPlayer[0].getPosition().x + 600, spPlayer[0].getPosition().y - 200 };
 	posLogo[2] = { 1920 / 2, 400 };
 
@@ -133,6 +154,59 @@ void Level_Finished::Update()
 		transition->ResetTransition();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 	}
+
+	if (isScoreEnd)
+	{
+		if (m_Clock.getElapsedTime().asSeconds() >= 0.3)
+		{
+			if (sf::Joystick::isButtonPressed(0, 0))
+			{
+				if (Selection == 1)
+					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, SkinJ1, SkinJ2);
+				else if (Selection == 2)
+					GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
+				else if (Selection == 3)
+					GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
+			}
+
+
+			if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -50.f)
+			{
+				if (Selection != 1)
+					Selection = Selection - 1;
+				else
+					Selection = 3;
+				m_Clock.restart();
+			}
+			if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 50.f)
+			{
+				if (Selection != 3)
+					Selection = Selection + 1;
+				else
+					Selection = 1;
+				m_Clock.restart();
+			}
+		}
+
+		if (Selection == 1)
+		{
+			ButtonText[0].setPosition(1410, 450);
+			ButtonText[1].setPosition(1370, 550);
+			ButtonText[2].setPosition(1370, 650);
+		}
+		else if (Selection == 2)
+		{
+			ButtonText[0].setPosition(1370, 450);
+			ButtonText[1].setPosition(1410, 550);
+			ButtonText[2].setPosition(1370, 650);
+		}
+		else if (Selection == 3)
+		{
+			ButtonText[0].setPosition(1370, 450);
+			ButtonText[1].setPosition(1370, 550);
+			ButtonText[2].setPosition(1410, 650);
+		}
+	}
 }
 
 void Level_Finished::Display()
@@ -164,6 +238,22 @@ void Level_Finished::Display()
 		{
 			m_actualWindow->draw(spLogo);
 			m_actualWindow->draw(spLight);
+		}
+
+		for (int i = 0; i < 3; i++)
+		{
+			if (i == Selection - 1)
+			{
+				spButton[i].setTexture(*ResourceManager::Instance()->GetTexture("Menu bouton sélectionné"));
+				spFlèche.setPosition(spButton[i].getPosition().x + 10, spButton[i].getPosition().y + 7);
+			}
+			else
+			{
+				spButton[i].setTexture(*ResourceManager::Instance()->GetTexture("Menu bouton non sélectionné"));
+			}
+			m_actualWindow->draw(spButton[i]);
+			m_actualWindow->draw(ButtonText[i]);
+			m_actualWindow->draw(spFlèche);
 		}
 	}
 
@@ -239,7 +329,7 @@ void Level_Finished::UpdatePodium()
 				}
 			}
 		}
-	
+
 		if (isScoreStep[1])
 		{
 			if (scoreIsArrivedFirst[0] <= 0 && scoreIsArrivedFirst[1] <= 0)
@@ -310,7 +400,7 @@ void Level_Finished::UpdatePodium()
 				}
 			}
 		}
-	
+
 
 		if (!isScoreEnd)
 		{
