@@ -12,12 +12,12 @@ Chargement::Chargement()
 	LoadThread = std::thread(&Chargement::Load, this);
 
 	LoadingBack.setSize(sf::Vector2f(1000, 30));
-	LoadingBack.setFillColor(sf::Color(50,50,50,255));
+	LoadingBack.setFillColor(sf::Color(50, 50, 50, 255));
 	LoadingBack.setOrigin(LoadingBack.getSize().x / 2, LoadingBack.getSize().y / 2);
 	LoadingBack.setPosition(960, 900);
 
 	LoadingBar.setSize(sf::Vector2f(0, 30));
-	LoadingBar.setFillColor(sf::Color{159, 60, 61, 255});
+	LoadingBar.setFillColor(sf::Color{ 159, 60, 61, 255 });
 	LoadingBar.setPosition(LoadingBack.getGlobalBounds().left, LoadingBack.getGlobalBounds().top);
 
 	BackgroundTexture[0].loadFromFile("Ressources/Textures/Background_Chargement1.png");
@@ -45,6 +45,15 @@ Chargement::Chargement()
 
 	Scale[0] = 1;
 	Scale[1] = 0;
+
+	Font.loadFromFile("Ressources/Font/Font.TTF");
+
+	Percent.setFont(Font);
+	Percent.setCharacterSize(50);
+	Percent.setFillColor(sf::Color::White);
+	Percent.setString("0 %");
+	Percent.setOrigin(Percent.getGlobalBounds().width / 2, Percent.getGlobalBounds().height / 2);
+	Percent.setPosition(LoadingBack.getPosition().x, LoadingBack.getPosition().y + LoadingBack.getSize().y * 2);
 }
 
 Chargement::~Chargement()
@@ -88,8 +97,12 @@ void Chargement::Update()
 	else if (isLoaded == false)
 	{
 		// 24 is font + texture vectors final size
-		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 114) * LoadingBack.getSize().x, 30));
+		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 117) * LoadingBack.getSize().x, 30));
+		Percent.setString(std::to_string(int(ResourceManager::Instance()->GetVectorsSize() / 117 * 100)) + " %");
+		Percent.setOrigin(Percent.getGlobalBounds().width / 2, Percent.getGlobalBounds().height / 2);
 	}
+
+	//Percent.setPosition(LoadingBack.getPosition().x, LoadingBack.getPosition().y + LoadingBack.getSize().y);
 }
 
 void Chargement::Display()
@@ -105,6 +118,8 @@ void Chargement::Display()
 	{
 		m_actualWindow->draw(spLogo[i]);
 	}
+
+	m_actualWindow->draw(Percent);
 }
 
 void Chargement::EventManager(sf::Event p_pollingEvent)

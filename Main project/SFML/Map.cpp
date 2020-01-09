@@ -192,13 +192,13 @@ Map::~Map()
 
 void Map::Update(float _Elapsed, Caméra* _Cam)
 {
-	for (int y = 0; y < Size_Y; y++)
+	for (int x = 0; x < Size_X; x++)
 	{
-		for (int x = 0; x < Size_X; x++)
+		for (int y = 0; y < Size_Y; y++)
 		{
 			if (((Tableau[y][x] >= 1 && Tableau[y][x] <= 6) || Tableau[y][x] == 11) && Tableau[y - 1][x] == 0)
 			{
-				if (x >= (CheckPos.x + 400) / 64 && x <= (CheckPos.x + 4800) / 64 && x < GetEndFlag().x)
+				if (x >= (CheckPos.x + 1920) / 64 && x <= (CheckPos.x + 4800) / 64 && x < GetEndFlag().x)
 				{
 					Tableau[y - 1][x] = 26;
 					CheckPos = sf::Vector2f(x * 64, (y - 1) * 64);
@@ -584,9 +584,9 @@ sf::Vector2f Map::GetPos()
 
 sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 {
-	for (int y = 0; y < Size_Y; y++)
+	for (int x = 0; x < Size_X; x++)
 	{
-		for (int x = 0; x < Size_X; x++)
+		for (int y = 0; y < Size_Y; y++)
 		{
 			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64) && x < GetEndFlag().x)
 			{
@@ -706,6 +706,7 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
+<<<<<<< HEAD
 		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
 			if (FrameIndexLaser == 0)
@@ -755,4 +756,53 @@ void Map::AnimTiles()
 			AnimLaserClock.restart();
 		}
 	
+=======
+	//if (isLazerActive)
+	//{
+	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
+	{
+		//if (isLazerOn == 0)
+		//{
+		if (FrameIndexLaser <= 2)
+		{
+			isLazerOn = 0;
+			FrameIndexLaser++;
+		}
+		//else
+			//isLazerOn = 1;
+
+		if (FrameIndexLaser == 3)
+		{
+			timerLazer[0].restart();
+			isLazerOn = 1;
+			FrameIndexLaser++;
+		}
+
+		if (timerLazer[0].getElapsedTime().asSeconds() >= 2)
+		{
+			if (FrameIndexLaser >= 4 && FrameIndexLaser < 16)
+			{
+				//FrameIndexLaser = 0;
+				isLazerOn = 1;
+				FrameIndexLaser++;
+				//isLazerActive = false;
+				//timerLazer.restart();
+			}
+
+			if (FrameIndexLaser >= 16)
+			{
+				FrameIndexLaser = 0;
+
+				isLazerOn = 0;
+			}
+		}
+		else
+			isLazerOn = 0;
+
+		//}
+
+		AnimLaserClock.restart();
+	}
+	//}
+>>>>>>> 9b728ef67a407363e050ac87678f8a4d73ee0b53
 }

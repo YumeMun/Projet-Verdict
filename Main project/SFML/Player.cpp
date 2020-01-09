@@ -76,7 +76,7 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 	timerCE.restart();
 
 	HasCollectible = false;
-	Hasfinished = false;
+	Hasfinished = true;
 }
 
 Player::~Player()
@@ -742,11 +742,11 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 {
 	srand(time(NULL));
 
-	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 23)
+	if (_Map->GetTile(GetPos().x, GetPos().y) == 23)
 	{
 		if (HasCollectible == false)
 		{
-			_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
+			_Map->SetTile(GetPos().x, GetPos().y, 0);
 
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();

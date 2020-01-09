@@ -17,16 +17,20 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 
 	WinText.setFont(*ResourceManager::Instance()->GetFont("Font"));
 	WinText.setCharacterSize(50);
-	WinText.setFillColor(sf::Color::Green);
+	WinText.setFillColor(sf::Color::White);
+
+	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background victoire"));
+	spContour.setTexture(*ResourceManager::Instance()->GetTexture("Contour victoire"));
+	spLight.setTexture(*ResourceManager::Instance()->GetTexture("Lumière victoire"));
 
 	for (int i = 0; i < 2; i++)
 	{
 		ScoreText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
-		ScoreText[i].setCharacterSize(40);
+		ScoreText[i].setCharacterSize(50);
 		ScoreText[i].setFillColor(sf::Color::White);
 
 		isPlayerText[i].setFont(*ResourceManager::Instance()->GetFont("Font"));
-		isPlayerText[i].setCharacterSize(40);
+		isPlayerText[i].setCharacterSize(50);
 		isPlayerText[i].setFillColor(sf::Color::White);
 	}
 
@@ -42,7 +46,7 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 
 	for (int i = 0; i < 2; i++)
 	{
-		spPodium[i].setTexture(*ResourceManager::Instance()->GetTexture("Bras Menu")); //sample
+		spPodium[i].setTexture(*ResourceManager::Instance()->GetTexture("Podium"));
 		originElement = { spPodium[0].getGlobalBounds().width / 2,  0 };
 		spPodium[i].setPosition(posElement[i]);
 		spPodium[i].setOrigin(originElement);
@@ -56,10 +60,6 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 	spLogo.setTexture(*ResourceManager::Instance()->GetTexture("victoire")); //sample
 	rectLogo = { 0, 0, 414, 402 };
 	spLogo.setTextureRect(rectLogo);
-
-	posLogo[0] = {1920 / 2 - (500 + spLogo.getGlobalBounds().width), 600};
-	posLogo[1] = {1920 / 2 + 500, 600};
-	posLogo[2] = {1920 / 2, 400 };
 
 	for (int i = 0; i < 4; i++)
 		isScoreStep[i] = false;
@@ -86,36 +86,45 @@ void Level_Finished::Update()
 	if (isUpdatable)
 		UpdatePodium();
 
-	ScoreText[0].setPosition(200, 500);
-	ScoreText[1].setPosition(1920 - 200, 500);
+	ScoreText[0].setPosition(400, 200);
+	ScoreText[1].setPosition(1920 - 400, 200);
 
-	isPlayerText[0].setPosition(200, 600);
-	isPlayerText[1].setPosition(1920 - 200, 600);
+	isPlayerText[0].setPosition(380, 350);
+	isPlayerText[1].setPosition(1920 - 400, 350);
+
+	isPlayerText[0].setOrigin(isPlayerText[0].getGlobalBounds().width / 2, isPlayerText[0].getGlobalBounds().height / 2);
+	isPlayerText[1].setOrigin(isPlayerText[1].getGlobalBounds().width / 2, isPlayerText[1].getGlobalBounds().height / 2);
+
+	posLogo[0] = { spPlayer[0].getPosition().x - 600, spPlayer[0].getPosition().y  - 200};
+	posLogo[1] = { spPlayer[0].getPosition().x + 600, spPlayer[0].getPosition().y - 200 };
+	posLogo[2] = { 1920 / 2, 400 };
 
 	if (J1Score > J2Score)
 	{
 		WinText.setString("Joueur 1 a gagné !");
 		WinText.setOrigin(WinText.getGlobalBounds().width / 2, 0);
-		WinText.setPosition(960, 200);
+		WinText.setPosition(960, 100);
+		spLight.setPosition(spPlayer[0].getPosition().x - 350, 0);
 	}
 	else if (J1Score < J2Score)
 	{
 		WinText.setString("Joueur 2 a gagné !");
 		WinText.setOrigin(WinText.getGlobalBounds().width / 2, 0);
-		WinText.setPosition(960, 200);
+		WinText.setPosition(960, 100);
+		spLight.setPosition(spPlayer[1].getPosition().x - 350, 0);
 	}
 	else if (J1Score == J2Score)
 	{
 		WinText.setString("Egalité !");
 		WinText.setOrigin(WinText.getGlobalBounds().width / 2, 0);
-		WinText.setPosition(960, 200);
+		WinText.setPosition(960, 100);
 	}
 
-	ScoreText[0].setString("Score joueur 1 :");
+	ScoreText[0].setString("Score du joueur 1 :");
 	isPlayerText[0].setString(std::to_string(scoreFinal[0]));
 	ScoreText[0].setOrigin(ScoreText[0].getGlobalBounds().width / 2, 0);
 
-	ScoreText[1].setString("Score joueur 2 :");
+	ScoreText[1].setString("Score du joueur 2 :");
 	isPlayerText[1].setString(std::to_string(scoreFinal[1]));
 	ScoreText[1].setOrigin(ScoreText[1].getGlobalBounds().width / 2, 0);
 
@@ -128,23 +137,40 @@ void Level_Finished::Update()
 
 void Level_Finished::Display()
 {
+	m_actualWindow->draw(spBackground);
+	m_actualWindow->draw(spContour);
+
+	for (int i = 0; i < 2; i++)
+	{
+		m_actualWindow->draw(spPodium[i]);
+		m_actualWindow->draw(spPlayer[i]);
+	}
+
 	if (isScoreEnd)
 	{
 		m_actualWindow->draw(WinText);
-		m_actualWindow->draw(spLogo);
+
+		if (AnimLogo.getElapsedTime().asMilliseconds() > 150)
+		{
+			if (FrameIndexLogo < 19)
+				FrameIndexLogo++;
+			else
+				FrameIndexLogo = 19;
+
+			spLogo.setTextureRect(sf::IntRect{ FrameIndexLogo * 414, 0, 414, 402 });
+		}
+
+		if (J1Score != J2Score)
+		{
+			m_actualWindow->draw(spLogo);
+			m_actualWindow->draw(spLight);
+		}
 	}
 
 	for (int i = 0; i < 2; i++)
 	{
 		m_actualWindow->draw(ScoreText[i]);
 		m_actualWindow->draw(isPlayerText[i]);
-	}
-
-
-	for (int i = 0; i < 2; i++)
-	{
-		m_actualWindow->draw(spPodium[i]);
-		m_actualWindow->draw(spPlayer[i]);
 	}
 
 	if (!transition->GetIsTransitionBackDone())

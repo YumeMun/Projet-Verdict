@@ -18,6 +18,8 @@ private:
 	std::thread LoadThread;
 	bool isLoaded;
 
+	sf::Font Font;
+
 	sf::RectangleShape LoadingBar, LoadingBack;
 
 	sf::IntRect rectLogo;
@@ -31,6 +33,8 @@ private:
 	sf::Texture LogoTexture[2];
 	sf::Sprite spLogo[2];
 	float Scale[2];
+
+	sf::Text Percent;
 
 	sf::Clock AnimLogo;
 };
