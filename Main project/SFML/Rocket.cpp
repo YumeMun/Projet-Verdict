@@ -11,6 +11,7 @@ Rocket::Rocket(int _ID, int _Dir, sf::Vector2f _Pos)
 	spRocket.setPosition(_Pos);
 
 	m_missile.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Missile Lancer"));
+	m_missile.setVolume(GameManager::Instance()->VolumeFX);
 	m_missile.play();
 
 	if (Direction == 0)
@@ -40,12 +41,15 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 		{
 			m_missile.stop();
 			m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
+			m_rocket.setVolume(GameManager::Instance()->VolumeFX);
 			m_rocket.play();
 
 			m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
+			m_engineoff.setVolume(GameManager::Instance()->VolumeFX);
 			m_engineoff.play();
 
 			m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+			m_engineon.setVolume(GameManager::Instance()->VolumeFX);
 			m_engineon.play();
 
 			Alive = false;
@@ -58,12 +62,15 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 		{
 			m_missile.stop();
 			m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
+			m_rocket.setVolume(GameManager::Instance()->VolumeFX);
 			m_rocket.play();
 
 			m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
+			m_engineoff.setVolume(GameManager::Instance()->VolumeFX);
 			m_engineoff.play();
 
 			m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+			m_engineon.setVolume(GameManager::Instance()->VolumeFX);
 			m_engineon.play();
 
 			Alive = false;
@@ -75,6 +82,7 @@ void Rocket::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 	{
 		m_missile.stop();
 		m_rocket.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Impact Missile"));
+		m_rocket.setVolume(GameManager::Instance()->VolumeFX);
 		m_rocket.play();
 		if (_Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) > 0 && _Map->GetTile(spRocket.getPosition().x, spRocket.getPosition().y) < 23)
 		{

@@ -72,6 +72,7 @@ private:
 	int trapHitCount = 1;
 	float trapSpeedFactor = 1; 
 	sf::Clock timerTrapFactor;
+	sf::Clock timerCE;
 
 	sf::Clock BoostClock;
 
@@ -86,6 +87,7 @@ private:
 	sf::Sound m_death;
 	sf::Sound m_engineoff;
 	sf::Sound m_engineon;
+	sf::Sound m_laserhit;
 
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;

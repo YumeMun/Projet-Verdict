@@ -24,9 +24,9 @@ public:
 private:
 	bool KeyPress = false;
 	bool isNewLevel;
-
+	sf::Music musicedit;
 	HudEditor* hud;
-
+	int Random;
 	float CurrentTime, LastFrameTime, ElapsedTime;
 
 	int Tableau[17][1200];

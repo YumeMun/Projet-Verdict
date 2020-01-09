@@ -12,7 +12,27 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	GameManager::Instance()->music.stop();
+
 	LevelName = _LevelName;
+
+	if (LevelName == "Niveau1")
+	{
+		if (!musicNiveau.openFromFile("Ressources/Music/I_got_Rythm.ogg"))
+			std::cout << "Erreur music" << std::endl; // erreur
+		musicNiveau.setVolume(GameManager::Instance()->VolumeMusique);
+		musicNiveau.play();
+		musicNiveau.setLoop(true);
+	}
+
+	if (LevelName == "Niveau2")
+	{
+		if (!musicNiveau.openFromFile("Ressources/Music/The_Old_Man.ogg"))
+			std::cout << "Erreur music" << std::endl; // erreur
+		musicNiveau.setVolume(GameManager::Instance()->VolumeMusique);
+		musicNiveau.play();
+		musicNiveau.setLoop(true);
+	}
 
 	skinJ1 = skinSelectedJ1;
 	skinJ2 = skinSelectedJ2;
@@ -25,6 +45,7 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 	///missile = new Missile();
 
 	voiture.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Voiture"));
+	voiture.setVolume(GameManager::Instance()->VolumeFX);
 	voiture.play();
 	voiture.setLoop(true);
 
@@ -111,7 +132,7 @@ void Jeu::Update()
 				{
 					if (Player1->PlayerFirstTimer.getElapsedTime().asMilliseconds() > 500 && Player1->IsAlive() == true)
 					{
-						Player1->Score += 8 / FACTOR_DIVIDE;
+						Player1->Score += 8; /// FACTOR_DIVIDE;
 						Player1->PlayerFirstTimer.restart();
 					}
 
@@ -122,7 +143,7 @@ void Jeu::Update()
 				{
 					if (Player2->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player2->IsAlive() == true)
 					{
-						Player2->Score += 8 / FACTOR_DIVIDE;
+						Player2->Score += 8; /// FACTOR_DIVIDE;
 						Player2->PlayerFirstTimer.restart();
 					}
 					spFirstOrSecond[0].setPosition(1920 - 570, 100);
@@ -165,13 +186,13 @@ void Jeu::Update()
 		else if (Player1->Hasfinished == true || Player2->Hasfinished == false)
 		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-			Player1->scoreIsArrivedFirst = 200 / FACTOR_DIVIDE;
+			Player1->scoreIsArrivedFirst = 200; /// FACTOR_DIVIDE;
 			Player2->scoreIsArrivedFirst = 0;
 		}
 		else if (Player1->Hasfinished == false || Player2->Hasfinished == true)
 		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-			Player2->scoreIsArrivedFirst = 200 / FACTOR_DIVIDE;
+			Player2->scoreIsArrivedFirst = 200; /// FACTOR_DIVIDE;
 			Player1->scoreIsArrivedFirst = 0;
 		}
 		/*else if (Player1->Hasfinished == true || Player2->Hasfinished == true)
@@ -184,12 +205,12 @@ void Jeu::Update()
 		if (Player1->Hasfinished == true && Player2->Hasfinished == true)
 		{
 			transition->Update();
-
 			if (transition->GetIsTransitionDone())
 			{
 				voiture.stop();
+				musicNiveau.stop();
 				transition->ResetTransition();
-				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score, Player1, Player2, skinJ1, skinJ2);
+				GameManager::Instance()->m_ActualScene = new Level_Finished(Player1->Score, Player2->Score, Player1, Player2, skinJ1, skinJ2, LevelName);
 			}
 		}
 	}
@@ -278,6 +299,7 @@ void Jeu::CollectiblesManager()
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
 		{
 			m_Shockwave.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Onde de Choc"));
+			m_Shockwave.setVolume(GameManager::Instance()->VolumeFX);
 			m_Shockwave.play();
 
 			Shockwave* newCollect = new Shockwave(1, Player1->GetPos());
@@ -286,9 +308,9 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
-			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-			Alteration.setVolume(50);
-			Alteration.play();
+			m_oil.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Mousse"));
+			m_oil.setVolume(GameManager::Instance()->VolumeFX);
+			m_oil.play();
 
 			Oilflake* newCollect = new Oilflake(1, Player1->GetPos());
 			Collectibles.push_back(newCollect);
@@ -297,6 +319,7 @@ void Jeu::CollectiblesManager()
 		else if (Player1->GetCollectID() == e_Enum::e_Collects::LEVITATION)
 		{
 			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
+			m_levitation.setVolume(GameManager::Instance()->VolumeFX);
 			m_levitation.play();
 
 			Invicibility* newCollect = new Invicibility(1, Player1->GetPos());
@@ -311,10 +334,11 @@ void Jeu::CollectiblesManager()
 			if (Player2->GetCollectID() != 0)
 			{
 				Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-				Alteration.setVolume(50);
+				Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
 				Alteration.play();
 
 				m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
+				m_magnet.setVolume(GameManager::Instance()->VolumeFX);
 				m_magnet.play();
 
 				Player1->HasCollectible = false;
@@ -343,6 +367,7 @@ void Jeu::CollectiblesManager()
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::SHOCKWAVE)
 		{
 			m_Shockwave.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Onde de Choc"));
+			m_Shockwave.setVolume(GameManager::Instance()->VolumeFX);
 			m_Shockwave.play();
 
 			Shockwave* newCollect = new Shockwave(2, Player2->GetPos());
@@ -351,10 +376,6 @@ void Jeu::CollectiblesManager()
 		}
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::OILFLAKE)
 		{
-			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-			Alteration.setVolume(25);
-			Alteration.play();
-
 			Oilflake* newCollect = new Oilflake(2, Player2->GetPos());
 			Collectibles.push_back(newCollect);
 			Player2->SetCollectID(0);
@@ -362,6 +383,7 @@ void Jeu::CollectiblesManager()
 		else if (Player2->GetCollectID() == e_Enum::e_Collects::LEVITATION)
 		{
 			m_levitation.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Invincibilite"));
+			m_levitation.setVolume(GameManager::Instance()->VolumeFX);
 			m_levitation.play();
 
 			Invicibility* newCollect = new Invicibility(1, Player2->GetPos());
@@ -375,11 +397,12 @@ void Jeu::CollectiblesManager()
 
 			if (Player1->GetCollectID() != 0)
 			{
-					Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-				Alteration.setVolume(25);
+				Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+				Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
 				Alteration.play();
 
 				m_magnet.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Magnetisme"));
+				m_magnet.setVolume(GameManager::Instance()->VolumeFX);
 				m_magnet.play();
 
 					Player2->HasCollectible = false;
@@ -471,6 +494,7 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG < 3)
 					SelectionMenuIG++;
 				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
 				sound.play();
 				Clock.restart();
 			}
@@ -479,6 +503,7 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
 				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
 				sound.play();
 				Clock.restart();
 			}
@@ -486,6 +511,7 @@ void Jeu::MenuIG(int ID)
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
 				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.setVolume(GameManager::Instance()->VolumeFX);
 				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
@@ -533,6 +559,7 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG < 2)
 					SelectionMenuIG++;
 				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
 				sound.play();
 				Clock.restart();
 			}
@@ -541,6 +568,7 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
 				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
 				sound.play();
 				Clock.restart();
 			}
@@ -548,15 +576,18 @@ void Jeu::MenuIG(int ID)
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
 				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.setVolume(GameManager::Instance()->VolumeFX);
 				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
+					musicNiveau.stop();
+					musicNiveau.setVolume(GameManager::Instance()->VolumeMusique);
+					musicNiveau.play();
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, skinJ1, skinJ2);
 					Clock.restart();
 				}
 				else if (SelectionMenuIG == 2)
 				{
-
 					StateMenuIG = 0;
 					SelectionMenuIG = 1;
 					Clock.restart();
@@ -589,6 +620,7 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG < 2)
 					SelectionMenuIG++;
 				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
 				sound.play();
 				Clock.restart();
 			}
@@ -597,6 +629,7 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG > 1)
 					SelectionMenuIG--;
 				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
 				sound.play();
 				Clock.restart();
 			}
@@ -604,10 +637,12 @@ void Jeu::MenuIG(int ID)
 			if (sf::Joystick::isButtonPressed(ID, 0))
 			{
 				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.setVolume(GameManager::Instance()->VolumeFX);
 				Valider.play();
 				if (SelectionMenuIG == 1)
 				{
 					voiture.stop();
+					musicNiveau.stop();
 					GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 					Clock.restart();
 				}

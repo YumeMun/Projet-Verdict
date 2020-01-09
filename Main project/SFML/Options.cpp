@@ -70,6 +70,7 @@ void Options::Update()
 	if (sf::Joystick::isButtonPressed(0, 1))
 	{
 		Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+		Retour.setVolume(GameManager::Instance()->VolumeFX);
 		Retour.play();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 	}
@@ -101,8 +102,6 @@ void Options::Update()
 				{
 					VolumeRect[0].left += VolumeRect[0].width;
 				}
-				/*TestSon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("SFX")); 
-				TestSon.play();*/ 
 				SelectionTimer.restart();
 			}
 			else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
@@ -111,8 +110,6 @@ void Options::Update()
 				{
 					VolumeRect[0].left -= VolumeRect[0].width;
 				}
-				/*TestSon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("SFX")); 
-				TestSon.play();*/ 
 				SelectionTimer.restart();
 			}
 		}
@@ -135,8 +132,9 @@ void Options::Update()
 				{
 					VolumeRect[1].left += VolumeRect[1].width;
 				}
-				/*TestSon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("SFX")); 
-				TestSon.play();*/ 
+				TestSon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("SFX"));
+				TestSon.setVolume(GameManager::Instance()->VolumeFX);
+				TestSon.play();
 				SelectionTimer.restart();
 			}
 			else if (sf::Joystick::getAxisPosition(0, sf::Joystick::X) <= -50)
@@ -145,8 +143,9 @@ void Options::Update()
 				{
 					VolumeRect[1].left -= VolumeRect[1].width;
 				}
-				/*TestSon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("SFX")); 
-				TestSon.play();*/ 
+				TestSon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("SFX")); 
+				TestSon.setVolume(GameManager::Instance()->VolumeFX);
+				TestSon.play(); 
 				SelectionTimer.restart();
 			}
 		}

@@ -464,16 +464,12 @@ void Map::Display()
 				m_actualWindow->draw(spTile[22]);
 				break;
 			case 24:
-				spTile[23].setPosition(CasePos);
-				m_actualWindow->draw(spTile[23]);
 				break;
 			case 25:
 				spTile[24].setPosition(CasePos);
 				m_actualWindow->draw(spTile[24]);
 				break;
 			case 26:
-				spTile[25].setPosition(CasePos);
-				m_actualWindow->draw(spTile[25]);
 				break;
 			case 27:
 				spTile[26].setPosition(CasePos);
@@ -727,51 +723,52 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
-	//if (isLazerActive)
-	//{
-	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
-	{
-		//if (isLazerOn == 0)
-		//{
-		if (FrameIndexLaser <= 2)
+		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
-			isLazerOn = 0;
-			FrameIndexLaser++;
-		}
-		//else
-			//isLazerOn = 1;
-
-		if (FrameIndexLaser == 3)
-		{
-			timerLazer[0].restart();
-			isLazerOn = 1;
-			FrameIndexLaser++;
-		}
-
-		if (timerLazer[0].getElapsedTime().asSeconds() >= 2)
-		{
-			if (FrameIndexLaser >= 4 && FrameIndexLaser < 16)
+			if (FrameIndexLaser == 0)
 			{
-				//FrameIndexLaser = 0;
-				isLazerOn = 1;
-				FrameIndexLaser++;
-				//isLazerActive = false;
-				//timerLazer.restart();
-			}
-
-			if (FrameIndexLaser >= 16)
-			{
-				FrameIndexLaser = 0;
-
 				isLazerOn = 0;
+				timerLazer[1].restart();
+				FrameIndexLaser++;
 			}
+
+			if (timerLazer[1].getElapsedTime().asSeconds() >= 1)
+			{
+				/*if (FrameIndexLaser >= 1 && FrameIndexLaser < 12)
+				{
+					isLazerOn = 0;
+					FrameIndexLaser++;
+				}*/
+
+				if (FrameIndexLaser <= 12)
+				{
+					isLazerOn = 0;
+					FrameIndexLaser++;
+				}
+
+				if (FrameIndexLaser == 13)
+				{
+					timerLazer[0].restart();
+					isLazerOn = 1;
+					FrameIndexLaser++;
+				}
+
+				if (timerLazer[0].getElapsedTime().asSeconds() >= 1)
+				{
+					if (FrameIndexLaser >= 14 && FrameIndexLaser < 16)
+					{
+						isLazerOn = 1;
+						FrameIndexLaser++;
+					}
+
+					if (FrameIndexLaser >= 16)
+					{
+						FrameIndexLaser = 0;
+
+						isLazerOn = 0;
+					}
+				}
+			}
+			AnimLaserClock.restart();
 		}
-		else
-			isLazerOn = 0;
-
-		//}
-
-		AnimLaserClock.restart();
-	}
-	//}
 }

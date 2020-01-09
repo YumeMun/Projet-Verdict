@@ -325,6 +325,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					else if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f ||*/ sf::Joystick::isButtonPressed(i, 4))
 					{
 						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.setVolume(GameManager::Instance()->VolumeFX);
 						sound.play();
 
 						if (listSelector[i]->SkinSelector > 1)
@@ -341,6 +342,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 				if (sf::Joystick::isButtonPressed(i, 0))
 				{
 					Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+					Valider.setVolume(GameManager::Instance()->VolumeFX);
 					Valider.play();
 
 					if (!listSelector[i]->isFadeDrawable)
@@ -371,6 +373,7 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 					{
 						GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
 						Retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+						Retour.setVolume(GameManager::Instance()->VolumeFX);
 						Retour.play();
 					}
 				}

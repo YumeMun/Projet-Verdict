@@ -15,4 +15,5 @@ public:
 private:
 	sf::Sprite spBackground;
 	sf::Sound Retour;
+	sf::Music music;
 };
