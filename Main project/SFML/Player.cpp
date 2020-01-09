@@ -140,7 +140,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		m_engineon.play();
 	}
 
-	if (((GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2) || (GetPos().y > _Cam->GetCameraCenter().y + _Cam->GetSizeCamera().y / 2)) && Alive == true)
+	if (((GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2) || (GetPos().y > _Cam->GetCameraCenter().y + _Cam->GetSizeCamera().y / 2) || (GetPos().y < _Cam->GetCameraCenter().y - _Cam->GetSizeCamera().y / 2)) && Alive == true)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCameraCenter()));
 		spPlayer.setRotation(0);
@@ -255,6 +255,12 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		}
 		else if (!sf::Joystick::isButtonPressed(ID - 1, 0))
 			KeyPress = false;
+	}
+
+	if (Jump == true)
+	{
+		if (Player_SlopVector.y < 0)
+			Player_SlopVector.y = 0;
 	}
 
 	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 8 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 13 && Player_Direction == NONE)
@@ -376,6 +382,9 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	else if (Player_Direction == DOWN)
 	{
 		//spPlayer.setRotation(45);
+
+		if (Player_Movement.y < 0)
+			Player_Movement.y = 0;
 
 		if (Boost == false)
 			Player_Movement.x = SPEED;
