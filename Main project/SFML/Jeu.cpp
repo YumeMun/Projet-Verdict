@@ -8,8 +8,6 @@ Jeu::Jeu()
 
 Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 {
-	std::cout << "Jeu constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	GameManager::Instance()->music.stop();

@@ -4,8 +4,6 @@
 
 HudEditor::HudEditor()
 {
-	std::cout << "HUD constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBandeau.setTexture(*ResourceManager::Instance()->GetTexture("Bandeau"));

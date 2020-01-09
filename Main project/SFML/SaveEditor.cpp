@@ -10,8 +10,6 @@ SaveEditor::SaveEditor()
 
 SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _SelectionBackground, bool _RenameLevel, std::string _LastLevelName)
 {
-	std::cout << "Save constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	RenameLevel = _RenameLevel;

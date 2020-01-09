@@ -4,8 +4,6 @@
 
 Commandes::Commandes()
 {
-	std::cout << "Commandes constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background interface"));

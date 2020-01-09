@@ -289,15 +289,6 @@ void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
 	scoreFall[0] = _player1->scoreFall; //+ 40;
 	scoreFall[1] = _player2->scoreFall; //+ 60;
 
-	std::cout << "score temps passe 1er j1 :" << scoreTimeFirst[0] << std::endl;
-	std::cout << "score arrive 1er j1 :" << scoreIsArrivedFirst[0] << std::endl;
-	std::cout << "score hit pieges j1 :" << scoreHitTrap[0] << std::endl;
-	std::cout << "score chutes j1 :" << scoreFall[0] << std::endl;
-
-	std::cout << "score temps passe 1er j2 :" << scoreTimeFirst[1] << std::endl;
-	std::cout << "score arrive 1er j2 :" << scoreIsArrivedFirst[1] << std::endl;
-	std::cout << "score hit pieges j2 :" << scoreHitTrap[1] << std::endl;
-	std::cout << "score chutes j2 :" << scoreFall[1] << std::endl;
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -325,7 +316,6 @@ void Level_Finished::UpdatePodium()
 			}
 			else
 			{
-				std::cout << "test 0 " << std::endl;
 				for (int i = 0; i < 2; i++)
 				{
 					if (scoreTimeFirst[i] > 0)
@@ -347,7 +337,6 @@ void Level_Finished::UpdatePodium()
 			}
 			else
 			{
-				std::cout << "test 1" << std::endl;
 				for (int i = 0; i < 2; i++)
 				{
 					if (scoreIsArrivedFirst[i] > 0)
@@ -369,7 +358,6 @@ void Level_Finished::UpdatePodium()
 			}
 			else
 			{
-				std::cout << "test 2" << std::endl;
 				for (int i = 0; i < 2; i++)
 				{
 					if (scoreFall[i] > 0)
@@ -394,7 +382,6 @@ void Level_Finished::UpdatePodium()
 				}
 				else
 				{
-					std::cout << "test 3" << scoreFinal[0] << std::endl;
 					for (int i = 0; i < 2; i++)
 					{
 						if (scoreHitTrap[i] > 0)
@@ -423,7 +410,6 @@ void Level_Finished::UpdatePodium()
 
 				spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 800));
 				spPlayer[i].setPosition(spPodium[i].getPosition());
-				std::cout << i << " : pos : " << spPodium[i].getPosition().y << std::endl;
 			}
 		}
 		else

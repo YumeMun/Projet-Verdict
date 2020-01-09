@@ -480,7 +480,6 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					Alive = false;
 					if (!isHitLazer)
 					{
-						std::cout << "AAAAaaa" << std::endl;
 						scoreHitTrap += 15;
 						isHitLazer = true;
 					}

@@ -4,7 +4,6 @@
 
 SizeEditor::SizeEditor()
 {
-	std::cout << "Choix de la taille" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 

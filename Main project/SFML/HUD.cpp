@@ -6,8 +6,6 @@
 
 HUD::HUD()
 {
-	std::cout << "HUD constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 

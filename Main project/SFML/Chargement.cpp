@@ -4,7 +4,6 @@
 
 Chargement::Chargement()
 {
-	std::cout << "Chargement constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -91,7 +90,6 @@ void Chargement::Update()
 
 	if (isLoaded == true)
 	{
-		std::cout << "Ressources chargees" << std::endl;
 		GameManager::Instance()->LoadScene(e_Enum::MENU);
 	}
 	else if (isLoaded == false)

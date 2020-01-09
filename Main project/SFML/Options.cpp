@@ -4,7 +4,6 @@
 
 Options::Options()
 {
-	std::cout << "Options constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -178,9 +177,6 @@ void Options::Update()
 		GameManager::Instance()->VolumeFX = 80;
 	else if (VolumeRect[1].left == 5 * VolumeRect[1].width)
 		GameManager::Instance()->VolumeFX = 100;
-
-	std::cout << "Volume musique : " << GameManager::Instance()->VolumeMusique << std::endl;
-	std::cout << "Volume fx : " << GameManager::Instance()->VolumeFX << std::endl;
 }
 
 void Options::Display()

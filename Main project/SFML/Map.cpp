@@ -9,7 +9,6 @@ Map::Map()
 
 Map::Map(std::string _LevelName)
 {
-	std::cout << "Map constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -615,38 +614,6 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 			}
 		}
 	}
-
-	/*for (int i = 0; i < XListCheckpoint.size() - 1; i++)
-	{
-		for (int y = 0; y < XListCheckpoint.size() - 1; y++)
-		{
-			if (XListCheckpoint.size() >= 2)
-			{
-				if (XListCheckpoint[i] <= XListCheckpoint[y])
-					XListCheckpoint.erase(XListCheckpoint.begin() + y);
-				else
-					XListCheckpoint.erase(XListCheckpoint.begin() + i);
-			}
-		}
-	}*/
-
-	/*for (int i = 0; i < XListCheckpoint.size(); i++)
-	{
-		std::cout << XListCheckpoint[i] << std::endl;
-	}*/
-
-	/*for (int y = 0; y < Size_Y; y++)
-	{
-		for (int x = 0; x < XListCheckpoint[0] + 1; x++)
-		{
-			if (Tableau[y][x] == 26 && x == XListCheckpoint[0] && x > (_Pos.x / 64))
-			{
-				CasePos.x = (float)x * 64;
-				CasePos.y = (float)y * 64;
-				return CasePos;
-			}
-		}
-	}*/
 }
 
 sf::Vector2f Map::GetEndFlag()

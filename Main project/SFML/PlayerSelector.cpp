@@ -8,7 +8,6 @@ PlayerSelector::PlayerSelector()
 
 PlayerSelector::PlayerSelector(std::string _LevelName)
 {
-	std::cout << "PlayerSelector constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -124,7 +123,6 @@ void PlayerSelector::Update()
 	if (!isSetup)
 	{
 		Setup();
-		std::cout << "setup player selector" << std::endl;
 		isSetup = true;
 	}
 
@@ -224,13 +222,11 @@ void PlayerSelector::Update()
 		{
 			//listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
 			listSelector[i]->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("LB Press"));
-			std::cout << "AAA" << std::endl;
 		}
 		else if (sf::Joystick::isButtonPressed(i, 5))
 		{
 			//listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
 			listSelector[i]->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("RB Press"));
-			std::cout << "BBB" << std::endl;
 		}
 		else
 		{
@@ -320,7 +316,6 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						listSelector[i]->timerSwitchSkin.restart();
 
-						std::cout << "nb = " << listSelector[0]->SkinSelector << std::endl;
 					}
 					else if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f ||*/ sf::Joystick::isButtonPressed(i, 4))
 					{
@@ -334,8 +329,6 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 							listSelector[i]->SkinSelector = NB_SKIN;
 
 						listSelector[i]->timerSwitchSkin.restart();
-
-						std::cout << "nb = " << listSelector[0]->SkinSelector << std::endl;
 					}
 				}
 
