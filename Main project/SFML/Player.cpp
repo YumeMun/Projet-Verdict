@@ -73,6 +73,8 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 	animElec.setPosition(GetPos());
 	timerAnimElec.restart();
 
+	timerCE.restart();
+
 	HasCollectible = false;
 	Hasfinished = false;
 }
@@ -121,7 +123,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Alive = false;
 
 
-		scoreFall += 30 / FACTOR_DIVIDE;
+		scoreFall += 30; /// FACTOR_DIVIDE;
 
 		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
 		m_engineoff.play();
@@ -456,7 +458,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 19)
 					_Map->SetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y, 37);
 
-				scoreHitTrap += 15 / FACTOR_DIVIDE;
+				scoreHitTrap += 15; /// FACTOR_DIVIDE;
 
 				timerTrapFactor.restart();
 				SetHitTrap();
@@ -466,11 +468,18 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			{
 				if (_Map->GetIsLazerOn() == 1)
 				{
-					spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+					//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
-					scoreFall += 30 / FACTOR_DIVIDE;
+					if (!isHitLazer)
+					{
+						std::cout << "AAAAaaa" << std::endl;
+						scoreHitTrap += 15; /// FACTOR_DIVIDE;
+						isHitLazer = true;
+					}
 				}
+				else
+					isHitLazer = false;
 			}
 			//else
 			//{
@@ -497,10 +506,12 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				{
 					timerTrapFactor.restart();
 					isCollideCE = true;
-					scoreHitTrap += 0.05 / FACTOR_DIVIDE;
+					if (timerCE.getElapsedTime().asMilliseconds() > 1000)
+					{
+						scoreHitTrap += 15; /// FACTOR_DIVIDE;
+						timerCE.restart();
+					}
 					SetHitLazer();
-
-					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
 
 					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{

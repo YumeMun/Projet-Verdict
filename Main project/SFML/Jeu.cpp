@@ -111,7 +111,7 @@ void Jeu::Update()
 				{
 					if (Player1->PlayerFirstTimer.getElapsedTime().asMilliseconds() > 500 && Player1->IsAlive() == true)
 					{
-						Player1->Score += 8 / FACTOR_DIVIDE;
+						Player1->Score += 8; /// FACTOR_DIVIDE;
 						Player1->PlayerFirstTimer.restart();
 					}
 
@@ -122,7 +122,7 @@ void Jeu::Update()
 				{
 					if (Player2->PlayerFirstTimer.getElapsedTime().asSeconds() > 1 && Player2->IsAlive() == true)
 					{
-						Player2->Score += 8 / FACTOR_DIVIDE;
+						Player2->Score += 8; /// FACTOR_DIVIDE;
 						Player2->PlayerFirstTimer.restart();
 					}
 					spFirstOrSecond[0].setPosition(1400, 70);
@@ -165,13 +165,13 @@ void Jeu::Update()
 		else if (Player1->Hasfinished == true || Player2->Hasfinished == false)
 		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-			Player1->scoreIsArrivedFirst = 200 / FACTOR_DIVIDE;
+			Player1->scoreIsArrivedFirst = 200; /// FACTOR_DIVIDE;
 			Player2->scoreIsArrivedFirst = 0;
 		}
 		else if (Player1->Hasfinished == false || Player2->Hasfinished == true)
 		{
 			caméra->Update(ElapsedTime, timerStart, Player1, Player2, map);
-			Player2->scoreIsArrivedFirst = 200 / FACTOR_DIVIDE;
+			Player2->scoreIsArrivedFirst = 200; /// FACTOR_DIVIDE;
 			Player1->scoreIsArrivedFirst = 0;
 		}
 		/*else if (Player1->Hasfinished == true || Player2->Hasfinished == true)

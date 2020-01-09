@@ -40,6 +40,7 @@ private:
 	float scoreFall[2];
 	float scoreHitTrap[2];
 	int scoreFinal[2];
+	int scoreFinalDivide[2];
 
 	bool isScoreStep[4];
 	bool isUpdatable = false;

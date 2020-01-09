@@ -185,7 +185,10 @@ void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
 		scoreIsArrivedFirst[i];
 		scoreHitTrap[i];
 		scoreFall[i];
+
+		scoreFinalDivide[i] = scoreFinal[i] / FACTOR_DIVIDE;
 	}
+
 }
 
 void Level_Finished::UpdatePodium()
