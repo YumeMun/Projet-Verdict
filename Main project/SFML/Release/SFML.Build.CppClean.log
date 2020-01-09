@@ -1,8 +1,8 @@
 d:\users\a.faure\desktop\verdict\main project\sfml\release\vc142.pdb
+d:\users\a.faure\desktop\verdict\main project\sfml\release\main.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\level_finished.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\levelselector.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\leveleditor.obj
-d:\users\a.faure\desktop\verdict\main project\sfml\release\jeu.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\invicibility.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\intro.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\hudeditor.obj
@@ -19,7 +19,6 @@ d:\users\a.faure\desktop\verdict\main project\sfml\release\caméra.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\bumper.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\boosteffect.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\actualsong.obj
-d:\users\a.faure\desktop\verdict\main project\sfml\release\main.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\transition.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\timerstart.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\smoke.obj
@@ -36,6 +35,7 @@ d:\users\a.faure\desktop\verdict\main project\sfml\release\openleveleditor.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\oilflake.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\menu.obj
 d:\users\a.faure\desktop\verdict\main project\sfml\release\map.obj
+d:\users\a.faure\desktop\verdict\main project\sfml\release\jeu.obj
 d:\users\a.faure\desktop\verdict\main project\release\sfml.exe
 d:\users\a.faure\desktop\verdict\main project\release\sfml.pdb
 d:\users\a.faure\desktop\verdict\main project\release\sfml.ipdb

@@ -417,14 +417,11 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 	if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
 	{
-		if (_Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) >= 1 && _Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) <= 6)
-		{
-			Rocket_Direction = 0;
-		}
-		else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
-		{
-			Rocket_Direction = 1;
-		}
+		Rocket_Direction = 0;
+	}
+	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) <= -50)
+	{
+		Rocket_Direction = 1;
 	}
 }
 
@@ -728,10 +725,10 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 
 	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 23)
 	{
-		_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
-
 		if (HasCollectible == false)
 		{
+			_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
+
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.play();
 
@@ -764,9 +761,8 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 					CollectID = e_Enum::e_Collects::SHOCKWAVE;
 			}
 
+			return true;
 		}
-
-		return true;
 	}
 
 	return false;
