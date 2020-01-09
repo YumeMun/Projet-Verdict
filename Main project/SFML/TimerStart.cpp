@@ -211,6 +211,7 @@ void TimerStart::TimerSound()
 	if (i >= numberCount)
 	{
 		Countdown.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Countdown"));
+		Countdown.setVolume(GameManager::Instance()->VolumeFX);
 		Countdown.play();
 		i--;
 	}
@@ -220,9 +221,11 @@ void TimerStart::TimerSound()
 		{
 			Countdown.stop();
 			Depart.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Depart Course"));
+			Depart.setVolume(GameManager::Instance()->VolumeFX);
 			Depart.play();
 
 			m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+			m_engineon.setVolume(GameManager::Instance()->VolumeFX);
 			m_engineon.play();
 		}
 		m_Clock.restart();

@@ -12,6 +12,7 @@
 #include "BoostEffect.h"
 #include "PlayerSelector.h"
 #include "Level_Finished.h"
+#include "Map.h"
 
 class Jeu :public Scene
 {
@@ -32,7 +33,7 @@ private:
 	//Collects* collects;
 
 	sf::Sprite spFirstOrSecond[2];
-
+	sf::Music musicNiveau;
 	sf::Clock Clock;
 	void MenuIG(int ID);
 	bool MenuIG_Activated = false;
@@ -52,7 +53,8 @@ private:
 	sf::Sound m_magnet;
 	sf::Sound m_bumper;
 	sf::Sound voiture;
-
+	sf::Sound m_oil;;
+	sf::Clock m_clocks;
 	std::vector<Collects*> Collectibles;
 	std::vector<Fx*> FXs;
 
