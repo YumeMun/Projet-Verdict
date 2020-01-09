@@ -181,7 +181,7 @@ void Jeu::Update()
 
 		hud->Update(caméra->GetCameraCenter(), caméra->GetSizeCamera(), Player1->GetPos(), Player2->GetPos());
 
-		if (Player1->Hasfinished == true || Player2->Hasfinished == true)
+		if (Player1->Hasfinished == true && Player2->Hasfinished == true)
 		{
 			transition->Update();
 
