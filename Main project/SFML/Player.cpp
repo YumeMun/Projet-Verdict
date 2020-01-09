@@ -196,6 +196,8 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 			spPlayer.rotate(-SPEED / 1.5 * _Elapsed);
 		else if (spPlayer.getRotation() >= 355 && spPlayer.getRotation() <= 5)
 			spPlayer.setRotation(0);
+		else 
+			spPlayer.setRotation(0);
 	}
 	else if (Player_Direction == UP)
 	{
@@ -203,12 +205,16 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 			spPlayer.rotate(-SPEED / 1.5 * _Elapsed);
 		else if (spPlayer.getRotation() <= 320 && spPlayer.getRotation() >= 310)
 			spPlayer.setRotation(315);
+		else
+			spPlayer.setRotation(315);
 	}
 	else if (Player_Direction == DOWN)
 	{
 		if (spPlayer.getRotation() <= 40 || spPlayer.getRotation() >= 355)
 			spPlayer.rotate(SPEED / 1.5 * _Elapsed);
 		else if (spPlayer.getRotation() <= 50 && spPlayer.getRotation() >= 40)
+			spPlayer.setRotation(45);
+		else
 			spPlayer.setRotation(45);
 	}
 
@@ -283,6 +289,9 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		if (Jump == true)
 		{
 			Jump = false;
+
+			if (Player_Movement.x > 0)
+				Player_Movement.x = 0;
 		}
 
 		if (Player_Movement.y > 0)
