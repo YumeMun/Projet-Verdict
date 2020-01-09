@@ -84,7 +84,7 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2)
 {
-	if (spPlayer.getPosition().x + 60 > _Map->GetEndFlag().x)
+	if (spPlayer.getPosition().x + 100 > _Map->GetEndFlag().x)
 		Hasfinished = true;
 
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < (_Map->GetSizeY() * 64) - 2 && Alive == true)

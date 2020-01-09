@@ -65,7 +65,7 @@ void Bumper::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 			m_bumper.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("BumperEffect"));
 			m_bumper.setVolume(GameManager::Instance()->VolumeFX);
 			m_bumper.play();
-			_Player1->Player_Movement.y = -SPEED * 3;
+			_Player1->Player_Movement.y = -SPEED * 2;
 			Alive = false;
 		}
 		else if (spBumper.getGlobalBounds().contains(_Player2->GetPos()))
@@ -73,7 +73,7 @@ void Bumper::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elapse
 			m_bumper.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("BumperEffect"));
 			m_bumper.setVolume(GameManager::Instance()->VolumeFX);
 			m_bumper.play();
-			_Player2->Player_Movement.y = -SPEED * 3;
+			_Player2->Player_Movement.y = -SPEED * 2;
 			Alive = false;
 		}
 

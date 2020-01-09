@@ -251,7 +251,7 @@ void Level_Finished::Display()
 
 		m_actualWindow->draw(WinText);
 
-		if (AnimLogo.getElapsedTime().asMilliseconds() > 150)
+		if (AnimLogo.getElapsedTime().asMilliseconds() > 500)
 		{
 			if (FrameIndexLogo < 19)
 				FrameIndexLogo++;
