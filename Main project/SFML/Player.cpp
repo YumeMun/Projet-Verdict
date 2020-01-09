@@ -366,8 +366,6 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	}
 	else if (Player_Direction == UP)
 	{
-		//spPlayer.setRotation(315); 
-
 		if (Boost == true)
 			Player_Movement.x = SPEED * 1.5;
 
@@ -386,8 +384,6 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	}
 	else if (Player_Direction == DOWN)
 	{
-		//spPlayer.setRotation(45);
-
 		if (Player_Movement.y < 0)
 			Player_Movement.y = 0;
 
@@ -415,8 +411,6 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 	if (Player_Movement.x < SPEED && Oiled == false)
 	{
-		//accelerationPlayer = (0.004 * pow(Player_Movement.x, 4)) - pow(Player_Movement.x, 1.85); // a inverser
-		//Player_Movement.x = (0.004 * pow(accelerationPlayer, 4)) - pow(accelerationPlayer, 1.85);
 		Player_Movement.x += 10;
 	}
 	else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
@@ -471,37 +465,20 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			{
 				if (_Map->GetIsLazerOn() == 1)
 				{
-					//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+					spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
+					Alive = false;
 					if (!isHitLazer)
 					{
 						std::cout << "AAAAaaa" << std::endl;
-						scoreHitTrap += 15; /// FACTOR_DIVIDE;
+						scoreHitTrap += 15;
 						isHitLazer = true;
 					}
 				}
 				else
 					isHitLazer = false;
 			}
-			//else
-			//{
-			//	if (Player_Movement.x < SPEED && Oiled == false)
-			//	{
-			//		//accelerationPlayer = (0.004 * pow(Player_Movement.x, 4)) - pow(Player_Movement.x, 1.85); // a inverser
-			//		//Player_Movement.x = (0.004 * pow(accelerationPlayer, 4)) - pow(accelerationPlayer, 1.85);
-			//		Player_Movement.x += 10;
-			//	}
-			//	else if (Player_Movement.x >= SPEED && Boost == false && Oiled == false)
-			//		Player_Movement.x = SPEED;
-			//	else if (Boost == true)
-			//		Player_Movement.x = SPEED * 1.5;
-			//	else if (Oiled == true)
-			//	{
-			//		if (Player_Movement.x >= SPEED / 2)
-			//			Player_Movement.x = SPEED / 2;
-			//	}
-			//}
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -511,47 +488,10 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					isCollideCE = true;
 					if (timerCE.getElapsedTime().asMilliseconds() > 1000)
 					{
-						scoreHitTrap += 15; /// FACTOR_DIVIDE;
+						scoreHitTrap += 15; 
 						timerCE.restart();
 					}
 					SetHitLazer();
-
-					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
-					{
-						if (m_Clock2.getElapsedTime().asSeconds() >= 1)
-						{
-							Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-							Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
-							Alteration.play();
-							m_Clock2.restart();
-						}
-
-						m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
-						m_ElecHit.setVolume(GameManager::Instance()->VolumeFX*0.5);
-						m_ElecHit.play();
-
-						Test = false;
-					}
-
-					if (m_Clock.getElapsedTime().asSeconds() >= 1)
-					{
-						Test = true;
-						m_Clock.restart();
-					}
-
-					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
-
-					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
-					{
-						m_laserhit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Laser Impact"));
-						m_laserhit.setVolume(GameManager::Instance()->VolumeFX);
-						m_laserhit.play();
-						timerTrapFactor.restart();
-						isCollideCE = true;
-						SetHitLazer();
-					}
-					else
-						isCollideCE = false;*/
 				}
 				else
 					isCollideCE = false;
@@ -727,24 +667,6 @@ sf::Vector2f Player::GetPos()
 	return spPlayer.getPosition();
 }
 
-//void Player::MissileCollide()
-//{
-//	if (spPlayer.getPosition().x - spPlayer.getGlobalBounds().width / 2 >= newMissile->GetMissile().getPosition().x
-//		&& spPlayer.getPosition().x + spPlayer.getGlobalBounds().width / 2 <= newMissile->GetMissile().getPosition().x + newMissile->GetMissile().getGlobalBounds().width
-//		&& spPlayer.getPosition().y - spPlayer.getGlobalBounds().height / 2 >= newMissile->GetMissile().getPosition().y
-//		&& spPlayer.getPosition().y + spPlayer.getGlobalBounds().width / 2 <= newMissile->GetMissile().getPosition().y + newMissile->GetMissile().getGlobalBounds().height)
-//	{
-//		Player_Movement.x = 0;
-//		delete newMissile;
-//	}
-//	else
-//	{
-//		if (Player_Movement.x < SPEED)
-//			Player_Movement.x += 10;
-//		else if (Player_Movement.x >= SPEED)
-//			Player_Movement.x = SPEED;
-//	}
-//}
 
 bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 {
@@ -865,14 +787,6 @@ void Player::SetAnimWheelStart()
 	PlayerRect.top = 0;
 	if (AnimClock.getElapsedTime().asMilliseconds() > 100)
 	{
-		/*if (!FrameIndex >= 4)
-			FrameIndex++;
-		else
-		{
-			FrameIndex = 0;
-			PlayerRect.top = 1 * PlayerRect.height;
-		}*/
-
 		if (FrameIndex < 4)
 			FrameIndex++;
 		else
