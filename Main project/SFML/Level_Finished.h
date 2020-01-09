@@ -18,6 +18,10 @@ public:
 	void UpdatePodium();
 
 private:
+	sf::Sprite spBackground;
+	sf::Sprite spContour;
+	sf::Sprite spLight;
+
 	int J1Score;
 	int J2Score;
 
@@ -51,4 +55,7 @@ private:
 	//std::vector<float>
 
 	class Transition* transition;
+
+	sf::Clock AnimLogo;
+	int FrameIndexLogo = 0;
 };

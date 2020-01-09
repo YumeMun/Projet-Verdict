@@ -665,6 +665,26 @@ void ResourceManager::Load()
 
 	if (newTexture->Create("Interface_éditeur2.jpg", "Interface éditeur2"))
 		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Background_Victory.png", "Background victoire"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Contour_victory.png", "Contour victoire"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Podium.png", "Podium"))
+		_textures.push_back(newTexture);
+
+	newTexture = new Textures();
+
+	if (newTexture->Create("Lumière_victoire.png", "Lumière victoire"))
+		_textures.push_back(newTexture);
 }
 
 //Fonction retournant une texture selon le nom appelé
