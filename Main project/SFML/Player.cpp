@@ -83,6 +83,9 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2)
 {
+	if (spPlayer.getPosition().x + 20 > _Map->GetEndFlag().x)
+		Hasfinished = true;
+
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < (_Map->GetSizeY() * 64) - 2 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
@@ -156,7 +159,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Alive = false;
 	}
 
-	//if (Hasfinished == false)
+	if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
 
@@ -165,9 +168,6 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		else if (Shocked == true)
 			spPlayer.move(Shocked_Move * _Elapsed);
 	}
-
-	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
-		Hasfinished = true;
 
 
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
