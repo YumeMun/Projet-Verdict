@@ -60,8 +60,8 @@ C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Commandes.cpp(33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   Credits.cpp
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Credits.cpp(13): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Credits.cpp(27): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Credits.cpp(15): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Credits.cpp(28): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   ExploRocket.cpp
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
   Fx.cpp
@@ -190,10 +190,9 @@ C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(524): warning C4
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(572): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(581): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(589): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(594): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(633): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(642): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(650): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(631): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(640): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Jeu.cpp(648): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   Map.cpp
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Caméra.h(80): warning C4305: 'initialisation' : troncation de 'double' à 'float'
 C:\Users\celia\Desktop\Github\Verdict\Main project\SFML\Map.cpp(58): warning C4305: 'argument' : troncation de 'double' à 'float'

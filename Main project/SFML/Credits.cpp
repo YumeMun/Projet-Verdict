@@ -9,9 +9,10 @@ Credits::Credits()
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background credits"));
 
 	if (!music.openFromFile("Ressources/Music/Cool_Catz.ogg"))
+		std::cout << "Impossible de charger la musique" << std::endl;
 
-	music.setVolume(GameManager::Instance()->VolumeMusique);
 	music.play();
+	music.setVolume(GameManager::Instance()->VolumeMusique);
 	music.setLoop(true);
 }
 

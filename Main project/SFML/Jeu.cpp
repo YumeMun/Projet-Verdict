@@ -591,8 +591,6 @@ void Jeu::MenuIG(int ID)
 				if (SelectionMenuIG == 1)
 				{
 					musicNiveau.stop();
-					musicNiveau.setVolume(GameManager::Instance()->VolumeMusique);
-					musicNiveau.play();
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, skinJ1, skinJ2);
 					Clock.restart();
 				}

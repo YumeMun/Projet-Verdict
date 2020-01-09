@@ -81,7 +81,7 @@ void HudEditor::Display()
 	m_actualWindow->setView(m_actualWindow->getDefaultView());
 	m_actualWindow->draw(spBandeau);
 
-	for (int i = 0; i < 26; i++)
+	for (int i = 0; i < 25; i++)
 	{
 		if (i < 23)
 			spTile[i].setPosition((i * 70) + 162, 12);
@@ -120,13 +120,13 @@ void HudEditor::EventManager(sf::Event p_pollingEvent)
 		if (Selection > 1)
 			Selection--;
 		else
-			Selection = 26;
+			Selection = 25;
 
 		SelectionTimer.restart();
 	}
 	if (sf::Joystick::isButtonPressed(0, 5) && SelectionTimer.getElapsedTime().asMilliseconds() > 100)
 	{
-		if (Selection < 26)
+		if (Selection < 25)
 			Selection++;
 		else
 			Selection = 1;
