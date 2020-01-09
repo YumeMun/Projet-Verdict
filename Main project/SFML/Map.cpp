@@ -443,16 +443,12 @@ void Map::Display()
 				m_actualWindow->draw(spTile[22]);
 				break;
 			case 24:
-				spTile[23].setPosition(CasePos);
-				m_actualWindow->draw(spTile[23]);
 				break;
 			case 25:
 				spTile[24].setPosition(CasePos);
 				m_actualWindow->draw(spTile[24]);
 				break;
 			case 26:
-				spTile[25].setPosition(CasePos);
-				m_actualWindow->draw(spTile[25]);
 				break;
 			case 27:
 				spTile[26].setPosition(CasePos);
