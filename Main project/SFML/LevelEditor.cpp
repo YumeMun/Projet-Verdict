@@ -1111,7 +1111,7 @@ void LevelEditor::SaveIt()
 	SaveFile << Save;
 
 	SaveFile.close();
-
+	musicedit.stop();
 	GameManager::Instance()->LoadScene(e_Enum::e_Scene::OPENLEVELEDITOR);
 }
 

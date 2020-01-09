@@ -295,6 +295,7 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
 			sound.setVolume(GameManager::Instance()->VolumeFX);
 			sound.play();
+
 			if (m_MenuChoice != 1)
 				m_MenuChoice = m_MenuChoice - 1;
 			else
@@ -306,6 +307,7 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
 			sound.setVolume(GameManager::Instance()->VolumeFX);
 			sound.play();
+
 			if (m_MenuChoice != 6)
 				m_MenuChoice = m_MenuChoice + 1;
 			else

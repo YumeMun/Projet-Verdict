@@ -14,9 +14,16 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 
 	GameManager::Instance()->music.stop();
 
+	skinJ1 = skinSelectedJ1;
+	skinJ2 = skinSelectedJ2;
+
+	map = new Map(_LevelName);
+
+	niveau = map->SelectionBackground;
+
 	LevelName = _LevelName;
 
-	if (LevelName == "Niveau1")
+	if (niveau == 1)
 	{
 		if (!musicNiveau.openFromFile("Ressources/Music/I_got_Rythm.ogg"))
 			std::cout << "Erreur music" << std::endl; // erreur
@@ -25,7 +32,7 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 		musicNiveau.setLoop(true);
 	}
 
-	if (LevelName == "Niveau2")
+	if (niveau == 2)
 	{
 		if (!musicNiveau.openFromFile("Ressources/Music/The_Old_Man.ogg"))
 			std::cout << "Erreur music" << std::endl; // erreur
@@ -33,11 +40,6 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 		musicNiveau.play();
 		musicNiveau.setLoop(true);
 	}
-
-	skinJ1 = skinSelectedJ1;
-	skinJ2 = skinSelectedJ2;
-
-	map = new Map(_LevelName);
 	//cam
 	//hud
 

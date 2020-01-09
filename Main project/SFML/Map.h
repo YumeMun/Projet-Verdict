@@ -26,15 +26,14 @@ public:
 
 	sf::Vector2f GetNextTile(int _Type, sf::Vector2f _Pos);
 	int GetIsLazerOn();
+	int SelectionBackground;
 
 private:
 	sf::RenderWindow* m_actualWindow;
 
 	sf::Color SkyAlpha;
-
 	int Size_X;
 	int Size_Y;
-	int SelectionBackground;
 	int Tableau[34][1200];
 	sf::Vector2f CasePos, CheckPos;
 	sf::Sprite Plan[5], Plan2[5], Plan1[2];

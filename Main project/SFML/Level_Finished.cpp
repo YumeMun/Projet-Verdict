@@ -10,6 +10,16 @@ Level_Finished::Level_Finished(int _J1Score, int _J2Score, Player* _player1, Pla
 {
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
+	FouleDebut.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Foule acclame debut"));
+	FouleDebut.setVolume(GameManager::Instance()->VolumeFX);
+	FouleDebut.play();
+
+	Foule.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Foule acclame"));
+	Foule.setVolume(GameManager::Instance()->VolumeFX);
+	Foule.play();
+	Foule.setLoop(true);
+	m_Clock.restart();
+
 	transition = new Transition({ 0, 0 }, { 0, 1080 / 2 });
 
 	J1Score = _J1Score;
@@ -161,6 +171,10 @@ void Level_Finished::Update()
 		{
 			if (sf::Joystick::isButtonPressed(0, 0))
 			{
+				Foule.stop();
+				Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+				Valider.setVolume(GameManager::Instance()->VolumeFX);
+				Valider.play();
 				if (Selection == 1)
 					GameManager::Instance()->m_ActualScene = new Jeu(LevelName, SkinJ1, SkinJ2);
 				else if (Selection == 2)
@@ -172,6 +186,10 @@ void Level_Finished::Update()
 
 			if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -50.f)
 			{
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
+				sound.play();
+
 				if (Selection != 1)
 					Selection = Selection - 1;
 				else
@@ -180,6 +198,10 @@ void Level_Finished::Update()
 			}
 			if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 50.f)
 			{
+				sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+				sound.setVolume(GameManager::Instance()->VolumeFX);
+				sound.play();
+
 				if (Selection != 3)
 					Selection = Selection + 1;
 				else
@@ -318,6 +340,11 @@ void Level_Finished::UpdatePodium()
 				isScoreStep[0] = false;
 				isScoreStep[1] = true;
 				timerPause.restart();
+
+				ScoreEnPlus.stop();
+				ScoreEnPlus.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("ScoreEnPlus"));
+				ScoreEnPlus.setVolume(GameManager::Instance()->VolumeFX);
+				ScoreEnPlus.play();
 			}
 			else
 			{
@@ -340,6 +367,11 @@ void Level_Finished::UpdatePodium()
 				isScoreStep[2] = true;
 				isScoreStep[1] = false;
 				timerPause.restart();
+
+				ScoreEnPlus.stop();
+				ScoreEnMoins.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("ScoreEnMoins"));
+				ScoreEnMoins.setVolume(GameManager::Instance()->VolumeFX);
+				ScoreEnMoins.play();
 			}
 			else
 			{
@@ -362,6 +394,11 @@ void Level_Finished::UpdatePodium()
 				isScoreStep[3] = true;
 				isScoreStep[2] = false;
 				timerPause.restart();
+
+				ScoreEnMoins.stop();
+				ScoreEnMoins.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("ScoreEnMoins"));
+				ScoreEnMoins.setVolume(GameManager::Instance()->VolumeFX);
+				ScoreEnMoins.play();
 			}
 			else
 			{
@@ -387,6 +424,11 @@ void Level_Finished::UpdatePodium()
 					isScoreEnd = true;
 					isScoreStep[3] = false;
 					timerPause.restart();
+
+					ScoreEnMoins.stop();
+					Victoire.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Victoire"));
+					Victoire.setVolume(GameManager::Instance()->VolumeFX);
+					Victoire.play();
 				}
 				else
 				{

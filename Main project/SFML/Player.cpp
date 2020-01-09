@@ -135,7 +135,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		//scoreFall += 50 / FACTOR_DIVIDE;
 
 	}
-	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
+	//else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
 	else if (Alive == false && _Cam->GetCameraCenter().x >= GetPos().x)
 	{
 		Alive = true;
@@ -472,6 +472,13 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 			{
 				if (_Map->GetIsLazerOn() == 1)
 				{
+					if (m_Clock2.getElapsedTime().asSeconds() >= 1)
+					{
+						m_laserhit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Laser Impact"));
+						m_laserhit.setVolume(GameManager::Instance()->VolumeFX);
+						m_laserhit.play();
+						m_Clock2.restart();
+					}
 					//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
@@ -518,7 +525,6 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					SetHitLazer();
 
 					if (Test == true)
-					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
 						if (m_Clock2.getElapsedTime().asSeconds() >= 1)
 						{
@@ -540,6 +546,8 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 						Test = true;
 						m_Clock.restart();
 					}
+					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
+					{
 
 					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
 

@@ -25,7 +25,13 @@ private:
 
 	sf::Sprite spButton[3];
 	sf::Text ButtonText[3];
-
+	sf::Sound sound;
+	sf::Sound Valider;
+	sf::Sound Foule;
+	sf::Sound Victoire;
+	sf::Sound FouleDebut;
+	sf::Sound ScoreEnMoins;
+	sf::Sound ScoreEnPlus;
 	int Selection = 1;
 	sf::Clock m_Clock;
 

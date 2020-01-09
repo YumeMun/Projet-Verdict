@@ -31,7 +31,7 @@ private:
 
 	//Missile* missile;
 	//Collects* collects;
-
+	int niveau;
 	sf::Sprite spFirstOrSecond[2];
 	sf::Music musicNiveau;
 	sf::Clock Clock;
