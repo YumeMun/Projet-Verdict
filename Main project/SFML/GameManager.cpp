@@ -95,6 +95,10 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		break;
 	case e_Enum::e_Scene::LEVELEDITOR:
 		music.stop();
+		if (music.getStatus() == 1 || music.getStatus() == 0)
+		{
+			music.play();
+		}
 		m_ActualScene = new LevelEditor();
 		break;
 	case e_Enum::e_Scene::SAVEEDITOR:
