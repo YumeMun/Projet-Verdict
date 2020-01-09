@@ -412,7 +412,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 		Player_SlopVector.y = Player_Movement.x;
 
-		if (_Map->GetTile(GetPos().x - Player_ColliderLimit[0].x, GetPos().y + Player_ColliderLimit[0].y) == 13 && Boost == false)
+		if (_Map->GetTile(GetPos().x - Player_ColliderLimit[0].x, GetPos().y) == 13 && Boost == false)
 		{
 			Boost = true;
 			BoostClock.restart();
