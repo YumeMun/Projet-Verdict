@@ -722,8 +722,6 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 					CollectID = e_Enum::e_Collects::SHOCKWAVE;
 			}
 
-			CollectID = e_Enum::e_Collects::LEVITATION;
-
 			return true;
 		}
 	}

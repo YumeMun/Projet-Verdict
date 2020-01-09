@@ -117,7 +117,7 @@ void Level_Finished::Update()
 	isPlayerText[1].setOrigin(isPlayerText[1].getGlobalBounds().width / 2, isPlayerText[1].getGlobalBounds().height / 2);
 
 	posLogo[0] = { 200, 700 };
-	posLogo[1] = { 1920 - 200, 700 };
+	posLogo[1] = { 1920 - 500, 700 };
 	posLogo[2] = { 1920 / 2, 400 };
 
 	if (J1Score > J2Score)
