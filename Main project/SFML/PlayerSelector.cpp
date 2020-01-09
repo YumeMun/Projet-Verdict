@@ -87,9 +87,9 @@ void PlayerSelector::Setup()
 	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 320, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
 
 	spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
-	spReady.setPosition((1920 / 2 - 110), 800);
+	spReady.setPosition((1920 / 2), 800);
 	spReady.setOrigin(spReady.getGlobalBounds().width / 2, spReady.getGlobalBounds().height / 2);
-	spReady.setScale(sf::Vector2f(1.75, 1.2));
+	spReady.setScale(sf::Vector2f(2.5, 1.2));
 
 	strSkinSelect[0] = "Appuyez sur start pour lancer la course";
 	strSkinSelect[1] = "Choisissez votre vehicule";

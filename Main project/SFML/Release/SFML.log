@@ -974,11 +974,11 @@ D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): 
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:         [
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:             T=float
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(39,53): warning C4305:         ]
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,41): warning C4305:  'argument' : troncation de 'double' à 'T'
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,41): warning C4305:         with
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,41): warning C4305:         [
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,41): warning C4305:             T=float
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,41): warning C4305:         ]
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,40): warning C4305:  'argument' : troncation de 'double' à 'T'
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,40): warning C4305:         with
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,40): warning C4305:         [
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,40): warning C4305:             T=float
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(92,40): warning C4305:         ]
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(324,46): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\PlayerSelector.cpp(339,47): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   ResourceManager.cpp
@@ -1089,8 +1089,8 @@ D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\TimerStart.cpp(226,48): war
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
   Génération de code en cours
   Previous IPDB not found, fall back to full compilation.
-D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(633): warning C4715: 'Map::GetEndFlag' : les chemins de contrôle ne retournent pas tous une valeur
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(650): warning C4715: 'Map::GetNextTile' : les chemins de contrôle ne retournent pas tous une valeur
+D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(633): warning C4715: 'Map::GetEndFlag' : les chemins de contrôle ne retournent pas tous une valeur
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(617): warning C4715: 'Map::GetCheckPoint' : les chemins de contrôle ne retournent pas tous une valeur
 D:\Users\c.bourgues\Desktop\Runner\Main project\SFML\Map.cpp(596): warning C4715: 'Map::GetStartPos' : les chemins de contrôle ne retournent pas tous une valeur
   All 898 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
