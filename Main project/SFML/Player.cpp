@@ -74,7 +74,7 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 	timerAnimElec.restart();
 
 	HasCollectible = false;
-	Hasfinished = true;
+	Hasfinished = false;
 }
 
 Player::~Player()

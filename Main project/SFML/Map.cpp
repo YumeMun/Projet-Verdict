@@ -59,6 +59,13 @@ Map::Map(std::string _LevelName)
 			Plan[i].setScale(1.6, 1.6);
 			Plan2[i].setScale(1.6, 1.6);
 		}
+
+		for (int i = 0; i < 2; i++)
+		{
+			Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan2_" + std::to_string(i)));
+			Plan1[i].setScale(1.6, 1.6);
+			Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, -650);
+		}
 	}
 	else if (SelectionBackground == 2)
 	{
@@ -225,6 +232,15 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	if (SelectionBackground == 1)
 	{
+		for (int i = 0; i < 2; i++)
+		{
+			if (Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
+			{
+				Plan1[i].setPosition(Plan1[i].getPosition().x + ((9800 * 1.6) * 2), Plan1[i].getPosition().y);
+				Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan2_" + std::to_string(int(Plan1[i].getPosition().x / Plan1[0].getGlobalBounds().width))));
+			}
+		}
+
 		Plan[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
 		Plan2[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
 
@@ -309,6 +325,11 @@ void Map::Display()
 		{
 			m_actualWindow->draw(Plan[i]);
 			m_actualWindow->draw(Plan2[i]);
+		}
+
+		for (int i = 0; i < 2; i++)
+		{
+			m_actualWindow->draw(Plan1[i]);
 		}
 	}
 	else if (SelectionBackground == 2)

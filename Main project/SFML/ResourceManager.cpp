@@ -242,6 +242,11 @@ void ResourceManager::Load()
 
 		if (newTexture->Create("Plan1_" + std::to_string(i) + ".png", "Plan1_" + std::to_string(i)))
 			_textures.push_back(newTexture);
+
+		newTexture = new Textures();
+
+		if (newTexture->Create("Plan_2_partie_" + std::to_string(i + 1) + ".png", "Plan2_" + std::to_string(i)))
+			_textures.push_back(newTexture);
 	}
 
 	for (int i = 0; i < 5; i++)
