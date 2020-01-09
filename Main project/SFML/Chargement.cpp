@@ -50,6 +50,8 @@ Chargement::Chargement()
 	Percent.setFont(Font);
 	Percent.setCharacterSize(50);
 	Percent.setFillColor(sf::Color::White);
+	Percent.setOutlineColor(sf::Color::Black);
+	Percent.setOutlineThickness(4);
 	Percent.setString("0 %");
 	Percent.setOrigin(Percent.getGlobalBounds().width / 2, Percent.getGlobalBounds().height / 2);
 	Percent.setPosition(LoadingBack.getPosition().x, LoadingBack.getPosition().y + LoadingBack.getSize().y * 2);

@@ -41,7 +41,7 @@ SaveEditor::SaveEditor(int _SizeX, int _SizeY, std::string _Save, int _Selection
 		LoadFile >> Size_X;
 		LoadFile >> Size_Y;
 		LoadFile >> SelectionBackground;
-		
+
 		for (int y = 0; y < Size_Y; y++)
 		{
 			for (int x = 0; x < Size_X; x++)
@@ -756,6 +756,27 @@ void SaveEditor::VirtualKeyboard()
 		m_actualWindow->draw(KeyText[i]);
 	}
 
+	if (sf::Joystick::isButtonPressed(0, 7) && clock.getElapsedTime().asMilliseconds() > 300)
+	{
+		bool SameName = false;
+
+		for (int i = 0; i < FilesNumber; i++)
+		{
+			if (LoadLevelNames[i] == LevelName)
+			{
+				SameName = true;
+				PopUpActivated = 3;
+				SelectionTimer.restart();
+			}
+		}
+		if (SameName == false)
+		{
+			PopUpActivated = 1;
+			SelectionTimer.restart();
+		}
+	}
+
+
 	if (sf::Joystick::isButtonPressed(0, 0) && clock.getElapsedTime().asMilliseconds() > 300)
 	{
 		if (Keyboard[3][0] == BACK_SELECTED)
@@ -770,7 +791,7 @@ void SaveEditor::VirtualKeyboard()
 			if (LevelName.length() >= 1)
 				LevelName.pop_back();
 		}
-		else if (Keyboard[2][10] == ENTER_SELECTED && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
+		else if ((Keyboard[2][10] == ENTER_SELECTED && SelectionTimer.getElapsedTime().asMilliseconds() > 300))
 		{
 			bool SameName = false;
 
