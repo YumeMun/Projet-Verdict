@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  LevelEditor.cpp
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\Caméra.h(80,21): warning C4305:  'initialisation' : troncation de 'double' à 'float'
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\LevelEditor.cpp(29,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
@@ -53,3 +54,6 @@ D:\Users\g.collignon\Documents\Verdict\Main project\SFML\LevelEditor.cpp(1055,45
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\LevelEditor.cpp(1061,66): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
 D:\Users\g.collignon\Documents\Verdict\Main project\SFML\LevelEditor.cpp(1061,45): warning C4244:  'argument' : conversion de 'int' en 'float', perte possible de données
   SFML.vcxproj -> D:\Users\g.collignon\Documents\Verdict\Main project\Debug\SFML.exe
+=======
+﻿
+>>>>>>> 8416fa8f90eaafc496544f320ae460acc89bbf19

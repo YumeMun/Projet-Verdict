@@ -72,6 +72,7 @@ private:
 	int trapHitCount = 1;
 	float trapSpeedFactor = 1; 
 	sf::Clock timerTrapFactor;
+	sf::Clock timerCE;
 
 	sf::Clock BoostClock;
 

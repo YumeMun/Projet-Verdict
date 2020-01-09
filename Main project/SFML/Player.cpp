@@ -72,6 +72,8 @@ Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 	animElec.setPosition(GetPos());
 	timerAnimElec.restart();
 
+	timerCE.restart();
+
 	HasCollectible = false;
 	Hasfinished = false;
 }
@@ -82,6 +84,9 @@ Player::~Player()
 
 void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2)
 {
+	if (spPlayer.getPosition().x + 20 > _Map->GetEndFlag().x)
+		Hasfinished = true;
+
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < (_Map->GetSizeY() * 64) - 2 && Alive == true)
 	{
 		Controls(_Map, _Elapsed);
@@ -117,7 +122,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Alive = false;
 
 
-		scoreFall += 30 / FACTOR_DIVIDE;
+		scoreFall += 30; /// FACTOR_DIVIDE;
 
 		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
 		m_engineoff.setVolume(GameManager::Instance()->VolumeFX);
@@ -131,6 +136,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 
 	}
 	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
+	else if (Alive == false && _Cam->GetCameraCenter().x >= GetPos().x)
 	{
 		Alive = true;
 
@@ -143,7 +149,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		m_engineon.play();
 	}
 
-	if (GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2 && Alive == true)
+	if (((GetPos().x < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2) || (GetPos().y > _Cam->GetCameraCenter().y + _Cam->GetSizeCamera().y / 2) || (GetPos().y < _Cam->GetCameraCenter().y - _Cam->GetSizeCamera().y / 2)) && Alive == true)
 	{
 		spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCameraCenter()));
 		spPlayer.setRotation(0);
@@ -154,12 +160,12 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		Player_SlopVector.y = 0;
 		Player_Vector.x = 0;
 		Player_Vector.y = 0;
-		//DisplayNumeroTimer.restart();
+		DisplayNumeroTimer.restart();
 
 		Alive = false;
 	}
 
-	//if (Hasfinished == false)
+	if (Hasfinished == false)
 	{
 		Player_Vector = Player_Movement + Player_SlopVector;
 
@@ -168,9 +174,6 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		else if (Shocked == true)
 			spPlayer.move(Shocked_Move * _Elapsed);
 	}
-
-	if (spPlayer.getPosition().x > _Map->GetEndFlag().x)
-		Hasfinished = true;
 
 
 	if (InvincibleTime.getElapsedTime().asSeconds() >= 3 && Invincible == true)
@@ -260,6 +263,33 @@ void Player::Controls(Map* _Map, float _Elapsed)
 			KeyPress = false;
 	}
 
+	if (Jump == true)
+	{
+		if (Player_SlopVector.y < 0)
+			Player_SlopVector.y = 0;
+	}
+
+	if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 8 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 13 && Player_Direction == NONE)
+	{
+		if (Jump == true)
+		{
+			Jump = false;
+		}
+
+		if (Player_Movement.y > 0)
+			Player_Movement.y = 0;
+	}
+	else if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 7 || _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == 12 && Player_Direction == NONE)
+	{
+		if (Jump == true)
+		{
+			Jump = false;
+		}
+
+		if (Player_Movement.y > 0)
+			Player_Movement.y = 0;
+	}
+
 	for (int i = 1; i < 7; i++)
 	{
 		if (Jump == false && Player_Direction == NONE && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) == i)
@@ -312,7 +342,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		Boosted = false;
 	}
 
-	if (_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && GetPos().y - Player_ColliderLimit[0].y / 2 - 100 > 0)
+	if ((_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && _Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) < 20) && GetPos().y - Player_ColliderLimit[0].y / 2 - 100 > 0)
 	{
 		if (Player_Movement.y < 0)
 			Player_Movement.y = 0;
@@ -359,6 +389,9 @@ void Player::Controls(Map* _Map, float _Elapsed)
 	{
 		//spPlayer.setRotation(45);
 
+		if (Player_Movement.y < 0)
+			Player_Movement.y = 0;
+
 		if (Boost == false)
 			Player_Movement.x = SPEED;
 		else if (Boost == true)
@@ -399,14 +432,11 @@ void Player::Controls(Map* _Map, float _Elapsed)
 
 	if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= 50)
 	{
-		if (_Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) >= 1 && _Map->GetTile(GetPos().x + 75, GetPos().y + Player_ColliderLimit[0].y + 50) <= 6)
-		{
-			Rocket_Direction = 0;
-		}
-		else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) >= -50)
-		{
-			Rocket_Direction = 1;
-		}
+		Rocket_Direction = 0;
+	}
+	else if (sf::Joystick::getAxisPosition(ID - 1, sf::Joystick::X) <= -50)
+	{
+		Rocket_Direction = 1;
 	}
 }
 
@@ -432,22 +462,28 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 19)
 					_Map->SetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y, 37);
 
-				scoreHitTrap += 15 / FACTOR_DIVIDE;
+				scoreHitTrap += 15; /// FACTOR_DIVIDE;
 
 				timerTrapFactor.restart();
 				SetHitTrap();
 				Player_Movement.x = Player_Movement.x / trapSpeedFactor;
 			}
-			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 21 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 29)
+			else if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 22 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 29)
 			{
 				if (_Map->GetIsLazerOn() == 1)
 				{
-					spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
+					//spPlayer.setPosition(_Map->GetCheckPoint(_Cam->GetCamOrigin()));
 					Player_Movement.x = 0;
 					Player_Movement.y = 0;
-					Alive = false;
-					scoreFall += 30 / FACTOR_DIVIDE;
+					if (!isHitLazer)
+					{
+						std::cout << "AAAAaaa" << std::endl;
+						scoreHitTrap += 15; /// FACTOR_DIVIDE;
+						isHitLazer = true;
+					}
 				}
+				else
+					isHitLazer = false;
 			}
 			//else
 			//{
@@ -474,10 +510,15 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 				{
 					timerTrapFactor.restart();
 					isCollideCE = true;
-					scoreHitTrap += 0.05 / FACTOR_DIVIDE;
+					if (timerCE.getElapsedTime().asMilliseconds() > 1000)
+					{
+						scoreHitTrap += 15; /// FACTOR_DIVIDE;
+						timerCE.restart();
+					}
 					SetHitLazer();
 
 					if (Test == true)
+					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
 						if (m_Clock2.getElapsedTime().asSeconds() >= 1)
 						{
@@ -711,12 +752,12 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 {
 	srand(time(NULL));
 
-	if (_Map->GetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y) == 23)
+	if (_Map->GetTile(GetPos().x, GetPos().y) == 23)
 	{
-		_Map->SetTile(GetPos().x + spPlayer.getOrigin().x, GetPos().y, 0);
-
 		if (HasCollectible == false)
 		{
+			_Map->SetTile(GetPos().x, GetPos().y, 0);
+
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
 			Collectible.setVolume(GameManager::Instance()->VolumeFX);
 			Collectible.play();
@@ -750,9 +791,8 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 					CollectID = e_Enum::e_Collects::SHOCKWAVE;
 			}
 
+			return true;
 		}
-
-		return true;
 	}
 
 	return false;

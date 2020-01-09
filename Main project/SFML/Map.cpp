@@ -62,6 +62,8 @@ Map::Map(std::string _LevelName)
 	}
 	else if (SelectionBackground == 2)
 	{
+		SkyAlpha = sf::Color(255, 255, 255, 0);
+
 		Plan[0].setTexture(*ResourceManager::Instance()->GetTexture("Plan0"));
 		Plan2[0].setTexture(*ResourceManager::Instance()->GetTexture("Plan0"));
 
@@ -85,6 +87,8 @@ Map::Map(std::string _LevelName)
 
 		Plan[4].setScale(1.8, 1.8);
 		Plan2[4].setScale(1.8, 1.8);
+
+		Plan2[4].setColor(SkyAlpha);
 
 		for (int i = 0; i < 2; i++)
 		{
@@ -188,13 +192,13 @@ Map::~Map()
 
 void Map::Update(float _Elapsed, Caméra* _Cam)
 {
-	for (int y = 0; y < Size_Y; y++)
+	for (int x = 0; x < Size_X; x++)
 	{
-		for (int x = 0; x < Size_X; x++)
+		for (int y = 0; y < Size_Y; y++)
 		{
-			if (Tableau[y][x] >= 1 && Tableau[y][x] <= 6 && Tableau[y - 1][x] == 0)
+			if (((Tableau[y][x] >= 1 && Tableau[y][x] <= 6) || Tableau[y][x] == 11) && Tableau[y - 1][x] == 0)
 			{
-				if (x >= (CheckPos.x + 1280) / 64 && x <= (CheckPos.x + 4800) / 64)
+				if (x >= (CheckPos.x + 1920) / 64 && x <= (CheckPos.x + 4800) / 64 && x < GetEndFlag().x)
 				{
 					Tableau[y - 1][x] = 26;
 					CheckPos = sf::Vector2f(x * 64, (y - 1) * 64);
@@ -273,6 +277,13 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 		Plan[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
 		Plan2[4].move(_Cam->GetCamSpeed() * _Elapsed, 0);
 
+		if (SkyAlpha.a < 255)
+			SkyAlpha.a = ((_Cam->GetCameraCenter().x / 45000) * 255);
+		else if (SkyAlpha.a >= 255)
+			SkyAlpha.a = 255;
+
+		Plan2[4].setColor(SkyAlpha);
+
 		for (int i = 1; i < 4; i++)
 		{
 			if (Plan[i].getPosition().x + Plan[i].getGlobalBounds().width < _Cam->GetCamera()->getCenter().x - _Cam->GetCamera()->getSize().x / 2)
@@ -304,8 +315,8 @@ void Map::Display()
 	{
 		for (int i = 4; i > 0; i--)
 		{
-			m_actualWindow->draw(Plan2[i]);
 			m_actualWindow->draw(Plan[i]);
+			m_actualWindow->draw(Plan2[i]);
 		}
 
 		for (int i = 0; i < 2; i++)
@@ -573,11 +584,11 @@ sf::Vector2f Map::GetPos()
 
 sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 {
-	for (int y = 0; y < Size_Y; y++)
+	for (int x = 0; x < Size_X; x++)
 	{
-		for (int x = 0; x < Size_X; x++)
+		for (int y = 0; y < Size_Y; y++)
 		{
-			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64))
+			if ((Tableau[y][x] == 26 || Tableau[y][x] == 25) && x > (_Pos.x / 64) && x <= ((_Pos.x + 3840) / 64) && x < GetEndFlag().x)
 			{
 				CasePos.x = (float)x * 64;
 				CasePos.y = (float)y * 64;
@@ -695,51 +706,52 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
-	//if (isLazerActive)
-	//{
 		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
-			//if (isLazerOn == 0)
-			//{
-			if (FrameIndexLaser <= 12)
+			if (FrameIndexLaser == 0)
 			{
 				isLazerOn = 0;
-				FrameIndexLaser++;
-			}
-			//else
-				//isLazerOn = 1;
-
-			if (FrameIndexLaser == 13)
-			{
-				timerLazer[0].restart();
-				isLazerOn = 1;
+				timerLazer[1].restart();
 				FrameIndexLaser++;
 			}
 
-			if (timerLazer[0].getElapsedTime().asSeconds() >= 2)
+			if (timerLazer[1].getElapsedTime().asSeconds() >= 1)
 			{
-				if (FrameIndexLaser >= 14 && FrameIndexLaser < 16)
+				/*if (FrameIndexLaser >= 1 && FrameIndexLaser < 12)
 				{
-					//FrameIndexLaser = 0;
+					isLazerOn = 0;
+					FrameIndexLaser++;
+				}*/
+
+				if (FrameIndexLaser <= 12)
+				{
+					isLazerOn = 0;
+					FrameIndexLaser++;
+				}
+
+				if (FrameIndexLaser == 13)
+				{
+					timerLazer[0].restart();
 					isLazerOn = 1;
 					FrameIndexLaser++;
-					//isLazerActive = false;
-					//timerLazer.restart();
 				}
 
-				if (FrameIndexLaser >= 16)
+				if (timerLazer[0].getElapsedTime().asSeconds() >= 1)
 				{
-					FrameIndexLaser = 0;
+					if (FrameIndexLaser >= 14 && FrameIndexLaser < 16)
+					{
+						isLazerOn = 1;
+						FrameIndexLaser++;
+					}
 
-					isLazerOn = 0;
+					if (FrameIndexLaser >= 16)
+					{
+						FrameIndexLaser = 0;
+
+						isLazerOn = 0;
+					}
 				}
 			}
-			else
-				isLazerOn = 0;
-				
-				//}
-
 			AnimLaserClock.restart();
 		}
-	//}
 }

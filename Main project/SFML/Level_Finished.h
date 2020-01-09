@@ -8,7 +8,7 @@ class Level_Finished :
 {
 public:
 	Level_Finished();
-	Level_Finished(int _J1Score, int _J2Score, class Player* _player1, class Player* _player2, int _skinJ1, int _skinJ2);
+	Level_Finished(int _J1Score, int _J2Score, class Player* _player1, class Player* _player2, int _skinJ1, int _skinJ2, std::string _LevelName);
 	~Level_Finished();
 	virtual void Update();
 	virtual void Display();
@@ -18,6 +18,17 @@ public:
 	void UpdatePodium();
 
 private:
+	sf::Sprite spBackground;
+	sf::Sprite spContour;
+	sf::Sprite spLight;
+	sf::Sprite spFlèche;
+
+	sf::Sprite spButton[3];
+	sf::Text ButtonText[3];
+
+	int Selection = 1;
+	sf::Clock m_Clock;
+
 	int J1Score;
 	int J2Score;
 
@@ -40,6 +51,7 @@ private:
 	float scoreFall[2];
 	float scoreHitTrap[2];
 	int scoreFinal[2];
+	int scoreFinalDivide[2];
 
 	bool isScoreStep[4];
 	bool isUpdatable = false;
@@ -51,4 +63,11 @@ private:
 	//std::vector<float>
 
 	class Transition* transition;
+
+	sf::Clock AnimLogo;
+	int FrameIndexLogo = 0;
+
+	std::string LevelName;
+	int SkinJ1;
+	int SkinJ2;
 };

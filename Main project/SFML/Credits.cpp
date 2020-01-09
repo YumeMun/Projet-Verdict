@@ -35,12 +35,12 @@ void Credits::Update()
 
 void Credits::Display()
 {
-	if (spBackground.getPosition().y > -3219)
+	if (spBackground.getPosition().y > -3376)
 		spBackground.move(0, -3);
 
 	m_actualWindow->draw(spBackground);
 
-	if (spBackground.getPosition().y <= -3219)
+	if (spBackground.getPosition().y <= -3376)
 		m_actualWindow->draw(spBoutonRetour);
 }
 
