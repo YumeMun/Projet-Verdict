@@ -79,7 +79,7 @@ void Commandes::Update()
 		ControlsText.setOrigin(ControlsText.getGlobalBounds().width / 2, ControlsText.getGlobalBounds().height / 2);
 		ControlsText.setPosition(960, 150);
 		spCommandes.setTexture(*ResourceManager::Instance()->GetTexture("Commandes éditeur"));
-		spCommandes.setPosition(998, 590);
+		spCommandes.setPosition(930, 600);
 	}
 }
 
