@@ -384,7 +384,7 @@ void Jeu::CollectiblesManager()
 			m_levitation.setVolume(GameManager::Instance()->VolumeFX);
 			m_levitation.play();
 
-			Invicibility* newCollect = new Invicibility(1, Player2->GetPos());
+			Invicibility* newCollect = new Invicibility(2, Player2->GetPos());
 			Collectibles.push_back(newCollect);
 			Player2->InvincibleTime.restart();
 			Player2->Invincible = true;
