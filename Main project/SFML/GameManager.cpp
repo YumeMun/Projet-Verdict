@@ -8,7 +8,6 @@ GameManager::GameManager()
 void GameManager::Start()
 {
 	if (!music.openFromFile("Ressources/Music/Cruise_Around.ogg"))
-		std::cout << "Erreur music" << std::endl; // erreur
 	music.setVolume(GameManager::Instance()->VolumeMusique);
 	music.play();
 	music.setLoop(true);
@@ -111,7 +110,6 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		m_ActualScene = new Level_Finished();
 		break;
 	default:
-		std::cout << "Erreur de chargement de Scene" << std::endl;
 		break;
 	}
 	m_SceneName = &sceneEnum;

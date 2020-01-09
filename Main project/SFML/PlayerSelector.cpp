@@ -8,7 +8,6 @@ PlayerSelector::PlayerSelector()
 
 PlayerSelector::PlayerSelector(std::string _LevelName)
 {
-	std::cout << "PlayerSelector constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -88,11 +87,11 @@ void PlayerSelector::Setup()
 	listSelector[1]->spArrow[1].setPosition(listSelector[1]->spBc.getPosition().x + 320, listSelector[1]->spBc.getPosition().y + (listSelector[0]->spBc.getGlobalBounds().height / 2) + 100 /*- (listSelector[0]->spArrow[0].getGlobalBounds().height / 2)*/);
 
 	spReady.setTexture(*ResourceManager::Instance()->GetTexture("Petit bouton non sélectionné"));
-	spReady.setPosition((1920 / 2), 850);
+	spReady.setPosition((1920 / 2 - 110), 800);
 	spReady.setOrigin(spReady.getGlobalBounds().width / 2, spReady.getGlobalBounds().height / 2);
 	spReady.setScale(sf::Vector2f(1.75, 1.2));
 
-	strSkinSelect[0] = "Lancer la course";
+	strSkinSelect[0] = "Appuyez sur start pour lancer la course";
 	strSkinSelect[1] = "Choisissez votre vehicule";
 	strSkinSelect[2] = "Cette couleur est déjà prise";
 
@@ -106,8 +105,9 @@ void PlayerSelector::Setup()
 
 	}
 
-	textSkinSelect[0].setCharacterSize(50);
-	textSkinSelect[0].setPosition(spReady.getPosition().x - 85, spReady.getPosition().y - 15);
+	textSkinSelect[0].setCharacterSize(35);
+	textSkinSelect[0].setOrigin(textSkinSelect[0].getGlobalBounds().width / 2, textSkinSelect[0].getGlobalBounds().height / 2);
+	textSkinSelect[0].setPosition(960, 800);
 	textSkinSelect[1].setPosition(spReady.getPosition().x, spReady.getPosition().y - 550);
 	textSkinSelect[2].setPosition(spReady.getPosition().x, spReady.getPosition().y - 150);
 
@@ -124,7 +124,6 @@ void PlayerSelector::Update()
 	if (!isSetup)
 	{
 		Setup();
-		std::cout << "setup player selector" << std::endl;
 		isSetup = true;
 	}
 
@@ -224,13 +223,11 @@ void PlayerSelector::Update()
 		{
 			//listSelector[i]->spArrow[0].setScale(sf::Vector2f(0.9, 0.9));
 			listSelector[i]->spArrow[0].setTexture(*ResourceManager::Instance()->GetTexture("LB Press"));
-			std::cout << "AAA" << std::endl;
 		}
 		else if (sf::Joystick::isButtonPressed(i, 5))
 		{
 			//listSelector[i]->spArrow[1].setScale(sf::Vector2f(0.9, 0.9));
 			listSelector[i]->spArrow[1].setTexture(*ResourceManager::Instance()->GetTexture("RB Press"));
-			std::cout << "BBB" << std::endl;
 		}
 		else
 		{
@@ -320,7 +317,6 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 
 						listSelector[i]->timerSwitchSkin.restart();
 
-						std::cout << "nb = " << listSelector[0]->SkinSelector << std::endl;
 					}
 					else if (/*sf::Joystick::getAxisPosition(i, sf::Joystick::X) < -66.f ||*/ sf::Joystick::isButtonPressed(i, 4))
 					{
@@ -334,8 +330,6 @@ void PlayerSelector::EventManager(sf::Event p_pollingEvent)
 							listSelector[i]->SkinSelector = NB_SKIN;
 
 						listSelector[i]->timerSwitchSkin.restart();
-
-						std::cout << "nb = " << listSelector[0]->SkinSelector << std::endl;
 					}
 				}
 

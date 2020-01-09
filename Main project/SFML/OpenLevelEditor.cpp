@@ -6,7 +6,6 @@
 
 OpenLevelEditor::OpenLevelEditor()
 {
-	std::cout << "LevelSelector constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 

@@ -6,8 +6,6 @@
 
 LevelSelector::LevelSelector()
 {
-	std::cout << "LevelSelector constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	ObjSeparator = ".txt";

@@ -6,8 +6,6 @@
 
 HUD::HUD()
 {
-	std::cout << "HUD constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 
@@ -59,19 +57,19 @@ void HUD::SetupPlayerHUD()
 		spBumper[i].setOrigin(spBumper[i].getGlobalBounds().width / 2, spBumper[i].getGlobalBounds().height / 2);
 
 
-		spRocket[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		spRocket[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
-		spShockWave[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		spShockWave[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
-		spOilFlake[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		spOilFlake[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
-		spInvincible[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		spInvincible[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
-		spSwap[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		spSwap[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
-		spBumper[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
-		spBumper[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
 	}
+	spRocket[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+	spRocket[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+	spShockWave[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+	spShockWave[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+	spOilFlake[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+	spOilFlake[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+	spInvincible[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+	spInvincible[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+	spSwap[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+	spSwap[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
+	spBumper[0].setPosition(IconPlayer[0].getPosition().x + 190, IconPlayer[0].getPosition().y + 100);
+	spBumper[1].setPosition(IconPlayer[1].getPosition().x + 250, IconPlayer[1].getPosition().y + 100);
 }
 
 void HUD::Update(sf::Vector2f _viewCenter, sf::Vector2f _sizeCamera, sf::Vector2f _posP1, sf::Vector2f _posP2)

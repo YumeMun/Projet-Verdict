@@ -4,7 +4,6 @@
 
 Menu::Menu()
 {
-	std::cout << "Menu constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 

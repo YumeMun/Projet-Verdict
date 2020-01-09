@@ -3,7 +3,6 @@
 
 TimerStart::TimerStart()
 {
-	std::cout << "timer start constructor" << std::endl;
 	Setup();
 }
 
@@ -150,7 +149,6 @@ void TimerStart::UpdateRect()
 
 	if (numberCount < 1)
 	{
-		std::cout << "timer end lancement partie" << std::endl;
 		isTimerEnd = true;
 		numberCount = 3;
 	}

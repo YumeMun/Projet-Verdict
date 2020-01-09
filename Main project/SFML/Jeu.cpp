@@ -8,8 +8,6 @@ Jeu::Jeu()
 
 Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 {
-	std::cout << "Jeu constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	GameManager::Instance()->music.stop();
@@ -79,8 +77,8 @@ Jeu::Jeu(std::string _LevelName, int skinSelectedJ1, int skinSelectedJ2)
 	spFirstOrSecond[1].setTexture(*ResourceManager::Instance()->GetTexture("Second"));
 	spFirstOrSecond[0].setOrigin(spFirstOrSecond[0].getGlobalBounds().width / 2, spFirstOrSecond[0].getGlobalBounds().height / 2);
 	spFirstOrSecond[1].setOrigin(spFirstOrSecond[1].getGlobalBounds().width / 2, spFirstOrSecond[1].getGlobalBounds().height / 2);
-	spFirstOrSecond[0].setPosition(520, 70);
-	spFirstOrSecond[1].setPosition(1400, 70);
+	spFirstOrSecond[0].setPosition(570, 100);
+	spFirstOrSecond[1].setPosition(1920 - 570, 100);
 }
 
 Jeu::~Jeu()
@@ -138,8 +136,8 @@ void Jeu::Update()
 						Player1->PlayerFirstTimer.restart();
 					}
 
-					spFirstOrSecond[0].setPosition(520, 70);
-					spFirstOrSecond[1].setPosition(1400, 70);
+					spFirstOrSecond[0].setPosition(570, 100);
+					spFirstOrSecond[1].setPosition(1920 - 570, 100);
 				}
 				else if (Player2->GetPos().x > Player1->GetPos().x)
 				{
@@ -148,8 +146,8 @@ void Jeu::Update()
 						Player2->Score += 8; /// FACTOR_DIVIDE;
 						Player2->PlayerFirstTimer.restart();
 					}
-					spFirstOrSecond[0].setPosition(1400, 70);
-					spFirstOrSecond[1].setPosition(520, 70);
+					spFirstOrSecond[0].setPosition(1920 - 570, 100);
+					spFirstOrSecond[1].setPosition(570, 100);
 				}
 
 				map->Update(ElapsedTime, caméra);
@@ -388,7 +386,7 @@ void Jeu::CollectiblesManager()
 			m_levitation.setVolume(GameManager::Instance()->VolumeFX);
 			m_levitation.play();
 
-			Invicibility* newCollect = new Invicibility(1, Player2->GetPos());
+			Invicibility* newCollect = new Invicibility(2, Player2->GetPos());
 			Collectibles.push_back(newCollect);
 			Player2->InvincibleTime.restart();
 			Player2->Invincible = true;

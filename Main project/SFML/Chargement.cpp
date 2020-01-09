@@ -4,7 +4,6 @@
 
 Chargement::Chargement()
 {
-	std::cout << "Chargement constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -51,6 +50,8 @@ Chargement::Chargement()
 	Percent.setFont(Font);
 	Percent.setCharacterSize(50);
 	Percent.setFillColor(sf::Color::White);
+	Percent.setOutlineColor(sf::Color::Black);
+	Percent.setOutlineThickness(4);
 	Percent.setString("0 %");
 	Percent.setOrigin(Percent.getGlobalBounds().width / 2, Percent.getGlobalBounds().height / 2);
 	Percent.setPosition(LoadingBack.getPosition().x, LoadingBack.getPosition().y + LoadingBack.getSize().y * 2);
@@ -91,14 +92,13 @@ void Chargement::Update()
 
 	if (isLoaded == true)
 	{
-		std::cout << "Ressources chargees" << std::endl;
 		GameManager::Instance()->LoadScene(e_Enum::MENU);
 	}
 	else if (isLoaded == false)
 	{
 		// 24 is font + texture vectors final size
-		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 117) * LoadingBack.getSize().x, 30));
-		Percent.setString(std::to_string(int(ResourceManager::Instance()->GetVectorsSize() / 117 * 100)) + " %");
+		LoadingBar.setSize(sf::Vector2f((ResourceManager::Instance()->GetVectorsSize() / 129) * LoadingBack.getSize().x, 30));
+		Percent.setString(std::to_string(int(ResourceManager::Instance()->GetVectorsSize() / 129 * 100)) + " %");
 		Percent.setOrigin(Percent.getGlobalBounds().width / 2, Percent.getGlobalBounds().height / 2);
 	}
 

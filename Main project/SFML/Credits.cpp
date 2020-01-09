@@ -4,14 +4,12 @@
 
 Credits::Credits()
 {
-	std::cout << "Credits constructor" << std::endl;
-
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
 	spBackground.setTexture(*ResourceManager::Instance()->GetTexture("Background credits"));
 
 	if (!music.openFromFile("Ressources/Music/Cool_Catz.ogg"))
-		std::cout << "Erreur music" << std::endl; // erreur
+
 	music.setVolume(GameManager::Instance()->VolumeMusique);
 	music.play();
 	music.setLoop(true);

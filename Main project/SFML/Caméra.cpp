@@ -4,7 +4,6 @@
 
 Caméra::Caméra(Player* _player1, Player* _player2)
 {
-	std::cout << "Camera constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -16,7 +15,6 @@ Caméra::Caméra(Player* _player1, Player* _player2)
 	centerCam = startCenterCam;
 	camera.setCenter(centerCam);
 	camera.setSize(sizeCamera);
-	std::cout << "size X 1 : " << sizeCamera.x << std::endl;
 }
 
 Caméra::~Caméra()
@@ -25,10 +23,6 @@ Caméra::~Caméra()
 
 void Caméra::Update(float _dTime, TimerStart* _timer, Player* _player1, Player* _player2, Map* _map)
 {
-	//std::cout << "flag pos : " << _map->GetEndFlag().x << std::endl;
-	//std::cout << "size cam x : " << X << std::endl;
-	//std::cout << "size cam y : " << sizeCamera.y << std::endl;
-
 	if (clock.getElapsedTime().asSeconds() >= 3)
 	{
 		isGameStart = true;
@@ -139,8 +133,6 @@ void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _pl
 		sizeCamera.y += ZOOM_SPEED * _Elapsed;
 		camera.setSize(sizeCamera);
 
-		//std::cout << "size X : " << sizeCamera.x << std::endl;
-		//std::cout << "size Y : " << sizeCamera.y << std::endl;
 	}
 	else
 	{
@@ -149,22 +141,14 @@ void Caméra::UpdateZoom(float _Elapsed, Map* _map, Player* _player1, Player* _pl
 		camera.setSize(sizeCamera);
 	}
 
-	/*if (centerCam.x < _player2->GetPos().x + (1920 / 2) - 200) //((1920/2)+620))
-	{
-		std::cout << "zoooooooom" << std::endl;
-		sizeCamera.x = 2880;
-		sizeCamera.y = 1620;
-	}*/
-
-	if (centerCam.x < _player2->GetPos().x + (2880 / 2) - 150) //((1920/2)+620))
+	if (centerCam.x < _player2->GetPos().x + (2880 / 2) - 150)
 	{
 		centerCam.x += (CAMERA_ZOOM_SPEED * (16 / 9)) * _Elapsed;
 		camera.setCenter(centerCam);
 	}
 	else
 	{
-		//centerCam.x = _player2->GetPos().x + ((1920 / 2) - 200); //((1920 / 2)+620);
-		centerCam.x = _player2->GetPos().x + ((2880 / 2) - 150); //((1920 / 2)+620);
+		centerCam.x = _player2->GetPos().x + ((2880 / 2) - 150);
 		centerCam.y = 1080 / 2;
 		camera.setCenter(centerCam);
 		camera.setSize(sf::Vector2f(2880, 1620));

@@ -9,7 +9,6 @@ Map::Map()
 
 Map::Map(std::string _LevelName)
 {
-	std::cout << "Map constructor" << std::endl;
 
 	m_actualWindow = GameManager::Instance()->GetWindow();
 
@@ -58,6 +57,13 @@ Map::Map(std::string _LevelName)
 
 			Plan[i].setScale(1.6, 1.6);
 			Plan2[i].setScale(1.6, 1.6);
+		}
+
+		for (int i = 0; i < 2; i++)
+		{
+			Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan2_" + std::to_string(i)));
+			Plan1[i].setScale(1.6, 1.6);
+			Plan1[i].setPosition(Plan1[i].getGlobalBounds().width * i, -650);
 		}
 	}
 	else if (SelectionBackground == 2)
@@ -225,6 +231,15 @@ void Map::Update(float _Elapsed, Caméra* _Cam)
 
 	if (SelectionBackground == 1)
 	{
+		for (int i = 0; i < 2; i++)
+		{
+			if (Plan1[i].getPosition().x + Plan1[i].getGlobalBounds().width < _Cam->GetCameraCenter().x - _Cam->GetSizeCamera().x / 2)
+			{
+				Plan1[i].setPosition(Plan1[i].getPosition().x + ((9800 * 1.6) * 2), Plan1[i].getPosition().y);
+				Plan1[i].setTexture(*ResourceManager::Instance()->GetTexture("Plan2_" + std::to_string(int(Plan1[i].getPosition().x / Plan1[0].getGlobalBounds().width))));
+			}
+		}
+
 		Plan[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
 		Plan2[0].move(_Cam->GetCamSpeed() * -0.05 * _Elapsed, 0);
 
@@ -309,6 +324,11 @@ void Map::Display()
 		{
 			m_actualWindow->draw(Plan[i]);
 			m_actualWindow->draw(Plan2[i]);
+		}
+
+		for (int i = 0; i < 2; i++)
+		{
+			m_actualWindow->draw(Plan1[i]);
 		}
 	}
 	else if (SelectionBackground == 2)
@@ -444,7 +464,6 @@ void Map::Display()
 				break;
 			case 24:
 				spTile[23].setPosition(CasePos);
-				m_actualWindow->draw(spTile[23]);
 				break;
 			case 25:
 				spTile[24].setPosition(CasePos);
@@ -452,7 +471,6 @@ void Map::Display()
 				break;
 			case 26:
 				spTile[25].setPosition(CasePos);
-				m_actualWindow->draw(spTile[25]);
 				break;
 			case 27:
 				spTile[26].setPosition(CasePos);
@@ -596,38 +614,6 @@ sf::Vector2f Map::GetCheckPoint(sf::Vector2f _Pos)
 			}
 		}
 	}
-
-	/*for (int i = 0; i < XListCheckpoint.size() - 1; i++)
-	{
-		for (int y = 0; y < XListCheckpoint.size() - 1; y++)
-		{
-			if (XListCheckpoint.size() >= 2)
-			{
-				if (XListCheckpoint[i] <= XListCheckpoint[y])
-					XListCheckpoint.erase(XListCheckpoint.begin() + y);
-				else
-					XListCheckpoint.erase(XListCheckpoint.begin() + i);
-			}
-		}
-	}*/
-
-	/*for (int i = 0; i < XListCheckpoint.size(); i++)
-	{
-		std::cout << XListCheckpoint[i] << std::endl;
-	}*/
-
-	/*for (int y = 0; y < Size_Y; y++)
-	{
-		for (int x = 0; x < XListCheckpoint[0] + 1; x++)
-		{
-			if (Tableau[y][x] == 26 && x == XListCheckpoint[0] && x > (_Pos.x / 64))
-			{
-				CasePos.x = (float)x * 64;
-				CasePos.y = (float)y * 64;
-				return CasePos;
-			}
-		}
-	}*/
 }
 
 sf::Vector2f Map::GetEndFlag()

@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-#define SPEED_PODIUM 1
+#define SPEED_PODIUM 4
 #define FACTOR_DIVIDE 3
 
 class Level_Finished :
