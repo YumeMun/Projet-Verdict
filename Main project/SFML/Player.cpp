@@ -9,7 +9,6 @@ Player::Player()
 Player::Player(int _ID, sf::Vector2f _Pos, Map* _Map, int _skinNumber)
 {
 	ID = _ID;
-
 	if (ID == 1)
 	{
 		PlayerRect.left = 0, PlayerRect.top = 0, PlayerRect.width = 360, PlayerRect.height = 135;
@@ -126,22 +125,27 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 		scoreFall += 30; /// FACTOR_DIVIDE;
 
 		m_engineoff.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOff"));
+		m_engineoff.setVolume(GameManager::Instance()->VolumeFX);
 		m_engineoff.play();
 
 		m_death.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Mort Hors Ecran"));
+		m_death.setVolume(GameManager::Instance()->VolumeFX);
 		m_death.play();
 
 		//scoreFall += 50 / FACTOR_DIVIDE;
 
 	}
+	else if (Alive == false && _Cam->GetCamOrigin().x >= GetPos().x)
 	else if (Alive == false && _Cam->GetCameraCenter().x >= GetPos().x)
 	{
 		Alive = true;
 
 		m_respawn.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Respawn"));
+		m_respawn.setVolume(GameManager::Instance()->VolumeFX);
 		m_respawn.play();
 
 		m_engineon.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("EngineOn"));
+		m_engineon.setVolume(GameManager::Instance()->VolumeFX);
 		m_engineon.play();
 	}
 
@@ -324,7 +328,7 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		if (_Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) >= 11 && _Map->GetTile(GetPos().x, GetPos().y + Player_ColliderLimit[0].y) <= 13 && Boost == false)
 		{
 			m_Boost.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Boost"));
-			m_Boost.setVolume(25);
+			m_Boost.setVolume(GameManager::Instance()->VolumeFX);
 			m_Boost.play();
 
 			Boost = true;
@@ -513,31 +517,37 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					}
 					SetHitLazer();
 
+					if (Test == true)
 					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
 					{
-						if (Test == true)
+						if (m_Clock2.getElapsedTime().asSeconds() >= 1)
 						{
-							if (m_Clock2.getElapsedTime().asSeconds() >= 1)
-							{
-								Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-								Alteration.setVolume(50);
-								Alteration.play();
-								m_Clock2.restart();
-							}
-
-							m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
-							m_ElecHit.setVolume(50);
-							m_ElecHit.play();
-
-							Test = false;
+							Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+							Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
+							Alteration.play();
+							m_Clock2.restart();
 						}
 
-						if (m_Clock.getElapsedTime().asSeconds() >= 1)
-						{
-							Test = true;
-							m_Clock.restart();
-						}
+						m_ElecHit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Ralentissement Electrique"));
+						m_ElecHit.setVolume(GameManager::Instance()->VolumeFX*0.5);
+						m_ElecHit.play();
 
+						Test = false;
+					}
+
+					if (m_Clock.getElapsedTime().asSeconds() >= 1)
+					{
+						Test = true;
+						m_Clock.restart();
+					}
+
+					//std::cout << "speed player x : " << accelerationPlayer << std::endl; //
+
+					/*if (_Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 20 || _Map->GetTile(GetPos().x + Player_ColliderLimit[nbPts].x, GetPos().y) == 28)
+					{
+						m_laserhit.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Laser Impact"));
+						m_laserhit.setVolume(GameManager::Instance()->VolumeFX);
+						m_laserhit.play();
 						timerTrapFactor.restart();
 						isCollideCE = true;
 						SetHitLazer();
@@ -749,6 +759,7 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 			_Map->SetTile(GetPos().x, GetPos().y, 0);
 
 			Collectible.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Collecte Objet"));
+			Collectible.setVolume(GameManager::Instance()->VolumeFX);
 			Collectible.play();
 
 			RandomCollect = rand() % 100 + 1;
@@ -824,7 +835,7 @@ void Player::SetCollectID(int _CollectID)
 void Player::SetHitTrap()
 {
 	Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-	Alteration.setVolume(25);
+	Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
 	Alteration.play();
 	if (timerTrapFactor.getElapsedTime().asSeconds() < 3)  //courbe active dans un delai de :3s
 	{

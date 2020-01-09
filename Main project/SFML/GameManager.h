@@ -41,7 +41,7 @@ public:
 	Scene* m_ActualScene;
 
 	sf::RenderWindow* GetWindow();
-
+	sf::Music music;
 	int VolumeMusique = 60;
 	int VolumeFX = 60;
 };

@@ -71,27 +71,7 @@ void ResourceManager::Load()
 
 	newSoundBuffer = new SoundBuffers();
 
-	if (newSoundBuffer->Create("Impact_Laser.ogg", "Impact Laser"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
-	if (newSoundBuffer->Create("Laser_Actif_Ver_2.ogg", "Laser Actif"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
 	if (newSoundBuffer->Create("Impact_Laser.ogg", "Laser Impact"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
-	if (newSoundBuffer->Create("Laser_Off_Ver_2.ogg", "Laser Off"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
-	if (newSoundBuffer->Create("Laser_On_Ver2.ogg", "Laser On"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newSoundBuffer = new SoundBuffers();
@@ -107,11 +87,6 @@ void ResourceManager::Load()
 	newSoundBuffer = new SoundBuffers();
 
 	if (newSoundBuffer->Create("Onde_de_Choc.ogg", "Onde de Choc"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
-	if (newSoundBuffer->Create("Piege_Electrique.ogg", "Piege Electrique"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newSoundBuffer = new SoundBuffers();
@@ -176,11 +151,6 @@ void ResourceManager::Load()
 
 	newSoundBuffer = new SoundBuffers();
 
-	if (newSoundBuffer->Create("Iddle_Bumper.ogg", "IddleBumper"))
-		_soundBuffers.push_back(newSoundBuffer);
-
-	newSoundBuffer = new SoundBuffers();
-
 	if (newSoundBuffer->Create("Valider_3.ogg", "Valider"))
 		_soundBuffers.push_back(newSoundBuffer);
 
@@ -192,6 +162,11 @@ void ResourceManager::Load()
 	newSoundBuffer = new SoundBuffers();
 
 	if (newSoundBuffer->Create("BumperEffect.ogg", "BumperEffect"))
+		_soundBuffers.push_back(newSoundBuffer);
+
+	newSoundBuffer = new SoundBuffers();
+
+	if (newSoundBuffer->Create("Mousse.ogg", "Mousse"))
 		_soundBuffers.push_back(newSoundBuffer);
 
 	newFont = new Fonts();

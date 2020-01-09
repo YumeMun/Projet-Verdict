@@ -192,6 +192,7 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 					if (m_MenuChoice != 1)
 					{
 						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.setVolume(GameManager::Instance()->VolumeFX);
 						sound.play();
 						m_MenuChoice = m_MenuChoice - 1;
 						LeftPressed = true;
@@ -204,6 +205,7 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 					if (m_MenuChoice != FilesNumber)
 					{
 						sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+						sound.setVolume(GameManager::Instance()->VolumeFX);
 						sound.play();
 						m_MenuChoice = m_MenuChoice + 1;
 						RightPressed = true;
@@ -214,6 +216,7 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 				if (sf::Joystick::isButtonPressed(0, 0))
 				{
 					Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+					Valider.setVolume(GameManager::Instance()->VolumeFX);
 					Valider.play();
 					GameManager::Instance()->m_ActualScene = new LevelEditor(0, 0, LevelName[m_MenuChoice + 1], true);
 				}
@@ -232,6 +235,7 @@ void OpenLevelEditor::EventManager(sf::Event p_pollingEvent)
 	if (sf::Joystick::isButtonPressed(0, 1))
 	{
 		retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+		retour.setVolume(GameManager::Instance()->VolumeFX);
 		retour.play();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::CHOOSELEVELEDITOR);
 	}

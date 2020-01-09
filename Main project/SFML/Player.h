@@ -87,6 +87,7 @@ private:
 	sf::Sound m_death;
 	sf::Sound m_engineoff;
 	sf::Sound m_engineon;
+	sf::Sound m_laserhit;
 
 	sf::Sprite spPlayer;
 	sf::IntRect PlayerRect;

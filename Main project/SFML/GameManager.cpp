@@ -7,6 +7,11 @@ GameManager::GameManager()
 //Création de la fenêtre et chargement de scène
 void GameManager::Start()
 {
+	if (!music.openFromFile("Ressources/Music/Cruise_Around.ogg"))
+		std::cout << "Erreur music" << std::endl; // erreur
+	music.setVolume(GameManager::Instance()->VolumeMusique);
+	music.play();
+	music.setLoop(true);
 	m_Window.create(sf::VideoMode(1920, 1080), "Projet Runner", sf::Style::Fullscreen);
 	LoadScene(e_Enum::INTRO);
 }
@@ -14,6 +19,7 @@ void GameManager::Start()
 //Boucle de jeu
 void GameManager::Update()
 {
+	music.setVolume(GameManager::Instance()->VolumeMusique);
 	while (m_Window.pollEvent(m_Event))
 	{
 		//Fermeture du programme
@@ -55,6 +61,10 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		m_ActualScene = new Chargement();
 		break;
 	case e_Enum::e_Scene::MENU:
+		if (music.getStatus() == 1 || music.getStatus() == 0)
+		{
+			music.play();
+		}
 		m_ActualScene = new Menu();
 		break;
 	case e_Enum::e_Scene::COMMANDES:
@@ -64,12 +74,18 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		m_ActualScene = new Options();
 		break;
 	case e_Enum::e_Scene::CREDITS:
+		music.pause();
 		m_ActualScene = new Credits();
 		break;
 	case e_Enum::e_Scene::JEU:
+		//music.stop();
 		m_ActualScene = new Jeu();
 		break;
 	case e_Enum::e_Scene::CHOOSELEVELEDITOR:
+		if (music.getStatus() == 1 || music.getStatus() == 0)
+		{
+			music.play();
+		}
 		m_ActualScene = new ChooseLevelEditor();
 		break;
 	case e_Enum::e_Scene::OPENLEVELEDITOR:
@@ -79,6 +95,7 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		m_ActualScene = new SizeEditor();
 		break;
 	case e_Enum::e_Scene::LEVELEDITOR:
+		music.stop();
 		m_ActualScene = new LevelEditor();
 		break;
 	case e_Enum::e_Scene::SAVEEDITOR:

@@ -45,10 +45,10 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 		}
 		else if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7 || _Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 12)
 		{
-			/*Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-			Alteration.setVolume(50);
+			Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
+			Alteration.setVolume(GameManager::Instance()->VolumeFX * 0.5);
 			Alteration.play();
-			_Player2->Oiled = true;*/
+			/*_Player2->Oiled = true;*/
 
 			if (_Map->GetTile(spOil.getPosition().x, spOil.getPosition().y) == 7)
 			{
@@ -89,7 +89,7 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 				if (_Player2->Oiled == false)
 				{
 					Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-					Alteration.setVolume(50);
+					Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
 					Alteration.play();
 				}
 
@@ -108,7 +108,7 @@ void Oilflake::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Elap
 				if (_Player1->Oiled == false)
 				{
 					Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-					Alteration.setVolume(50);
+					Alteration.setVolume(GameManager::Instance()->VolumeFX * 0.5);
 					Alteration.play();
 				}
 

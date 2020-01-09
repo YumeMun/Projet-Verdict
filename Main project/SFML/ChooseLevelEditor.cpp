@@ -38,6 +38,7 @@ void ChooseLevelEditor::Update()
 		if (ChoiceSelected < 2)
 			ChoiceSelected++;
 		sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+		sound.setVolume(GameManager::Instance()->VolumeFX);
 		sound.play();
 		SelectionTimer.restart();
 	}
@@ -46,6 +47,7 @@ void ChooseLevelEditor::Update()
 		if (ChoiceSelected > 1)
 			ChoiceSelected--;
 		sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+		sound.setVolume(GameManager::Instance()->VolumeFX);
 		sound.play();
 		SelectionTimer.restart();
 	}
@@ -66,6 +68,7 @@ void ChooseLevelEditor::Update()
 	if (sf::Joystick::isButtonPressed(0, 0) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 	{
 		Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+		Valider.setVolume(GameManager::Instance()->VolumeFX);
 		Valider.play();
 		if (ChoiceSelected == 1)
 		{
@@ -79,6 +82,7 @@ void ChooseLevelEditor::Update()
 	else if (sf::Joystick::isButtonPressed(0, 1) && SelectionTimer.getElapsedTime().asMilliseconds() > 300)
 	{
 		retour.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Retour"));
+		retour.setVolume(GameManager::Instance()->VolumeFX);
 		retour.play();
 		GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
 	}

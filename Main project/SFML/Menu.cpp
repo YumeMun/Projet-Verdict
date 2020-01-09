@@ -273,6 +273,7 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 		if (sf::Joystick::isButtonPressed(0, 0))
 		{
 			Valider.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Valider"));
+			Valider.setVolume(GameManager::Instance()->VolumeFX);
 			Valider.play();
 			if (m_MenuChoice == 1)
 				GameManager::Instance()->LoadScene(e_Enum::e_Scene::LEVELSELECTOR);
@@ -292,6 +293,7 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -50.f)
 		{
 			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.setVolume(GameManager::Instance()->VolumeFX);
 			sound.play();
 			if (m_MenuChoice != 1)
 				m_MenuChoice = m_MenuChoice - 1;
@@ -302,6 +304,7 @@ void Menu::EventManager(sf::Event p_pollingEvent)
 		if (sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 50.f)
 		{
 			sound.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Curseur menu"));
+			sound.setVolume(GameManager::Instance()->VolumeFX);
 			sound.play();
 			if (m_MenuChoice != 6)
 				m_MenuChoice = m_MenuChoice + 1;
