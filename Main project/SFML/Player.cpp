@@ -89,7 +89,13 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 
 	if (spPlayer.getPosition().x < _Map->GetSizeX() * 64 && spPlayer.getPosition().y < (_Map->GetSizeY() * 64) - 2 && Alive == true)
 	{
-		Controls(_Map, _Elapsed);
+		if (GetPos().y - Player_ColliderLimit[0].y > 0)
+			Controls(_Map, _Elapsed);
+		else
+		{
+			Player_Movement.y += GRAVITY * GRAVITYFACTOR * _Elapsed;
+			Jump = true;
+		}
 
 		if (Invincible == false)
 		{
@@ -196,7 +202,7 @@ void Player::Update(float _Elapsed, Map* _Map, Caméra* _Cam, sf::Vector2f _PosJ2
 			spPlayer.rotate(-SPEED / 1.5 * _Elapsed);
 		else if (spPlayer.getRotation() >= 355 && spPlayer.getRotation() <= 5)
 			spPlayer.setRotation(0);
-		else 
+		else
 			spPlayer.setRotation(0);
 	}
 	else if (Player_Direction == UP)
@@ -499,7 +505,7 @@ void Player::Traps(Map* _Map, Caméra* _Cam)
 					isCollideCE = true;
 					if (timerCE.getElapsedTime().asMilliseconds() > 1000)
 					{
-						scoreHitTrap += 15; 
+						scoreHitTrap += 15;
 						timerCE.restart();
 					}
 					SetHitLazer();
@@ -766,7 +772,7 @@ void Player::SetCollectID(int _CollectID)
 void Player::SetHitTrap()
 {
 	Alteration.setBuffer(*ResourceManager::Instance()->GetSoundBuffer("Alteration"));
-	Alteration.setVolume(GameManager::Instance()->VolumeFX*0.5);
+	Alteration.setVolume(GameManager::Instance()->VolumeFX * 0.5);
 	Alteration.play();
 	if (timerTrapFactor.getElapsedTime().asSeconds() < 3)  //courbe active dans un delai de :3s
 	{
