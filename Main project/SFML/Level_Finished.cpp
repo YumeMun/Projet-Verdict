@@ -116,8 +116,8 @@ void Level_Finished::Update()
 	isPlayerText[0].setOrigin(isPlayerText[0].getGlobalBounds().width / 2, isPlayerText[0].getGlobalBounds().height / 2);
 	isPlayerText[1].setOrigin(isPlayerText[1].getGlobalBounds().width / 2, isPlayerText[1].getGlobalBounds().height / 2);
 
-	posLogo[0] = { spPlayer[0].getPosition().x - 600, spPlayer[0].getPosition().y - 200 };
-	posLogo[1] = { spPlayer[0].getPosition().x + 600, spPlayer[0].getPosition().y - 200 };
+	posLogo[0] = { 200, 700 };
+	posLogo[1] = { 1920 - 200, 700 };
 	posLogo[2] = { 1920 / 2, 400 };
 
 	if (J1Score > J2Score)
@@ -222,6 +222,11 @@ void Level_Finished::Display()
 
 	if (isScoreEnd)
 	{
+		if (J1Score != J2Score)
+		{
+			m_actualWindow->draw(spLight);
+		}
+
 		m_actualWindow->draw(WinText);
 
 		if (AnimLogo.getElapsedTime().asMilliseconds() > 150)
@@ -237,7 +242,6 @@ void Level_Finished::Display()
 		if (J1Score != J2Score)
 		{
 			m_actualWindow->draw(spLogo);
-			m_actualWindow->draw(spLight);
 		}
 
 		for (int i = 0; i < 3; i++)
