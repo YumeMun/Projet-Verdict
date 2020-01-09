@@ -706,7 +706,6 @@ void Map::AnimTiles()
 		AnimElectClock.restart();
 	}
 
-<<<<<<< HEAD
 		if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
 		{
 			if (FrameIndexLaser == 0)
@@ -755,54 +754,4 @@ void Map::AnimTiles()
 			}
 			AnimLaserClock.restart();
 		}
-	
-=======
-	//if (isLazerActive)
-	//{
-	if (AnimLaserClock.getElapsedTime().asMilliseconds() > 50)
-	{
-		//if (isLazerOn == 0)
-		//{
-		if (FrameIndexLaser <= 2)
-		{
-			isLazerOn = 0;
-			FrameIndexLaser++;
-		}
-		//else
-			//isLazerOn = 1;
-
-		if (FrameIndexLaser == 3)
-		{
-			timerLazer[0].restart();
-			isLazerOn = 1;
-			FrameIndexLaser++;
-		}
-
-		if (timerLazer[0].getElapsedTime().asSeconds() >= 2)
-		{
-			if (FrameIndexLaser >= 4 && FrameIndexLaser < 16)
-			{
-				//FrameIndexLaser = 0;
-				isLazerOn = 1;
-				FrameIndexLaser++;
-				//isLazerActive = false;
-				//timerLazer.restart();
-			}
-
-			if (FrameIndexLaser >= 16)
-			{
-				FrameIndexLaser = 0;
-
-				isLazerOn = 0;
-			}
-		}
-		else
-			isLazerOn = 0;
-
-		//}
-
-		AnimLaserClock.restart();
-	}
-	//}
->>>>>>> 9b728ef67a407363e050ac87678f8a4d73ee0b53
 }

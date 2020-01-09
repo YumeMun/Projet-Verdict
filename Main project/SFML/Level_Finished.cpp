@@ -212,7 +212,7 @@ void Level_Finished::GetScoreValue(Player* _player1, Player* _player2)
 		scoreHitTrap[i];
 		scoreFall[i];
 
-		scoreFinalDivide[i] = scoreFinal[i] / FACTOR_DIVIDE;
+		//scoreFinalDivide[i] = scoreFinal[i] / FACTOR_DIVIDE;
 	}
 
 }
@@ -319,12 +319,14 @@ void Level_Finished::UpdatePodium()
 		{
 			for (int i = 0; i < 2; i++)
 			{
-				posElement[i].y = -scoreFinal[i];
-
 				if (scoreFinal[i] < 0)
 				{
 					scoreFinal[i] = 0;
 				}
+
+				scoreFinalDivide[i] = scoreFinal[i] / FACTOR_DIVIDE;
+				posElement[i].y = -scoreFinalDivide[i];
+
 				spPodium[i].setPosition((posElement[i].x), (posElement[i].y + 800));
 				spPlayer[i].setPosition(spPodium[i].getPosition());
 				std::cout << i << " : pos : " << spPodium[i].getPosition().y << std::endl;
