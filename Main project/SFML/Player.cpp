@@ -350,13 +350,16 @@ void Player::Controls(Map* _Map, float _Elapsed)
 		Boosted = false;
 	}
 
-	if ((_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && _Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) < 20) && GetPos().y - Player_ColliderLimit[0].y / 2 - 100 > 0)
+	if (GetPos().y - Player_ColliderLimit[0].y > 0)
 	{
-		if (Player_Movement.y < 0)
-			Player_Movement.y = 0;
+		if ((_Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) != 0 && _Map->GetTile(GetPos().x, GetPos().y - Player_ColliderLimit[0].y / 2) < 20))
+		{
+			if (Player_Movement.y < 0)
+				Player_Movement.y = 0;
 
-		if (Player_SlopVector.y < 0)
-			Player_SlopVector.y = 0;
+			if (Player_SlopVector.y < 0)
+				Player_SlopVector.y = 0;
+		}
 	}
 
 	if (Player_Direction == NONE)
@@ -797,6 +800,8 @@ bool Player::CollectibleCollide(Map* _Map, sf::Vector2f _PosJ2)
 				else if (RandomCollect > 90)
 					CollectID = e_Enum::e_Collects::SHOCKWAVE;
 			}
+
+			CollectID = e_Enum::e_Collects::LEVITATION;
 
 			return true;
 		}

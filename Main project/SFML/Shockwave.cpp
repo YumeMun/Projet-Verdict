@@ -26,6 +26,8 @@ void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Ela
 			_Player2->Shocked = true;
 			_Player2->Shocked_Move.x = -cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
 			_Player2->Shocked_Move.y = -sin(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
+			_Player2->Player_Movement.y = 0;
+			_Player2->Player_Movement.x = -cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
 		}
 	}
 	else if (ID == 2)
@@ -37,6 +39,8 @@ void Shockwave::Update(Player* _Player1, Player* _Player2, Map* _Map, float _Ela
 			_Player1->Shocked = true;
 			_Player1->Shocked_Move.x = -cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
 			_Player1->Shocked_Move.y = -sin(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
+			_Player1->Player_Movement.y = 0;
+			_Player1->Player_Movement.x = -cos(atan2(_Player1->GetPos().y - _Player2->GetPos().y, _Player1->GetPos().x - _Player2->GetPos().x)) * SPEED;
 		}
 	}
 
