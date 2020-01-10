@@ -159,12 +159,6 @@ void Level_Finished::Update()
 	isPlayerText[1].setString(std::to_string(scoreFinal[1]));
 	ScoreText[1].setOrigin(ScoreText[1].getGlobalBounds().width / 2, 0);
 
-	if (sf::Joystick::isButtonPressed(0, 1))
-	{
-		transition->ResetTransition();
-		GameManager::Instance()->LoadScene(e_Enum::e_Scene::MENU);
-	}
-
 	if (isScoreEnd)
 	{
 		if (m_Clock.getElapsedTime().asSeconds() >= 0.3)

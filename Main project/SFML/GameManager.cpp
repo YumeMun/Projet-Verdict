@@ -22,8 +22,7 @@ void GameManager::Update()
 	while (m_Window.pollEvent(m_Event))
 	{
 		//Fermeture du programme
-		if (m_Event.type == sf::Event::Closed ||
-			sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		if (m_Event.type == sf::Event::Closed)
 		{
 			m_Window.close();
 		}
@@ -77,7 +76,7 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		m_ActualScene = new Credits();
 		break;
 	case e_Enum::e_Scene::JEU:
-		//music.stop();
+		music.stop();
 		m_ActualScene = new Jeu();
 		break;
 	case e_Enum::e_Scene::CHOOSELEVELEDITOR:
@@ -88,17 +87,21 @@ void GameManager::LoadScene(e_Enum::e_Scene sceneEnum)
 		m_ActualScene = new ChooseLevelEditor();
 		break;
 	case e_Enum::e_Scene::OPENLEVELEDITOR:
-		m_ActualScene = new OpenLevelEditor();
-		break;
-	case e_Enum::e_Scene::SIZEEDITOR:
-		m_ActualScene = new SizeEditor();
-		break;
-	case e_Enum::e_Scene::LEVELEDITOR:
-		music.stop();
 		if (music.getStatus() == 1 || music.getStatus() == 0)
 		{
 			music.play();
 		}
+		m_ActualScene = new OpenLevelEditor();
+		break;
+	case e_Enum::e_Scene::SIZEEDITOR:
+		if (music.getStatus() == 1 || music.getStatus() == 0)
+		{
+			music.play();
+		}
+		m_ActualScene = new SizeEditor();
+		break;
+	case e_Enum::e_Scene::LEVELEDITOR:
+		music.stop();
 		m_ActualScene = new LevelEditor();
 		break;
 	case e_Enum::e_Scene::SAVEEDITOR:

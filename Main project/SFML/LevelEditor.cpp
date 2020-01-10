@@ -1092,6 +1092,8 @@ void LevelEditor::Sauvegarde()
 		Save += "\n";
 	}
 
+	musicedit.stop();
+
 	if (isNewLevel == false)
 		GameManager::Instance()->m_ActualScene = new SaveEditor(Size_X, Size_Y, Save, SelectionBackground, false, "");
 
